@@ -58,7 +58,7 @@ background-color: #464646;
                 <input type="password" placeholder="contraseña" style="margin-top: 8%; margin-bottom: 11%; padding-left: 15px; border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;">
   
                 <a type="button" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" >Iniciar sesión</a>
-                <p style="color:#8DC63F">Olvidé mi contraseña</p>
+                <p style="color:#8DC63F">Olvidé mi password</p>
               </form>
             </div>
         </div>
