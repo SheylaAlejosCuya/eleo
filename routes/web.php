@@ -22,3 +22,7 @@ Route::get('/inicio', function () {
 Route::get('/perfil', function () {
     return view('alumno/perfil');
 });
+
+Route::get('/bar', function () {
+    return view('includes/menubaralternate');
+});

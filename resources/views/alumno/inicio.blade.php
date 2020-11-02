@@ -40,20 +40,20 @@ background-color:white;">
     <div class="col">
       <nav class="main-header navbar navbar-expand  navbar-light">
         <ul class="navbar-nav">
-            <li class="nav-item">
-              <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
-            </li>           
-          </ul>          
-    </nav>
+          <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+          </li>           
+        </ul>          
+      </nav>
     </div>
     <div class="col">
-      <div style="text-align: right; "> 
+      <div style="text-align: right;"> 
         <img src="images/perfil.png" alt="Perfil" height="ml-auto"> 
-    <br>
-    <label style="background:#8dc63f;  padding-left: 1.5%; border-top-left-radius:7px;  border-bottom-left-radius: 7px;  color: white; padding-right: 5%; font-size: calc(1rem + 1vw);">
-       E-leo <br> Nivel 4
-    </label>  
-    </div>
+        <br>
+        <label style="background:#8dc63f;  padding-left: 1.5%; border-top-left-radius:7px;  border-bottom-left-radius: 7px;  color: white; padding-right: 5%; font-size: calc(1rem + 1vw);">
+          E-leo <br> Nivel 4
+        </label>  
+      </div>
     </div>
   </div>
   
@@ -78,8 +78,8 @@ background-color:white;">
           
           <li class="nav-item">
             <a class="brand-link" >
-                <img src="images/logo.png" alt="eleo" class="brand-image" >
-                </a>
+              <img src="images/logo.png" alt="eleo" class="brand-image" >
+            </a>
           </li>
           <li class="nav-item has-treeview">
             <a href="#" class="nav-link " >
