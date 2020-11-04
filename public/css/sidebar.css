@@ -53,13 +53,29 @@
 }
 
 .rightContent {
-    margin-left: 7.9%;
+    margin-left: 15.81%;
     width: 100%;
     transition: 0.7s;
 }
 
+.ebackground {
+    padding-left: 32px;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-image: url(../images/tapiz.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color:white;
+    top: 0;
+    z-index: -1;
+}
+
 .econtent {
-    margin: -32px 32px 0 32px;
+    background-color: hotpink;
+    margin: -40px 32px 0 32px;
 }
 
 .infomacion h1 {
@@ -80,8 +96,8 @@
 
 .esidebar {
     z-index: 100;
-    height: 100vh;
-    width: 7.9%;
+    height: 101vh;
+    width: 15.81%;
     background-color: #00a3fb;
     position: fixed;
     display: flex;
@@ -164,12 +180,24 @@ a img {
 
 @media (max-width: 768px) {
     .esidebar {
-      width: 100%;
+      width: 101vw;
       text-align: center;
     }
 
     .esidebar .logo img {
         width: 40%;
+    }
+
+    .triggerGroup label {
+        z-index: 100;
+        position: absolute;
+        right: 0;
+        margin-right: 16px;
+        font-size: 32px;
+    }
+
+    .triggerGroup label i {
+        color: white;
     }
 }
 

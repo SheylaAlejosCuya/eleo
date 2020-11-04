@@ -1,4 +1,4 @@
-@include('includes.menubaralternate')
+
 <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
     <div class="infomacion">
