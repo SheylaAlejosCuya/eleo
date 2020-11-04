@@ -23,6 +23,11 @@
     margin-top: 16px;
 }
 
+.chkTrigger {
+    z-index: 1;
+    transition: 0.7s;
+}
+
 .triggerGroup label i {
     color: #7f7f7f;
     cursor: pointer;
@@ -61,8 +66,6 @@
 .ebackground {
     padding-left: 32px;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
     background-image: url(../images/tapiz.png);
     background-position: center center;
     background-repeat: no-repeat;
@@ -74,7 +77,6 @@
 }
 
 .econtent {
-    background-color: hotpink;
     margin: -40px 32px 0 32px;
 }
 
@@ -180,24 +182,17 @@ a img {
 
 @media (max-width: 768px) {
     .esidebar {
-      width: 101vw;
-      text-align: center;
+        left: -100%;
+        width: 100vw;
+        text-align: center;
+    }
+
+    .rightContent {
+        margin-left: 0;
     }
 
     .esidebar .logo img {
         width: 40%;
-    }
-
-    .triggerGroup label {
-        z-index: 100;
-        position: absolute;
-        right: 0;
-        margin-right: 16px;
-        font-size: 32px;
-    }
-
-    .triggerGroup label i {
-        color: white;
     }
 }
 

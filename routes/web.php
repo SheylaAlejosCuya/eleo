@@ -24,5 +24,5 @@ Route::get('/perfil', function () {
 });
 
 Route::get('/bar', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio']);
+    return view('includes/menubaralternate', ['includeRoute' => '']);
 });
