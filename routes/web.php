@@ -17,8 +17,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::get('/inicio', function () {
-    return view('alumno/inicio');
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio']);
 });
 Route::get('/perfil', function () {
-    return view('alumno/perfil');
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil']);
+});
+
+Route::get('/bar', function () {
+    return view('includes/menubaralternate', ['includeRoute' => '']);
 });

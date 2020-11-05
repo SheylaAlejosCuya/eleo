@@ -1,0 +1,198 @@
+* {
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.menubar {
+    display: flex;
+}
+
+.header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    transition: 0.7s;
+}
+
+.triggerGroup {
+    margin-left: 32px;
+    margin-top: 16px;
+}
+
+.chkTrigger {
+    z-index: 1;
+    transition: 0.7s;
+}
+
+.triggerGroup label i {
+    color: #7f7f7f;
+    cursor: pointer;
+}
+
+.triggerGroup label i:hover {
+    color: #000;
+}
+
+.studentProfilePicture {
+    width: 150px;
+    margin: 16px 0;
+}
+
+.studentLevel {
+    background:#8dc63f;
+    padding-left: 1.5%;
+    border-top-left-radius:7px;
+    border-bottom-left-radius: 7px;
+    color: white;
+    padding-right: 5%;
+    font-size: calc(1rem + 1vw);
+    text-align: center;
+    padding-top: 4px;
+    padding-bottom: 4px;
+    font-family: sans-serif;
+    line-height: 1;
+}
+
+.rightContent {
+    margin-left: 15.81%;
+    width: 100%;
+    transition: 0.7s;
+}
+
+.ebackground {
+    padding-left: 32px;
+    position: absolute;
+    background-image: url(../images/tapiz.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color:white;
+    top: 0;
+    z-index: -1;
+}
+
+.econtent {
+    margin: -40px 32px 0 32px;
+}
+
+.infomacion h1 {
+    margin-bottom: 40px;
+}
+
+.infoTitle {
+    color: #585857;
+}
+
+.avatarImg {
+    display: flex;
+    justify-content: space-evenly;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.1),0 6px 20px 0 rgba(0,0,0,0.12) !important;
+}
+
+.esidebar {
+    z-index: 100;
+    height: 101vh;
+    width: 15.81%;
+    background-color: #00a3fb;
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    transition: 0.7s;
+    box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22) !important;
+}
+
+.esidebar .logo {
+    width: 100%;
+    height: 20%;
+    display: flex;
+}
+
+.esidebar .logo img {
+    width: 60%;
+    margin: auto;
+}
+
+.esidebar ul {
+    padding-left: 0;
+    width: 100%;
+    list-style: none;
+    text-align: center;
+    height: 60%;
+}
+
+.esidebar ul li {
+    height: 20%;
+    text-align: -webkit-center;
+    margin-bottom: 8px;
+}
+
+.esidebar ul li a {
+    display: flex;
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition: .4s;
+    height: 100%;
+    width: fit-content;
+    border-radius: 15px;
+}
+
+.esidebar ul li a:hover {
+    background-color: #f29100;
+}
+
+a img {
+    margin: auto;
+    padding: 4px 0;
+    height: 90%;
+}
+
+.logout {
+    font-size: 16px;
+    height: 20%;
+    text-align: center;
+    display: flex;
+}
+
+.logoutContent {
+    margin: auto;
+}
+
+.logoutContent img {
+    height: 18px;
+    vertical-align: sub;
+}
+
+.logout a {
+    text-decoration: none;
+    font-size: 80%;
+}
+
+#chk {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .esidebar {
+        left: -100%;
+        width: 100vw;
+        text-align: center;
+    }
+
+    .rightContent {
+        margin-left: 0;
+    }
+
+    .esidebar .logo img {
+        width: 40%;
+    }
+}
+

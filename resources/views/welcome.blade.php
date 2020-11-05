@@ -39,20 +39,22 @@ background-size: cover;
 
 /* Damos un color de fondo mientras la imagen está cargando  */
 background-color: #464646;
+
+color: rgba(0, 0, 0, 0.5);
 }
 </style>
     </head>
     <body class="antialiased">
         
     <section class="container-fluid" >
-        <div class="row text-center"  > 
+        <div class="row text-center" >
             <div class="col">
             </div>
             <div class="col-lg-4" style="background: white; height: 900px;  align-items: center;display: flex; justify-content: center;">
-              <form action="" style="background: white;">
-                <img src="images/logo.png"  width="100%" alt="">
+              <form action="" style="background: white; width: 320px;">
+                <img src="images/logo.png" style="width: 262px; padding: 16px 0" alt="">
                 <p style="color: black;  font-size: 22px; line-height: 0.5em; padding-top: 10%;">Iniciar sesión</p>
-                <p style="font-size: 16px;">¿No cuentas con una cuenta? <font style="color:#8DC63F" >Registrate ahora</font></p>
+                <p style="font-size: 14px;">¿No cuentas con una cuenta? <font style="color:#8DC63F" >Registrate ahora</font></p>
                 <input type="email" placeholder="correo electrónico" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;">
                 <br>
                 <input type="password" placeholder="contraseña" style="margin-top: 8%; margin-bottom: 11%; padding-left: 15px; border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;">
