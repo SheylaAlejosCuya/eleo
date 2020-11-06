@@ -16,11 +16,21 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
 Route::get('/inicio', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio']);
 });
+
 Route::get('/perfil', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil']);
+});
+
+Route::get('/tutoriales/{id}', function ($id) {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'tutorialID' => $id]);
+}); 
+
+Route::get('/tutoriales', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutoriales']);
 });
 
 Route::get('/bar', function () {

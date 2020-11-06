@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>e-leo</title>
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -42,7 +43,7 @@
                 } else {
                     sidebar[0].style.left = "0";
                     chkTrigger[0].style.zIndex = 100;
-                    chkTrigger[0].style.position = "absolute";
+                    chkTrigger[0].style.position = "fixed";
                     chkTrigger[0].style.marginRight = "16px";
                     chkTrigger[0].style.fontSize = "32px";
                     chkTrigger[0].children[0].style.color = "white";
@@ -65,28 +66,28 @@
     <div class="menubar">
         <div class="esidebar">
             <div class="logo">
-                <img src="images/logo.png" alt="eleo" class="brand-image" >
+                <img src="{{asset('images/logo.png')}}" alt="eleo" class="brand-image" >
             </div>
             <ul>
                 <li>
-                    <a href=""><img src="images/inicio.png" alt="Inicio" id="img" ></a>
+                    <a href=""><img src="{{asset('images/inicio.png')}}" alt="Inicio" id="img" ></a>
                 </li>
                 <li>
-                    <a href=""><img src="images/lecturas.png" alt="Lecturas" id="img"></a>
+                    <a href=""><img src="{{asset('images/lecturas.png')}}" alt="Lecturas" id="img"></a>
                 </li>
                 <li>
-                    <a href=""><img src="images/desafios.png" alt="Desafios" id="img"></a>  
+                    <a href=""><img src="{{asset('images/desafios.png')}}" alt="Desafios" id="img"></a>  
                 </li>
                 <li>
-                    <a href=""><img src="images/foro.png" alt="Foro" id="img"></a>
+                    <a href=""><img src="{{asset('images/foro.png')}}" alt="Foro" id="img"></a>
                 </li>
                 <li>
-                    <a href=""><img src="images/resultados.png" alt="Resultado" id="img"></a>
+                    <a href=""><img src="{{asset('images/resultados.png')}}" alt="Resultado" id="img"></a>
                 </li>
             </ul>
             <div class="logout">
                 <div class="logoutContent">
-                    <img src="images/cerrar-sesion.png" alt="Cerrar Sesion">
+                    <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
                     <a href="#" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
                 </div>
             </div>
@@ -101,7 +102,7 @@
                 </div>
                 <div class="studentInfo">
                     <div style="text-align: right; "> 
-                        <img src="images/perfil.png" alt="Perfil" class="studentProfilePicture"> 
+                        <img src="{{asset('images/perfil.png')}}" alt="Perfil" class="studentProfilePicture"> 
                         <br>
                         <div class="studentLevel">
                             E-leo <br> Nivel 4
