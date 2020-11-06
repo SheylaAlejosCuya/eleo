@@ -243,3 +243,45 @@ a img {
     width: 150px;
     font-weight: 600;
 }
+
+/* Welcome Page */
+
+.econtainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.econtainer img {
+    height: calc(0.9 * 100vh);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ewelcome {
+    margin-top: 80px;
+    grid-column: 2/4;
+}
+
+.ewelcome p {
+    text-align: center;
+    font-size: calc(2rem + 3vw);
+    font-family: 'Roboto', sans-serif;
+    color: #838383;
+}
+
+@media screen and (max-width: 900px) {
+    .econtainer img {
+        display: none;
+    }
+
+    .ewelcome {
+        grid-column: 1/4;
+    }
+
+    .efooter {
+        position: fixed;
+        bottom: 0;
+    }
+}
