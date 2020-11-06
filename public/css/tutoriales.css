@@ -1,0 +1,32 @@
+.tutorialVideos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: space-around;
+}
+
+.tutorialVideo {
+    text-decoration: none;
+    color: black;
+    margin: 0 48px 64px 48px;
+    width: 30%;
+    background-color: white;
+    height: calc(0.3*100vh);
+    border-radius: 30px;
+    flex: 1 1 auto;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25), 0 -10px 10px rgba(0, 0, 0, 0.22) !important;
+}
+
+.tutorialVideo:hover {
+    border: 6px solid #5ec26d;
+}
+
+.tutorialVideo i {
+    color: #eae8e8;
+    font-size: 128px;
+}

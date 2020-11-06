@@ -77,15 +77,24 @@
 }
 
 .econtent {
-    margin: -40px 32px 0 32px;
+    margin-top: -80px;
+}
+
+.infomacion {
+    padding-left: 32px;
+    padding-right: 32px;
 }
 
 .infomacion h1 {
-    margin-bottom: 40px;
+    margin-bottom: 80px;
 }
 
 .infoTitle {
     color: #585857;
+}
+
+.infoContent {
+    color: #7e7e7d;
 }
 
 .avatarImg {
@@ -196,3 +205,41 @@ a img {
     }
 }
 
+@media (max-width: 576px) {
+    .econtent {
+        margin-top: 8px;
+    }
+}
+
+@media (min-width: 992px) {
+    .hr_displayForAvatar {
+        display: none;
+    }
+}
+
+/* Perfil */
+
+.ebuttons {
+    padding: 5% 0;
+    text-align: center;
+}
+
+.saveButton {
+    border-radius: 5px;
+    padding: 0.75%;
+    background-color: #39b44a;
+    border-color: #39b44a;
+    border: 0;
+    color: white;
+    width: 150px;
+}
+
+.cancelButton {
+    border-radius: 5px;
+    padding: 0.70%;
+    border: 2px solid #5ec26d;
+    background-color: transparent;
+    color: #5ec26d;
+    width: 150px;
+    font-weight: 600;
+}
