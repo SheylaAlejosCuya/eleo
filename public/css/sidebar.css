@@ -105,6 +105,14 @@
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.1),0 6px 20px 0 rgba(0,0,0,0.12) !important;
 }
 
+.avatarImg img {
+    border-radius: 50%;
+}
+
+.avatarSelected {
+    border: 5px solid #90c744;
+}
+
 .esidebar {
     z-index: 100;
     height: 101vh;
@@ -150,18 +158,22 @@
     font-family: Arial, Helvetica, sans-serif;
     transition: .4s;
     height: 100%;
-    width: fit-content;
-    border-radius: 15px;
 }
 
-.esidebar ul li a:hover {
-    background-color: #f29100;
+.eoption {
+    transition: ease-in-out 0.25s;
+}
+
+.eoption:hover {
+    box-shadow: inset 0 0 100px 100px #f29100;
 }
 
 a img {
     margin: auto;
     padding: 4px 0;
     height: 90%;
+    transition: 0.25s;
+    border-radius: 15px;
 }
 
 .logout {
@@ -187,6 +199,11 @@ a img {
 
 #chk {
     display: none;
+}
+
+.chkTrigger {
+    transition-delay: 0.7s;
+    transition: 0.75s;
 }
 
 @media (max-width: 768px) {

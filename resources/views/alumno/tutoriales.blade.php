@@ -1,4 +1,3 @@
-<link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
 <div class="infomacion">
         <h1><strong>Tutoriales</strong></h1>
         <div class="tutorialVideos">

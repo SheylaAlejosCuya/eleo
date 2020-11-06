@@ -6,6 +6,7 @@
     <title>e-leo</title>
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -70,19 +71,19 @@
             </div>
             <ul>
                 <li>
-                    <a href=""><img src="{{asset('images/inicio.png')}}" alt="Inicio" id="img" ></a>
+                    <a href=""><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/lecturas.png')}}" alt="Lecturas" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Lecturas"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/desafios.png')}}" alt="Desafios" id="img"></a>  
+                    <a href=""><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Desafios"></a>  
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/foro.png')}}" alt="Foro" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/foro.png')}}" alt="Foro"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/resultados.png')}}" alt="Resultado" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
                 </li>
             </ul>
             <div class="logout">
