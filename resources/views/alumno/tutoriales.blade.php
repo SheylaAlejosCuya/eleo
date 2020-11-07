@@ -22,6 +22,6 @@
 </div>
 <script>
     function selectTutorial() {
-        console.log("clicked");
+        console.log("clicked"); 
     }
 </script>

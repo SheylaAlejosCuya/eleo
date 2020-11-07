@@ -36,3 +36,21 @@ Route::get('/tutoriales', function () {
 Route::get('/bar', function () {
     return view('includes/menubaralternate', ['includeRoute' => '']);
 });
+Route::get('/lecturas', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas']);
+});
+Route::get('/preguntas', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1']);
+});
+Route::get('/preguntas2', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2']);
+});
+Route::get('/preguntas3', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3']);
+});
+Route::get('/preguntas4', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4']);
+});
+Route::get('/preguntas5', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5']);
+});
