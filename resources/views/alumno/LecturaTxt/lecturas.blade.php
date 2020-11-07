@@ -16,7 +16,8 @@
         </div>
         <div class="cuento">
            <div class="texto">
-        
+           
+           <p class="letra">
 Iniciando la travesía
 Vamos a ver si logro que descubras algo nuevo y acabas fascinado como
 todo aquel que se acerca a la historia del antiguo Egipto, que como verás
@@ -56,9 +57,11 @@ conocido de la historia del que se tiene constancia escrita y también el arquit
 e inventor de la pirámide escalonada de Sakkara, que parece ser la más antigua;
 esta fue construida para el faraón Djoser en el año 2750 antes de Cristo.
 <br>
+
 <br>
 <b>Las pirámides</b> 
 <br>
+<img src="images/egiptos.png" alt="" class="forma">
 Actualmente se conocen alrededor de diez de estas colosales construcciones. Muy
 cerca de El Cairo, en la llanura de Gizeh, hay un conjunto de pirámides entre las
 que se encuentra la más grande de todas con 146 metros de altura por 230 metros
@@ -71,8 +74,11 @@ construida estaba formada por dos millones de bloques de granito muy pesados, de
 un metro de altura, tan bien unidas entre sí, que era imposible introducir la hoja de
 un cuchillo entre ellas. La parte exterior estaba perfectamente alisada y pintada en
 franjas de diferentes colores; la parte de arriba era dorada.
+
+
 <br>
 <br>
+
 <b>La esfinge</b>
 <br>
 En la misma llanura de Gizeh, sobre una pequeña colina de roca, está esculpida
@@ -86,13 +92,16 @@ en piedra más dura que el cuerpo y el paso del tiempo la ha
 erosionado menos, pero está muy estropeada ya que fue
 blanco de guerra en el siglo XVIII.
 <br>
+
 Justo enfrente fue construido un templo
 dedicado al sol en sus tres fases: el
 amanecer, el mediodía y cuando se
 oculta en el horizonte, que no ha
 tenido tanta suerte como la
 esfinge y las pirámides, y está
-en ruinas. 
+en ruinas. </p>
+
+
         </div>
         </div>
       

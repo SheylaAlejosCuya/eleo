@@ -58,3 +58,16 @@ hr{
     background-color: rgb(173, 173, 173);
     margin-left: 20px;
 }
+.forma{
+    shape-outside: url(../images/egiptos.png);
+    shape-image-threshold: 0.5;
+    shape-margin: 20px;
+    float: right;
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    
+}
+.letra{
+    text-align: justify;
+}
