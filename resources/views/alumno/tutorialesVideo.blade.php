@@ -57,7 +57,6 @@
     })
     document.addEventListener('keydown', function(event) {
         if (event.keyCode == 32) {
-            console.log("space");
             if (video.paused) {
                 console.log("play");
                 btn.className = 'far fa-pause-circle';
