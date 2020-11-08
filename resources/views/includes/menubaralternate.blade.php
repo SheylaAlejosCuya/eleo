@@ -94,6 +94,10 @@
             </div>
         </div>    
         <div class="rightContent">
+            <div class="ehelpNote ehelphide">
+                <img src="{{asset('images/iguana.png')}}" alt="">
+                <div class="ehelpMessage">"Dale play, reproduce el video y luego responde las preguntas"</div>
+            </div>
             <div class="header">
                 <div class="triggerGroup">
                     <input type="checkbox" name="" id="chk" onclick="toggleMenu()">
@@ -121,6 +125,7 @@
                     }
                 ?>
             </div>
+            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton">
         </div>
     </div>
 </body>

@@ -63,6 +63,39 @@
     transition: 0.7s;
 }
 
+.ehelpNote {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    z-index: 1;
+    align-items: flex-end;
+}
+
+.ehelphide {
+    display: none;
+}
+
+.ehelpNote img {
+    margin: 0;
+    height: 50%;
+}
+
+.ehelpMessage {
+    padding: 8px;
+    line-height: 1.75;
+    margin-bottom: calc(0.3 * 100vh);
+    margin-left: 16px;
+    width: 400px;
+    color: #585857;
+    font-size: 22px;
+    border-radius: 15px;
+    border: 4px solid #5ec26d;
+    background-color: white;
+    text-align: center;
+}
+
 .ebackground {
     padding-left: 32px;
     position: absolute;
@@ -301,4 +334,19 @@ a img {
         position: fixed;
         bottom: 0;
     }
+}
+
+.chatFloatingButton {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    margin: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chatFloatingButton:hover {
+    width: 95px;
+    margin: 13.25px;
 }
