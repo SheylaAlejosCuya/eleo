@@ -55,6 +55,20 @@ Route::get('/preguntas5', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5']);
 });
 
+/* Preguntas de Video */
+
 Route::get('/videoPreguntas', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1']);
+});
+
+Route::get('/videoPreguntas2', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2']);
+});
+
+Route::get('/videoPreguntas3', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3']);
+});
+
+Route::get('/videoPreguntas4', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4']);
 });
