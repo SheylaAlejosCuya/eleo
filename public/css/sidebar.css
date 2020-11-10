@@ -119,7 +119,11 @@
 }
 
 .infomacion h1 {
-    margin-bottom: 80px;
+    top: -80px;
+}
+
+.infomacion h4 {
+    color: #585857;
 }
 
 .infoTitle {

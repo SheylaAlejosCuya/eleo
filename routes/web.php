@@ -71,3 +71,7 @@ Route::get('/videoPreguntas3', function() {
 Route::get('/videoPreguntas4', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4']);
 });
+
+Route::get('/libros', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros']);
+});
