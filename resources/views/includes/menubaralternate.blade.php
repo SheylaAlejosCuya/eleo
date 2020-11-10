@@ -6,6 +6,7 @@
     <title>e-leo</title>
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
+    <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
@@ -27,6 +28,8 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
+<!-- CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
     <script>
@@ -70,19 +73,19 @@
             </div>
             <ul>
                 <li>
-                    <a href=""><img src="{{asset('images/inicio.png')}}" alt="Inicio" id="img" ></a>
+                    <a href=""><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/lecturas.png')}}" alt="Lecturas" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Lecturas"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/desafios.png')}}" alt="Desafios" id="img"></a>  
+                    <a href=""><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Desafios"></a>  
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/foro.png')}}" alt="Foro" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/foro.png')}}" alt="Foro"></a>
                 </li>
                 <li>
-                    <a href=""><img src="{{asset('images/resultados.png')}}" alt="Resultado" id="img"></a>
+                    <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
                 </li>
             </ul>
             <div class="logout">
@@ -93,6 +96,10 @@
             </div>
         </div>    
         <div class="rightContent">
+            <div class="ehelpNote ehelphide">
+                <img src="{{asset('images/iguana.png')}}" alt="">
+                <div class="ehelpMessage">"Dale play, reproduce el video y luego responde las preguntas"</div>
+            </div>
             <div class="header">
                 <div class="triggerGroup">
                     <input type="checkbox" name="" id="chk" onclick="toggleMenu()">
@@ -120,7 +127,13 @@
                     }
                 ?>
             </div>
+            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton">
         </div>
     </div>
-</body>
-</html>      
+  
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    
+    </body>
+</html>     

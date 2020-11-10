@@ -63,6 +63,39 @@
     transition: 0.7s;
 }
 
+.ehelpNote {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    z-index: 1;
+    align-items: flex-end;
+}
+
+.ehelphide {
+    display: none;
+}
+
+.ehelpNote img {
+    margin: 0;
+    height: 50%;
+}
+
+.ehelpMessage {
+    padding: 8px;
+    line-height: 1.75;
+    margin-bottom: calc(0.3 * 100vh);
+    margin-left: 16px;
+    width: 400px;
+    color: #585857;
+    font-size: 22px;
+    border-radius: 15px;
+    border: 4px solid #5ec26d;
+    background-color: white;
+    text-align: center;
+}
+
 .ebackground {
     padding-left: 32px;
     position: absolute;
@@ -103,6 +136,14 @@
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 10px 16px 0 rgba(0,0,0,0.1),0 6px 20px 0 rgba(0,0,0,0.12) !important;
+}
+
+.avatarImg img {
+    border-radius: 50%;
+}
+
+.avatarSelected {
+    border: 5px solid #90c744;
 }
 
 .esidebar {
@@ -150,18 +191,22 @@
     font-family: Arial, Helvetica, sans-serif;
     transition: .4s;
     height: 100%;
-    width: fit-content;
-    border-radius: 15px;
 }
 
-.esidebar ul li a:hover {
-    background-color: #f29100;
+.eoption {
+    transition: ease-in-out 0.25s;
+}
+
+.eoption:hover {
+    box-shadow: inset 0 0 100px 100px #f29100;
 }
 
 a img {
     margin: auto;
     padding: 4px 0;
     height: 90%;
+    transition: 0.25s;
+    border-radius: 15px;
 }
 
 .logout {
@@ -187,6 +232,11 @@ a img {
 
 #chk {
     display: none;
+}
+
+.chkTrigger {
+    transition-delay: 0.7s;
+    transition: 0.75s;
 }
 
 @media (max-width: 768px) {
@@ -234,6 +284,7 @@ a img {
     width: 150px;
 }
 
+
 .cancelButton {
     border-radius: 5px;
     padding: 0.70%;
@@ -242,4 +293,61 @@ a img {
     color: #5ec26d;
     width: 150px;
     font-weight: 600;
+}
+
+/* Welcome Page */
+
+.econtainer {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.econtainer img {
+    height: calc(0.9 * 100vh);
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.ewelcome {
+    margin-top: 80px;
+    grid-column: 2/4;
+}
+
+.ewelcome p {
+    text-align: center;
+    font-size: calc(2rem + 3vw);
+    font-family: 'Roboto', sans-serif;
+    color: #838383;
+}
+
+@media screen and (max-width: 900px) {
+    .econtainer img {
+        display: none;
+    }
+
+    .ewelcome {
+        grid-column: 1/4;
+    }
+
+    .efooter {
+        position: fixed;
+        bottom: 0;
+    }
+}
+
+.chatFloatingButton {
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    width: 90px;
+    margin: 16px;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.chatFloatingButton:hover {
+    width: 95px;
+    margin: 13.25px;
 }

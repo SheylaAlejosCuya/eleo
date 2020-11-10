@@ -1,8 +1,8 @@
                   
-<div class="row">
-  <div class="col-2"></div>
-  <div class="col-lg" style="text-align: center; position: relative; vertical-align: middle;">
-    <p style="text-align: center; font-size: calc(2rem + 3vw); font-family: 'Roboto', sans-serif; color: #838383;">
+<div class="econtainer">
+  <img src="{{asset('images/iguana.png')}}" alt="">
+  <div class="ewelcome">
+    <p>
       ¡Bienvenida, <br> Cathy!
     </p>
     <div id="botones">
