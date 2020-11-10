@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UsuarioController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -21,9 +22,7 @@ Route::get('/inicio', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio']);
 });
 
-Route::get('/perfil', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil']);
-});
+Route::get('/perfil', [UsuarioController::class, 'perfil']);
 
 Route::get('/tutoriales/{id}', function ($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'tutorialID' => $id]);
