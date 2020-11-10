@@ -10,7 +10,7 @@
                         <h2 class="infoTitle"><strong>Nombre Completo</strong></h2>
                     </div>
                     <div class="col">
-                        <h2 class="infoContent">Cathy Vega</h2>
+                        <h2 class="infoContent">{{$alumno->first_name}} {{$alumno->last_name}}</h2>
                     </div>
                 </div>
                 <hr>
@@ -19,7 +19,7 @@
                         <h2 class="infoTitle"><strong>E-mail</strong></h2>
                     </div>
                     <div class="col">
-                        <h2 class="infoContent">Cathy@micolegio.com</h2>
+                        <h2 class="infoContent">{{$alumno->email}}</h2>
                     </div>
                 </div>
                 <hr>
@@ -28,7 +28,7 @@
                         <h2 class="infoTitle"><strong>Cumpleaños</strong></h2>
                     </div>
                     <div class="col">
-                        <h2 class="infoContent">20/03/2010</h2>
+                        <h2 class="infoContent">{{$alumno->birthdate}}</h2>
                     </div>
                 </div>
                 <hr>
@@ -37,7 +37,7 @@
                         <h2 class="infoTitle"><strong>Usuario</strong></h2>
                     </div>
                     <div class="col">
-                        <h2 class="infoContent">12345</h2>
+                        <h2 class="infoContent">{{$alumno->username}}</h2>
                     </div>
                 </div>
                 <hr>
@@ -46,7 +46,7 @@
                         <h2 class="infoTitle"><strong>Cambiar Contraseña</strong></h2>
                     </div>
                     <div class="col">
-                        <h2 class="infoContent">Cathy Vega</h2>
+                        <h2 class="infoContent">****</h2>
                     </div>
                 </div>
                 <hr class="hr_displayForAvatar">
@@ -55,8 +55,8 @@
                 <h2 class="infoTitle"><strong>Avatar</strong></h2>
                 <div class="avatarImg">
                     <img src="images/chica.png" alt="" width="20%">
-                    <img src="images/chica.png" alt="" width="20%">
-                    <img src="images/chica.png" alt="" width="20%">
+                    <img src="images/chico.png" alt="" width="20%">
+                    <img src="images/iguanita.png" alt="" width="20%">
                 </div>
            </div>
        </div>
