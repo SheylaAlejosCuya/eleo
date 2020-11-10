@@ -54,9 +54,9 @@
            <div class="col-lg">
                 <h2 class="infoTitle"><strong>Avatar</strong></h2>
                 <div class="avatarImg">
-                    <img src="images/chica.png" alt="" width="20%">
-                    <img src="images/chica.png" alt="" width="20%">
-                    <img src="images/chica.png" alt="" width="20%">
+                    <img class="avatarSelected" src="images/chica.png" alt="" width="20%">
+                    <img src="images/chico.png" alt="" width="20%">
+                    <img src="images/iguanita.png" alt="" width="20%">
                 </div>
            </div>
        </div>
