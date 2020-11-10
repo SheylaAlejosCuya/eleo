@@ -27,6 +27,7 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-c
      margin-top: -50px;
      
  }
+
  #p1{
     padding-left: 45px;
     line-height: 2rem;
@@ -70,4 +71,12 @@ hr{
 }
 .letra{
     text-align: justify;
+}
+.verActivity{
+    background :#8dc63f;
+    border: 0;
+    color: white;
+    width: 150px;
+    border-radius: 5px;
+    padding: 0.75%;
 }
