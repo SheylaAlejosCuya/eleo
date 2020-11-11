@@ -2,7 +2,6 @@
 <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
     <div class="infomacion">
-        <h1><strong>Información Básica</strong></h1>
         <div class="row">
             <div class="col">
                 <div class="row">

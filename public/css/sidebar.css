@@ -11,6 +11,7 @@
 }
 
 .header {
+    height: calc(0.2 * 100vh);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -18,9 +19,21 @@
     transition: 0.7s;
 }
 
-.triggerGroup {
-    margin-left: 32px;
+.header__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-top: 16px;
+    margin-left: 32px;
+}
+
+.econtent__title {
+    display: none;
+    margin-top: 16px;
+    margin-left: 32px;
+}
+
+.triggerGroup {
 }
 
 .chkTrigger {
@@ -37,24 +50,27 @@
     color: #000;
 }
 
+.studentInfo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .studentProfilePicture {
-    width: 150px;
-    margin: 16px 0;
+    height: 45%;
 }
 
 .studentLevel {
+    height: 40%;
     background:#8dc63f;
-    padding-left: 1.5%;
-    border-top-left-radius:7px;
-    border-bottom-left-radius: 7px;
+    border-radius: 7px 0 0 7px;
     color: white;
-    padding-right: 5%;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.03 * 100vh);
     text-align: center;
-    padding-top: 4px;
-    padding-bottom: 4px;
     font-family: sans-serif;
     line-height: 1;
+    padding: 5% 0;
 }
 
 .rightContent {
@@ -75,6 +91,10 @@
 
 .ehelphide {
     display: none;
+}
+
+.etitle {
+    line-height: 1;
 }
 
 .ehelpNote img {
@@ -110,16 +130,13 @@
 }
 
 .econtent {
-    margin-top: -80px;
 }
 
 .infomacion {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 0 32px;
 }
 
 .infomacion h1 {
-    top: -80px;
 }
 
 .infomacion h4 {
@@ -218,6 +235,12 @@ a img {
     height: 20%;
     text-align: center;
     display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+.logout img {
+    height: 12%;
 }
 
 .logoutContent {
@@ -263,6 +286,14 @@ a img {
     .econtent {
         margin-top: 8px;
     }
+    
+    .header__title {
+        display: none;
+    }
+
+    .econtent__title {
+        display: block;
+    }
 }
 
 @media (min-width: 992px) {
@@ -295,7 +326,7 @@ a img {
     border: 2px solid #5ec26d;
     background-color: transparent;
     color: #5ec26d;
-    width: 150px;
+    min-width: 150px;
     font-weight: 600;
 }
 
