@@ -75,3 +75,7 @@ Route::get('/videoPreguntas4', function() {
 Route::get('/libros', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros']);
 });
+
+Route::get('/desafios', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios']);
+});
