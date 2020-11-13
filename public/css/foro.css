@@ -1,0 +1,45 @@
+.foro {
+    margin: 0 128px 0 32px;
+    padding: 16px 0 16px 0;
+    border-bottom: 1.5px solid rgb(173, 173, 173);
+}
+
+.foroTitle {
+    color: #00a3fb;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.foroContent {
+    display: flex;
+}
+
+.foroPregunta {
+    color: #5e5e5d;
+    font-size: larger;
+    margin-right: 16px;
+}
+
+.foroButton {
+    border-radius: 5px;
+    padding: 0.75%;
+    background-color: #39b44a;
+    border-color: #39b44a;
+    border: 0;
+    color: white;
+    width: 256px;
+    height: 48px;
+}
+
+.foroInfo {
+    display: flex;
+    color: #858585;
+}
+
+.foroIconData {
+    margin-right: 32px;
+}
+
+.foroIconData i {
+    margin-right: 16px;
+}

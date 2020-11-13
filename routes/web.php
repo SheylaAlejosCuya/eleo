@@ -91,3 +91,7 @@ Route::get('/gamificacion', function() {
 Route::get('/desafios/{id}', function($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación antiguo Egipto']);
 });
+
+Route::get('/foro', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.foro', 'title' => 'Foro']);
+});
