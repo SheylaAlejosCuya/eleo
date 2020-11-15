@@ -1,0 +1,32 @@
+.book-table {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: min(1600px, 100%);
+}
+
+.book-card {
+    flex: 33%;
+    max-width: 360px;
+    margin: 20px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.edesafio-card {
+    flex: 50%;
+    max-width: 550px;
+    margin: 20px 10px;
+    border-radius: 15px;
+    cursor: pointer;
+}
+
+.book-card:hover, .edesafio-card:hover {
+    filter: drop-shadow(2px 1px 0 #39b44a) drop-shadow(-1px -1px 0 #39b44a);
+}
+
+@media (max-width: 540px) {
+    .book-card {
+        flex: 50%;
+    }
+}
