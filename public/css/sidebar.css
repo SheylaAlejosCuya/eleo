@@ -83,10 +83,71 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.22);
     height: 100vh;
-    width: 100%;
+    width: 84.19%;
     display: flex;
     z-index: 1;
     align-items: flex-end;
+}
+
+.eActividadNote {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 100vh;
+    width: 84.19%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nino_image {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    height: 50%;
+    bottom: 0;
+    z-index: 2;
+}
+
+.actividadContainer {
+    background-color: white;
+    border: 6px solid #39b44a;
+    border-radius: 15px;
+    padding: 24px;
+    position: absolute;
+}
+
+.eActividadRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.eActividadBorder {
+    border-bottom: 1.5px solid rgb(173, 173, 173);
+}
+
+.eActividadTitle {
+    padding: 32px 16px;
+    text-align: center;
+    border-right: 1.5px solid rgb(173, 173, 173);
+}
+
+.eActividadTitle h1 {
+    color: #00a3fb;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.eActividadTitle h5 {
+    color: #5e5e5d;
+}
+
+.eActividadDescripcion {
+    padding: 16px;
+    color: #5e5e5d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .ehelphide {
@@ -280,6 +341,10 @@ a img {
     .esidebar .logo img {
         width: 40%;
     }
+
+    .ehelpNote, .eActividadNote {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
@@ -299,6 +364,23 @@ a img {
 @media (min-width: 992px) {
     .hr_displayForAvatar {
         display: none;
+    }
+}
+
+@media (max-width: 1015px) {
+    .actividadContainer {
+        width: 90%;
+        height: 90vh;
+        overflow-y: scroll;
+    }
+
+    .eActividadTitle {
+        padding-bottom: 0;
+        border: 0;
+    }
+
+    .eActividadRow {
+        flex-direction: column;
     }
 }
 
