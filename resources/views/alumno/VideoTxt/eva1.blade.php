@@ -1,9 +1,8 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
 <link rel="stylesheet" href="{{asset('css/videos.css')}}">
 <div class="infomacion">
-    <h1 id="ti"><b>La momificación antiguo Egipto</b></h1>
         <div>
-            <div id="p1" style="margin-top: -50px">
+            <div id="p1">
                 <p><b>Luego de ver el video introductorio, responde a las siguientes preguntas</b></p>          
             </div>
             <hr>

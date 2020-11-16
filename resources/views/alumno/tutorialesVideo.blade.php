@@ -1,5 +1,4 @@
 <div class="infomacion">
-    <h1><strong>Demo {{$tutorialID}}</strong></h1>    
     <div class="tutorialesVideo">
         <div class="c-video">
             <video class="evideo">
