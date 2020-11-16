@@ -11,6 +11,7 @@
 }
 
 .header {
+    height: calc(0.2 * 100vh);
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -18,9 +19,21 @@
     transition: 0.7s;
 }
 
-.triggerGroup {
-    margin-left: 32px;
+.header__left {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     margin-top: 16px;
+    margin-left: 32px;
+}
+
+.econtent__title {
+    display: none;
+    margin-top: 16px;
+    margin-left: 32px;
+}
+
+.triggerGroup {
 }
 
 .chkTrigger {
@@ -37,24 +50,27 @@
     color: #000;
 }
 
+.studentInfo {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
 .studentProfilePicture {
-    width: 150px;
-    margin: 16px 0;
+    height: 45%;
 }
 
 .studentLevel {
+    height: 40%;
     background:#8dc63f;
-    padding-left: 1.5%;
-    border-top-left-radius:7px;
-    border-bottom-left-radius: 7px;
+    border-radius: 7px 0 0 7px;
     color: white;
-    padding-right: 5%;
-    font-size: calc(1rem + 1vw);
+    font-size: calc(0.03 * 100vh);
     text-align: center;
-    padding-top: 4px;
-    padding-bottom: 4px;
     font-family: sans-serif;
     line-height: 1;
+    padding: 5% 0;
 }
 
 .rightContent {
@@ -67,14 +83,79 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.22);
     height: 100vh;
-    width: 100%;
+    width: 84.19%;
     display: flex;
     z-index: 1;
     align-items: flex-end;
 }
 
+.eActividadNote {
+    position: fixed;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 100vh;
+    width: 84.19%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.nino_image {
+    position: absolute;
+    right: 0;
+    margin: 0;
+    height: 50%;
+    bottom: 0;
+    z-index: 2;
+}
+
+.actividadContainer {
+    background-color: white;
+    border: 6px solid #39b44a;
+    border-radius: 15px;
+    padding: 24px;
+    position: absolute;
+}
+
+.eActividadRow {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.eActividadBorder {
+    border-bottom: 1.5px solid rgb(173, 173, 173);
+}
+
+.eActividadTitle {
+    padding: 32px 16px;
+    text-align: center;
+    border-right: 1.5px solid rgb(173, 173, 173);
+}
+
+.eActividadTitle h1 {
+    color: #00a3fb;
+    font-size: x-large;
+    font-weight: 500;
+}
+
+.eActividadTitle h5 {
+    color: #5e5e5d;
+}
+
+.eActividadDescripcion {
+    padding: 16px;
+    color: #5e5e5d;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .ehelphide {
     display: none;
+}
+
+.etitle {
+    line-height: 1;
 }
 
 .ehelpNote img {
@@ -110,16 +191,13 @@
 }
 
 .econtent {
-    margin-top: -80px;
 }
 
 .infomacion {
-    padding-left: 32px;
-    padding-right: 32px;
+    padding: 0 32px;
 }
 
 .infomacion h1 {
-    top: -80px;
 }
 
 .infomacion h4 {
@@ -218,6 +296,12 @@ a img {
     height: 20%;
     text-align: center;
     display: flex;
+    align-items: center;
+    place-content: center;
+}
+
+.logout img {
+    height: 12%;
 }
 
 .logoutContent {
@@ -257,17 +341,46 @@ a img {
     .esidebar .logo img {
         width: 40%;
     }
+
+    .ehelpNote, .eActividadNote {
+        width: 100%;
+    }
 }
 
 @media (max-width: 576px) {
     .econtent {
         margin-top: 8px;
     }
+    
+    .header__title {
+        display: none;
+    }
+
+    .econtent__title {
+        display: block;
+    }
 }
 
 @media (min-width: 992px) {
     .hr_displayForAvatar {
         display: none;
+    }
+}
+
+@media (max-width: 1015px) {
+    .actividadContainer {
+        width: 90%;
+        height: 90vh;
+        overflow-y: scroll;
+    }
+
+    .eActividadTitle {
+        padding-bottom: 0;
+        border: 0;
+    }
+
+    .eActividadRow {
+        flex-direction: column;
     }
 }
 
@@ -295,7 +408,7 @@ a img {
     border: 2px solid #5ec26d;
     background-color: transparent;
     color: #5ec26d;
-    width: 150px;
+    min-width: 150px;
     font-weight: 600;
 }
 

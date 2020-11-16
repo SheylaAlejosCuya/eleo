@@ -1,6 +1,5 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
 <div class="infomacion">
-<h1 id="ti"><b>La momificación antiguo Egipto</b></h1>
         <div>
             <div class="row">
             <div class="col">
