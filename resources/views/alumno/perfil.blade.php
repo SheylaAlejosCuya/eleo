@@ -2,7 +2,6 @@
 <!-- Content Wrapper. Contains page content -->
     <!-- Content Header (Page header) -->
     <div class="infomacion">
-        <h1><strong>Información Básica</strong></h1>
         <div class="row">
             <div class="col">
                 <div class="row">
@@ -54,11 +53,7 @@
            <div class="col-lg">
                 <h2 class="infoTitle"><strong>Avatar</strong></h2>
                 <div class="avatarImg">
-<<<<<<< HEAD
-                    <img src="images/chica.png" alt="" width="20%">
-=======
                     <img class="avatarSelected" src="images/chica.png" alt="" width="20%">
->>>>>>> fa629d0f228b593be8c73f97f3b4d4887ede45b8
                     <img src="images/chico.png" alt="" width="20%">
                     <img src="images/iguanita.png" alt="" width="20%">
                 </div>
