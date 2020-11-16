@@ -5,6 +5,19 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-c
     margin-right: 128px;
 }
 
+.iconContainer {
+    margin-top: 16px;
+    right: 0;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+}
+
+.iconContainer img {
+    position: relative;
+    margin-bottom: 16px;
+}
+
 .barra{
     background:#00a3fb ;    
     text-align: center;
@@ -139,5 +152,11 @@ hr {
 
     hr, .epreguntas, .enunciadoL {
         margin-left: 0;
+    }
+
+    .iconContainer {
+        position: relative;
+        flex-direction: row;
+        margin-right: auto;
     }
 }
