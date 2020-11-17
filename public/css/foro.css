@@ -43,3 +43,28 @@
 .foroIconData i {
     margin-right: 16px;
 }
+
+@media (max-width: 768px) {
+    .foro {
+        margin-right: 0;
+    }
+}
+
+@media (max-width: 576px) {
+    .foroContent {
+        flex-direction: column;
+    }
+
+    .foroButton {
+        margin: 8px auto;
+    }
+
+    .foroInfo {
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .infomacion {
+        padding-left: 0;
+    }
+}
