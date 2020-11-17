@@ -95,3 +95,7 @@ Route::get('/desafios/{id}', function($id) {
 Route::get('/foro', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.foro', 'title' => 'Foro']);
 });
+
+Route::get('/foro/{id}', function($id) {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.foroPublicacion']);
+});
