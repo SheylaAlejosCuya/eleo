@@ -68,3 +68,75 @@
         padding-left: 0;
     }
 }
+
+.foroPublicacion {
+    margin: 0 64px;
+}
+
+.foroPublicacion h1 {
+    margin-bottom: 16px;
+}
+
+.foroPublicacion h1 {
+    text-align: center;
+    font-size: xx-large;
+}
+
+.foroTema {
+    display: flex;
+    margin-bottom: 16px;
+}
+
+.foroText {
+    text-align: justify;
+    width: 60%;
+    margin-right: 16px;
+}
+
+.foroImg {
+    width: 40%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.foroImg img {
+    height: 230px;
+    margin-bottom: auto;
+}
+
+.foroNewPost__top, .foroPost__top {
+    width: 80%;
+    display: flex;
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+.foroNewPost__top img, .foroPost__top img {
+    height: 95px;
+    width: 95px;
+}
+
+.foroNewPost__top textarea {
+    border: none;
+    height: 70px;
+    align-self: center;
+    box-shadow: 0px 0px 5px 1px rgb(173, 173, 173);
+    border-radius: 15px;
+    padding: 4px 0 0 16px;
+    width: 100%;
+    outline: none;
+}
+
+.foroNewPost .saveButton, .foroPost .foroInfo, .foroAnswer {
+    margin-left: 95px
+}
+
+.foroPost__top p {
+    width: 100%;
+    align-self: center;
+    margin: 0;
+}
+
+.foroPost {
+    margin-bottom: 32px;
+}
