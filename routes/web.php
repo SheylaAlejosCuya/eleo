@@ -77,7 +77,7 @@ Route::get('/libros', function() {
 });
 
 Route::get('/desafios', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'title' => 'Mis desafíos']);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia']);
 });
 
 Route::get('/comprensionAuditiva', function() {
@@ -98,4 +98,12 @@ Route::get('/foro', function() {
 
 Route::get('/foro/{id}', function($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.foroPublicacion']);
+});
+
+Route::get('/resultados', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia']);
+});
+
+Route::get('/resultados/estudio', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio']);
 });

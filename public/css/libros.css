@@ -19,10 +19,11 @@
     margin: 20px 10px;
     border-radius: 15px;
     cursor: pointer;
+    border: 6px solid transparent;
 }
 
 .book-card:hover, .edesafio-card:hover {
-    filter: drop-shadow(2px 1px 0 #39b44a) drop-shadow(-1px -1px 0 #39b44a);
+    border-color: #39b44a;
 }
 
 @media (max-width: 540px) {
