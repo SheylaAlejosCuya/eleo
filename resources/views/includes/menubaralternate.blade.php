@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
+    <link rel="stylesheet" href="{{asset('css/resultProgessBar.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
   <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">

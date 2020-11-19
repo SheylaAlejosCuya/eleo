@@ -1,0 +1,19 @@
+.eresultados {
+    height: calc(0.8 * 100vh);
+    display: flex;
+    justify-content: space-between;
+}
+
+.eresultados__left {
+    width: 58%;
+}
+
+.eresultados__right {
+    width: 38%;
+    display: flex;
+    flex-direction: column;   
+}
+
+.enotas, .eresultadosCards {
+    height: 50%;
+}
