@@ -6,14 +6,17 @@ use Illuminate\View\Component;
 
 class ResultProgressBar extends Component
 {
+    public $title;
+    public $results;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct($title, $results)
     {
-        //
+        $this->title = $title;
+        $this->results = $results;
     }
 
     /**

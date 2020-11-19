@@ -105,5 +105,47 @@ Route::get('/resultados', function() {
 });
 
 Route::get('/resultados/estudio', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio']);
+    $aresults = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ]
+    ];
+    $lresults = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    $tresults = [
+        [
+            'title' => 'Producción Escrita (Rúbrica de Producción escrita)',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Producción Oral (Rúbrica de Producción oral)',
+            'percent' => 40
+        ]
+    ];
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults]);
 });
