@@ -3,12 +3,14 @@
     <br>
     <div class="eresultados">
         <div class="eresultados__left">
-            <x-result-progress-bar title="COMPRENSION AUDITIVA" :results="$aresults" />
-            <x-result-progress-bar title="COMPRENSION LECTORA" :results="$lresults" />
-            <x-result-progress-bar title="COMPRENSION DE TEXTOS" :results="$tresults" />
+            <x-result-progress-bar title="COMPRENSIÓN AUDITIVA" :results="$aresults" />
+            <x-result-progress-bar title="COMPRENSIÓN LECTORA" :results="$lresults" />
+            <x-result-progress-bar title="COMPRENSIÓN DE TEXTOS" :results="$tresults" />
         </div>
         <div class="eresultados__right">
-            <div class="enotas">Line Graph</div>
+            <div class="enotas">
+                <x-linear-graph title="NOTAS" />
+            </div>
             <div class="eresultadosCards">
                 <div class="eresultadosCard">
                     <div class="eresultadosCard__left">
