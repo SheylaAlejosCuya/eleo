@@ -151,7 +151,13 @@
                     </div>
                 </div>
             </div>
-            <img src="{{asset('images/fondo.png')}}" alt="" class="ebackground">
+            <?php
+                if ($AlternativeBackground ?? '') {
+                ?>
+                    <img src="{{asset('images/fondo.png')}}" alt="" class="ebackground">
+                <?php
+                }
+            ?>
             <div class="econtent">
                 <h1 class="econtent__title etitle"><strong>@if(isset($title)) {{$title}} @endif</strong></h1>
                 <?php

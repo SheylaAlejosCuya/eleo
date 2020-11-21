@@ -155,3 +155,7 @@ Route::get('/resultados/estudio', function() {
 Route::get('/profesor', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1"]);
 });
+
+Route::get('/profesor/tutoriales', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales']);
+});

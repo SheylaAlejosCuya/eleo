@@ -2,7 +2,17 @@
 <div class="infomacion">
     <h4>{{$subtitle}}</h4>
     <div class="book-table">
-        <img class="edesafio-card" src="images/desafio1.png" alt="">
-        <img class="edesafio-card" src="images/desafio2.png" alt="">
+        <div class="edesafio-card">
+            <div class="checkContainer">
+                <img class="check" src="images/check.png" alt="">
+            </div>
+            <img class="desafioImg" src="images/desafio1.png" alt="">
+        </div>
+        <div class="edesafio-card">
+            <div class="checkContainer">
+                <img class="check" src="images/check.png" alt="">
+            </div>
+            <img class="desafioImg" src="images/desafio2.png" alt="">    
+        </div>
     </div>
 </div>

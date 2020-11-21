@@ -149,9 +149,6 @@
                 </div>
                 <div class="studentInfo">
                     <img src="{{asset('images/perfil.png')}}" alt="Perfil" class="studentProfilePicture"> 
-                    <div class="studentLevel">
-                        <p>E-Leo <br> Nivel 4</p>
-                    </div>
                 </div>
             </div>
             <?php
