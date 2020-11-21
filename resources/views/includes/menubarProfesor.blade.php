@@ -88,6 +88,9 @@
                 <li>
                     <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
                 </li>
+                <li>
+                    <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
+                </li>
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
