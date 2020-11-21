@@ -1,43 +1,30 @@
 <div class="resultProgressBarContainer">
     <div class="resultProgressBar__title">
-        COMPRENSIÓN AUDITIVA
+        {{$title}}
     </div>
     <div class="resultProgressBars">
-        <div class="resultProgressBar">
-            <div class="resultProgressBar__info">
-                <p class="rText">Nivel Literal</p>
-                <p class="rPercent">25%</p>
-            </div>
-            <div class="rBackBar">
-                <div class="rBar" style="width: 25%;"></div>
-            </div>
-        </div>
-        <div class="resultProgressBar">
-            <div class="resultProgressBar__info">
-                <p class="rText">Nivel Literal</p>
-                <p class="rPercent">50%</p>
-            </div>
-            <div class="rBackBar">
-                <div class="rBar" style="width: 50%;"></div>
-            </div>
-        </div>
-        <div class="resultProgressBar">
-            <div class="resultProgressBar__info">
-                <p class="rText">Nivel Literal</p>
-                <p class="rPercent">80%</p>
-            </div>
-            <div class="rBackBar">
-                <div class="rBar" style="width: 80%;"></div>
-            </div>
-        </div>
-        <div class="resultProgressBar">
-            <div class="resultProgressBar__info">
-                <p class="rText">Nivel Literal</p>
-                <p class="rPercent">90%</p>
-            </div>
-            <div class="rBackBar">
-                <div class="rBar" style="width: 90%;"></div>
-            </div>
-        </div>
+        <?php
+            foreach ($results as $result) {
+                ?>
+                    <div class="resultProgressBar">
+                        <div class="resultProgressBar__info">
+                            <p class="rText">{{$result['title']}}</p>
+                            <p class="rPercent">
+                                <?php
+                                    if ($result['percent'] == 100) {
+                                        echo "¡Completado!";
+                                    } else {
+                                        echo $result['percent']."%";
+                                    }
+                                ?>
+                            </p>
+                        </div>
+                        <div class="rBackBar">
+                            <div class="rBar" style="width: <?php echo $result['percent']."%" ?>"></div>
+                        </div>
+                    </div>
+                <?php
+            }
+        ?>
     </div>
 </div>

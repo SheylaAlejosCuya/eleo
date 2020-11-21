@@ -4,19 +4,17 @@ namespace App\View\Components;
 
 use Illuminate\View\Component;
 
-class ResultProgressBar extends Component
+class LinearGraph extends Component
 {
     public $title;
-    public $results;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($title, $results)
+    public function __construct($title)
     {
         $this->title = $title;
-        $this->results = $results;
     }
 
     /**
@@ -26,6 +24,6 @@ class ResultProgressBar extends Component
      */
     public function render()
     {
-        return view('components.result-progress-bar');
+        return view('components.linear-graph');
     }
 }
