@@ -18,26 +18,66 @@ html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}a{background-c
     margin-bottom: 16px;
 }
 
-.barra{
-    background:#00a3fb ;    
-    text-align: center;
-    border-radius: 10px;
-    margin-top: 16px;
+.lecturaContainer {
+    margin: calc(-0.2 * 100vh + 22px) 172px 0 32px;
 }
+
+.barraContainer {
+    text-align: -webkit-right;
+    margin-bottom: 22px;
+}
+
+.barra {
+    background:#5ec26d;
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 15px;
+    width: 300px;
+    margin-right: 16px;
+}
+
+.barra img {
+    margin: 8px;
+}
+
 #ti{
     font-family: 'Nunito', sans-serif;
 }
-img{
-    margin: 3%;
-}
+
 .cuento{
-    background-color:  #dbf1ff;
-    border-radius: 10px;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 1px rgb(173, 173, 173);
 }
+
+.cuento {
+    text-align: center;
+}
+
+.cuento h1 {
+    padding-top: 8px;
+    color: #3457a1;
+    font-size: xx-large;
+}
+
+.cuento img {
+    width: 40%;
+}
+
+.epages {
+    padding: 4px 0;
+}
+
+.eButtonsSpace {
+    display: flex;
+    justify-content: space-between;
+    margin: 16px 0;
+}
+
 .texto{
-    margin: 25px; 
-    padding-top: 25px; 
+    margin: 8px 25px;
 }
+
 #titulo{
     color:#00a3fb;
 }
@@ -158,5 +198,17 @@ hr {
         position: relative;
         flex-direction: row;
         margin-right: auto;
+    }
+    .lecturaContainer {
+        margin: 0 32px;
+    }   
+}
+
+@media (max-width: 420px) {
+    .lecturaContainer {
+        margin: 0 16px;
+    }
+    .cuento h1 {
+        font-size: x-large;
     }
 }

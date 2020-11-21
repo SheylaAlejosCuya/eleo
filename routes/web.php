@@ -33,10 +33,10 @@ Route::get('/tutoriales', function () {
 });
 
 Route::get('/bar', function () {
-    return view('includes/menubaralternate', ['includeRoute' => '']);
+    return view('includes/menubaralternate');
 });
 Route::get('/lecturas', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'title' => 'La momificación antiguo Egipto']);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1"]);
 });
 Route::get('/preguntas', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => 'La momificación antiguo Egipto']);
@@ -148,4 +148,8 @@ Route::get('/resultados/estudio', function() {
         ]
     ];
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults]);
+});
+
+Route::get('/bar', function () {
+    return view('includes/menubaralternate');
 });
