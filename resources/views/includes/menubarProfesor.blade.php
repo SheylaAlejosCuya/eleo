@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>e-leo</title>
-    <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/Profesorsidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
     <link rel="stylesheet" href="{{asset('css/resultProgessBar.css')}}">
@@ -154,7 +154,13 @@
                     </div>
                 </div>
             </div>
-            <img src="{{asset('images/fondo.png')}}" alt="" class="ebackground">
+            <?php
+                if ($AlternativeBackground ?? '') {
+                ?>
+                    <img src="{{asset('images/fondo.png')}}" alt="" class="ebackground">
+                <?php
+                }
+            ?>
             <div class="econtent">
                 <h1 class="econtent__title etitle"><strong>@if(isset($title)) {{$title}} @endif</strong></h1>
                 <?php
