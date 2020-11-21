@@ -150,6 +150,8 @@ Route::get('/resultados/estudio', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults]);
 });
 
-Route::get('/bar', function () {
-    return view('includes/menubaralternate');
+/* Rutas de Profesor */
+
+Route::get('/profesor', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1"]);
 });
