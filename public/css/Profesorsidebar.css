@@ -364,6 +364,14 @@ a img {
     .econtent__title {
         display: block;
     }
+
+    .header {
+        height: calc(0.1 * 100vh);
+    }
+
+    .studentProfilePicture {
+        height: 90%;
+    }
 }
 
 @media (min-width: 992px) {
@@ -398,7 +406,7 @@ a img {
 
 .saveButton {
     border-radius: 5px;
-    padding: 0.75%;
+    padding: 1%;
     background-color: #39b44a;
     border-color: #39b44a;
     border: 0;
@@ -406,6 +414,23 @@ a img {
     width: 150px;
 }
 
+.saveButton a {
+    text-decoration: none!important;
+    color: white;
+}
+
+.saveButton a:hover {
+    color: white;
+}
+
+.guiaButtonP {
+    border-radius: 5px;
+    padding: 0.70%;
+    color: white;
+    background: transparent;
+    border: 2px solid white;
+    width: 150px;
+}
 
 .cancelButton {
     border-radius: 5px;
@@ -445,11 +470,6 @@ a img {
 
     .ewelcome {
         grid-column: 1/4;
-    }
-
-    .efooter {
-        position: fixed;
-        bottom: 0;
     }
 }
 

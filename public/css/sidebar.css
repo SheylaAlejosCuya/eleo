@@ -396,14 +396,32 @@ a img {
     text-align: center;
 }
 
+.guiaButton {
+    border-radius: 5px;
+    padding: 0.70%;
+    color: #898989;
+    border: 2px solid #898989;
+    background: white;
+    width: 150px;
+}
+
 .saveButton {
     border-radius: 5px;
-    padding: 0.75%;
+    padding: 1%;
     background-color: #39b44a;
     border-color: #39b44a;
     border: 0;
     color: white;
     width: 150px;
+}
+
+.saveButton a {
+    text-decoration: none!important;
+    color: white;
+}
+
+.saveButton a:hover {
+    color: white;
 }
 
 

@@ -1,25 +1,27 @@
 
+<!-- Content Wrapper. Contains page content -->
+    <!-- Content Header (Page header) -->
     <div class="profileContainer">
         <div class="profileInfo">
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>Nombre Completo</b></div>
-                <div class="profileData">{{$alumno->first_name}} {{$alumno->last_name}}</div>
+                <div class="profileData">Eduardo Camarena</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>E-mail</b></div>
-                <div class="profileData">{{$alumno->email}}</div>
+                <div class="profileData">eduardo@micolegio.com</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>Cumpleaños</b></div>
-                <div class="profileData">{{$alumno->birthdate}}</div>
+                <div class="profileData">20/03/1990</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>Usuario</b></div>
-                <div class="profileData">{{$alumno->username}}</div>
+                <div class="profileData">12345</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>Contraseña </b></div>
-                <div class="profileData">*********</div>
+                <div class="profileData">*******</div>
             </div>
         </div>
         <div class="profileImg">

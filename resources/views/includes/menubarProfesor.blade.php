@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{asset('css/Profesorsidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
+    <link rel="stylesheet" href="{{asset('css/perfil.css')}}">
     <link rel="stylesheet" href="{{asset('css/resultProgessBar.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
@@ -73,23 +74,47 @@
                 <img src="{{asset('images/logo.png')}}" alt="eleo" class="brand-image" >
             </div>
             <ul>
-                <li>
-                    <a href=""><img class="eoption eoptionSelected" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
+            <li>
+                    @if ($optionIndex == 0) 
+                        <a href="{{url('profesor')}}"><img class="eoption eoptionSelected" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('profesor')}}"><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
                 <li>
-                    <a href=""><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Lecturas"></a>
+                    @if ($optionIndex == 1) 
+                        <a href="{{url('libros')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('libros')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
                 <li>
-                    <a href=""><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Desafios"></a>  
+                    @if ($optionIndex == 2)
+                        <a href="{{url('desafios')}}"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('desafios')}}"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
                 <li>
-                    <a href=""><img class="eoption" src="{{asset('images/foro.png')}}" alt="Foro"></a>
+                    @if ($optionIndex == 3)
+                        <a href="{{url('foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('foro')}}"><img class="eoption" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
                 <li>
-                    <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
+                    @if ($optionIndex == 4)
+                        <a href="{{url('resultados')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('resultados')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
                 <li>
-                    <a href=""><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Resultado"></a>
+                    @if ($optionIndex == 5)
+                        <a href="{{url('resultados')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                    @else
+                        <a href="{{url('resultados')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                    @endif
                 </li>
             </ul>
             <div class="logout">

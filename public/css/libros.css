@@ -21,20 +21,23 @@
     margin-bottom: -6.85%;
 }
 
+.edesafio-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
 .edesafio-card {
-    flex: 50%;
     max-width: 550px;
     margin: 20px 10px;
-    border-radius: 15px;
     cursor: pointer;
-    border: 6px solid transparent;
+    position: relative;
 }
 
 .desafioImg {
-    width: 116.7%;
-    margin-top: -8%;
-    margin-left: -8.4%;
-    margin-bottom: -8%;
+    width: 100%;
+    border-radius: 15px;
+    border: 6px solid transparent;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
 }
 
 .book-card:hover {
@@ -42,20 +45,16 @@
     border-radius: 10%;
 }
 
-.edesafio-card:hover {
+.edesafio-card:hover > .desafioImg {
     border-color: #39b44a;
-    border-radius: 6%;
-}
-
-.checkContainer {
-    position: absolute;
-    padding-left: 16.5%;
-    margin-top: 16.5%;
 }
 
 .check {
     width: 50px;
     height: 50px;
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
 }
 
 @media (max-width: 540px) {

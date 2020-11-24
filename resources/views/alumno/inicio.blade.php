@@ -6,8 +6,8 @@
       ¡Bienvenida, <br> Cathy!
     </p>
     <div id="botones">
-      <button id="guia">Guia de Usuario</button>
-      <button id="tuto">Tutoriales</button>
+      <button class="guiaButton">Guia de Usuario</button>
+      <button class="saveButton"><a href="tutoriales">Tutoriales</a></button>
     </div>
   </div>
 </div>
