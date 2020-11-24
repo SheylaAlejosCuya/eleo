@@ -26,10 +26,12 @@
         </div>
         <div class="profileImg">
             <div class="profileTitle"><b>Foto</b></div>
-            <div class="profileAvatar">
-                <img class="avatarSelected" src="{{asset('images/chica.png')}}" alt="">
-                <img src="{{asset('images/chico.png')}}" alt="">
-                <img src="{{asset('images/iguanita.png')}}" alt="">
+            <div class="profilePhoto">
+                <label for="profilePhoto">
+                    <img src="{{asset('images/lee.png')}}" alt="">
+                    <p>Cargar Foto</p>
+                </label>
+                <input type="file" name="profilePhoto" id="profilePhoto">
             </div>
         </div>
     </div>
