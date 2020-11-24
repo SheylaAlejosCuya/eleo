@@ -438,7 +438,7 @@ a img {
     border: 2px solid #5ec26d;
     background-color: white;
     color: #5ec26d;
-    min-width: 150px;
+    width: 150px;
     font-weight: 600;
 }
 

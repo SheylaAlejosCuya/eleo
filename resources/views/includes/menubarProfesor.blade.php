@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
     <link rel="stylesheet" href="{{asset('css/perfil.css')}}">
+    <link rel="stylesheet" href="{{asset('css/biblioteca.css')}}">
     <link rel="stylesheet" href="{{asset('css/resultProgessBar.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
@@ -83,9 +84,9 @@
                 </li>
                 <li>
                     @if ($optionIndex == 1) 
-                        <a href="{{url('libros')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/biblioteca')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('libros')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/biblioteca')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>

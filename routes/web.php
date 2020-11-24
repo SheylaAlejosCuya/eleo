@@ -158,3 +158,35 @@ Route::get('/profesor/tutoriales', function () {
 Route::get('/profesor/perfil', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.perfil', 'title' => 'Información Básica', 'optionIndex' => 0]);
 });
+
+Route::get('/profesor/tutoriales', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
+});
+
+Route::get('/profesor/tutoriales/{id}', function ($id) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
+});
+
+Route::get('/profesor/biblioteca', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.biblioteca', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 1]);
+});
+
+Route::get('/profesor/biblioteca/maestroLecturama', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.maestroLecturama', 'title' => 'Guía del maestro lecturama', 'optionIndex' => 1]);
+});
+
+Route::get('/profesor/biblioteca/eleoVirtual', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E - Leo virtual', 'subtitle' => 'Escoge la lectura de tu preferencia', 'optionIndex' => 1]);
+});
+
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}', function($lectura) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'subtitle' => 'Actividades por lectura', 'optionIndex' => 1]);
+});
+
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}', function($lectura, $actividad) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
+});
+
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}/preview', function($lectura, $actividad) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
+});
