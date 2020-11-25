@@ -11,19 +11,50 @@
     margin: 20px 10px;
     border-radius: 15px;
     cursor: pointer;
-}
-
-.edesafio-card {
-    flex: 50%;
-    max-width: 550px;
-    margin: 20px 10px;
-    border-radius: 15px;
-    cursor: pointer;
     border: 6px solid transparent;
 }
 
-.book-card:hover, .edesafio-card:hover {
+.book-card img {
+    width: 113.5%;
+    margin-top: -6.85%;
+    margin-left: -6.85%;
+    margin-bottom: -6.85%;
+}
+
+.edesafio-container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.edesafio-card {
+    max-width: 550px;
+    margin: 20px 10px;
+    cursor: pointer;
+    position: relative;
+}
+
+.desafioImg {
+    width: 100%;
+    border-radius: 15px;
+    border: 6px solid transparent;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.book-card:hover {
     border-color: #39b44a;
+    border-radius: 10%;
+}
+
+.edesafio-card:hover > .desafioImg {
+    border-color: #39b44a;
+}
+
+.check {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -15px;
+    bottom: -15px;
 }
 
 @media (max-width: 540px) {

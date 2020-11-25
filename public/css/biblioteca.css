@@ -1,0 +1,156 @@
+.bibliotecaContainer {
+    text-align: center;
+}
+
+.bibliotecaOptions {
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.bibliotecaOption {
+    position: relative;
+    max-width: 300px;
+    border-radius: 15px;
+    border: 6px solid transparent;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.bibliotecaOption:hover {
+    border-color: #39b44a;
+    box-shadow: 0 0 0 0;
+}
+
+.bibliotecaOption:hover > .check {
+    display: unset;
+}
+
+.check {
+    display: none;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+}
+
+.bibliotecaOption img:nth-child(2) {
+    border-radius: 15px;
+    width: 100%;
+}
+
+/* Maestro Lecturama */
+
+.lecturamaOption {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lecturamaOption img {
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+/* eleoVirtual */
+
+.eleoVirtual {
+    padding: 0 32px;
+}
+
+.eleoVirtualOption {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.eleoVirtualOption img {
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.eleoVirtualOption b {
+    font-size: x-large;
+}
+
+.eleoVirtualOption p {
+    line-height: 1;
+    font-weight: 700;
+    font-size: xx-large;
+    color: gray;
+}
+
+/* Actividades */
+
+.actividadesOptions {
+    margin: 16px auto 0 auto;
+    width: 900px;
+}
+
+.actividadesRow {
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.actividadesRow .bibliotecaOption {
+    max-width: unset;
+    margin: 10px;
+}
+
+.actividadOption {
+    position: relative;
+    display: flex;
+}
+
+.actividadOption img {
+    width: 40%;
+    margin: 0 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.actividadRight {
+    padding: 0 32px;
+    align-self: center;
+}
+
+.actividadRight p {
+    margin-bottom: 32px;
+}
+
+.star {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 0 0;
+    width: 1rem!important;
+    height: 1rem;
+}
+
+/* Actividad Previsualización */
+
+.actividadPreview {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.actividadPreview__top {
+    display: flex;
+    justify-content: space-between;
+}
+
+.actividadPreview__top button {
+    align-self: center;
+}
+
+.actividadImg img {
+    height: 90%;
+}

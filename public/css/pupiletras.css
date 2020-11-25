@@ -1,0 +1,161 @@
+.check {
+    content: url(../images/check.png);
+    width: 15px;
+    height: 15px;
+    margin: 0 8px 3px 8px;
+    margin-bottom: 3px;
+    margin-right: 8px;
+    opacity: 0;
+}
+
+.pupiletrasContainer {
+    border-top: 6px solid #cc0033;
+    width: 90%;
+    margin: 40px 32px 0 32px;
+    display: flex;
+}
+
+.pupiletrasInfo {
+    width: 30%;
+    margin: 16px;
+    display: grid;
+    grid-template-rows: 0.1fr 0.8fr 0.1fr;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    background-color: white;
+}
+
+.pupiletrasTitle, .pupiletrasRestantes {
+    background-color: #cc0033;
+    color: white;
+    padding-top: 4px;
+    padding-left: 8px;
+}
+
+#Palabras {
+    padding-top: 21px;
+    font-size: 1rem;
+}
+
+#Palabras ul {
+    padding-left: 0;
+    list-style-type: none;
+}
+
+#Palabras li {
+    padding: 3px 0;
+    font: 1em sans-serif;
+    color: gray;
+}
+
+#Palabras .wordFound > .check {
+    opacity: 100%;
+}
+
+#juego {
+    border: 1px solid black;
+    padding: 20px;
+    float: left;
+    margin: 30px 20px;
+}
+
+#juego div {
+    width: 100%;
+    margin: 0 auto;
+}
+
+
+/* style for each square in the puzzle */
+
+#juego .puzzleSquare {
+    outline: none;
+    height: 30px;
+    width: 30px;
+    text-transform: uppercase;
+    background-color: white;
+    border: 0;
+    font: 1em sans-serif;
+}
+
+button::-moz-focus-inner {
+    border: 0;
+}
+
+
+/* indicates when a square has been selected */
+
+#juego .selected {
+    background-color: orange;
+}
+
+
+/* indicates that the square is part of a word that has been found */
+
+#juego .found1 {
+    background-color: #277DA1;
+    color: white;
+}
+
+#juego .found2 {
+    background-color: #577590;
+    color: white;
+}
+
+#juego .found3 {
+    background-color: #4D908E;
+    color: white;
+}
+
+#juego .found4 {
+    background-color: #43AA8B;
+    color: white;
+}
+
+#juego .found5 {
+    background-color: #90BE6D;
+    color: white;
+}
+
+#juego .found6 {
+    background-color: #F9C74F;
+    color: white;
+}
+
+#juego .found7 {
+    background-color: #F9844A;
+    color: white;
+}
+
+#juego .found8 {
+    background-color: #F8961E;
+    color: white;
+}
+
+#juego .found9 {
+    background-color: #F3722C;
+    color: white;
+}
+
+#juego .found10 {
+    background-color: #f94144;
+    color: white;
+}
+
+
+#juego .solved {
+    background-color: purple;
+    color: white;
+}
+
+
+/* indicates that all words have been found */
+
+.gameComplete {
+    border-color: #2dcc00;
+}
+
+.gameComplete .pupiletrasTitle, .gameComplete .pupiletrasRestantes {
+    background-color: #2dcc00;
+}
+
+
+/* indicates that the word has been found */

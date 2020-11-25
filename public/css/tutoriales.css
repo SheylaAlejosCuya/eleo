@@ -6,7 +6,7 @@
 }
 
 .tutorialVideo {
-    text-decoration: none;
+    text-decoration: none!important;
     color: black;
     max-width: 360px;
     background-color: white;
@@ -24,6 +24,7 @@
 }
 
 .tutorialVideo:hover {
+    color: black;
     border: 6px solid #5ec26d;
 }
 

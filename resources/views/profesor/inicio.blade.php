@@ -5,8 +5,8 @@
       ¡Bienvenido, Eduardo!
     </p>
     <div id="botones">
-      <button id="guia">Guia de Usuario</button>
-      <button id="tuto">Tutoriales</button>
+      <button class="guiaButtonP">Guia de Usuario</button>
+      <button class="saveButton"><a href="profesor/tutoriales">Tutoriales</a></button>
     </div>
   </div>
 </div>
