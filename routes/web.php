@@ -83,6 +83,10 @@ Route::get('/gamificacion', function() {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2]);
 });
 
+Route::get('/gamificacion/pupiletras', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.pupiletras', 'title' => 'Pupiletras', 'subtitle' => 'Encuentra las palabras', 'optionIndex' => 2]);
+});
+
 Route::get('/desafios/{id}', function($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 2]);
 });
