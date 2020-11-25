@@ -209,13 +209,13 @@
         for (var i = 0, len = wordList.length; i < len; i++) {
           
           if (wordList[i] === curWord) {
-            $('.selected').addClass('found');
+            $('.selected').attr('class', 'puzzleSquare found' + wordList.length + ' selected')
             wordList.splice(i,1);
             $('.' + curWord).addClass('wordFound');
           }
   
           if (wordList.length === 0) {
-            $('.puzzleSquare').addClass('complete');
+            $('.pupiletrasContainer').addClass('gameComplete');
           }
         }
   

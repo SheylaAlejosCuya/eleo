@@ -67,6 +67,7 @@
 /* style for each square in the puzzle */
 
 #juego .puzzleSquare {
+    outline: none;
     height: 30px;
     width: 30px;
     text-transform: uppercase;
@@ -89,10 +90,56 @@ button::-moz-focus-inner {
 
 /* indicates that the square is part of a word that has been found */
 
-#juego .found {
-    background-color: blue;
+#juego .found1 {
+    background-color: #277DA1;
     color: white;
 }
+
+#juego .found2 {
+    background-color: #577590;
+    color: white;
+}
+
+#juego .found3 {
+    background-color: #4D908E;
+    color: white;
+}
+
+#juego .found4 {
+    background-color: #43AA8B;
+    color: white;
+}
+
+#juego .found5 {
+    background-color: #90BE6D;
+    color: white;
+}
+
+#juego .found6 {
+    background-color: #F9C74F;
+    color: white;
+}
+
+#juego .found7 {
+    background-color: #F9844A;
+    color: white;
+}
+
+#juego .found8 {
+    background-color: #F8961E;
+    color: white;
+}
+
+#juego .found9 {
+    background-color: #F3722C;
+    color: white;
+}
+
+#juego .found10 {
+    background-color: #f94144;
+    color: white;
+}
+
 
 #juego .solved {
     background-color: purple;
@@ -102,8 +149,12 @@ button::-moz-focus-inner {
 
 /* indicates that all words have been found */
 
-#juego .complete {
-    background-color: green;
+.gameComplete {
+    border-color: #2dcc00;
+}
+
+.gameComplete .pupiletrasTitle, .gameComplete .pupiletrasRestantes {
+    background-color: #2dcc00;
 }
 
 
