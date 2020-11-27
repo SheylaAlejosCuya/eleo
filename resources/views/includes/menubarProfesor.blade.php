@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
     <link rel="stylesheet" href="{{asset('css/perfil.css')}}">
     <link rel="stylesheet" href="{{asset('css/biblioteca.css')}}">
+    <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
+    <link rel="stylesheet" href="{{asset('css/videos.css')}}">
     <link rel="stylesheet" href="{{asset('css/resultProgessBar.css')}}">
     <link rel="stylesheet" href="{{asset('plugins/fontawesome-free/css/all.min.css')}}">
   <!-- Ionicons -->
