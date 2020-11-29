@@ -55,19 +55,24 @@
     </div>
     <div class="modalContainer" id="video" hidden>
         <div class="asignarContainer">
-            <x-video />
-            <p>Cerrar</p>
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
+            <div style="position: relative;">
+                <div class="nextButtonL" style="top: 50%">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <x-video />
+                <div class="nextButtonR" style="top: 50%">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
+            <p>Cerrar</p>
         </div>
     </div>
     <div class="modalContainer" id="preguntas" hidden>
         <div class="asignarContainer">
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
-            </div>
             <div class="asignarModal" style="padding-right: 32px;">
+                <div class="nextButtonL">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
                 <div class="epreguntas">
                     <div class="rpt">
                         <h5>¿Qué pensaban los egipcios sobre la muerte?</h5>
@@ -81,27 +86,35 @@
                         <textarea class="rspInput" rows="4" cols="50" placeholder="Escribe tu respuesta"></textarea>
                     </div>
                 </div>
+                <div class="nextButtonR">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
             <p>Cerrar</p>
         </div>
     </div>
     <div class="modalContainer" id="audio" hidden>
         <div class="asignarContainer">
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
+            <div style="position: relative">
+                <div class="nextButtonL" style="bottom: 0;">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
+                <audio controls>
+                    <source src="horse.ogg" type="audio/ogg">
+                </audio>
+                <div class="nextButtonR" style="bottom: 0;">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
-            <audio controls>
-                <source src="horse.ogg" type="audio/ogg">
-            </audio>
             <p>Cerrar</p>
         </div>
     </div>
     <div class="modalContainer" id="opciones" hidden>
-        <div class="asignarContainer">
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="asignarModal">
+        <div class="asignarContainer" style="width: unset">
+            <div class="asignarModal" style="padding: 32px">
+                <div class="nextButtonL">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
                 <div class="epreguntas-c">
                     <h2 id="titulo"><b>Nivel literal</b></h2>
                     <div class="epreguntas">
@@ -114,21 +127,27 @@
                         </div>
                     </div> 
                 </div>
+                <div class="nextButtonR">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
             </div>
             <p>Cerrar</p>
         </div>
     </div>
     <div class="modalContainer" id="texto" hidden>
         <div class="asignarContainer">
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
-            </div>
             <div class="asignarModal">
+                <div class="nextButtonL">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
                 <div class="modalText">
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quos ducimus voluptatibus fugiat eaque culpa eius amet tenetur? Et tempora ullam reiciendis sapiente sunt dolores suscipit corrupti nobis eligendi placeat!
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quos ducimus voluptatibus fugiat eaque culpa eius amet tenetur? Et tempora ullam reiciendis sapiente sunt dolores suscipit corrupti nobis eligendi placeat!
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quos ducimus voluptatibus fugiat eaque culpa eius amet tenetur? Et tempora ullam reiciendis sapiente sunt dolores suscipit corrupti nobis eligendi placeat!
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum quos ducimus voluptatibus fugiat eaque culpa eius amet tenetur? Et tempora ullam reiciendis sapiente sunt dolores suscipit corrupti nobis eligendi placeat!
+                </div>
+                <div class="nextButtonR">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
             <p>Cerrar</p>
@@ -136,13 +155,16 @@
     </div>
     <div class="modalContainer" id="produccion">
         <div class="asignarContainer">
-            <div class="nextButton">
-                <i class="fas fa-chevron-right"></i>
-            </div>
             <div class="asignarModal">
+                <div class="nextButtonL">
+                    <i class="fas fa-chevron-left"></i>
+                </div>
                 <div class="modalText">
                     <h1><strong>Sustenta tu respuesta</strong></h1>
                     ¿En qué se parecen o en qué se diferencianlas creencias religiosas de los egipcios con las nuestras?
+                </div>
+                <div class="nextButtonR">
+                    <i class="fas fa-chevron-right"></i>
                 </div>
             </div>
             <p>Cerrar</p>

@@ -20,7 +20,7 @@
     margin-right: 16px;
 }
 
-.foroButton {
+.foroButton, .crearForoButton {
     border-radius: 5px;
     padding: 0.75%;
     background-color: #39b44a;
@@ -29,6 +29,13 @@
     color: white;
     width: 256px;
     height: 48px;
+}
+
+.crearForoButton {
+    background-color: #f29100;
+    width: 200px;
+    margin-top: 16px;
+    margin-left: 32px;
 }
 
 .foroInfo {
@@ -139,4 +146,43 @@
 
 .foroPost {
     margin-bottom: 32px;
+}
+
+.foroContent i {
+    margin-left: 16px;
+    color: #c3c3c2;
+    font-size: xxx-large;
+}
+
+.foroCrear {
+    display: flex;
+    flex-direction: column;
+    color: #8f8f8f;
+}
+
+.foroCrear input {
+    margin: 32px 0;
+    font-size: x-large;
+    border-bottom: 2px solid #8f8f8f;
+}
+
+.foroCrear textarea {
+    border: 2px solid #8f8f8f;
+    border-radius: 15px;
+    padding-top: 8px;
+    font-size: x-large;
+    padding-left: 16px;
+}
+
+.foroCrear p {
+    margin: 16px 0 64px 0;
+}
+
+.foroCrear .botones {
+    display: flex;
+    justify-content: center;
+}
+
+.foroCrear .botones button {
+    margin: 0 8px;
 }

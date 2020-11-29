@@ -194,3 +194,89 @@ Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}', function($l
 Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}/preview', function($lectura, $actividad) {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
 });
+
+/* Lecturas de Estudio */
+
+Route::get('/profesor/lecturasEstudio', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 2]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.opciones', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 2]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}', function($id) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.reporteAlumno', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/actividades', function($id) {
+    $alumnoResults = [
+        [
+            'title' => 'Expresión oral',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Expresión escrita',
+            'percent' => 40
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/promedioGeneral', function($id) {
+    $auditiva = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ]
+    ];
+    $textos = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2, 'textos' => $textos, 'auditiva' => $auditiva]);
+});
+
+/* Foro */
+
+Route::get('/profesor/foro', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foro', 'title' => 'Foro', 'optionIndex' => 4]);
+});
+
+Route::get('/profesor/foro/crear', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foroCrear', 'title' => 'Nuevo Foro', 'optionIndex' => 4]);
+});
+
+Route::get('/profesor/foro/{id}', function($id) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 4]);
+});
+
+Route::get('/profesor/recursos', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
+});
