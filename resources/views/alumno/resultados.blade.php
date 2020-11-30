@@ -2,13 +2,13 @@
 <div class="infomacion">
     <h4>{{$subtitle}}</h4>
     <div class="edesafio-container">
-        <a href="{{$d1url}}" class="edesafio-card">
+        <a href="./resultados/estudio" class="edesafio-card">
             <img class="check" src="images/check.png" alt="">
-            <img class="desafioImg" src="{{asset('images/desafio1.png')}}" alt="">
+            <img class="desafioImg" src="images/desafio2.png" alt="">
         </a>
-        <a href="{{$d2url}}" class="edesafio-card">
+        <a href="./resultados/estudio" class="edesafio-card">
             <img class="check" src="images/check.png" alt="">
-            <img class="desafioImg" src="{{asset('images/desafio2.png')}}" alt="">    
+            <img class="desafioImg" src="images/desafio2.png" alt="">
         </a>
     </div>
 </div>

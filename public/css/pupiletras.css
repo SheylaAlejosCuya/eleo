@@ -158,4 +158,22 @@ button::-moz-focus-inner {
 }
 
 
-/* indicates that the word has been found */
+@media (max-width: 856px) {
+    .pupiletrasContainer {
+        flex-direction: column;
+    }
+
+    .pupiletrasInfo {
+        width: 100%;
+    }
+
+    #Palabras ul {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    #juego {
+        width: fit-content;
+        padding: 0;
+    }
+}

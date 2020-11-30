@@ -28,7 +28,7 @@
 
 .check {
     display: none;
-    width: 50px;
+    width: 45px;
     height: 50px;
     position: absolute;
     right: -20px;
@@ -71,6 +71,7 @@
 }
 
 .eleoVirtualOption img {
+    height: unset;
     width: 100%;
     margin-bottom: 16px;
     border-radius: 15px;
@@ -91,8 +92,10 @@
 /* Actividades */
 
 .actividadesOptions {
-    margin: 16px auto 0 auto;
-    width: 900px;
+    margin: 16px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .actividadesRow {
@@ -101,8 +104,7 @@
     justify-content: center;
 }
 
-.actividadesRow .bibliotecaOption {
-    max-width: unset;
+.bibliotecaOption {
     margin: 10px;
 }
 

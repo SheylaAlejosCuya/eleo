@@ -93,30 +93,30 @@
                 </li>
                 <li>
                     @if ($optionIndex == 2)
-                        <a href="{{url('desafios')}}"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('desafios')}}"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
                     @if ($optionIndex == 3)
-                        <a href="{{url('foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('foro')}}"><img class="eoption" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
                     @if ($optionIndex == 4)
-                        <a href="{{url('resultados')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('resultados')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/foro')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
                     @if ($optionIndex == 5)
-                        <a href="{{url('resultados')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/recursos')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('resultados')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/recursos')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
             </ul>

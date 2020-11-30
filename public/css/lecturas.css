@@ -214,3 +214,56 @@ hr {
         font-size: x-large;
     }
 }
+
+.infografiaInfo {
+    display: flex;
+}
+
+.infografiaPasos {
+    width: 40%;
+}
+
+.infografiaPasos p {
+    font-size: x-large;
+}
+
+.infografiaImagen {
+    width: 60%;
+}
+
+.infografiaImagen img {
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    width: 300px;
+    max-width: 100%;
+}
+
+@media (max-width: 1200px) {
+    .infografiaPasos {
+        width: 60%;
+    }
+
+    .infografiaImagen {
+        width: 40%;
+    }
+}
+
+@media (max-width: 576px) {
+    .infografiaInfo {
+        flex-direction: column-reverse;
+        align-items: center;
+        margin-top: 32px;
+    }
+
+    .infografiaPasos {
+        width: 100%;
+    }
+
+    .infografiaImagen {
+        width: 60%;
+    }
+}
+
+.ebuttons button {
+    margin: 8px;
+}

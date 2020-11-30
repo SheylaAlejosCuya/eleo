@@ -16,6 +16,7 @@
     min-width: 200px;
     text-align: center;
     margin: 16px;
+    text-decoration: none!important;
 }
 
 .aulaOption img:nth-child(2) {
@@ -26,7 +27,7 @@
     border-color: #39b44a;
 }
 
-.aulaOption:hover, .alumnoOption:hover, .reporteOption:hover > .check {
+.aulaOption:hover, .reporteOption:hover > .check {
     display: unset;
 }
 
@@ -37,11 +38,13 @@
     padding-right: 8px;
     border: 6px solid transparent;
     position: relative;
+    text-decoration: none!important;
+    color: black;
 }
 
-.alumnoOption, .reporteOption .check {
+.reporteOption .check {
     width: 30px;
-    height: 30px;
+    height: 38px;
     right: -15px;
     bottom: -15px;
 }
@@ -68,10 +71,11 @@
 }
 
 .reporteOption {
-    font-size: x-large;
+    font-size: x-large;;
 }
 
 .reporteOption p {
+    color: gray;
     margin: 0;
 }
 

@@ -3,15 +3,24 @@
         <source src="{{asset('videos/pato-caminando-con-estilo.mp4')}}" type="video/mp4">
     </video>
     <div class="evideocontrols">
-        <div class="evideobar" id="ebar">
-            <div class="evideobarposition"></div>
+        <div class="evideocontrols__left">
+            <div class="playButton">
+                <i class="far fa-play-circle" id="play-pause"></i>
+            </div>
         </div>
-        <div class="evideobuttons">
-            <i class="far fa-play-circle" id="play-pause"></i>
+        <div class="evideocontrols__right">
+            <div class="ebar">
+                <p>12:30</p>
+                <div class="evideobar" id="ebar">
+                    <div class="evideobarposition"></div>
+                </div>
+                <p>18:45</p>
+            </div>
             <i class="fas fa-compress" id="fullscreenTrigger"></i>
         </div>
     </div>
 </div>
+<button class="saveButton" style="margin-top: 16px; float: right; z-index: 2; display: none;" id="continueButton"><a href="<?php echo $continue ?>">Siguiente</a></button>
 <script>
     var video = document.querySelector('.evideo');
     var videobar = document.getElementById('ebar');
@@ -47,6 +56,14 @@
         var pos = video.currentTime / video.duration;
         position.style.width = pos * 100 + '%';
         if (video.ended) {
+            <?php
+                if ($continue !== '') {
+                    ?>
+                        var continueButton = document.getElementById('continueButton');
+                        continueButton.style.display = 'unset';
+                    <?php
+                }    
+            ?>
             btn.className = 'far fa-play-circle';
         }
     })

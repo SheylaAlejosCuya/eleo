@@ -31,8 +31,50 @@ Route::get('/bar', function () {
 
 /* Lecturas y recursos */
 Route::get('/libros', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'title' => 'Mis libros y lecturas', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 1]);
+    $data = [
+        [
+            'url' => "./libros/video/1",
+            'img' => "images/a.png"
+        ],
+        [
+            'url' => "./libros/video/2",
+            'img' => "images/b.png"
+        ],
+        [
+            'url' => "./libros/video/3",
+            'img' => "images/c.png"
+        ],
+        [
+            'url' => "./libros/video/4",
+            'img' => "images/e.png"
+        ]
+    ];
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Mis libros y lecturas', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 1]);
 });
+
+/* Preguntas de Video */
+
+Route::get('/libros/video/{id}', function ($id) {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'continue' => '../../videoPreguntas', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+});
+
+Route::get('/videoPreguntas', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+});
+
+Route::get('/videoPreguntas2', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+});
+
+Route::get('/videoPreguntas3', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+});
+
+Route::get('/videoPreguntas4', function() {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+});
+
+/* Lecturas */
 
 Route::get('/lecturas', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1]);
@@ -53,34 +95,40 @@ Route::get('/preguntas5', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
 });
 
-/* Preguntas de Video */
-
-Route::get('/videoPreguntas', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas2', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas3', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas4', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
-});
-
 Route::get('/desafios', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'd1url' => './comprensionAuditiva', 'd2url' => './gamificacion', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
 });
 
 Route::get('/comprensionAuditiva', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'title' => 'Desafíos de comprensión auditiva', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 2]);
+    $data = [
+        [
+            'url' => "./desafios/1",
+            'img' => "images/a.png"
+        ],
+        [
+            'url' => "./desafios/2",
+            'img' => "images/b.png"
+        ],
+        [
+            'url' => "./desafios/3",
+            'img' => "images/c.png"
+        ],
+        [
+            'url' => "./desafios/4",
+            'img' => "images/e.png"
+        ]
+    ];
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Desafíos de comprensión auditiva', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 2]);
 });
 
 Route::get('/gamificacion', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2]);
+    $data = [
+        [
+            'url' => "./gamificacion/pupiletras",
+            'img' => "images/e.png"
+        ]
+    ];
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2]);
 });
 
 Route::get('/gamificacion/pupiletras', function() {
@@ -100,7 +148,7 @@ Route::get('/foro/{id}', function($id) {
 });
 
 Route::get('/resultados', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 3]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.resultados', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
 });
 
 Route::get('/resultados/estudio', function() {
@@ -146,7 +194,7 @@ Route::get('/resultados/estudio', function() {
             'percent' => 40
         ]
     ];
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults, 'optionIndex' => 3]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults, 'optionIndex' => 4]);
 });
 
 /* Rutas de Profesor */
@@ -156,15 +204,11 @@ Route::get('/profesor', function () {
 });
 
 Route::get('/profesor/tutoriales', function () {
-    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });
 
 Route::get('/profesor/perfil', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.perfil', 'title' => 'Información Básica', 'optionIndex' => 0]);
-});
-
-Route::get('/profesor/tutoriales', function () {
-    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });
 
 Route::get('/profesor/tutoriales/{id}', function ($id) {
@@ -183,22 +227,50 @@ Route::get('/profesor/biblioteca/eleoVirtual', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E - Leo virtual', 'subtitle' => 'Escoge la lectura de tu preferencia', 'optionIndex' => 1]);
 });
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}', function($lectura) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'subtitle' => 'Actividades por lectura', 'optionIndex' => 1]);
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades', function($lectura) {
+    $data = [
+        [
+            'url' => "./actividades/1",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./actividades/2",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./actividades/3",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./actividades/4",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./actividades/5",
+            'grado' => '1ro "A"' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'data' => $data, 'subtitle' => 'Actividades por lectura', 'optionIndex' => 1]);
 });
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}', function($lectura, $actividad) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades/{actividad}', function($lectura, $actividad) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $actividad, 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
 });
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/{actividad}/preview', function($lectura, $actividad) {
+Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades/{actividad}/preview', function($lectura, $actividad) {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
 });
 
 /* Lecturas de Estudio */
 
 Route::get('/profesor/lecturasEstudio', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 2]);
+    $data = [
+        [
+            'url' => "./lecturasEstudio/opciones",
+            'grado' => '1ro "A"' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'data' => $data, 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 2]);
 });
 
 Route::get('/profesor/lecturasEstudio/opciones', function() {
@@ -206,11 +278,29 @@ Route::get('/profesor/lecturasEstudio/opciones', function() {
 });
 
 Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 2]);
+    $data = [
+        [
+            'url' => "./perfilAlumno/1",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./perfilAlumno/2",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./perfilAlumno/3",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./perfilAlumno/1",
+            'nombre' => 'Jaimito' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'data' => $data,'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 2]);
 });
 
 Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}', function($id) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.reporteAlumno', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2]);
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.reporteAlumno', 'alumno' => $id, 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2]);
 });
 
 Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/actividades', function($id) {
@@ -261,6 +351,152 @@ Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/promedioGeneral
         ]
     ];
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2, 'textos' => $textos, 'auditiva' => $auditiva]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/evaluacionComprension', function() {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
+});
+
+Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/evaluacionComprension/{libro}', function($id) {
+    $auditiva = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ]
+    ];
+    $textos = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Evaluación de Comprensión','subtitle' => '', 'optionIndex' => 2, 'textos' => $textos, 'auditiva' => $auditiva]);
+});
+
+Route::get('/profesor/lecturasAutogestion', function() {
+    $data = [
+        [
+            'url' => "./lecturasAutogestion/1/lecturas",
+            'grado' => '1ro "A"' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'data' => $data, 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 3]);
+});
+
+Route::get('/profesor/lecturasAutogestion/{aula}/lecturas', function($aula) {
+    $data = [
+        [
+            'url' => "./lecturas/1/alumnos",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./lecturas/2/alumnos",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./lecturas/3/alumnos",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./lecturas/4/alumnos",
+            'grado' => '1ro "A"' 
+        ],
+        [
+            'url' => "./lecturas/5/alumnos",
+            'grado' => '1ro "A"' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'data' => $data, 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 3]);
+});
+
+Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos', function($aula, $lectura) {
+    $data = [
+        [
+            'url' => "./alumnos/1/desafios",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./alumnos/2/desafios",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./alumnos/3/desafios",
+            'nombre' => 'Jaimito' 
+        ],
+        [
+            'url' => "./alumnos/1/desafios",
+            'nombre' => 'Jaimito' 
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'data' => $data ,'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 3]);
+});
+
+Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos/{alumno}/desafios', function($aula, $lectura, $alumno) {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.desafios', 'd1url' => './desafios/comprensionAuditiva', 'd2url' => './desafios/gamificacion', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 3]);
+});
+
+Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos/{alumno}/desafios/comprensionAuditiva', function($aula, $lectura, $alumno) {
+    $prom = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.autogestionPromedio', 'prom' => $prom, 'title' => 'Desafíos de comprensión auditiva', 'optionIndex' => 3]);
+});
+
+Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos/{alumno}/desafios/gamificacion', function($aula, $lectura, $alumno) {
+    $prom = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.autogestionPromedio', 'prom' => $prom, 'title' => 'Desafíos de comprensión auditiva', 'optionIndex' => 3]);
 });
 
 /* Foro */

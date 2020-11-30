@@ -59,7 +59,7 @@
                 <div class="nextButtonL" style="top: 50%">
                     <i class="fas fa-chevron-left"></i>
                 </div>
-                <x-video />
+                <x-video continue=""/>
                 <div class="nextButtonR" style="top: 50%">
                     <i class="fas fa-chevron-right"></i>
                 </div>
