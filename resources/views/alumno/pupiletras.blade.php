@@ -10,7 +10,7 @@
         <div class="pupiletrasInfo">
             <div class="pupiletrasTitle">Clave de respuesta</div>
             <div id='Palabras'></div>
-            <div class="pupiletrasRestantes">Palabras restantes: 5</div>
+            <div class="pupiletrasRestantes">Palabras restantes: <span id="counter"></span></div>
         </div>
         <div id='juego'></div>
     </div>
@@ -41,7 +41,7 @@
                       se esta indicando que en el contenedor con el id juego se va a mostrar la sopa de letras
                       y el contenedor con el id palabras va a mostrar las palabras a buscar
                     */
-                    juego = wordfindgame.create(datos, '#juego', '#Palabras');
+                    juego = wordfindgame.create(datos, '#juego', '#Palabras', '#counter');
                     // Estructura de la sopa de letras
                     var puzzle = wordfind.newPuzzle(datos, {
                         height: 18,

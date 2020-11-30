@@ -28,7 +28,7 @@
 
 .check {
     display: none;
-    width: 50px;
+    width: 45px;
     height: 50px;
     position: absolute;
     right: -20px;
@@ -67,9 +67,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin: 0 16px;
 }
 
 .eleoVirtualOption img {
+    height: unset;
     width: 100%;
     margin-bottom: 16px;
     border-radius: 15px;
@@ -90,8 +92,10 @@
 /* Actividades */
 
 .actividadesOptions {
-    margin: 16px auto 0 auto;
-    width: 900px;
+    margin: 16px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
 }
 
 .actividadesRow {
@@ -100,8 +104,7 @@
     justify-content: center;
 }
 
-.actividadesRow .bibliotecaOption {
-    max-width: unset;
+.bibliotecaOption {
     margin: 10px;
 }
 
@@ -215,10 +218,8 @@
     float: right;
 }
 
-.nextButton {
+.nextButtonR, .nextButtonL {
     position: absolute;
-    right: 10%;
-    top: 50%;
     background-color: #b1b1b0;
     color: white;
     border-radius: 50%;
@@ -230,9 +231,17 @@
     align-items: center;
 }
 
+.nextButtonR {
+    right: -66px;
+}
+
+.nextButtonL {
+    left: -66px;
+}
+
 .asignarModal {
     width: 100%;
-    height: 60vh;
+    padding: 32px 0;
     background-color: white;
     border-radius: 15px;
     box-shadow: 0 0 5px 3px rgb(173, 173, 173);

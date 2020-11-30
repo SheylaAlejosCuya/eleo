@@ -28,10 +28,7 @@
             </p>
         </div>
         <img src="images/esfinge.png" alt="">
-        <div class="epages">1 de 10</div>
+        <br><br>
     </div>
-    <div class="eButtonsSpace">
-        <button class="cancelButton">Atras</button>
-        <button class="saveButton">Siguiente</button>
-    </div>
+    <button class="saveButton" style="float: right; margin-top: 16px"><a href="./preguntas">Avanza</a></button>
 </div>

@@ -5,7 +5,7 @@
         <div class="actividadRight">
             <h2>Gaby y sus gatitos</h2>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="saveButton">Visualizar</button>
+            <button class="saveButton"><a href="./{{$actividad}}/preview">Visualizar</a></button>
         </div>
     </div>
 </div>

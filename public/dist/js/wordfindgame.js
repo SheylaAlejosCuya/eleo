@@ -53,8 +53,8 @@
       * @param {String} el: The jQuery element to write the words to
       * @param {[String]} words: The words to draw
       */
-      var drawWords = function (el, words) {
-        
+      var drawWords = function (el, words, counter) {
+        $(counter).text(words.length);
         var output = '<ul>';
         for (var i = 0, len = words.length; i < len; i++) {
           var word = words[i];
@@ -211,6 +211,7 @@
           if (wordList[i] === curWord) {
             $('.selected').attr('class', 'puzzleSquare found' + wordList.length + ' selected')
             wordList.splice(i,1);
+            $(counter).text(wordList.length);
             $('.' + curWord).addClass('wordFound');
           }
   
@@ -262,7 +263,7 @@
         * @param {String} wordsEl: Selector to use when inserting the word list
         * @param {Options} options: WordFind options to use when creating the puzzle
         */
-        create: function(words, puzzleEl, wordsEl, options) {
+        create: function(words, puzzleEl, wordsEl, counter, options) {
           
           wordList = words.slice(0).sort();
   
@@ -270,7 +271,7 @@
   
           // draw out all of the words
           drawPuzzle(puzzleEl, puzzle);
-          drawWords(wordsEl, wordList);
+          drawWords(wordsEl, wordList, counter);
   
           // attach events to the buttons
           // optimistically add events for windows 8 touch

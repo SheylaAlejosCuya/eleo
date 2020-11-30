@@ -415,6 +415,7 @@ a img {
 }
 
 .saveButton a {
+    display: block;
     text-decoration: none!important;
     color: white;
 }

@@ -1,10 +1,12 @@
 <link rel="stylesheet" href="{{asset('css/foro.css')}}">
 <div class="infomacion">
+    <button class="crearForoButton"><a href="./foro/crear">Crear Foro</a></button>
     <div class="foro">
         <h1 class="foroTitle"><strong>Foro N° 1</strong></h1>
         <div class="foroContent">
             <div class="foroPregunta"><b>¿Por qué crees que una civilización antigua, con menos tecnología que en la actualidad, pudo crear tantas maravillas?</b></div>
-            <button class="foroButton"><a href="./foro/1">Participar</a></button>
+            <button class="foroButton"><a href="./foro/1">Revisar Foro</a></button>
+            <i class="fa fa-trash"></i>
         </div>
         <div class="foroInfo">
             <div class="foroIconData">
@@ -19,7 +21,8 @@
         <h1 class="foroTitle"><strong>Foro N° 1</strong></h1>
         <div class="foroContent">
             <div class="foroPregunta"><b>¿Por qué crees que una civilización antigua, con menos tecnología que en la actualidad, pudo crear tantas maravillas?</b></div>
-            <button class="foroButton"><a href="./foro/2">Participar</a></button>
+            <button class="foroButton"><a href="./foro/2">Revisar Foro</a></button>
+            <i class="fa fa-trash"></i>
         </div>
         <div class="foroInfo">
             <div class="foroIconData">
@@ -34,7 +37,8 @@
         <h1 class="foroTitle"><strong>Foro N° 1</strong></h1>
         <div class="foroContent">
             <div class="foroPregunta"><b>¿Por qué crees que una civilización antigua, con menos tecnología que en la actualidad, pudo crear tantas maravillas?</b></div>
-            <button class="foroButton"><a href="./foro/3">Participar</a></button>
+            <button class="foroButton"><a href="./foro/3">Revisar Foro</a></button>
+            <i class="fa fa-trash"></i>
         </div>
         <div class="foroInfo">
             <div class="foroIconData">
