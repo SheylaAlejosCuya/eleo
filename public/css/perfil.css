@@ -1,0 +1,128 @@
+.profileContainer {
+    margin: 32px 32px 0 32px;
+    display: grid;
+    grid-template-columns: 0.6fr 0.4fr;
+}
+
+.profileInfo {
+    padding: 0 16px;
+}
+
+.profileInfoRow {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.profileInfoRow:not(:last-child) {
+    border-bottom: 1.5px solid rgb(173, 173, 173);
+}
+
+.profileInfoRow:first-child {
+    padding-bottom: 24px;
+}
+
+.profileInfoRow:last-child {
+    padding-top: 24px;
+}
+
+.profileInfoRow:not(:last-child):not(:first-child) {
+    padding: 24px 0;
+}
+
+.profileTitle {
+    font-size: x-large;
+}
+
+.profileData {
+    font-size: x-large;
+}
+
+.profileImg .profileTitle {
+    margin-bottom: 24px;
+}
+
+.profileAvatar {
+    border-radius: 15px;
+    box-shadow: 0px 0px 5px 1px rgb(173, 173, 173);
+    background-color: white;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.profileAvatar img {
+    width: 25%;
+    border-radius: 50%;
+}
+
+@media (max-width: 1000px) {
+    .profileContainer {
+        grid-template-columns: 0.9fr 0.2fr;
+    }
+
+    .profileImg {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profileImg .profileTitle {
+        margin-bottom: 0;
+        height: 10%;
+    }
+
+    .profileAvatar {
+        align-items: center;
+        height: 90%;
+        flex-direction: column;
+    }
+
+    .profileAvatar img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 576px) {
+    .profileContainer {
+        grid-template-columns: 1fr;
+    }
+
+    .profileInfo {
+        padding: 0;
+    }
+
+    .profileImg {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .profileInfoRow:last-child {
+        padding-bottom: 24px;
+        border-bottom: 1.5px solid rgb(173, 173, 173);
+    }
+
+    .profileImg .profileTitle {
+        margin: 24px 0;
+    }
+
+    .profileAvatar {
+        flex-direction: unset;
+    }
+
+    .profileAvatar img {
+        width: 30%;
+    }
+}
+
+/* Profesor */
+
+.profilePhoto {
+    text-align: center;
+}
+
+.profilePhoto img {
+    width: 100%;
+    max-width: 150px;
+}
+
+.profilePhoto input {
+    display: none;
+}

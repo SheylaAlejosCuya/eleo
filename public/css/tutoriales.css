@@ -1,0 +1,160 @@
+.tutorialVideos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: min(1600px, 100%);
+}
+
+.tutorialVideo {
+    text-decoration: none!important;
+    color: black;
+    max-width: 360px;
+    background-color: white;
+    border-radius: 30px;
+    flex: 50%;
+    margin: 20px 10px;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    cursor: pointer;
+    box-shadow: 0px 0px 5px 1px rgb(173, 173, 173);
+    border: 6px solid transparent;
+}
+
+.tutorialVideo:hover {
+    color: black;
+    border: 6px solid #5ec26d;
+}
+
+.tutorialVideo i {
+    color: #eae8e8;
+    font-size: 128px;
+}
+
+.tutorialesVideo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.c-video {
+    width: 100%;
+    max-width: 850px;
+    position: relative;
+    overflow: hidden;
+    margin-top: 16px;
+}
+
+.c-video video {
+    border-radius: 15px;
+    width: 100%;
+}
+
+.c-video:hover .evideocontrols {
+    opacity: 100%;
+}
+
+.evideocontrols {
+    display: flex;
+    color: white;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    flex-wrap: wrap;
+    opacity: 0%;
+    transition: all 0.2s;
+    margin: 8px 0;
+    height: 20%;
+}
+
+.evideobuttons {
+    width: 100%;
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.evideocontrols__left {
+    width: 14%;
+    display: flex;
+}
+
+.playButton {
+    background-color: #abaaaa;
+    border-radius: 15px;
+    height: 100%;
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+}
+
+.playButton i {
+    margin: auto;
+}
+
+.evideocontrols__right {
+    width: 84%;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #abaaaa;
+    height: 80%;
+    margin: auto 0;
+    border-radius: 15px;
+}
+
+.ebar {
+    width: 90%;
+    display: flex;
+    height: 50%;
+    margin: auto 0;
+}
+
+.ebar p {
+    font-size: 70%;
+    margin: auto 8px;
+}
+
+.evideocontrols i {
+    background: none;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    display: inline-block;
+    font-size: xxx-large;
+    color: white;
+    -webkit-font-smoothing: antialized;
+}
+
+@media (max-width: 650px) {
+    .evideocontrols i {
+        font-size: x-large;
+    }
+}
+
+.evideobar {
+    height: 10px;
+    top: 0;
+    left: 0;
+    width: 90%;
+    background-color: #abaaaa;
+    border: 1px solid white;
+    margin: auto;
+    border-radius: 15px;
+}
+
+.evideobarposition {
+    height: 10px;
+    background-color: white;
+    border-radius: 15px;
+}
+
+#fullscreenTrigger {
+    margin: auto;
+}
+
+.evideocontrols__right i {
+    font-size: 130%;
+}

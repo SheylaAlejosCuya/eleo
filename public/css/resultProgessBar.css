@@ -1,0 +1,58 @@
+.resultProgressBarContainer {
+    background-color: white;
+    border-radius: 15px;
+    margin-bottom: 32px;
+    box-shadow: 0 0 5px 1px rgb(173, 173, 173);
+}
+
+.resultProgressBar__title {
+    border-radius: 15px 15px 0 0;
+    padding: 4px 0 8px 24px;
+    background-color: #f7f8fc;
+}
+
+.resultProgressBars {
+    padding: 16px 24px;
+}
+
+.resultProgressBar {
+    margin-bottom: 8px;
+}
+
+.resultProgressBar__info {
+    display: flex;
+    justify-content: space-between;
+}
+
+.resultProgressBar__info p {
+    margin: 0;
+    color: gray;
+}
+
+.rBackBar {
+    border-radius: 15px;
+    width: 100%;
+    height: 16px;
+    background-color: #e8edf1;
+}
+
+.rBar {
+    border-radius: 15px;
+    height: 16px;
+}
+
+.resultProgressBar:nth-child(1) .rBackBar .rBar {
+    background-color: #f39200;
+}
+
+.resultProgressBar:nth-child(2) .rBackBar .rBar {
+    background-color: #8dc63f;
+}
+
+.resultProgressBar:nth-child(3) .rBackBar .rBar {
+    background-color: #0075fc;
+}
+
+.resultProgressBar:nth-child(4) .rBackBar .rBar {
+    background-color: #3457a1;
+}

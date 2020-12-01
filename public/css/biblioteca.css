@@ -1,0 +1,298 @@
+.bibliotecaContainer {
+    text-align: center;
+}
+
+.bibliotecaOptions {
+    margin-top: 64px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.bibliotecaOption {
+    position: relative;
+    max-width: 300px;
+    border-radius: 15px;
+    border: 6px solid transparent;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.bibliotecaOption:hover {
+    border-color: #39b44a;
+    box-shadow: 0 0 0 0;
+}
+
+.bibliotecaOption:hover > .check {
+    display: unset;
+}
+
+.check {
+    display: none;
+    width: 45px;
+    height: 50px;
+    position: absolute;
+    right: -20px;
+    bottom: -20px;
+}
+
+.bibliotecaOption img:nth-child(2) {
+    border-radius: 15px;
+    width: 100%;
+}
+
+/* Maestro Lecturama */
+
+.lecturamaOption {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.lecturamaOption img {
+    width: 100%;
+    margin-bottom: 32px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+/* eleoVirtual */
+
+.eleoVirtual {
+    padding: 0 32px;
+}
+
+.eleoVirtualOption {
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 16px;
+}
+
+.eleoVirtualOption img {
+    height: unset;
+    width: 100%;
+    margin-bottom: 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.eleoVirtualOption b {
+    font-size: x-large;
+}
+
+.eleoVirtualOption p {
+    line-height: 1;
+    font-weight: 700;
+    font-size: xx-large;
+    color: gray;
+}
+
+/* Actividades */
+
+.actividadesOptions {
+    margin: 16px 32px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.actividadesRow {
+    display: flex;
+    justify-content: space-evenly;
+    justify-content: center;
+}
+
+.bibliotecaOption {
+    margin: 10px;
+}
+
+.actividadOption {
+    position: relative;
+    display: flex;
+}
+
+.actividadOption img {
+    width: 40%;
+    margin: 0 16px;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+}
+
+.actividadRight {
+    padding: 0 32px;
+    align-self: center;
+}
+
+.actividadRight p {
+    margin-bottom: 32px;
+}
+
+.star {
+    position: absolute;
+    top: 0;
+    right: 0;
+    box-shadow: 0 0 0 0;
+    width: 1rem!important;
+    height: 1rem;
+}
+
+/* Actividad Previsualización */
+
+.actividadPreview {
+    margin: 0 auto;
+    margin-top: 16px;
+    width: 50%;
+}
+
+.actividadPreview__top {
+    display: flex;
+    justify-content: space-between;
+    height: 30vh;
+}
+
+.actividadPreview__topRight {
+    align-self: center;
+}
+
+.actividadPreview__topRight button {
+    padding: 5%;
+}
+
+.actividadImg {
+    width: 70%;
+    text-align: center;
+}
+
+.actividadImg img {
+    height: 70%;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    border-radius: 15px;
+}
+
+.actividadImg h1 {
+    font-size: xx-large;
+}
+
+.actividadOptionRow {
+    display: grid;
+    grid-template-columns: auto 0.2fr;
+}
+
+/* Modal */
+
+.modalContainer {
+    position: fixed;
+    top: 0;
+    left: 15.81%;
+    background-color: rgba(0, 0, 0, 0.22);
+    height: 100vh;
+    width: 84.19%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+@media (max-width: 768px) {
+    .modalContainer {
+        left: 0;
+        width: 100%;
+    } 
+}
+
+
+.asignarContainer {
+    margin: auto;
+    width: 70%;
+}
+
+.asignarContainer audio {
+    width: 100%;
+    margin-top: 100px;
+}
+
+.asignarContainer p {
+    color: white;
+    float: right;
+}
+
+.nextButtonR, .nextButtonL {
+    position: absolute;
+    background-color: #b1b1b0;
+    color: white;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nextButtonR {
+    right: -66px;
+}
+
+.nextButtonL {
+    left: -66px;
+}
+
+.asignarModal {
+    width: 100%;
+    padding: 32px 0;
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    position: relative;
+}
+
+.modalText {
+    padding: 0 32px;
+}
+
+.asignarModal .epreguntas-c {
+    margin: auto;
+}
+
+.asignarModal p {
+    margin-left: 32px;
+    font-size: x-large;
+    color: black;
+}
+
+.asignarModal button {
+    align-self: center;
+}
+
+.asignarGrados {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+}
+
+.asignarGradosOption {
+    display: flex;
+    justify-content: center;
+}
+
+.asignarGradosOption input, .asignarGradosOption p {
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173, 50%);
+    border-radius: 7px;
+}
+
+.asignarGradosOption input {
+    margin-top: 32px;
+}
+
+.asignarGradosOption p {
+    width: 200px;
+    height: 80px;
+    padding-top: 20px;
+    text-align: center;
+    margin-bottom: 32px;
+}

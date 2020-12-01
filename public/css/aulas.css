@@ -1,0 +1,102 @@
+.aulaTable {
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    margin: auto;
+    justify-content: space-evenly;
+}
+
+.aulaOption, .reporteOption {
+    position: relative;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    border: 6px solid transparent;
+    border-radius: 15px;
+    background-color: white;
+    width: 25%;
+    min-width: 200px;
+    text-align: center;
+    margin: 16px;
+    text-decoration: none!important;
+}
+
+.aulaOption img:nth-child(2) {
+    width: 80%;
+}
+
+.aulaOption:hover, .alumnoOption:hover, .reporteOption:hover {
+    border-color: #39b44a;
+}
+
+.aulaOption:hover, .reporteOption:hover > .check {
+    display: unset;
+}
+
+.alumnoOption {
+    display: flex;
+    margin: 32px;
+    border-radius: 15px;
+    padding-right: 8px;
+    border: 6px solid transparent;
+    position: relative;
+    text-decoration: none!important;
+    color: black;
+}
+
+.reporteOption .check {
+    width: 30px;
+    height: 38px;
+    right: -15px;
+    bottom: -15px;
+}
+
+.alumnoOption p {
+    margin: auto;
+}
+
+.alumnoOption img:nth-child(2) {
+    height: 70px;
+}
+
+
+.reporteSection {
+    color: #6e6e6d;
+    text-align: center;
+    width: 100%;
+    margin: 32px 0;
+}
+
+.reporteAlumno {
+    display: flex;
+    flex-direction: column;
+}
+
+.reporteOption {
+    font-size: x-large;;
+}
+
+.reporteOption p {
+    color: gray;
+    margin: 0;
+}
+
+.reporteLeft {
+    width: 80%;
+}
+
+.sourceOption {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 16px;
+}
+
+.sourceOption img {
+    border-radius: 15px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    width: 100%;
+    margin: 16px 0;
+}
+
+.sourceOption button {
+    margin: 4px 0;
+}
