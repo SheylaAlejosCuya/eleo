@@ -155,7 +155,7 @@ Route::get('/resultados/estudio', function() {
     $aresults = [
         [
             'title' => 'Nivel Literal',
-            'percent' => 50
+            'percent' => 90
         ],
         [
             'title' => 'Nivel Inferencial',

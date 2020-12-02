@@ -15,12 +15,13 @@ use Carbon\Carbon;
 
 use App\Models\tb_user;
 
+use App\Http\Controllers\UsuarioController;
+
 class UsuarioController extends Controller
 {
-    //
-    function perfil(){
+    function perfil() {
         $alumno = tb_user::find(1);
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'alumno' => $alumno, 'optionIndex' => 0]);
     }
 
 }
