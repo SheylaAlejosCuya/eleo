@@ -20,7 +20,21 @@
         <br>
         <div class="epreguntas">
             <div class="rpt">
+                <h5>¿Qué relación tiene el conrazón con el juicio de Osiris?</h5>
+                <textarea class="rspInput" rows="4" cols="50" placeholder="Escribe tu respuesta"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="epreguntas">
+            <div class="rpt">
                 <h5>¿Para qué se hacían las momificaciones?</h5>
+                <textarea class="rspInput" rows="4" cols="50" placeholder="Escribe tu respuesta"></textarea>
+            </div>
+        </div>
+        <br>
+        <div class="epreguntas">
+            <div class="rpt">
+                <h5>¿En qué se parecen o en qué se diferencian las creencias religiosas de los egipcios con las nuestras?</h5>
                 <textarea class="rspInput" rows="4" cols="50" placeholder="Escribe tu respuesta"></textarea>
             </div>
         </div>

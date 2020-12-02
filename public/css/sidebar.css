@@ -90,6 +90,7 @@
 }
 
 .eActividadNote {
+    top: 0;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.22);
     height: 100vh;

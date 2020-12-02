@@ -22,6 +22,7 @@ class UsuarioController extends Controller
     function perfil() {
         $alumno = tb_user::find(1);
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'alumno' => $alumno, 'optionIndex' => 0]);
+
     }
 
 }
