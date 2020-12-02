@@ -6,7 +6,7 @@
                 <p><b> Escoge la respuesta correcta</b></p> 
                 <div class="audioContainer">
                     <audio controls>
-                        <source src="horse.ogg" type="audio/ogg">
+                        <source src="{{asset('audios/AUDIOLIBRO -  CONOCIENDO EL ANTIGUO EGIPTO 001.wav')}}" type="audio/wav">
                     </audio>
                     <img class="actionButton" src="{{asset('images/escucho.png')}}" alt="">
                 </div>              
@@ -14,11 +14,18 @@
             <hr>
             <div class="epreguntas">
                 <div class="rpt">
-                    <h5><b>1. ¿Por qué crees que es importante conocer otros modos de vida y comportamiento de personas que existieron hace miles de años?:</b></h5>
-                    <a href="" class="btn-block">a. Para comprobar que todo lo pasado siempre fue mejor.</a>
-                    <a href="" class="btn-block">b. Para demostrar que las culturas antiguas recibieron ayuda extraterrestre.</a>
-                    <a href="" class="btn-block">c. Para valorar todo lo que hicieron a pesar de no contar con la tecnologia actual.</a>
-                    <a href="" class="btn-block">d. Para promocionar que la cultura egipcia es superior a todas las demas civilizaciones antiguas.</a>
+                    <h5><b>5. ¿Por qué crees que era importante para los egipcios que los obreros tuvieran un capataz?</b></h5>
+                    <a href="" class="btn-block">a. Porque cuando no eres vigilado, no realizas bien el trabajo.</a>
+                    <a href="" class="btn-block">b. Porque es importante que alguien te guíe y oriente para realizar un buen trabajo.</a>
+                    <a href="" class="btn-block">c. Porque no se puede confiar en gente del pueblo.</a>
+                    <a href="" class="btn-block">d. Porque las construcciones eran lujosas y podían perderse cosas valiosas.</a>
+                </div>
+                <div class="rpt">
+                    <h5><b>6. Los egipcios se dedicaban mucho a perfeccionar su arquitectura, ¿cuál sería el objetivo principal de esta dedicación y esfuerzo?</b></h5>
+                    <a href="" class="btn-block">a. Demostrar que eran superiores a las demás culturas.</a>
+                    <a href="" class="btn-block">b. Demostrar su valoración por sus dioses y cultura.</a>
+                    <a href="" class="btn-block">c. Demostrar sus riquezas a los demás pueblos.</a>
+                    <a href="" class="btn-block">d. Emplear a los abundantes esclavos que tenían.</a>
                 </div>
             </div> 
         </div>

@@ -6,17 +6,24 @@
 }
 
 .book-card {
-    max-width: 225px;
+    max-width: 275px;
+    height: 45vh;
     border-radius: 15px;
     cursor: pointer;
-    border: 6px solid transparent;
     margin: 8px;
-    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    color: black;
+    text-decoration: none!important;
+    text-align: center;
 }
 
 .book-card img {
-    height: 100%;
+    object-fit: cover;
+    height: 85%;
     width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 0 5px 3px rgb(173, 173, 173);
+    padding: 0;
+
 }
 
 .edesafio-container {
@@ -43,9 +50,8 @@
     box-shadow: 0 0 5px 3px rgb(173, 173, 173);
 }
 
-.book-card:hover {
-    border-color: #39b44a;
-    border-radius: 10%;
+.book-card:hover img {
+    border: 6px solid #39b44a;
 }
 
 .edesafio-card:hover > .desafioImg {

@@ -131,40 +131,6 @@
                 <img src="{{asset('images/iguana.png')}}" alt="">
                 <div class="ehelpMessage">"Dale play, reproduce el video y luego responde las preguntas"</div>
             </div>
-            <div class="eActividadNote ehelphide">
-                <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
-                <div class="actividadContainer">
-                    <div class="eActividadRow eActividadBorder">
-                        <div class="eActividadTitle">
-                            <h1>PRIMER PASO</h1>
-                            <h5>SELECCION DEL TEMA</h5>
-                        </div>
-                        <div class="eActividadDescripcion">
-                            <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
-                            <li><b>Los principales logros de la cultura egipcia.</b></li>
-                            <li><b>La organización social de la civilización egipcia.</b></li>
-                        </div>
-                    </div>
-                    <div class="eActividadRow eActividadBorder">
-                        <div class="eActividadTitle">
-                            <h1>SEGUNDO PASO</h1>
-                            <h5>SELECCION DEL TEMA</h5>
-                        </div>
-                        <div class="eActividadDescripcion">
-                            <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
-                        </div>
-                    </div>
-                    <div class="eActividadRow">
-                        <div class="eActividadTitle">
-                            <h1>TERCER PASO</h1>
-                            <h5>SELECCION DEL TEMA</h5>
-                        </div>
-                        <div class="eActividadDescripcion">
-                            <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="header">
                 <div class="header__left">
                     <div class="triggerGroup">

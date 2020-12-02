@@ -1,6 +1,6 @@
 <div class="c-video">
     <video class="evideo">
-        <source src="{{asset('videos/pato-caminando-con-estilo.mp4')}}" type="video/mp4">
+        <source src="{{asset('videos/VIDEO ANIMADO 01 LA MOMIFICACIÓN EN EL ANTIGUO EGIPTO.mp4')}}" type="video/mp4">
     </video>
     <div class="evideocontrols">
         <div class="evideocontrols__left">
@@ -10,11 +10,9 @@
         </div>
         <div class="evideocontrols__right">
             <div class="ebar">
-                <p>12:30</p>
                 <div class="evideobar" id="ebar">
                     <div class="evideobarposition"></div>
                 </div>
-                <p>18:45</p>
             </div>
             <i class="fas fa-compress" id="fullscreenTrigger"></i>
         </div>
@@ -40,11 +38,9 @@
 
     function togglePlayPause() {
         if (video.paused) {
-            console.log("play");
             btn.className = 'far fa-pause-circle';
             video.play();
         } else {
-            console.log("pause");
             btn.className = 'far fa-play-circle';
             video.pause();
         }

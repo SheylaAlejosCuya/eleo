@@ -7,6 +7,11 @@
                 ?>
                     <a class="book-card" href="<?php echo $d['url'] ?>">
                         <img src="<?php echo $d['img'] ?>" alt="">
+                        <?php 
+                            if (isset($d['title'])) {
+                                echo $d['title'];
+                            }
+                        ?>
                     </a>
                 <?php
             }

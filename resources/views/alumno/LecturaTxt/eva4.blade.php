@@ -4,15 +4,23 @@
             <h2 id="titulo" class="enunciadoL"><b>Nivel intertextual</b></h2>
             <div id="p1" class="enunciadoL">
                 <p><b> Escoge la respuesta correcta</b></p>
-                <h5 style="display: flex;"><b>Ingresa a youtube.com, observa el video sobre los egipcios y responde: ¿Qué dioses representaban a los egipcios?</b><img class="actionButton" src="{{asset('images/lee.png')}}" alt=""></h5>
+                <img class="actionButton" src="{{asset('images/lee.png')}}" alt=""></h5>
             </div>
             <hr>
             <div class="epreguntas">
                 <div class="rpt">
-                    <a href="" class="btn-block">a. La luna y el sol.</a>
-                    <a href="" class="btn-block">b. Osiris y Ra.</a>
-                    <a href="" class="btn-block">c. Osiris y el cielo.</a>
-                    <a href="" class="btn-block">d. Los Faraones.</a>
+                    <h5><b>13. Ingresa a la siguiente página web: https://www.youtube.com/watch?v=Glnzs4V6SXs ¿Qué información adicional has encontrado en este video sobre Egipto?</b></h5>
+                    <a href="" class="btn-block">a. Sobre su gastronomía.</a>
+                    <a href="" class="btn-block">b. Sobre la historia del Nilo y las momias.</a>
+                    <a href="" class="btn-block">c. Sobre la geografía de Egipto.</a>
+                    <a href="" class="btn-block">d. Sobre la construcción de las esfinges.</a>
+                </div>
+                <div class="rpt">
+                    <h5><b>14. Si quisieras conocer cómo curaban los brazos rotos en Egipto, ¿qué tipo de texto deberías indagar?</b></h5>
+                    <a href="" class="btn-block">a. Textos de medicina antigua.</a>
+                    <a href="" class="btn-block">b. Textos históricos.</a>
+                    <a href="" class="btn-block">c. Textos literarios.</a>
+                    <a href="" class="btn-block">d. Textos periodísticos.</a>
                 </div>
             </div>
         </div>

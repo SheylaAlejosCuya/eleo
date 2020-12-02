@@ -138,10 +138,10 @@
     height: 10px;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 90%;
     background-color: #abaaaa;
     border: 1px solid white;
-    margin: auto 0;
+    margin: auto;
     border-radius: 15px;
 }
 
