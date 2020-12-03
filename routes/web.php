@@ -3,24 +3,32 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsuarioController;
+use App\Http\Controllers\AuthController;
+
+Route::middleware(['auth:usuario'])->group(function () {
+    
+});
 
 /* Login */
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
+
+/* POST - Login */
+Route::post('/login', [AuthController::class, 'login'])->name('api_login');
+
+/* Logout */
+Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
 /* Menú Inicio */
-Route::get('/inicio', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio', 'optionIndex' => 0]);
-});
+Route::get('/inicio', [UsuarioController::class, 'inicio'])->name('web_inicio');
 
 /* Perfil de Usuario */
-Route::get('/perfil', [UsuarioController::class, 'perfil']);
+Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('web_perfil');
 
 /* Tutoriales */
 Route::get('/tutoriales/{id}', function ($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
 }); 
+
 Route::get('/tutoriales', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });

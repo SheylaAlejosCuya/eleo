@@ -113,7 +113,10 @@
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
-                <a href="#" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                {{-- <form action="{{route('api_logout')}}" method="POST">
+                    <input type="submit" style="padding-left: 5px; color: white; background-color:rgba(238, 238, 238, 0); border: 0; outline: none;" value='Cerrar Sesión'/>
+                </form> --}}
             </div>
         </div>    
         <div class="rightContent">
