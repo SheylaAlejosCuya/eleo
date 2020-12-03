@@ -3,32 +3,24 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsuarioController;
-use App\Http\Controllers\AuthController;
-
-Route::middleware(['auth:usuario'])->group(function () {
-    
-});
 
 /* Login */
-Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
-
-/* POST - Login */
-Route::post('/login', [AuthController::class, 'login'])->name('api_login');
-
-/* Logout */
-Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
+Route::get('/', function () {
+    return view('welcome');
+});
 
 /* Menú Inicio */
-Route::get('/inicio', [UsuarioController::class, 'inicio'])->name('web_inicio');
+Route::get('/inicio', function () {
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio', 'optionIndex' => 0]);
+});
 
 /* Perfil de Usuario */
-Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('web_perfil');
+Route::get('/perfil', [UsuarioController::class, 'perfil']);
 
 /* Tutoriales */
 Route::get('/tutoriales/{id}', function ($id) {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
 }); 
-
 Route::get('/tutoriales', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });
@@ -38,6 +30,7 @@ Route::get('/bar', function () {
 });
 
 /* Lecturas y recursos */
+/* Url - Imagen - Titulo */
 Route::get('/libros', function() {
     $data = [
         [
@@ -157,23 +150,23 @@ Route::get('/libros', function() {
 /* Preguntas de Video */
 
 Route::get('/libros/video/{id}', function ($id) {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'continue' => '../../videoPreguntas', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'continue' => '../../videoPreguntas', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 Route::get('/videoPreguntas', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 Route::get('/videoPreguntas2', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 Route::get('/videoPreguntas3', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 Route::get('/videoPreguntas4', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 /* Lecturas */
@@ -182,19 +175,19 @@ Route::get('/lecturas', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1]);
 });
 Route::get('/preguntas', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 Route::get('/preguntas2', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 Route::get('/preguntas3', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 Route::get('/preguntas4', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 Route::get('/preguntas5', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 1]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
 });
 
 Route::get('/desafios', function() {
@@ -238,7 +231,7 @@ Route::get('/gamificacion/pupiletras', function() {
 });
 
 Route::get('/desafios/{id}', function($id) {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación antiguo Egipto', 'optionIndex' => 2]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 2]);
 });
 
 Route::get('/foro', function() {

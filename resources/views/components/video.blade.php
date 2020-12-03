@@ -1,5 +1,5 @@
 <div class="c-video">
-    <video class="evideo">
+    <video class="evideo" controlsList="nodownload">
         <source src="{{asset('videos/VIDEO ANIMADO 01 LA MOMIFICACIÓN EN EL ANTIGUO EGIPTO.mp4')}}" type="video/mp4">
     </video>
     <div class="evideocontrols">

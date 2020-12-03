@@ -9,7 +9,6 @@
             <hr>
             <div class="epreguntas">
                 <div class="rpt">
-
                     <h5><b>1. Identifica la respuesta correcta.</b></h5>
                     <a href="" class="btn-block">a. Una esfinge tiene el cuerpo de jaguar y cabeza de león.</a>
                     <a href="" class="btn-block">b. La pirámide de Kefren fue construida por el faraón Djoser.</a>
@@ -29,7 +28,6 @@
                     <a href="" class="btn-block">b. Construir la civilización egipcia.</a>
                     <a href="" class="btn-block">c. Esculpir esfinges.</a>
                     <a href="" class="btn-block">d. Construir templos.</a>
-
                 </div>
             </div>
         </div>

@@ -131,6 +131,7 @@
                 <img src="{{asset('images/iguana.png')}}" alt="">
                 <div class="ehelpMessage">"Dale play, reproduce el video y luego responde las preguntas"</div>
             </div>
+            
             <div class="header">
                 <div class="header__left">
                     <div class="triggerGroup">
