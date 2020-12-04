@@ -1,6 +1,6 @@
                   
 <div class="econtainer">
-  <img src="{{asset('images/iguana.png')}}" alt="">
+  <img src="{{asset('images/iguanitaNueva.png')}}" alt="">
   <div class="ewelcome">
     <p>
       ¡Bienvenida, <br> Cathy!
