@@ -1,40 +1,42 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
-<div class="eActividadNote" hidden>
-  <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
-  <div class="actividadContainer">
-      <div class="eActividadRow eActividadBorder">
-          <div class="eActividadTitle">
-              <h1>PRIMER PASO</h1>
-              <h5>SELECCION DEL TEMA</h5>
-          </div>
-          <div class="eActividadDescripcion">
-              <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
-              <li><b>Los principales logros de la cultura egipcia.</b></li>
-              <li><b>La organización social de la civilización egipcia.</b></li>
-          </div>
-      </div>
-      <div class="eActividadRow eActividadBorder">
-          <div class="eActividadTitle">
-              <h1>SEGUNDO PASO</h1>
-              <h5>SELECCION DEL TEMA</h5>
-          </div>
-          <div class="eActividadDescripcion">
-            <li><b>Indaga sobre el tema seleccionado en diversas fuentes.</b></li>
-            <li><b>Selecciona dos fuentes de indagación.</b></li>
-            <li><b>Identifica las ideas más importantes en tus fuentes de  indagación seleccionadas.</b></li>
-          </div>
-      </div>
-      <div class="eActividadRow">
-          <div class="eActividadTitle">
-              <h1>TERCER PASO</h1>
-              <h5>SELECCION DEL TEMA</h5>
-          </div>
-          <div class="eActividadDescripcion">
-            <li><b>Organiza la información sobre tu tema en 3 a 5 aspectos que consideres importantes.</b></li>
-            <li><b>Organiza cada aspecto en tu infografía, empleando imágenes y texto (Borrador).</b></li>
-            <li><b>Revisa y corrige tu infografía.</b></li>
-          </div>
-      </div>
+<div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
+  <div class="eActividadNote">
+    <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
+    <div class="actividadContainer">
+        <div class="eActividadRow eActividadBorder">
+            <div class="eActividadTitle">
+                <h1>PRIMER PASO</h1>
+                <h5>SELECCION DEL TEMA</h5>
+            </div>
+            <div class="eActividadDescripcion">
+                <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
+                <li><b>Los principales logros de la cultura egipcia.</b></li>
+                <li><b>La organización social de la civilización egipcia.</b></li>
+            </div>
+        </div>
+        <div class="eActividadRow eActividadBorder">
+            <div class="eActividadTitle">
+                <h1>SEGUNDO PASO</h1>
+                <h5>SELECCION DEL TEMA</h5>
+            </div>
+            <div class="eActividadDescripcion">
+              <li><b>Indaga sobre el tema seleccionado en diversas fuentes.</b></li>
+              <li><b>Selecciona dos fuentes de indagación.</b></li>
+              <li><b>Identifica las ideas más importantes en tus fuentes de  indagación seleccionadas.</b></li>
+            </div>
+        </div>
+        <div class="eActividadRow">
+            <div class="eActividadTitle">
+                <h1>TERCER PASO</h1>
+                <h5>SELECCION DEL TEMA</h5>
+            </div>
+            <div class="eActividadDescripcion">
+              <li><b>Organiza la información sobre tu tema en 3 a 5 aspectos que consideres importantes.</b></li>
+              <li><b>Organiza cada aspecto en tu infografía, empleando imágenes y texto (Borrador).</b></li>
+              <li><b>Revisa y corrige tu infografía.</b></li>
+            </div>
+        </div>
+    </div>
   </div>
 </div>
 <div class="infomacion">
@@ -51,8 +53,8 @@
     </div>
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-    <button class="verActivity">Ver Actividad</button>
-    <button class="saveButton">Verifica</button>
-    <button class="cancelButton"><a href="./libros">Avanza</a></button>
+    <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Ver Actividad</button>
+    <button class="saveButton">Subir Archivo</button>
+    <button class="cancelButton"><a href="./libros">Finalizar</a></button>
   </div>
 </div>

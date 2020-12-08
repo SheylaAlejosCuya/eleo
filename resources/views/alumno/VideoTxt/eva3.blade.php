@@ -5,7 +5,7 @@
             <div id="p1">
                 <p><b> Escoge la respuesta correcta</b></p> 
                 <div class="audioContainer">
-                    <audio controls>
+                    <audio controls controlsList="nodownload">
                         <source src="{{asset('audios/AUDIOLIBRO -  CONOCIENDO EL ANTIGUO EGIPTO 001.wav')}}" type="audio/wav">
                     </audio>
                     <img class="actionButton" src="{{asset('images/escucho.png')}}" alt="">
@@ -24,7 +24,7 @@
                     <h5><b>4. De acuerdo a lo que se informa sobre la construcción de las pirámides, se puede entender que:</b></h5>
                     <a href="" class="btn-block">a. La construcción de las pirámides fue sencilla.</a>
                     <a href="" class="btn-block">b. La construcción de las pirámides fue rápida.</a>
-                    <a href="" class="btn-block">c. La construcción de las pirámides fue misteriosa.</a>
+                    <a href="" class="btn-block">c. La construcción de las pirámides fue misteriosa.</a    >
                     <a href="" class="btn-block">d. La construcción de las pirámides fue laboriosa.</a>
                 </div>
             </div> 

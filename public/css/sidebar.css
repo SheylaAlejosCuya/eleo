@@ -81,6 +81,7 @@
 
 .ehelpNote {
     position: fixed;
+    top: 0;
     background-color: rgba(0, 0, 0, 0.22);
     height: 100vh;
     width: 84.19%;
@@ -91,6 +92,7 @@
 
 .eActividadNote {
     top: 0;
+    right: 0;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.22);
     height: 100vh;

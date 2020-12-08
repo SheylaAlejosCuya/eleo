@@ -8,6 +8,7 @@
             <div class="iconContainer">
                 <img class="actionButton" src="{{asset('images/escucho.png')}}" alt="">
                 <img class="actionButton" src="{{asset('images/escribe.png')}}" alt="">
+                <img class="actionButton" src="{{asset('images/lee.png')}}" alt="">
             </div>
         </div>
         <hr>

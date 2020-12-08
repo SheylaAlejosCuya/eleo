@@ -40,14 +40,11 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+
         'api' => [
             'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
-        ],
-        'usuario' => [
-            'driver' => 'session',
-            'provider' => 'usuarios',
         ],
     ],
 
@@ -71,11 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\user::class,
-        ],
-        'usuarios' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\tb_user::class,
+            'model' => App\Models\User::class,
         ],
 
         // 'users' => [
