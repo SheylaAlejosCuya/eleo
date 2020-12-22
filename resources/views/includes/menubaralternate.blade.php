@@ -31,8 +31,11 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-<!-- CSS -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+    <link href="{{asset('/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 </head>
 <body>
     <script>
@@ -113,7 +116,7 @@
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
-                <a href="#" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
             </div>
         </div>    
         <div class="rightContent">
@@ -129,9 +132,15 @@
                     <h1 class="header__title etitle"><strong>@if(isset($title)) {{$title}} @endif</strong></h1>
                 </div>
                 <div class="studentInfo">
-                    <img src="{{asset('images/perfil.png')}}" alt="Perfil" class="studentProfilePicture"> 
+                    <a href="{{route('web_perfil')}}" class="studentProfilePicture">
+                        @if($alumno->id_gender == '2')
+                            <img src="{{asset('images/perfil_chico.png')}}" alt="Perfil">
+                        @else
+                            <img src="{{asset('images/perfil.png')}}" alt="Perfil">
+                        @endif  
+                    </a>
                     <div class="studentLevel">
-                        <p>E-Leo <br> Nivel 4</p>
+                        <p>E-Leo <br> Nivel {{$alumno->id_grade}}</p>
                     </div>
                 </div>
             </div>
@@ -156,9 +165,34 @@
         </div>
     </div>
   
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
+    <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     
+    @if (session('status'))
+        <script>
+            showMessage("warning", "{{session('status')}}" );
+            function showMessage(type, message) {
+                toastr.options = {
+                    "closeButton": true,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "timeOut": "2000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr[type](message);
+            }
+        </script>
+    @endif
     </body>
 </html>     

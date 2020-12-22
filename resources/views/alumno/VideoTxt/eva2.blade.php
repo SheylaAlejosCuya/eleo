@@ -6,7 +6,7 @@
                 <p><b> Escoge la respuesta correcta</b></p> 
                 <div class="audioContainer">
                     <audio controls controlsList="nodownload">
-                        <source src="{{asset('audios/AUDIOLIBRO -  CONOCIENDO EL ANTIGUO EGIPTO 001.wav')}}" type="audio/wav">
+                        <source src="{{asset('/audios/AUDIOLIBRO 75 - CONOCIENDO EL ANTIGUO EGIPTO.wav')}}" type="audio/wav">
                     </audio>
                     <img class="actionButton" src="{{asset('images/escucho.png')}}" alt="">
                 </div>            
