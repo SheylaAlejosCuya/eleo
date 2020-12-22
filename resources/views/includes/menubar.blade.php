@@ -42,13 +42,15 @@
     </nav>
     </div>
     <div class="col">
-      <div style="text-align: right; "> 
-        <img src="images/perfil.png" alt="Perfil" height="ml-auto"> 
-    <br>
-    <label style="background:#8dc63f;  padding-left: 1.5%; border-top-left-radius:7px;  border-bottom-left-radius: 7px;  color: white; padding-right: 5%; font-size: calc(1rem + 1vw);">
-       E-leo <br> Nivel 4
-    </label>  
-    </div>
+      <div style="text-align: right; ">
+        <a href="{{route('web_perfil')}}" height="ml-auto">
+          <img src="{{asset('images/perfil.png')}}" alt="Perfil">
+        </a>
+        <br>
+        <label style="background:#8dc63f;  padding-left: 1.5%; border-top-left-radius:7px;  border-bottom-left-radius: 7px;  color: white; padding-right: 5%; font-size: calc(1rem + 1vw);">
+          E-leo <br> Nivel 4
+        </label>  
+      </div>
     </div>
   </div>
   
@@ -125,7 +127,7 @@
           <li class="nav-item has-treeview">
             <div>
                 <img src="images/cerrar-sesion.png"  alt="Cerrar Sesion" width="10%">
-                <a href="#" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
              </div>
             </a>
             

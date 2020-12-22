@@ -46,6 +46,11 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+        // Custom
+        'usuario' => [
+            'driver' => 'session',
+            'provider' => 'usuarios',
+        ],
     ],
 
     /*
@@ -70,7 +75,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'usuarios' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\tb_user::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

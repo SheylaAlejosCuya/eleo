@@ -25,8 +25,13 @@
         <div class="profileImg">
             <div class="profileTitle"><b>Foto</b></div>
             <div class="profileAvatar">
-                <img class="avatarSelected" src="{{asset('images/chica.png')}}" alt="">
-                <img src="{{asset('images/chico.png')}}" alt="">
+                @if($alumno->id_gender == '2')
+                    <img src="{{asset('images/chica.png')}}" alt="">
+                    <img class="avatarSelected" src="{{asset('images/chico.png')}}" alt="">
+                @else
+                    <img class="avatarSelected" src="{{asset('images/chica.png')}}" alt="">
+                    <img src="{{asset('images/chico.png')}}" alt="">
+                @endif
                 <img src="{{asset('images/iguanita.png')}}" alt="">
             </div>
         </div>

@@ -3,7 +3,11 @@
   <img src="{{asset('images/iguanitaNueva.png')}}" alt="">
   <div class="ewelcome">
     <p>
-      ¡Bienvenida, <br> Cathy!
+      @if($alumno->id_gender == '2')
+        ¡Bienvenido, <br> {{$alumno->first_name}}
+      @else
+        ¡Bienvenida, <br> {{$alumno->first_name}}
+      @endif
     </p>
     <div id="botones">
       <button class="guiaButton">Guia de Usuario</button>
