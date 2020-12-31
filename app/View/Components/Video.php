@@ -7,14 +7,18 @@ use Illuminate\View\Component;
 class Video extends Component
 {
     public $continue;
+    public $lectura;
+    public $alumno;
     /**
      * Create a new component instance.
      *
      * @return void
      */
-    public function __construct($continue)
+    public function __construct($continue, $lectura, $alumno)
     {
         $this->continue = $continue;
+        $this->lectura = $lectura;
+        $this->alumno = $alumno;
     }
 
     /**

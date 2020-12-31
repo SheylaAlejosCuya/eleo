@@ -2,8 +2,13 @@
 
 use Illuminate\Support\Facades\Route;
 
-use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AlumnoController;
+use App\Http\Controllers\LecturasController;
+use App\Http\Controllers\ResultadosController;
+use App\Http\Controllers\ForoController;
+use App\Http\Controllers\DesafiosController;
+use App\Http\Controllers\TutorialesController;
 
 /* Login */
 Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
@@ -11,172 +16,51 @@ Route::post('/login', [AuthController::class, 'login'])->name('api_login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
 /* Menú Inicio */
-Route::get('/inicio', [UsuarioController::class, 'inicio'])->name('web_inicio')->middleware('auth:usuario');
+Route::get('/inicio', [AlumnoController::class, 'inicio'])->name('web_inicio')->middleware('auth:usuario');
 
 /* Perfil de Usuario */
-Route::get('/perfil', [UsuarioController::class, 'perfil'])->name('web_perfil')->middleware('auth:usuario');
+Route::get('/perfil', [AlumnoController::class, 'perfil'])->name('web_perfil')->middleware('auth:usuario');
 
 /* Tutoriales */
-Route::get('/tutoriales/{id}', function ($id) {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
-}); 
+Route::get('/tutoriales/{id}', [TutorialesController::class, 'tutoriales_video'])->name('web_tutoriales_video')->middleware('auth:usuario');
+Route::get('/tutoriales',      [TutorialesController::class, 'tutoriales'])->name('web_tutoriales')->middleware('auth:usuario');
 
-Route::get('/tutoriales', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
-});
-
-Route::get('/bar', function () {
-    return view('includes/menubaralternate', ['optionIndex' => 0]);
-});
+Route::get('/bar', function () { return view('includes/menubaralternate', ['optionIndex' => 0]); });
 
 /* Lecturas y recursos */
 /* Url - Imagen - Titulo */
-Route::get('/libros', [UsuarioController::class, 'libros'])->name('web_libros')->middleware('auth:usuario');
+Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')->middleware('auth:usuario');
 
 /* Preguntas de Video */
-Route::get('/libros/video/{id}', [UsuarioController::class, 'libros_video'])->name('web_libros_video')->middleware('auth:usuario');
+Route::get('/libros/video/{id}', [LecturasController::class, 'libros_video'])->name('web_libros_video')->middleware('auth:usuario');
 
-Route::get('/videoPreguntas', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas2', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas3', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-
-Route::get('/videoPreguntas4', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
+Route::get('/videoPreguntas1/{id}', [LecturasController::class, 'video_preguntas1'])->name('web_video_preguntas1')->middleware('auth:usuario');
+Route::get('/videoPreguntas2/{id}', [LecturasController::class, 'video_preguntas2'])->name('web_video_preguntas2')->middleware('auth:usuario');
+Route::get('/videoPreguntas3/{id}', [LecturasController::class, 'video_preguntas3'])->name('web_video_preguntas3')->middleware('auth:usuario');
+Route::get('/videoPreguntas4/{id}', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:usuario');
 
 /* Lecturas */
+Route::get('/lecturas', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:usuario');
 
-Route::get('/lecturas', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1]);
-});
-Route::get('/preguntas', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-Route::get('/preguntas2', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-Route::get('/preguntas3', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-Route::get('/preguntas4', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
-Route::get('/preguntas5', function () {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1]);
-});
+Route::get('/preguntas1', [LecturasController::class, 'preguntas1'])->name('web_preguntas1')->middleware('auth:usuario');
+Route::get('/preguntas2', [LecturasController::class, 'preguntas2'])->name('web_preguntas2')->middleware('auth:usuario');
+Route::get('/preguntas3', [LecturasController::class, 'preguntas3'])->name('web_preguntas3')->middleware('auth:usuario');
+Route::get('/preguntas4', [LecturasController::class, 'preguntas4'])->name('web_preguntas4')->middleware('auth:usuario');
+Route::get('/preguntas5', [LecturasController::class, 'preguntas5'])->name('web_preguntas5')->middleware('auth:usuario');
 
-Route::get('/desafios', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'd1url' => './comprensionAuditiva', 'd2url' => './gamificacion', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
-});
+Route::get('/desafios',                [DesafiosController::class, 'desafios'])->name('web_desafios')->middleware('auth:usuario');
+Route::get('/comprensionAuditiva',     [DesafiosController::class, 'comprension_auditiva'])->name('web_comprension_auditiva')->middleware('auth:usuario');
+Route::get('/gamificacion',            [DesafiosController::class, 'gamificacion'])->name('web_gamificacion')->middleware('auth:usuario');
+Route::get('/gamificacion/pupiletras', [DesafiosController::class, 'gamificacion_pupiletras'])->name('web_gamificacion_pupiletras')->middleware('auth:usuario');
+Route::get('/desafios/{id}',           [DesafiosController::class, 'desafios_audios'])->name('web_desafios_audios')->middleware('auth:usuario');
 
-Route::get('/comprensionAuditiva', function() {
-    $data = [
-        [
-            'url' => "./desafios/1",
-            'img' => "images/a.png"
-        ],
-        [
-            'url' => "./desafios/2",
-            'img' => "images/b.png"
-        ],
-        [
-            'url' => "./desafios/3",
-            'img' => "images/c.png"
-        ],
-        [
-            'url' => "./desafios/4",
-            'img' => "images/e.png"
-        ]
-    ];
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Desafíos de comprensión auditiva', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 2]);
-});
+Route::get('/foro',      [ForoController::class, 'foros'])->name('web_foros')->middleware('auth:usuario');
+Route::get('/foro/{id}', [ForoController::class, 'foro'])->name('web_foro')->middleware('auth:usuario');
 
-Route::get('/gamificacion', function() {
-    $data = [
-        [
-            'url' => "./gamificacion/pupiletras",
-            'img' => "images/e.png"
-        ]
-    ];
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2]);
-});
-
-Route::get('/gamificacion/pupiletras', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.pupiletras', 'title' => 'Pupiletras', 'subtitle' => 'Encuentra las palabras', 'optionIndex' => 2]);
-});
-
-Route::get('/desafios/{id}', function($id) {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 2]);
-});
-
-Route::get('/foro', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.foro', 'title' => 'Foro', 'optionIndex' => 3]);
-});
-
-Route::get('/foro/{id}', function($id) {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 3]);
-});
-
-Route::get('/resultados', function() {
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.resultados', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
-});
-
-Route::get('/resultados/estudio', function() {
-    $aresults = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ]
-    ];
-    $lresults = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ],
-        [
-            'title' => 'Nivel Intertextual',
-            'percent' => 100
-        ]
-    ];
-    $tresults = [
-        [
-            'title' => 'Producción Escrita (Rúbrica de Producción escrita)',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Producción Oral (Rúbrica de Producción oral)',
-            'percent' => 40
-        ]
-    ];
-    return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults, 'optionIndex' => 4]);
-});
+Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('web_resultados')->middleware('auth:usuario');
+Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:usuario');
 
 /* Rutas de Profesor */
-
 Route::get('/profesor', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0]);
 });
