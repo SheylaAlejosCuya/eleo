@@ -1,6 +1,7 @@
 <div class="c-video">
     <video class="evideo" controlsList="nodownload">
-        <source src="{{asset('videos/VIDEO_ANIMADO_01_LA_MOMIFICACIÓN_EN_EL_ANTIGUO_EGIPTO.mp4')}}" type="video/mp4">
+        <source src="{{asset($lectura->video)}}" type="video/mp4">
+        
     </video>
     <div class="evideocontrols">
         <div class="evideocontrols__left">
@@ -18,7 +19,7 @@
         </div>
     </div>
 </div>
-<button class="saveButton" style="margin-top: 16px; float: right; z-index: 2; display: none;" id="continueButton"><a href="<?php echo $continue ?>">Siguiente</a></button>
+<button class="saveButton" style="margin-top: 16px; float: right; z-index: 2; display: none;" id="continueButton"><a href="{{route($continue, ['id'=>$lectura->id_reading])}}">Siguiente</a></button>
 <script>
     var video = document.querySelector('.evideo');
     var videobar = document.getElementById('ebar');

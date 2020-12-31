@@ -3,6 +3,7 @@
 /public/storage
 /public/audios
 /public/videos
+/database
 /storage/*.key
 /vendor
 .env

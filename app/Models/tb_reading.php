@@ -10,8 +10,9 @@ class tb_reading extends Model
 
     protected $fillable = [
         'id_reading',
-        'tittle',
+        'title',
         'content',
+        'video_tittle',
         'video',
         'audio',
         'type',
