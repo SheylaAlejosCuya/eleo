@@ -27,4 +27,14 @@ class tb_reading extends Model
 
     public $timestamps = false;
 
+    public function questions()
+    {
+        return $this->hasMany(tb_question::class, 'id_reading', 'id_reading');
+    }
+    
+    public function answers()
+    {
+        return $this->hasManyThrough(tb_answer::class, tb_question::class, 'id_reading', 'id_question', 'id_reading', 'id_question');
+    }
+
 }

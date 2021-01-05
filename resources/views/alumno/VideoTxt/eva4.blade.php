@@ -13,20 +13,14 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>5. ¿Por qué crees que era importante para los egipcios que los obreros tuvieran un capataz?</b></h5>
-                    <a href="#" class="btn-block">a. Porque cuando no eres vigilado, no realizas bien el trabajo.</a>
-                    <a href="#" class="btn-block">b. Porque es importante que alguien te guíe y oriente para realizar un buen trabajo.</a>
-                    <a href="#" class="btn-block">c. Porque no se puede confiar en gente del pueblo.</a>
-                    <a href="#" class="btn-block">d. Porque las construcciones eran lujosas y podían perderse cosas valiosas.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>6. Los egipcios se dedicaban mucho a perfeccionar su arquitectura, ¿cuál sería el objetivo principal de esta dedicación y esfuerzo?</b></h5>
-                    <a href="#" class="btn-block">a. Demostrar que eran superiores a las demás culturas.</a>
-                    <a href="#" class="btn-block">b. Demostrar su valoración por sus dioses y cultura.</a>
-                    <a href="#" class="btn-block">c. Demostrar sus riquezas a los demás pueblos.</a>
-                    <a href="#" class="btn-block">d. Emplear a los abundantes esclavos que tenían.</a>
-                </div>
+                @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                            <a href="#" class="btn-block">{{$answer->answer}}</a>
+                        @endforeach
+                    </div>
+                @endforeach
             </div> 
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 

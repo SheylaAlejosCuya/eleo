@@ -34,10 +34,10 @@ Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')
 /* Preguntas de Video */
 Route::get('/libros/video/{id}', [LecturasController::class, 'libros_video'])->name('web_libros_video')->middleware('auth:usuario');
 
-Route::get('/videoPreguntas1/{id}', [LecturasController::class, 'video_preguntas1'])->name('web_video_preguntas1')->middleware('auth:usuario');
-Route::get('/videoPreguntas2/{id}', [LecturasController::class, 'video_preguntas2'])->name('web_video_preguntas2')->middleware('auth:usuario');
-Route::get('/videoPreguntas3/{id}', [LecturasController::class, 'video_preguntas3'])->name('web_video_preguntas3')->middleware('auth:usuario');
-Route::get('/videoPreguntas4/{id}', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:usuario');
+Route::get('/preguntas/video/{id}/preguntas/bloque-1', [LecturasController::class, 'video_preguntas1'])->name('web_video_preguntas1')->middleware('auth:usuario');
+Route::get('/preguntas/video/{id}/preguntas/bloque-2', [LecturasController::class, 'video_preguntas2'])->name('web_video_preguntas2')->middleware('auth:usuario');
+Route::get('/preguntas/video/{id}/preguntas/bloque-3', [LecturasController::class, 'video_preguntas3'])->name('web_video_preguntas3')->middleware('auth:usuario');
+Route::get('/preguntas/video/{id}/preguntas/bloque-4', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:usuario');
 
 /* Lecturas */
 Route::get('/lecturas', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:usuario');
@@ -378,3 +378,9 @@ Route::get('/profesor/foro/{id}', function($id) {
 Route::get('/profesor/recursos', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
 });
+
+/* ============================================================================================= */
+// NOT VIEW RETURN - FUNCTIONS
+/* ============================================================================================= */
+
+Route::post('/guardar/preguntas/bloque1', [LecturasController::class, 'guardar_preguntas_bloque1'])->name('api_preguntas_bloque1');

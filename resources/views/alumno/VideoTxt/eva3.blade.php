@@ -13,20 +13,14 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>3. A partir del texto, se puede inferir que los médicos:</b></h5>
-                    <a href="#" class="btn-block">a. Aún no habían desarrollado grandes avances.</a>
-                    <a href="#" class="btn-block">b. Solo creaban cosméticos de belleza.</a>
-                    <a href="#" class="btn-block">c. Habían logrado grandes descubrimientos médicos.</a>
-                    <a href="#" class="btn-block">d. No existían aún en Egipto antiguo.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>4. De acuerdo a lo que se informa sobre la construcción de las pirámides, se puede entender que:</b></h5>
-                    <a href="#" class="btn-block">a. La construcción de las pirámides fue sencilla.</a>
-                    <a href="#" class="btn-block">b. La construcción de las pirámides fue rápida.</a>
-                    <a href="#" class="btn-block">c. La construcción de las pirámides fue misteriosa.</a    >
-                    <a href="#" class="btn-block">d. La construcción de las pirámides fue laboriosa.</a>
-                </div>
+                @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                            <a href="#" class="btn-block">{{$answer->answer}}</a>
+                        @endforeach
+                    </div>
+                @endforeach
             </div> 
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 

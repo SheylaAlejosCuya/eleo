@@ -13,27 +13,39 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>1. Además de las pirámides de Egipto, ¿qué se construyó a la sombra de ellas?</b></h5>
-                    <a href="#" class="btn-block">a. Se construyeron acueductos.</a>
-                    <a href="#" class="btn-block">b. Se edificaron coliseos de entretenimiento.</a>
-                    <a href="#" class="btn-block">c. Se alzaron ciudades para los hombres.</a>
-                    <a href="#" class="btn-block">d. Se construyeron almacenes para guardar las cosechas.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>2. Sobre los obreros que trabajaban en las pirámides se puede afirmar que:</b></h5>
-                    <a href="#" class="btn-block">a. Eran esclavos.</a>
-                    <a href="#" class="btn-block">b. Eran campesinos que contrataba el faraón en los meses en los que no había labor en el campo.</a>
-                    <a href="#" class="btn-block">c. Llegaban desde muy lejos y vivían en las calles.</a>
-                    <a href="#" class="btn-block">d. No recibían ningún pago por el trabajo que realizaban.</a>
-                </div>
+
+                @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                            <a href="#" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} btn-block">{{$answer->answer}}</a>
+                        @endforeach
+                    </div>
+                @endforeach
+                
             </div> 
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="{{route('web_video_preguntas3', ['id'=>$lectura->id_reading])}}">Avanza</a></button>
+        <button class="cancelButton" onclick="save()"><a href="{{route('web_video_preguntas3', ['id'=>$lectura->id_reading])}}">Avanza</a></button>
     </div>
 </div>
+@prepend('scripts')
 <script>
-    alert('hola');
+
+var respuestas_user = [];
+
+@foreach($preguntas as $i => $pregunta)
+respuestas_user.push(null);
+$(".alternativa_{{$i}}").click(function() {
+    console.log(".alternativa_{{$i}} - "+$(this).data("id"));
+    respuestas_user[parseInt("{{$i}}")] = $(this).data("id");
+});
+@endforeach
+
+    function save() {
+        console.log(respuestas_user);
+    }
+
 </script>
+@endprepend
