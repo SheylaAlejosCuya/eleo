@@ -17,6 +17,9 @@ use Auth;
 use App\Models\tb_user;
 use App\Models\tb_reading;
 use App\Models\tb_lecturama;
+use App\Models\tb_question;
+use App\Models\tb_answer;
+use App\Models\tb_results;
 
 class LecturasController extends Controller
 {
@@ -45,9 +48,13 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        //dd($lectura);
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', null)->get();
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
     function video_preguntas2($id) {
@@ -55,7 +62,13 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '1')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
     function video_preguntas3($id) {
@@ -63,7 +76,13 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '2')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
     function video_preguntas4($id) {
@@ -71,7 +90,13 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '3')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
 
@@ -106,6 +131,37 @@ class LecturasController extends Controller
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+    }
+
+    function guardar_preguntas_bloque1(Request $request) {
+        try {
+            
+            $respuestas = explode(",", $request->questions);
+            foreach($respuestas as $respuesta) {
+                $results = new tb_results;
+                $results->id_user = Auth::guard('usuario')->id();
+                $results->free_answer = $respuesta;
+                $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
+                $results->save();
+            }
+            
+            return response()->json($respuestas, 200);
+
+        } catch(\Exception $e) {
+            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    function guardar_preguntas_bloque2(Request $request) {
+
+    }
+
+    function guardar_preguntas_bloque3(Request $request) {
+
+    }
+
+    function guardar_preguntas_bloque4(Request $request) {
+
     }
 
 }
