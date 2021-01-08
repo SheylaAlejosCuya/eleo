@@ -118,7 +118,7 @@
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
-                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white; font-size:17px;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white; font-size: 17px;">Cerrar Sesión</a>
             </div>
         </div>    
         <div class="rightContent">
