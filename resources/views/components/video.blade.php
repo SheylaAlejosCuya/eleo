@@ -1,16 +1,8 @@
 <div class="c-video">
-    <video 
-        id="my-video"
-        class="video-js evideo"
-        controls
-        preload="auto"
-        width="720"
-        height="480"
-        poster="MY_VIDEO_POSTER.jpg"
-        data-setup="{}" >
+    <video class="evideo" controlsList="nodownload" preload="auto">
         <source src="https://eleofiles.s3.us-east-2.amazonaws.com/videos/VIDEO_ANIMADO_01_LA_MOMIFICACI%C3%93N_EN_EL_ANTIGUO_EGIPTO.mp4" type="video/mp4">
     </video>
-    <div class="evideocontrols" hidden>
+    <div class="evideocontrols">
         <div class="evideocontrols__left">
             <div class="playButton">
                 <i class="far fa-play-circle" id="play-pause"></i>
