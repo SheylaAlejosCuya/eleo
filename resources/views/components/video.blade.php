@@ -1,6 +1,6 @@
 <div class="c-video">
     <video class="evideo" controlsList="nodownload" >
-        <source src="{{asset($lectura->video)}}" type="video/mp4">
+        <source src="{{asset("$lectura->video")}}" type="video/mp4">
         
     </video>
     <div class="evideocontrols">
