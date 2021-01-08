@@ -40,13 +40,13 @@ Route::get('/preguntas/video/{id}/bloque-3', [LecturasController::class, 'video_
 Route::get('/preguntas/video/{id}/bloque-4', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:usuario');
 
 /* Lecturas */
-Route::get('/lecturas', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:usuario');
+Route::get('/lecturas/{id_reading}', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:usuario');
 
-Route::get('/preguntas/text/{id}/bloque-1', [LecturasController::class, 'texto_preguntas1'])->name('web_preguntas1')->middleware('auth:usuario');
-Route::get('/preguntas/text/{id}/bloque-2', [LecturasController::class, 'texto_preguntas2'])->name('web_preguntas2')->middleware('auth:usuario');
-Route::get('/preguntas/text/{id}/bloque-3', [LecturasController::class, 'texto_preguntas3'])->name('web_preguntas3')->middleware('auth:usuario');
-Route::get('/preguntas/text/{id}/bloque-4', [LecturasController::class, 'texto_preguntas4'])->name('web_preguntas4')->middleware('auth:usuario');
-Route::get('/preguntas/text/{id}/bloque-5', [LecturasController::class, 'texto_preguntas5'])->name('web_preguntas5')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-1', [LecturasController::class, 'texto_preguntas1'])->name('web_texto_preguntas1')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-2', [LecturasController::class, 'texto_preguntas2'])->name('web_texto_preguntas2')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-3', [LecturasController::class, 'texto_preguntas3'])->name('web_texto_preguntas3')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-4', [LecturasController::class, 'texto_preguntas4'])->name('web_texto_preguntas4')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-5', [LecturasController::class, 'texto_preguntas5'])->name('web_texto_preguntas5')->middleware('auth:usuario');
 
 Route::get('/desafios',                [DesafiosController::class, 'desafios'])->name('web_desafios')->middleware('auth:usuario');
 Route::get('/comprensionAuditiva',     [DesafiosController::class, 'comprension_auditiva'])->name('web_comprension_auditiva')->middleware('auth:usuario');

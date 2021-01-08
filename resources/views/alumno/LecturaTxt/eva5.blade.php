@@ -1,8 +1,15 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
 <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
+  
   <div class="eActividadNote">
+    
     <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
     <div class="actividadContainer">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: green"><h2>&times;</h2></span>
+        </button>
+      </div>
         <div class="eActividadRow eActividadBorder">
             <div class="eActividadTitle">
                 <h1>PRIMER PASO</h1>
@@ -49,12 +56,12 @@
       <p><b>Tercer paso: </b>Diseño de la infografía </p>
     </div>
     <div class="infografiaImagen">
-      <img src="images/piramides.png" alt="">
+      <img src="{{asset('images/piramides.png')}}" alt="">
     </div>
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
     <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Ver Actividad</button>
     <button class="saveButton">Subir Archivo</button>
-    <a href="./libros"><button class="cancelButton">Finalizar</button></a>
+    <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
   </div>
 </div>
