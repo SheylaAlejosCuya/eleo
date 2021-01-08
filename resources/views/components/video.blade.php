@@ -8,7 +8,7 @@
         height="480"
         poster="MY_VIDEO_POSTER.jpg"
         data-setup="{}" >
-        <source src="{{asset("$lectura->video")}}" type="video/mp4">
+        <source src="https://eleofiles.s3.us-east-2.amazonaws.com/videos/VIDEO_ANIMADO_01_LA_MOMIFICACI%C3%93N_EN_EL_ANTIGUO_EGIPTO.mp4" type="video/mp4">
     </video>
     <div class="evideocontrols" hidden>
         <div class="evideocontrols__left">
