@@ -1,5 +1,13 @@
 <div class="c-video">
-    <video class="evideo" controls controlsList="nodownload" preload="auto">
+    <video 
+        id="my-video"
+        class="video-js evideo"
+        controls
+        preload="auto"
+        width="640"
+        height="264"
+        poster="MY_VIDEO_POSTER.jpg"
+        data-setup="{}" >
         <source src="{{asset("$lectura->video")}}" type="video/mp4">
     </video>
     <div class="evideocontrols" hidden>
