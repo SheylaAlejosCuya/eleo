@@ -5,10 +5,10 @@
         <div class="foroTema">
             <div class="foroText">
                 <div class="foroImg">
-                    <img src="{{asset('images/fondologin.jpg')}}" alt="">
+                   {{-- comment 
+                    <img src="{{asset('images/fondologin.jpg')}}" alt="">--}}
                 </div>
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ratione? Minima rerum quod culpa soluta saepe reiciendis iste doloribus eos fugit expedita, recusandae dignissimos ea incidunt quis eum ipsum? Ipsum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ratione? Minima rerum quod culpa soluta saepe reiciendis iste doloribus eos fugit expedita, recusandae dignissimos ea incidunt quis eum ipsum? Ipsum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ratione? Minima rerum quod culpa soluta saepe reiciendis iste doloribus eos fugit expedita, recusandae dignissimos ea incidunt quis eum ipsum? Ipsum. Lorem ipsum, dolor sit amet consectetur adipisicing elit. Harum, ratione? Minima rerum quod culpa soluta saepe reiciendis iste doloribus eos fugit expedita, recusandae dignissimos ea incidunt quis eum ipsum? Ipsum.
-            </div>
+             </div>
         </div>
         <div class="foroInfo">
             <div class="foroIconData">

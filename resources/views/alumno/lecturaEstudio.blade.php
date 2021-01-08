@@ -19,7 +19,7 @@
                     </div>
                     <div class="eresultadosCard__right">
                         <div class="ecardText">
-                            <p><b>Comprensión Lectora</b></p>
+                            <p><b>Comprensión Auditiva</b></p>
                             <p>¡Haz completado 10 lecturas!</p>
                         </div>
                     </div>
@@ -43,7 +43,7 @@
                     </div>
                     <div class="eresultadosCard__right">
                         <div class="ecardText">
-                            <p><b>Comprensión Lectora</b></p>
+                            <p><b>Comprensión de Textos</b></p>
                             <p>¡Haz completado 10 lecturas!</p>
                         </div>
                     </div>

@@ -94,9 +94,9 @@
                 </li>
                 <li>
                     @if ($optionIndex == 2)
-                        <a href="{{url('desafios')}}"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="#"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('desafios')}}"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="#"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
@@ -116,7 +116,7 @@
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
-                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white; font-size:17px;">Cerrar Sesión</a>
             </div>
         </div>    
         <div class="rightContent">
