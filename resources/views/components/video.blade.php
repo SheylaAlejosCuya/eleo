@@ -1,5 +1,5 @@
 <div class="c-video">
-    <video class="evideo" controlsList="nodownload" preload="auto">
+    <video class="evideo" controlsList="nodownload" preload="auto" controls>
         <source src="{{asset("$lectura->video")}}" type="video/mp4">
     </video>
     <div class="evideocontrols">
@@ -8,7 +8,7 @@
                 <i class="far fa-play-circle" id="play-pause"></i>
             </div>
         </div>
-        <div class="evideocontrols__right">
+        <div class="evideocontrols__right" hidden>
             <div class="ebar">
                 <div class="evideobar" id="ebar">
                     <div class="evideobarposition"></div>
