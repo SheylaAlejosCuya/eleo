@@ -13,13 +13,23 @@
             </div>
             <hr>
             <div class="epreguntas">
+{{-- comment --}}
 
                 @foreach($preguntas as $indice_1 => $pregunta)
                     <div class="rpt">
                         <h5><b>{{$pregunta->question}}</b></h5>
+{{-- comment
+    @foreach($pregunta->answers as $indice_2 => $answer)
+                        <div class="inputGroup">                           
+                            <input id="radio1" name="radio" type="radio" />
+                            <label for="radio1" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} btn-block">{{$answer->answer}}</label>                            
+                        </div>
+                        @endforeach
+                        
+ --}}   
                         @foreach($pregunta->answers as $indice_2 => $answer)
                             <a href="#" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} btn-block">{{$answer->answer}}</a>
-                        @endforeach
+                        @endforeach 
                     </div>
                 @endforeach
                 
@@ -27,7 +37,7 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton" onclick="save()"><a href="{{route('web_video_preguntas3', ['id'=>$lectura->id_reading])}}">Avanza</a></button>
+        <a href="{{route('web_video_preguntas3', ['id'=>$lectura->id_reading])}}"><button class="cancelButton" onclick="save()">Avanza</button></a>
     </div>
 </div>
 @prepend('scripts')

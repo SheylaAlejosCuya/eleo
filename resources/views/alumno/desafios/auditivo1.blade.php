@@ -23,6 +23,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="../comprensionAuditiva">Finalizar Actividad</a></button>
+        <a href="../comprensionAuditiva"><button class="cancelButton">Finalizar Actividad</button></a>
     </div>
 </div>

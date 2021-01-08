@@ -25,6 +25,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="{{route('web_lecturas', ['id_reading'=>$lectura->id_reading])}}">Avanza</a></button>
+        <a href="{{route('web_lecturas', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Avanza</button></a>
     </div>
 </div>

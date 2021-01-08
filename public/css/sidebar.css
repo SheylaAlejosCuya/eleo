@@ -33,8 +33,7 @@
     margin-left: 32px;
 }
 
-.triggerGroup {
-}
+.triggerGroup {}
 
 .chkTrigger {
     z-index: 1;
@@ -63,7 +62,7 @@
 
 .studentLevel {
     height: 40%;
-    background:#8dc63f;
+    background: #8dc63f;
     border-radius: 7px 0 0 7px;
     color: white;
     font-size: calc(0.03 * 100vh);
@@ -197,15 +196,13 @@
     }
 }
 
-.econtent {
-}
+.econtent {}
 
 .infomacion {
     padding: 0 32px;
 }
 
-.infomacion h1 {
-}
+.infomacion h1 {}
 
 .infomacion h4 {
     color: #585857;
@@ -224,7 +221,7 @@
     justify-content: space-evenly;
     background-color: white;
     border-radius: 15px;
-    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.1),0 6px 20px 0 rgba(0,0,0,0.12) !important;
+    box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.1), 0 6px 20px 0 rgba(0, 0, 0, 0.12) !important;
 }
 
 .avatarImg img {
@@ -341,16 +338,14 @@ a img {
         width: 100vw;
         text-align: center;
     }
-
     .rightContent {
         margin-left: 0;
     }
-
     .esidebar .logo img {
         width: 40%;
     }
-
-    .ehelpNote, .eActividadNote {
+    .ehelpNote,
+    .eActividadNote {
         width: 100%;
     }
 }
@@ -359,11 +354,9 @@ a img {
     .econtent {
         margin-top: 8px;
     }
-    
     .header__title {
         display: none;
     }
-
     .econtent__title {
         display: block;
     }
@@ -381,16 +374,15 @@ a img {
         height: 90vh;
         overflow-y: scroll;
     }
-
     .eActividadTitle {
         padding-bottom: 0;
         border: 0;
     }
-
     .eActividadRow {
         flex-direction: column;
     }
 }
+
 
 /* Perfil */
 
@@ -447,6 +439,7 @@ a img {
     font-weight: 600;
 }
 
+
 /* Welcome Page */
 
 .econtainer {
@@ -478,11 +471,9 @@ a img {
     .econtainer img {
         display: none;
     }
-
     .ewelcome {
         grid-column: 1/4;
     }
-
     .efooter {
         position: fixed;
         bottom: 0;

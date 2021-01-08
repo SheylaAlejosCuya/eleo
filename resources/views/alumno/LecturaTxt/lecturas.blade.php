@@ -42,9 +42,10 @@
             </p>
         </div>
     </div>
-    <button class="saveButton" style="float: right; margin-top: 16px"><a href="{{route('web_texto_preguntas1', ['id_reading'=>37])}}">Avanza</a></button>
+   <a href="{{route('web_texto_preguntas1', ['id_reading'=>37])}}"><button class="saveButton" style="float: right; margin-top: 16px">Avanza</button></a>
+   </br>
     </br>
     </br>
     </br>
-    </br>
+
 </div>
