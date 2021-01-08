@@ -49,12 +49,12 @@
       <p><b>Tercer paso: </b>Diseño de la infografía </p>
     </div>
     <div class="infografiaImagen">
-      <img src="images/piramides.png" alt="">
+      <img src="{{asset('images/piramides.png')}}" alt="">
     </div>
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
     <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Ver Actividad</button>
     <button class="saveButton">Subir Archivo</button>
-    <button class="cancelButton"><a href="./libros">Finalizar</a></button>
+    <button class="cancelButton"><a href="{{route('web_libros')}}">Finalizar</a></button>
   </div>
 </div>

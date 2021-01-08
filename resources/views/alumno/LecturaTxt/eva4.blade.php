@@ -9,7 +9,7 @@
             <hr>
             <div class="epreguntas">
                 <div class="rpt">
-                    <h5><b>13. Ingresa a la siguiente página web: https://www.youtube.com/watch?v=Glnzs4V6SXs ¿Qué información adicional has encontrado en este video sobre Egipto?</b></h5>
+                    <h5><b>13. Ingresa a la siguiente página web: ¿Qué información adicional has encontrado en este video sobre Egipto?</b></h5>
                     <a href="" class="btn-block">a. Sobre su gastronomía.</a>
                     <a href="" class="btn-block">b. Sobre la historia del Nilo y las momias.</a>
                     <a href="" class="btn-block">c. Sobre la geografía de Egipto.</a>
@@ -26,6 +26,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="./preguntas5">Avanza</a></button>
+        <button class="cancelButton"><a href="{{route('web_texto_preguntas5', ['id_reading'=>37])}}">Avanza</a></button>
     </div>
 </div>
