@@ -1,8 +1,15 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
 <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
+  
   <div class="eActividadNote">
+    
     <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
     <div class="actividadContainer">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" style="color: green"><h2>&times;</h2></span>
+        </button>
+      </div>
         <div class="eActividadRow eActividadBorder">
             <div class="eActividadTitle">
                 <h1>PRIMER PASO</h1>

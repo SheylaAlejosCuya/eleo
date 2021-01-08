@@ -4,8 +4,8 @@
         class="video-js evideo"
         controls
         preload="auto"
-        width="640"
-        height="264"
+        width="720"
+        height="480"
         poster="MY_VIDEO_POSTER.jpg"
         data-setup="{}" >
         <source src="{{asset("$lectura->video")}}" type="video/mp4">
