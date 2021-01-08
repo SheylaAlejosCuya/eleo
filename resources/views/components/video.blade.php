@@ -1,7 +1,6 @@
 <div class="c-video">
-    <video class="evideo" controlsList="nodownload" >
-        <source src="{{asset("$lectura->video")}}" type="video/mp4">
-        
+    <video class="evideo" controlsList="nodownload" preload="auto">
+        <source src="https://eleofiles.s3.us-east-2.amazonaws.com/videos/VIDEO_ANIMADO_01_LA_MOMIFICACI%C3%93N_EN_EL_ANTIGUO_EGIPTO.mp4" type="video/mp4">
     </video>
     <div class="evideocontrols">
         <div class="evideocontrols__left">

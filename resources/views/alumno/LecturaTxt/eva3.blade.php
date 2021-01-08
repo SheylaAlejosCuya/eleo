@@ -40,6 +40,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <a href="./preguntas4"><button class="cancelButton">Avanza</button></a>
+        <a href="{{route('web_texto_preguntas4', ['id_reading'=>37])}}"><button class="cancelButton">Avanza</button></a>
     </div>
 </div>
