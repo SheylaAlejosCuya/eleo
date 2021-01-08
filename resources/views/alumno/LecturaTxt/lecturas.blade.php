@@ -42,5 +42,5 @@
             </p>
         </div>
     </div>
-    <button class="saveButton" style="float: right; margin-top: 16px"><a href="./preguntas">Avanza</a></button>
+   <a href="./preguntas"><button class="saveButton" style="float: right; margin-top: 16px">Avanza</button></a>
 </div>

@@ -55,6 +55,6 @@
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
     <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Ver Actividad</button>
     <button class="saveButton">Subir Archivo</button>
-    <button class="cancelButton"><a href="./libros">Finalizar</a></button>
+    <a href="./libros"><button class="cancelButton">Finalizar</button></a>
   </div>
 </div>

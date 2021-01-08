@@ -26,6 +26,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="./preguntas5">Avanza</a></button>
+        <a href="./preguntas5"><button class="cancelButton">Avanza</button></a>
     </div>
 </div>

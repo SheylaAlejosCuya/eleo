@@ -47,6 +47,6 @@
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
         <button class="saveButton">Verifica</button>
-        <button class="cancelButton"><a href="./preguntas3">Avanza</a></button>
+        <a href="./preguntas3"><button class="cancelButton">Avanza</button></a>
     </div>
 </div>
