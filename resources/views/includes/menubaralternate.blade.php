@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>e-leo</title>
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
+    <link rel="stylesheet" href="{{asset('css/inputStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
     <link rel="stylesheet" href="{{asset('css/perfil.css')}}">
     <link rel="stylesheet" href="{{asset('css/tutoriales.css')}}">
@@ -39,7 +40,11 @@
 
     <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
 </head>
+<style>
+
+</style>
 <body>
+    
     <script>
         function toggleMenu() {
             var chk = document.getElementById("chk");
