@@ -30,7 +30,7 @@ class DesafiosController extends Controller
 
         $alumno = Auth::guard('usuario')->user();
         $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
-        $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->get();
+        $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->where('id_state', 3)->get();
 
         $data = [
             [
@@ -50,19 +50,22 @@ class DesafiosController extends Controller
                 'img' => "images/e.png"
             ]
         ];
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Desafíos de comprensión auditiva', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 2, 'lecturas' => $lecturas,  'alumno' => $alumno, 'desafio' => true]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Desafíos de comprensión auditiva', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 2, 'lecturas' => $lecturas,  'alumno' => $alumno, 'type' => 'desafios']);
     }
 
     function gamificacion() {
 
         $alumno = Auth::guard('usuario')->user();
+        $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
+        $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->where('id_state', 3)->get();
+
         $data = [
             [
                 'url' => "./gamificacion/pupiletras",
                 'img' => "images/e.png"
             ]
         ];
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'data' => $data, 'title' => 'Gamificación', 'subtitle' => 'Selecciona la actividad de tu preferencia', 'optionIndex' => 2, 'alumno' => $alumno, 'lecturas' => $lecturas, 'type' => 'gamificacion']);
     }
 
     function gamificacion_pupiletras() {
@@ -74,6 +77,8 @@ class DesafiosController extends Controller
     function desafios_audios($id) {
 
         $alumno = Auth::guard('usuario')->user();
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 2, 'alumno' => $alumno]);
+        $lectura = tb_reading::find($id);
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 2, 'alumno' => $alumno, 'lectura'=>$lectura]);
     }
 }
