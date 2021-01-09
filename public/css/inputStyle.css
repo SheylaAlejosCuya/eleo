@@ -9,6 +9,7 @@
 .form-check label {
     padding: 12px 30px;
     width: 70%;
+    border: 2px solid #d1d7dc;
     display: block;
     text-align: left;
     color: #3c454c;
@@ -23,6 +24,7 @@
 .form-check label:before {
     width: 70%;
     height: 10px;
+    border: 2px solid #d1d7dc;
     border-radius: 50%;
     content: '';
     background-color: #39b44a;

@@ -14,27 +14,17 @@
             <hr>
             <div class="epreguntas">
 
-
                 @foreach($preguntas as $indice_1 => $pregunta)
                     <div class="rpt">
                         <h5><b>{{$pregunta->question}}</b></h5>
-{{-- comment 
                         @foreach($pregunta->answers as $indice_2 => $answer)
-                            <a href="#" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} ">{{$answer->answer}}</a>
-                        @endforeach
-                        --}}{{-- comment 
-                       
-
---}}
-                @foreach($pregunta->answers as $indice_2 => $answer)
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}" checked>
-                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} " >
-                                {{$answer->answer}}
-                            </label>
-                          </div>
-                          @endforeach
-                          
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}">
+                                <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}}">
+                                    {{$answer->answer}}
+                                </label>
+                            </div>
+                        @endforeach 
                     </div>
                 @endforeach
                 

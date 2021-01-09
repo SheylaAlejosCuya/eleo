@@ -18,8 +18,8 @@
                         <h5><b>{{$pregunta->question}}</b></h5>
                         @foreach($pregunta->answers as $indice_2 => $answer)
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}" checked>
-                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} " >
+                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}">
+                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}}">
                                 {{$answer->answer}}
                             </label>
                           </div>
