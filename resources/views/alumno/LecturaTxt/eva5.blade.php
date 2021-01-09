@@ -4,19 +4,19 @@
   <div class="eActividadNote">
     
     <img class="nino_image" src="{{asset('images/nino.png')}}" alt="">
+    
     <div class="actividadContainer">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true" style="color: green"><h2>&times;</h2></span>
-        </button>
-      </div>
-        <div class="eActividadRow eActividadBorder">
+      <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span style="bottom:-20px;" aria-hidden="true" style="color: green"><h2>&times;</h2></span>
+      </button>
+     
+        <div class="eActividadRow eActividadBorder"  >
             <div class="eActividadTitle">
                 <h1>PRIMER PASO</h1>
                 <h5>SELECCION DEL TEMA</h5>
             </div>
             <div class="eActividadDescripcion">
-                <b>Selecciona uno de los siguientes temas para elaborar tu infografía.</b>
+                <b> <strong>Selecciona</strong>  uno de los siguientes temas para elaborar tu infografía.</b>
                 <li><b>Los principales logros de la cultura egipcia.</b></li>
                 <li><b>La organización social de la civilización egipcia.</b></li>
             </div>
@@ -24,43 +24,47 @@
         <div class="eActividadRow eActividadBorder">
             <div class="eActividadTitle">
                 <h1>SEGUNDO PASO</h1>
-                <h5>SELECCION DEL TEMA</h5>
+                <h5>INDAGACIÓN</h5>
             </div>
             <div class="eActividadDescripcion">
-              <li><b>Indaga sobre el tema seleccionado en diversas fuentes.</b></li>
-              <li><b>Selecciona dos fuentes de indagación.</b></li>
-              <li><b>Identifica las ideas más importantes en tus fuentes de  indagación seleccionadas.</b></li>
+              <li><b> <strong>Indaga</strong> sobre el tema seleccionado en diversas fuentes.</b></li>
+              <li><b> <strong>Selecciona</strong> dos fuentes de indagación.</b></li>
+              <li><b> <strong>Identifica </strong>las ideas más importantes en tus fuentes de  indagación seleccionadas.</b></li>
             </div>
         </div>
         <div class="eActividadRow">
             <div class="eActividadTitle">
                 <h1>TERCER PASO</h1>
-                <h5>SELECCION DEL TEMA</h5>
+                <h5>PRODUCCIÓN</h5>
             </div>
             <div class="eActividadDescripcion">
-              <li><b>Organiza la información sobre tu tema en 3 a 5 aspectos que consideres importantes.</b></li>
-              <li><b>Organiza cada aspecto en tu infografía, empleando imágenes y texto (Borrador).</b></li>
-              <li><b>Revisa y corrige tu infografía.</b></li>
+              <li><b><strong>Organiza</strong> la información sobre tu tema en 3 a 5 aspectos que consideres importantes.</b></li>
+              <li><b><strong>Organiza</strong> cada aspecto en tu infografía, empleando imágenes y texto (Borrador).</b></li>
+              <li><b><strong>Revisa</strong> y corrige tu infografía.</b></li>
             </div>
         </div>
     </div>
   </div>
 </div>
 <div class="infomacion">
-  <h4>Una infografía es un texto de fácil comprensión que utiliza imágenes o gráficos junto con textos escritos para proporcionar información acerca de lo que se desea comunicar. Cabe resaltar que el texto escrito que emplea una infografía es resumido, porque se complementa con las imágenes para brindar un rápido entendimiento del tema al lector.</h4>
+  <h5 style="padding-top: 20px;">
+    Una infografía es un texto de fácil comprensión que utiliza imágenes o gráficos junto con textos escritos para proporcionar información acerca de lo que se desea comunicar. Cabe resaltar que el texto escrito que emplea una infografía es resumido, porque se complementa con las imágenes para brindar un rápido entendimiento del tema al lector. </h5>
   <div class="infografiaInfo">
     <div class="infografiaPasos">
       <p style="color:#00a3fb; font-size:2rem">Pasos para elaborar una infografía</p>           
-      <p><b>Primer paso: </b>Indagación</p>
-      <p><b>Segundo paso: </b>Definición del tema</p>
-      <p><b>Tercer paso: </b>Diseño de la infografía </p>
+      <p><b>Primer paso: </b>Planifica tu infografía</p>
+      <p><b>Segundo paso: </b>Redacta tu infografía
+      <li style="font-size: 20px">Edita tu infografía en la Presentación final.</li>
+      <li style="font-size: 20px">Publica tu infografía en esta plataforma.</li> 
+    </p>     
+      <p><b>Tercer paso: </b>Reflexiona sobre tu aprendizaje</p>
     </div>
     <div class="infografiaImagen">
-      <img src="{{asset('images/piramides.png')}}" alt="">
+      <img src="{{asset('images/info.jpeg')}}" alt="">
     </div>
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-    <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Ver Actividad</button>
+    <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button>
     <button class="saveButton">Subir Archivo</button>
     <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
   </div>
