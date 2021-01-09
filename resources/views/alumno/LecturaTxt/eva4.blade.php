@@ -8,20 +8,19 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>13. Ingresa a la siguiente página web: ¿Qué información adicional has encontrado en este video sobre Egipto?</b></h5>
-                    <a href="" class="btn-block">a. Sobre su gastronomía.</a>
-                    <a href="" class="btn-block">b. Sobre la historia del Nilo y las momias.</a>
-                    <a href="" class="btn-block">c. Sobre la geografía de Egipto.</a>
-                    <a href="" class="btn-block">d. Sobre la construcción de las esfinges.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>14. Si quisieras conocer cómo curaban los brazos rotos en Egipto, ¿qué tipo de texto deberías indagar?</b></h5>
-                    <a href="" class="btn-block">a. Textos de medicina antigua.</a>
-                    <a href="" class="btn-block">b. Textos históricos.</a>
-                    <a href="" class="btn-block">c. Textos literarios.</a>
-                    <a href="" class="btn-block">d. Textos periodísticos.</a>
-                </div>
+                 @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}" checked>
+                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} " >
+                                {{$answer->answer}}
+                            </label>
+                          </div>
+                          @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 

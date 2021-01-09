@@ -54,7 +54,7 @@ class LecturasController extends Controller
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
         }
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno, ]);
     }
 
     function video_preguntas2($id) {
@@ -62,7 +62,7 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '1')->get();
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '1')->where('source', 'video')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
@@ -76,7 +76,7 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '2')->get();
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '2')->where('source', 'video')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
@@ -86,11 +86,11 @@ class LecturasController extends Controller
     }
 
     function video_preguntas4($id) {
-
-        $lectura = tb_reading::find($id);
+        
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '3')->get();
+        $lectura = tb_reading::find($id);
+        $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '3')->where('source', 'video')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
@@ -110,27 +110,63 @@ class LecturasController extends Controller
     function texto_preguntas1($id_reading) {
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+
+        $lectura = tb_reading::find($id_reading);
+        $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '1')->where('source', 'texto')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas2($id_reading) {
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+
+        $lectura = tb_reading::find($id_reading);
+        $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '2')->where('source', 'texto')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas3($id_reading) {
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+
+        $lectura = tb_reading::find($id_reading);
+        $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '3')->where('source', 'texto')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
+
     function texto_preguntas4($id_reading) {
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+
+        $lectura = tb_reading::find($id_reading);
+        $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '4')->where('source', 'texto')->get();
+
+        foreach($preguntas as $pregunta) {
+            $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+        }
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
+    
     function texto_preguntas5($id_reading) {
 
         $alumno = tb_user::find(Auth::guard('usuario')->id());
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 1, 'alumno' => $alumno]);
+        $lectura = tb_reading::find($id_reading);
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno]);
     }
 
     function guardar_preguntas_bloque1(Request $request) {

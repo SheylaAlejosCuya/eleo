@@ -8,27 +8,19 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>1. Identifica la respuesta correcta.</b></h5>
-                    <a href="" class="btn-block">a. Una esfinge tiene el cuerpo de jaguar y cabeza de león.</a>
-                    <a href="" class="btn-block">b. La pirámide de Kefren fue construida por el faraón Djoser.</a>
-                    <a href="" class="btn-block">c. La pirámide de Micerinos es más chica que la de Keops y Kefren.</a>
-                    <a href="" class="btn-block">d. Imhotep construyó la esfinge de Gizeh.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>2. Keops, Kefren y Micerinos son:</b></h5>
-                    <a href="" class="btn-block">a. Llanuras.</a>
-                    <a href="" class="btn-block">b. Mesetas.</a>
-                    <a href="" class="btn-block">c. Pirámides.</a>
-                    <a href="" class="btn-block">d. Estatuas.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>3. Los arqueólogos, constructores, navegantes, músicos y pintores fueron los responsables de:</b></h5>
-                    <a href="" class="btn-block">a. Construir pirámides.</a>
-                    <a href="" class="btn-block">b. Construir la civilización egipcia.</a>
-                    <a href="" class="btn-block">c. Esculpir esfinges.</a>
-                    <a href="" class="btn-block">d. Construir templos.</a>
-                </div>
+                @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}" checked>
+                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}} " >
+                                {{$answer->answer}}
+                            </label>
+                          </div>
+                          @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
