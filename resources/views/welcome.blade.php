@@ -55,7 +55,7 @@ color: rgba(0, 0, 0, 0.5);
             <div class="col-lg-4" style="background: white; height: 900px;  align-items: center;display: flex; justify-content: center;">
               <form method="POST" action="{{route('api_login')}}" style="background: white; width: 320px;">
                 {{ csrf_field() }}
-                <img src="images/logo.png" style="width: 262px; padding: 16px 0" alt="">
+                <a href="/info"><img src="images/logo.png" style="width: 262px; padding: 16px 0" alt=""></a> 
                 <p style="color: black;  font-size: 22px; line-height: 0.5em; padding-top: 10%;">Iniciar sesión</p>
                 <p style="font-size: 14px;">¿No cuentas con una cuenta? <font style="color:#8DC63F" >Registrate ahora</font></p>
                 <input type="email" name='email' id='email' placeholder="correo electrónico" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;">
