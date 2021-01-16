@@ -491,6 +491,19 @@ a img {
     transition: 0.25s;
 }
 
+@media screen and (max-width: 900px) {
+    .chatFloatingButton {
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        width: 70px;
+        height: 70px;
+        margin: 16px;
+        cursor: pointer;
+        transition: 0.25s;
+    }
+}
+
 .chatFloatingButton:hover {
     width: 95px;
     height: 95px;

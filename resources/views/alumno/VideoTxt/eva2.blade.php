@@ -41,7 +41,7 @@
             </div> 
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-        <button class="saveButton">Verifica</button>
+            <button class="saveButton">Verifica</button>
         <a href="{{route('web_video_preguntas3', ['id'=>$lectura->id_reading])}}"><button class="cancelButton" onclick="save()">Avanza</button></a>
     </div>
 </div>
