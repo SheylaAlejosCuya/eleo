@@ -5,16 +5,17 @@
 }
 
 .eresultados__left {
-    width: 58%;
+    width: 100%;
 }
 
 .eresultados__right {
     width: 38%;
     display: flex;
-    flex-direction: column;   
+    flex-direction: column;
 }
 
-.enotas, .eresultadosCards {
+.enotas,
+.eresultadosCards {
     height: 50%;
 }
 
