@@ -8,34 +8,19 @@
             </div>
             <hr>
             <div class="epreguntas">
-                <div class="rpt">
-                    <h5><b>9. ¿Por qué es importante descubrir la historia de nuestros antepasados?</b></h5>
-                    <a href="" class="btn-block">a. Porque el mundo debe evolucionar.</a>
-                    <a href="" class="btn-block">b. Porque todo lo que pasó antes es mejor que lo que está sucediendo ahora.</a>
-                    <a href="" class="btn-block">c. Porque es importante conocer al ser humano de todos los tiempos.</a>
-                    <a href="" class="btn-block">d. Porque no debemos cometer los mismos errores que cometieron nuestros antepasados.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>10. ¿Por qué es importante conocer modos de vida de personas que existieron hace miles de años?</b></h5>
-                    <a href="" class="btn-block">a. Porque el ser humano es curioso.</a>
-                    <a href="" class="btn-block">b. Porque debemos conocer algo de la historia de la humanidad.</a>
-                    <a href="" class="btn-block">c. Porque conocer a nuestros antepasados nos permite entender mejor al ser humano.</a>
-                    <a href="" class="btn-block">d. Porque nuestros antepasados fueron mejores personas.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>11. ¿Por qué crees que las pirámides de Egipto han sido estudiadas durante tanto tiempo?</b></h5>
-                    <a href="" class="btn-block">a. Por la calidad de los materiales con los que se construyeron.</a>
-                    <a href="" class="btn-block">b. Por lo impresionantes que resultan.</a>
-                    <a href="" class="btn-block">c. Por el misterio que aún representan sus construcciones.</a>
-                    <a href="" class="btn-block">d. Por la fama de los ingenieros que las construyeron.</a>
-                </div>
-                <div class="rpt">
-                    <h5><b>12. ¿Consideras que los obreros que trabajaban en la construcción de las pirámides eran maltratados?</b></h5>
-                    <a href="" class="btn-block">a. No, porque este trabajo que realizaban era justamente remunerado.</a>
-                    <a href="" class="btn-block">b. No, porque la esclavitud estaba permitida en esa época.</a>
-                    <a href="" class="btn-block">c. Sí, porque los obreros estaban obligados a realizar este trabajo.</a>
-                    <a href="" class="btn-block">d. Sí, porque no recibían ningún pago que compensara su trabajo.</a>
-                </div>
+                 @foreach($preguntas as $indice_1 => $pregunta)
+                    <div class="rpt">
+                        <h5><b>{{$pregunta->question}}</b></h5>
+                        @foreach($pregunta->answers as $indice_2 => $answer)
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="response_{{$indice_1}}" value="" id="answer_{{$indice_1}}_{{$indice_2}}">
+                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}' class="alternativa_{{$indice_1}}">
+                                {{$answer->answer}}
+                            </label>
+                          </div>
+                          @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
