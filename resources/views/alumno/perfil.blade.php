@@ -18,8 +18,8 @@
                 <div class="profileData">{{$alumno->username}}</div>
             </div>
             <div class="profileInfoRow">
-                <div class="profileTitle"><b>Contraseña </b></div>
-                <div class="profileData">*********</div>
+                <div class="profileTitle"><b>Contraseña</b></div>
+                <input class="profileData" type="password" id="password_new" name="password_new" placeholder="*******"/>
             </div>
         </div>
         <div class="profileImg">
@@ -38,8 +38,61 @@
     </div>
 
     <div class="ebuttons">
-        <button class="saveButton">Guardar</button>
-        <button class="cancelButton">Cancelar</button>
+        <button class="saveButton" onclick="savePassword()">Guardar</button>
+        <button class="cancelButton" hidden>Cancelar</button>
     </div>
 
 @include('includes.footer')
+
+@prepend('scripts')
+<script>
+    function savePassword() {
+
+        var password_new = $("#password_new").val();
+
+        if(password_new != "") {
+            $.ajax({
+                type: "POST",
+                url: "{{route('api_save_password')}}",
+                dataType: "json",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "id_usuario": "{{$alumno->id_user}}",
+                    "password_new": password_new
+                },
+                success: function(response) { 
+                    console.log(response);
+                    $("#password_new").val("");
+                    showMessage("success", "Contraseña modificada correctamente");
+                },
+                error: function(e) {
+                    console.log(e); 
+                    $("#password_new").val("");
+                    showMessage("warning", "Error al modificar la contraseña");
+                }
+            });
+        } else {
+            showMessage("warning", "Sin contraseña que modificar");
+        }
+    }
+
+    function showMessage(type, message) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "timeOut": "2000",
+            "extendedTimeOut": "2000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr[type](message);
+    }
+</script>
+@endprepend

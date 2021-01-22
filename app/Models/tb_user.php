@@ -14,7 +14,7 @@ class tb_user extends Authenticatable
     
     use HasFactory, Notifiable;
     
-    protected $guard = 'usuario';
+    //protected $guard = 'usuario';
     protected $table = 'tb_user';
 
     protected $fillable = [
