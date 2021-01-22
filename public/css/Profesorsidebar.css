@@ -10,7 +10,7 @@
     display: flex;
 }
 
-.header {
+.eheader {
     height: calc(0.2 * 100vh);
     width: 100%;
     display: flex;
@@ -366,7 +366,7 @@ a img {
         display: block;
     }
 
-    .header {
+    .eheader {
         height: calc(0.1 * 100vh);
     }
 
@@ -506,4 +506,8 @@ a img {
         height: 55px;
         transform: translateX(-2.5px) translateY(-2.5px);
     }
+}
+
+.niveles {
+    width: 100%;
 }
