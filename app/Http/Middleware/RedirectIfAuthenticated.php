@@ -6,6 +6,7 @@ use App\Providers\RouteServiceProvider;
 use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\tb_user;
 
 class RedirectIfAuthenticated
 {
@@ -23,7 +24,11 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                return redirect(RouteServiceProvider::HOME);
+                if($guard == 'usuario'){
+                    return redirect(RouteServiceProvider::HOME_ALUMNO);
+                } else if ($guard == 'profesor') { 
+                    return redirect(RouteServiceProvider::HOME_PROFESOR);
+                }
             }
         }
 

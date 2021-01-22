@@ -21,34 +21,16 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
+            if (Auth::guard('usuario')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1, 'id_rol' => 2])) {
 
-            $credentials = $request->only('email', 'password');
-
-            if (Auth::guard('usuario')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1 ])) {
-                
                 return redirect()->intended('inicio');
-                // return response()->json([
-                //     'status_code' => 200,
-                //     'message' => 'Success'
-                // ], 200);
+
+            } else if (Auth::guard('profesor')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1, 'id_rol' => 1])) {
+
+                return redirect()->intended('profesor-inicio');
             }
 
-            //$user = tb_user::where('email', $request->email)->first();
-            
-            //cookie(['user' => $user]);
-
-            //if(!Hash::check($request->password, $user->password, [])) {
-                //throw new \Exception('Error');
-            //}
-
-            //$tokenResult = $user->createToken('authToken')->plainTextToken;
-
-            // return response()->json([
-            //     'status_code' => 500,
-            //     'message' => 'Unauthorized'
-            // ], 500);
-            
-            return redirect()->back()->withInput($request->only('email'));
+            return redirect()->back()->with('status', 'error');
 
         } catch (Exception $error) {
             return response()->json([
@@ -62,7 +44,8 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('usuario')->logout();
-        return redirect()->intended('inicio');
+        Auth::guard('profesor')->logout();
+        return redirect()->intended('/');
     }
 
 }
