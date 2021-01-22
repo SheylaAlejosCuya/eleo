@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>e-leo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/inputStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
@@ -128,7 +129,7 @@
         </div>    
         <div class="rightContent">
             <!-- ehelpside oculta las ventanas de mensajes de ayuda -->
-            <div class="header">
+            <div class="eheader">
                 <div class="header__left">
                     <div class="triggerGroup">
                         <input type="checkbox" name="" id="chk" onclick="toggleMenu()">
