@@ -379,6 +379,56 @@ Route::get('/profesor/recursos', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
 });
 
+Route::get('/resultadosNuevo', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.resultadosNuevo', 'title' => 'Mis Resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
+});
+
+Route::get('/resultadosNuevo/promedioGeneral', function () {
+    $aresults = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ]
+    ];
+    $lresults = [
+        [
+            'title' => 'Nivel Literal',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Nivel Inferencial',
+            'percent' => 40
+        ],
+        [
+            'title' => 'Nivel Crítico Valorativo',
+            'percent' => 60
+        ],
+        [
+            'title' => 'Nivel Intertextual',
+            'percent' => 100
+        ]
+    ];
+    $tresults = [
+        [
+            'title' => 'Producción escrita (Rúbrica de Producción escrita)',
+            'percent' => 50
+        ],
+        [
+            'title' => 'Producción oral (Rúbrica de Producción oral)',
+            'percent' => 40
+        ]
+    ];
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.resultadosPromedio', 'title' => 'Mis Promedio General', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4, 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults]);
+});
+
 /* ============================================================================================= */
 // NOT VIEW RETURN - FUNCTIONS
 /* ============================================================================================= */
