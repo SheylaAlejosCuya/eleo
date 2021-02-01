@@ -21,7 +21,7 @@ Route::get('/inicio', [AlumnoController::class, 'inicio'])->name('web_inicio')->
 
 /* Perfil de Usuario */
 Route::get('/perfil', [AlumnoController::class, 'perfil'])->name('web_perfil')->middleware('auth:usuario');
-Route::post('/save/password/alumno', [AlumnoController::class, 'guardar_password'])->name('api_save_password');
+Route::post('/save/password/alumno', [AlumnoController::class, 'guardar_password'])->name('api_save_password')->middleware('auth:usuario');
 
 /* Tutoriales */
 Route::get('/tutoriales/{id}', [TutorialesController::class, 'tutoriales_video'])->name('web_tutoriales_video')->middleware('auth:usuario');
@@ -63,15 +63,21 @@ Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('we
 Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:usuario');
 
 /* Rutas de Profesor */
-Route::get('/profesor-inicio', [ProfesorController::class, 'inicio'])->name('web_inicio_profesor')->middleware('auth:profesor');
+Route::get('/profesor/inicio', [ProfesorController::class, 'inicio'])->name('web_inicio_profesor')->middleware('auth:profesor');
+
+/* Asignación de Profesor */
+Route::get('/inicio/profesor/asignacion', [ProfesorController::class, 'asignacion_alumnos'])->name('web_asignacion_alumnos')->middleware('auth:profesor');
+Route::post('/alumno/update/section', [ProfesorController::class, 'actualizar_seccion_alumno'])->name('api_actualizar_seccion_alumno')->middleware('auth:profesor');
+
+Route::get('/profesor/perfil', [ProfesorController::class, 'perfil'])->name('web_profesor_perfil')->middleware('auth:profesor');
+Route::post('/save/password/profesor', [ProfesorController::class, 'guardar_password'])->name('api_save_password_profesor')->middleware('auth:profesor');
+Route::post('/save/avatar/profesor', [ProfesorController::class, 'guardar_foto'])->name('api_save_avatar_profesor')->middleware('auth:profesor');
 
 Route::get('/profesor/tutoriales', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });
 
-Route::get('/profesor/perfil', function () {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.perfil', 'title' => 'Información Básica', 'optionIndex' => 0]);
-});
+
 
 Route::get('/profesor/tutoriales/{id}', function ($id) {
     return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
@@ -434,3 +440,8 @@ Route::get('/resultadosNuevo/promedioGeneral', function () {
 /* ============================================================================================= */
 
 Route::post('/guardar/preguntas/bloque1', [LecturasController::class, 'guardar_preguntas_bloque1'])->name('api_preguntas_bloque1');
+Route::post('/guardar/preguntas/bloque2', [LecturasController::class, 'guardar_preguntas_bloque2'])->name('api_preguntas_bloque2');
+Route::post('/guardar/preguntas/bloque3', [LecturasController::class, 'guardar_preguntas_bloque3'])->name('api_preguntas_bloque3');
+Route::post('/guardar/preguntas/bloque4', [LecturasController::class, 'guardar_preguntas_bloque4'])->name('api_preguntas_bloque4');
+
+Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_preguntas_bloque5'])->name('api_preguntas_bloque5');

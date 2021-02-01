@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class tb_level extends Model
 {
-    use HasFactory;
+    protected $table = 'tb_level';
+
+    protected $fillable = [
+        'id_level',
+        'level'
+    ];
+
+    protected $primaryKey = 'id_level';
+
+    public $timestamps = false;
 }

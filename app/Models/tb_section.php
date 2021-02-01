@@ -2,10 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class tb_section extends Model
 {
-    use HasFactory;
+    protected $table = 'tb_section';
+
+    protected $fillable = [
+        'id_section',
+        'section'
+    ];
+
+    protected $primaryKey = 'id_section';
+
+    public $timestamps = false;
 }

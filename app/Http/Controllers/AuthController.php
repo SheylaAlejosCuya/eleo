@@ -27,7 +27,7 @@ class AuthController extends Controller
 
             } else if (Auth::guard('profesor')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1, 'id_rol' => 1])) {
 
-                return redirect()->intended('profesor-inicio');
+                return redirect()->intended('profesor/inicio');
             }
 
             return redirect()->back()->with('status', 'error');

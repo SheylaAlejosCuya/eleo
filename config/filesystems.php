@@ -65,6 +65,20 @@ return [
             'endpoint' => env('AWS_ENDPOINT'),
         ],
 
+        'perfil_fotos' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/perfil'),
+            'url' => '/storage/perfil',
+            'visibility' => 'public',
+        ],
+
+        'archivos_alumnos_p_final' => [
+            'driver' => 'local',
+            'root' => storage_path('app/public/archivos/alumnos'),
+            'url' => '/storage/archivos/alumnos',
+            'visibility' => 'public',
+        ],
+
     ],
 
     /*
