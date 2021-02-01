@@ -143,7 +143,7 @@
                     <h1 class="header__title etitle"><strong>@if(isset($title)) {{$title}} @endif</strong></h1>
                 </div>
                 <div class="studentInfo">
-                    {{--<a href="{{route('web_perfil')}}" class="studentProfilePicture">
+                    <a href="{{route('web_perfil')}}" class="studentProfilePicture">
                         @if($alumno->id_gender == '2')
                             <img src="{{asset('images/perfil_chico.png')}}" alt="Perfil">
                         @else
@@ -152,7 +152,7 @@
                     </a>
                     <div class="studentLevel">
                         <p>E-Leo <br> Nivel {{$alumno->id_grade}}</p>
-                    </div>--}}
+                    </div>
                 </div>
             </div>
             <?php
