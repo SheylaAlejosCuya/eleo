@@ -23,34 +23,22 @@ use App\Models\tb_lecturama;
 class AlumnoController extends Controller
 {
     function perfil() {
-
         $alumno = Auth::guard('usuario')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'optionIndex' => 0, 'alumno' => $alumno]);
     }
 
     function guardar_password(Request $request) {
         try {
-
             $usuario = tb_user::find($request->id_usuario);
             $usuario->password = Hash::make($request->password_new);
             $usuario->save();
-
-            return response()->json([
-                'status_code' => 200,
-                'message' => 'Success'
-            ], 200);
-            
+            return response()->json(['status_code' => 200, 'message' => 'Success'], 200);
         } catch (Exception $error) {
-            return response()->json([
-                'status_code' => 500,
-                'message' => 'Error',
-                'error' => $error,
-            ], 500);
+            return response()->json(['status_code' => 500, 'message' => 'Error', 'error' => $error], 500);
         }
     }
 
     function inicio() {
-
         $alumno = Auth::guard('usuario')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio', 'optionIndex' => 0, 'alumno' => $alumno]);
     }

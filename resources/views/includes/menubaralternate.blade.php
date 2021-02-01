@@ -151,7 +151,13 @@
                         @endif  
                     </a>
                     <div class="studentLevel">
-                        <p>E-Leo <br> Nivel {{$alumno->id_grade}}</p>
+                        <p>E-Leo <br> Nivel {{$alumno->id_grade}}
+                            @if((int) $alumno->id_grade == 1)
+                             Primaria
+                            @else
+                             Secundaria
+                            @endif
+                        </p>
                     </div>
                 </div>
             </div>
@@ -187,4 +193,4 @@
     @stack('scripts')
     
     </body>
-</html>     
+</html>

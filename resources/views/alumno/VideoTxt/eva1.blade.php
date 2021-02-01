@@ -12,7 +12,6 @@
             </div>
         </div>
         <hr>
-
         @foreach($preguntas as $indice => $pregunta)
             <div class="epreguntas">
                 <div class="rpt">
@@ -25,17 +24,17 @@
 
     </div>
     <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-  
-        <a href="{{route('web_video_preguntas2', ['id'=>$lectura->id_reading])}}"><button class="cancelButton">Avanza</button></a>
+        <a  href="{{route('web_video_preguntas2', ['id'=>$lectura->id_reading])}}"><button class="cancelButton">Avanza</button></a>
     </div>
 </div>
 
 @prepend('scripts')
 <script>
-    function save() {
+    function save_answers() {
 
         var nro_preguntas = parseInt("{{count($preguntas)}}");
         var respuestas = [];
+        
 
         for (let i = 0; i < nro_preguntas; i++) {
             var id_textview = "#response_"+i;

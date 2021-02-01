@@ -38,4 +38,9 @@ class tb_user extends Authenticatable
 
     public $timestamps = false;
 
+    public function level()
+    {
+        return $this->hasMany(tb_level::class, 'id_level', 'id_level');
+    }
+
 }

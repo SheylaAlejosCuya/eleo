@@ -18,9 +18,9 @@
         </div>
     </div>
 </div>
-{{--
+
     <button class="saveButton" style="margin-top: 16px; float: right; z-index: 2; display: none;" id="continueButton"><a href="{{route($continue, ['id'=>$lectura->id_reading])}}">Siguiente</a></button> 
---}}
+
 <script>
     var video = document.querySelector('.evideo');
     var videobar = document.getElementById('ebar');

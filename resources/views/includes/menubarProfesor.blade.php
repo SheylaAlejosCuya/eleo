@@ -36,7 +36,10 @@
   <!-- Google Font: Source Sans Pro -->
   <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&display=swap" rel="stylesheet">
-<!-- CSS -->
+    <!-- CSS -->
+
+    <link href="{{asset('/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
+
 </head>
 <body>
     <script
@@ -84,13 +87,20 @@
                 <img src="{{asset('images/logo.png')}}" alt="eleo" class="brand-image" >
             </div>
             <ul>
-            <li>
+                <li>
                     @if ($optionIndex == 0) 
-                        <a href="{{url('profesor')}}"><img class="eoption eoptionSelected" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
+                        <a href="{{route('web_inicio_profesor')}}"><img class="eoption eoptionSelected" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor')}}"><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
+                        <a href="{{route('web_inicio_profesor')}}"><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
+                {{-- <li>
+                    @if ($optionIndex == 6) 
+                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Asignación"></a>
+                    @else
+                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Asignación"></a>
+                    @endif
+                </li> --}}
                 <li>
                     @if ($optionIndex == 1) 
                         <a href="{{url('profesor/biblioteca')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
@@ -100,23 +110,23 @@
                 </li>
                 <li>
                     @if ($optionIndex == 2)
-                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
                     @if ($optionIndex == 3)
-                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
                     @if ($optionIndex == 4)
-                        <a href="{{url('profesor/foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor/foro')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/foro')}}"><img class="eoption" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
@@ -129,7 +139,7 @@
             </ul>
             <div class="logout">
                 <img src="{{asset('images/cerrar-sesion.png')}}" alt="Cerrar Sesion">
-                <a href="#" style="padding-left: 5px; color: white;">Cerrar Sesión</a>
+                <a href="{{route('api_logout')}}" style="padding-left: 5px; color: white; font-size: 17px;">Cerrar Sesión</a>
             </div>
         </div>    
         <div class="rightContent">
@@ -150,7 +160,9 @@
                     <h1 class="header__title etitle"><strong>@if(isset($title)) {{$title}} @endif</strong></h1>
                 </div>
                 <div class="studentInfo">
-                    <img src="{{asset('images/perfil.png')}}" alt="Perfil" class="studentProfilePicture"> 
+                    <a href="{{route('web_profesor_perfil')}}" class="studentProfilePicture">
+                        <img src="{{asset('images/perfil_profesor.png')}}" alt="Perfil">
+                    </a>
                 </div>
             </div>
             <?php
@@ -174,4 +186,7 @@
         </div>
     </div>
     </body>
+    <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    @stack('scripts')
 </html>     

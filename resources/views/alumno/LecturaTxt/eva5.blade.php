@@ -1,4 +1,31 @@
 <link rel="stylesheet" href="{{asset('css/lecturas.css')}}">
+<style>
+.upload-btn-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid rgb(15, 136, 46);
+  color: rgb(22, 123, 34);
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
+  width: 175px;
+  height: 65px;
+}
+</style>
+
 <div class="modal" id="exampleModal" tabindex="-1" aria-hidden="true">
   
   <div class="eActividadNote">
@@ -65,7 +92,71 @@
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
     <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button>
-    <button class="saveButton">Subir Archivo</button>
+
+    <div class="upload-btn-wrapper">
+      <button class="btn">Subir archivo</button>
+      <input type="file" name="custom_file" id="custom_file" />
+    </div>
+
+    <button class="saveButton" onclick="saveFile()">Enviar</button>
+
     <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
   </div>
 </div>
+
+@prepend('scripts')
+<script>
+  
+    function saveFile() {
+
+        var custom_file = document.querySelector('#custom_file').files[0];
+
+        if(custom_file == null){
+            showMessage("warning", "Sin archivo que actualizar");
+            return;
+        }
+
+        var data = new FormData();
+        data.append('custom_file', custom_file);
+        data.append('id_user', "{{$alumno->id_user}}");
+        data.append('id_question', "{{$pregunta_final->id_question}}");
+        
+            $.ajax({
+                type: "POST",
+                url: "{{route('api_preguntas_bloque5')}}",
+                enctype: 'multipart/form-data',
+                contentType: false,
+                cache: false,
+                processData: false,  // Important!
+                data: data ,
+                success: function(response) { 
+                    console.log(response);
+                    showMessage("success", "Archivo enviado correctamente");
+                },
+                error: function(e) {
+                    console.log(e); 
+                    showMessage("warning", "Error al subir el archivo");
+                }
+            });
+    }
+
+    function showMessage(type, message) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "timeOut": "2000",
+            "extendedTimeOut": "2000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr[type](message);
+    }
+</script>
+@endprepend
