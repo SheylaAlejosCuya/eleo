@@ -3,8 +3,11 @@
 <head>
     <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>e-leo</title>
+  
+    <title>e-Leo</title>
+    <link rel="icon" href="{{asset('images/logo_mini.png')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
+
     <link rel="stylesheet" href="{{asset('css/sidebar.css')}}">
     <link rel="stylesheet" href="{{asset('css/inputStyle.css')}}">
     <link rel="stylesheet" href="{{asset('css/footer.css')}}">
@@ -180,30 +183,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
-    
-    @if (session('status'))
-        <script>
-            showMessage("warning", "{{session('status')}}" );
-            function showMessage(type, message) {
-                toastr.options = {
-                    "closeButton": true,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "timeOut": "2000",
-                    "extendedTimeOut": "2000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                toastr[type](message);
-            }
-        </script>
-    @endif
 
     @stack('scripts')
     

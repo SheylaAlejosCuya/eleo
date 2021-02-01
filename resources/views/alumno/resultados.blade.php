@@ -4,7 +4,7 @@
     <div class="edesafio-container">
         <a href="./resultados/estudio" class="edesafio-card">
             <img class="check" src="images/check.png" alt="">
-            <img class="desafioImg" src="images/resultado1.png" alt="">
+            <img c  lass="desafioImg" src="images/resultado1.png" alt="">
         </a>
         <a href="./resultados/estudio" class="edesafio-card">
             <img class="check" src="images/check.png" alt="">
