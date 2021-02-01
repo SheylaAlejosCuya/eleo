@@ -429,6 +429,10 @@ Route::get('/resultadosNuevo/promedioGeneral', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'alumno.resultadosPromedio', 'title' => 'Mis Promedio General', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4, 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults]);
 });
 
+Route::get('/eva1prueba', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.LecturaTxt.eva1prueba', 'title' => 'Mis Resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
+});
+
 /* ============================================================================================= */
 // NOT VIEW RETURN - FUNCTIONS
 /* ============================================================================================= */
