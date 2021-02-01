@@ -9,10 +9,9 @@ use App\Http\Controllers\ResultadosController;
 use App\Http\Controllers\ForoController;
 use App\Http\Controllers\DesafiosController;
 use App\Http\Controllers\TutorialesController;
-use App\Http\Controllers\ProfesorController;
 
 /* Login */
-Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario')->middleware('guest:profesor');
+Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
 Route::post('/login', [AuthController::class, 'login'])->name('api_login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
@@ -21,7 +20,6 @@ Route::get('/inicio', [AlumnoController::class, 'inicio'])->name('web_inicio')->
 
 /* Perfil de Usuario */
 Route::get('/perfil', [AlumnoController::class, 'perfil'])->name('web_perfil')->middleware('auth:usuario');
-Route::post('/save/password/alumno', [AlumnoController::class, 'guardar_password'])->name('api_save_password');
 
 /* Tutoriales */
 Route::get('/tutoriales/{id}', [TutorialesController::class, 'tutoriales_video'])->name('web_tutoriales_video')->middleware('auth:usuario');
@@ -63,7 +61,9 @@ Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('we
 Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:usuario');
 
 /* Rutas de Profesor */
-Route::get('/profesor-inicio', [ProfesorController::class, 'inicio'])->name('web_inicio_profesor')->middleware('auth:profesor');
+Route::get('/profesor', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0]);
+});
 
 Route::get('/profesor/tutoriales', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
@@ -430,7 +430,7 @@ Route::get('/resultadosNuevo/promedioGeneral', function () {
 });
 
 Route::get('/eva1prueba', function () {
-    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.LecturaTxt.eva1prueba', 'title' => 'Mis Resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
+    return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1prueba', 'title' => 'Mis Resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
 });
 
 /* ============================================================================================= */

@@ -37,6 +37,21 @@
     z-index: -1;
 }
 
+.form-check-positive label {
+    background-color: #39b44a;
+    color: #fff;
+}
+
+.form-check-negative label {
+    background-color: #db2828;
+    color: #fff;
+}
+
+.form-check-info label {
+    background-color: #00a3fb;
+    color: #fff;
+}
+
 .form-check label:after {
     width: 32px;
     height: 32px;
