@@ -44,7 +44,7 @@ class LecturasController extends Controller
     }
 
     function video_preguntas1($id) {
-
+        
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
@@ -66,7 +66,14 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
+        //dd($preguntas);
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
@@ -118,6 +125,8 @@ class LecturasController extends Controller
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
         }
 
+       
+
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas2($id_reading) {
@@ -129,8 +138,14 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            // $answer_completed = tb_answers::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            // if($answer_completed){
+            //     $pregunta->answer_completed = $answer_completed;
+            // }else{
+            //     $pregunta->answer_completed = null;
+            // }
         }
-
+        //dd($preguntas);
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas3($id_reading) {
@@ -144,6 +159,7 @@ class LecturasController extends Controller
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
         }
 
+        
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
@@ -166,13 +182,15 @@ class LecturasController extends Controller
         $alumno = tb_user::find(Auth::guard('usuario')->id());
         $lectura = tb_reading::find($id_reading);
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno]);
+        $pregunta_final = tb_reading::find($id_reading)->questions()->where('id_question_level', '5')->where('source', 'final')->first();
+
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'pregunta_final' => $pregunta_final]);
     }
 
     function guardar_preguntas_bloque1(Request $request) {
         try {
-            
             $respuestas = explode(",", $request->questions);
+
             foreach($respuestas as $respuesta) {
                 $results = new tb_results;
                 $results->id_user = Auth::guard('usuario')->id();
@@ -180,16 +198,32 @@ class LecturasController extends Controller
                 $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
                 $results->save();
             }
-            
             return response()->json($respuestas, 200);
-
+            
         } catch(\Exception $e) {
             return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
         }
     }
 
     function guardar_preguntas_bloque2(Request $request) {
-
+        try {
+            $respuestas = explode(",", $request->answers);
+            $preguntas = explode(",", $request->questions);
+            foreach($respuestas as $index => $respuesta) {
+                $results_prev = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $preguntas[$index])->get();
+                if(count($results_prev) != 1) {
+                    $results = new tb_results;
+                    $results->id_user = Auth::guard('usuario')->id();
+                    $results->id_answer = $respuesta;
+                    $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
+                    $results->id_question = $preguntas[$index];
+                    $results->save();
+                }
+            }
+            return response()->json(['type' => 'success', 'message' => $preguntas], 200);
+        } catch(\Exception $e) {
+            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
     }
 
     function guardar_preguntas_bloque3(Request $request) {
@@ -198,6 +232,27 @@ class LecturasController extends Controller
 
     function guardar_preguntas_bloque4(Request $request) {
 
+    }
+
+    function guardar_preguntas_bloque5(Request $request) {
+        try {
+
+            $results_prev = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', (int) $request->file('id_question'))->get();
+            if(count($results_prev) != 1) {
+                $path = Storage::disk('archivos_alumnos_p_final')->putFile('pregunta_final', $request->file('custom_file'));
+
+                $results = new tb_results;
+                $results->id_user = Auth::guard('usuario')->id();
+                $results->file = $path;
+                $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
+                $results->id_question = (int) $request->get('id_question');
+                $results->save();
+            }
+
+            return response()->json(['status_code' => 200, 'message' => 'file saved'], 200);
+        } catch (Exception $error) {
+            return response()->json(['status_code' => 500, 'message' => 'Error', 'error' => $error], 500);
+        }
     }
 
 }

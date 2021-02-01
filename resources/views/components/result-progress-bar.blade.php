@@ -12,7 +12,7 @@
                             <p class="rPercent">
                                 <?php
                                     if ($result['percent'] == 100) {
-                                        echo "¡Completado!";
+                                        echo "¡Excelente!";
                                     } else {
                                         echo $result['percent']."%";
                                     }
