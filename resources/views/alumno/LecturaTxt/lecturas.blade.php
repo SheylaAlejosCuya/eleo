@@ -44,11 +44,11 @@
             </p>
         </div>
     </div>
+    <a href="{{route('web_video_preguntas4', ['id'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
     <button class="saveButton">Verifica</button>
-   <a href="{{route('web_texto_preguntas1', ['id_reading'=>37])}}"><button class="saveButton" style="float: right; margin-top: 16px">Avanza</button></a>
-   </br>
+    <a href="{{route('web_texto_preguntas1', ['id_reading'=>$lectura->id_reading])}}"><button class="saveButton" style="float: right; margin-top: 16px">Avanza</button></a>
     </br>
     </br>
     </br>
-
+    </br>
 </div>

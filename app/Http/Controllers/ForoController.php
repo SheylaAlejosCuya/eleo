@@ -31,4 +31,15 @@ class ForoController extends Controller
         $alumno = Auth::guard('usuario')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 3, 'alumno' => $alumno]);
     }
+
+
+    function foros_profesor() {
+        $alumno = Auth::guard('profesor')->user();
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foro', 'title' => 'Foro', 'optionIndex' => 4]);
+    }
+
+    function foro_profesor_crear() {
+        $alumno = Auth::guard('profesor')->user();
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foroCrear', 'title' => 'Nuevo Foro', 'optionIndex' => 4]);
+    }
 }

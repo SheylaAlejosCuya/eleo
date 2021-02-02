@@ -9,6 +9,7 @@ use App\Http\Controllers\ResultadosController;
 use App\Http\Controllers\ForoController;
 use App\Http\Controllers\DesafiosController;
 use App\Http\Controllers\TutorialesController;
+use App\Http\Controllers\ProfesorController;
 
 /* Login */
 Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
@@ -368,13 +369,8 @@ Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos/{alu
 
 /* Foro */
 
-Route::get('/profesor/foro', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foro', 'title' => 'Foro', 'optionIndex' => 4]);
-});
-
-Route::get('/profesor/foro/crear', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foroCrear', 'title' => 'Nuevo Foro', 'optionIndex' => 4]);
-});
+Route::get('/profesor/foro', [ForoController::class, 'foros_profesor'])->name('web_foros_profesor')->middleware('auth:profesor');
+Route::get('/profesor/foro/crear', [ForoController::class, 'foro_profesor_crear'])->name('web_foro_profesor_crear')->middleware('auth:profesor');
 
 Route::get('/profesor/foro/{id}', function($id) {
     return view('includes/menubarProfesor', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 4]);

@@ -68,12 +68,11 @@ class LecturasController extends Controller
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
             $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
-                $pregunta->answer_completed = $answer_completed;
+                $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
                 $pregunta->answer_completed = null;
             }
         }
-        //dd($preguntas);
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
@@ -87,6 +86,12 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
@@ -101,6 +106,12 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
@@ -109,9 +120,10 @@ class LecturasController extends Controller
 
     function lecturas($id_reading) {
 
+        $lectura = tb_reading::find($id_reading);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
     }
 
     function texto_preguntas1($id_reading) {
@@ -123,11 +135,17 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
 
        
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas2($id_reading) {
 
@@ -138,15 +156,15 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            // $answer_completed = tb_answers::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
-            // if($answer_completed){
-            //     $pregunta->answer_completed = $answer_completed;
-            // }else{
-            //     $pregunta->answer_completed = null;
-            // }
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
         //dd($preguntas);
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     function texto_preguntas3($id_reading) {
 
@@ -157,10 +175,16 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
 
         
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva3', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
     function texto_preguntas4($id_reading) {
@@ -172,9 +196,15 @@ class LecturasController extends Controller
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
+            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            if($answer_completed){
+                $pregunta->answer_completed = $answer_completed->id_answer;
+            }else{
+                $pregunta->answer_completed = null;
+            }
         }
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
     
     function texto_preguntas5($id_reading) {
@@ -184,7 +214,7 @@ class LecturasController extends Controller
 
         $pregunta_final = tb_reading::find($id_reading)->questions()->where('id_question_level', '5')->where('source', 'final')->first();
 
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->video_title, 'optionIndex' => 1, 'alumno' => $alumno, 'pregunta_final' => $pregunta_final]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'pregunta_final' => $pregunta_final]);
     }
 
     function guardar_preguntas_bloque1(Request $request) {

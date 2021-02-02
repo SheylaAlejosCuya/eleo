@@ -407,6 +407,17 @@ a img {
     background-color: #39b44a;
     border-color: #39b44a;
     border: 0;
+    font-weight: bold;
+    color: white;
+    width: 150px;
+}
+
+.saveButton:disabled {
+    border-radius: 5px;
+    padding: 1%;
+    background-color: #595959;
+    border-color: #39b44a;
+    border: 0;
     color: white;
     width: 150px;
 }
