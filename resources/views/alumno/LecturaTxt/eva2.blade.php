@@ -11,22 +11,34 @@
                 @foreach($preguntas as $indice_1 => $pregunta)
                     <div class="rpt">
                         <h5><b>{{$pregunta->question}}</b></h5>
-                        @foreach($pregunta->answers as $indice_2 => $answer)
-                        <div class="form-check">
-                            <input class="form-check-input alternativa_{{$indice_1}}" type="radio" name="response_{{$indice_1}}" value="{{$answer->id_answer}}" id="answer_{{$indice_1}}_{{$indice_2}}">
-                            <label class="form-check-label"  for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}'>
-                                {{$answer->answer}}
-                            </label>
-                        </div>
-                        @endforeach
+                        @if($pregunta->answer_completed)
+                            @foreach($pregunta->answers as $indice_2 => $answer)
+                                <div class="form-check  @if($answer->correct == 'true' && $pregunta->answer_completed == $answer->id_answer) form-check-positive @elseif($answer->correct == 'true') form-check-info @else @if($pregunta->answer_completed == $answer->id_answer) form-check-negative @else @endif @endif ">
+                                    <input class="form-check-input alternativa_{{$indice_1}}" type="radio" name="response_{{$indice_1}}" value="{{$answer->id_answer}}" id="answer_{{$indice_1}}_{{$indice_2}}" disabled>
+                                    <label class="form-check-label " for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}'>
+                                        {{$answer->answer}}
+                                    </label>
+                                </div>
+                            @endforeach
+                        @else
+                            @foreach($pregunta->answers as $indice_2 => $answer)
+                                <div class="form-check">
+                                    <input class="form-check-input alternativa_{{$indice_1}}" type="radio" name="response_{{$indice_1}}" value="{{$answer->id_answer}}" id="answer_{{$indice_1}}_{{$indice_2}}">
+                                    <label class="form-check-label " for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}'>
+                                        {{$answer->answer}}
+                                    </label>
+                                </div>
+                            @endforeach
+                        @endif
                     </div>
                 @endforeach
             </div>
         </div>
         <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-        <button class="saveButton" onclick="save()">Verifica</button>
-        <a href="{{route('web_texto_preguntas3', ['id_reading'=>37])}}"><button class="cancelButton">Avanza</button></a>
-    </div>
+            <a href="{{route('web_texto_preguntas1', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
+            <button class="saveButton" onclick="confirm()" @if($preguntas[0]->answer_completed) disabled @else @endif>Verifica</button>
+            <a href="{{route('web_texto_preguntas3', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Avanza</button></a>
+        </div>
 </div>
 @prepend('scripts')
 <script>
@@ -43,9 +55,18 @@
         });
     @endforeach
 
+    function confirm() {
+        alertify.confirm('¿Enviar preguntas?', 'No se permitirán cambios después de calificar las preguntas', function() { 
+            save();
+        }, function() { 
+
+        }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+    }
+
     function save() {
-        function callback () {
-            console.log("All done");
+
+        function callback () { 
+            //console.log("all done");
             $.ajax({
                 type: "POST",
                 url: "{{route('api_preguntas_bloque2')}}",
@@ -56,6 +77,8 @@
                     "answers": respuestas_user.toString()
                 },
                 success: function(response) { 
+                    showMessage("success", "Preguntas subidas correctamente");
+                    location.reload();
                     console.log(response); 
                 },
                 error: function(e) {
@@ -68,7 +91,7 @@
 
         respuestas_user.forEach((element, index, array) => {
             if(element == null) {
-                showMessage("warning", "Se deben contestar todas las preguntas");
+                showMessage("warning", "Falta pregunta por completar");
                 return;
             } else {
                 itemsProcessed++;

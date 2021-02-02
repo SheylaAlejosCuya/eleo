@@ -64,8 +64,7 @@
 
             var current_select = $(this);
 
-            alertify.confirm('Confirm Title', 'Confirm Message', function() { 
-                alert()
+            alertify.confirm('Sección del alumno', '¿Actualizar sección?', function() { 
                 $.ajax({
                     type: "POST",
                     url: "{{route('api_actualizar_seccion_alumno')}}",
@@ -88,7 +87,7 @@
 
                 current_select.val(current_select.data('original-value')).change();
 
-            }).set('closable', false); ;
+            }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
         });
 
     </script>

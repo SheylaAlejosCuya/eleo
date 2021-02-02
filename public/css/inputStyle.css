@@ -39,17 +39,17 @@
 
 .form-check-positive label {
     background-color: #39b44a;
-    color: #fff;
+    color: #fff !important;
 }
 
 .form-check-negative label {
     background-color: #db2828;
-    color: #fff;
+    color: #fff !important;
 }
 
 .form-check-info label {
     background-color: #00a3fb;
-    color: #fff;
+    color: #fff !important;
 }
 
 

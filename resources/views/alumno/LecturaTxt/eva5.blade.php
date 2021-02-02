@@ -91,17 +91,17 @@
     </div>
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
-    <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button>
-
-    <div class="upload-btn-wrapper">
-      <button class="btn">Subir archivo</button>
-      <input type="file" name="custom_file" id="custom_file" />
+      <a href="{{route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
+      
+      <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button>
+      <div class="upload-btn-wrapper">
+        <button class="btn">Subir archivo</button>
+        <input type="file" name="custom_file" id="custom_file" />
+      </div>
+      
+      <button class="saveButton" onclick="saveFile()">Enviar</button>
+      <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
     </div>
-
-    <button class="saveButton" onclick="saveFile()">Enviar</button>
-
-    <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
-  </div>
 </div>
 
 @prepend('scripts')

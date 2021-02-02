@@ -43,6 +43,10 @@
     <link href="{{asset('/plugins/toastr/toastr.min.css')}}" rel="stylesheet">
 
     <link href="https://vjs.zencdn.net/7.10.2/video-js.css" rel="stylesheet" />
+
+    <!-- CSS - ALERT -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
 </head>
 <style>
 
@@ -152,7 +156,7 @@
                     </a>
                     <div class="studentLevel">
                         <p>E-Leo <br> Nivel {{$alumno->id_grade}}
-                            @if((int) $alumno->id_grade == 1)
+                            @if((int) $alumno->id_level == 1)
                              Primaria
                             @else
                              Secundaria
@@ -189,6 +193,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
     <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+
+    <!-- JavaScript - ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>  
 
     @stack('scripts')
     
