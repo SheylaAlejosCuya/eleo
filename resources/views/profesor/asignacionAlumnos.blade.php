@@ -14,7 +14,7 @@
     <h3>Nivel</h3>
 
     @foreach($niveles as $key_n => $nivel)
-        <h3>{{$nivel->level}}</h3>
+        <h3>{{$nivel->id_level}}{{$nivel->level}}</h3>
         @foreach($nivel->grados as $key_g => $grado)
             <h4>{{$grado->grade}}</h4> 
 

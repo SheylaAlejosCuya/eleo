@@ -68,11 +68,11 @@ class ProfesorController extends Controller
 
         foreach ($niveles as $key => $nivel) {
             foreach ($grados as $key => $grado) {
-                $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_grade', $grado->id_grade)->where('id_level', $nivel->id_level)->get();
+                $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
             }
             $nivel->grados = $grados;
+            
         }
-        //(dd($niveles);
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.asignacionAlumnos', 'optionIndex' => 6, 'niveles' => $niveles, 'secciones' => $secciones ]);
     }
