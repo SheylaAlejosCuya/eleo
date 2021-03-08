@@ -4,15 +4,16 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tb_typography extends Model
+class tb_gender extends Model
 {
-    protected $table = '';
+    protected $table = 'tb_gender';
 
     protected $fillable = [
-        '',
+        'id_gender',
+        'gender'
     ];
 
-    protected $primaryKey = '';
+    protected $primaryKey = 'id_gender';
 
     public $timestamps = false;
 }

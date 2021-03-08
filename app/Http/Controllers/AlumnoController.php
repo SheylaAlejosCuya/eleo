@@ -42,4 +42,5 @@ class AlumnoController extends Controller
         $alumno = Auth::guard('usuario')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio', 'optionIndex' => 0, 'alumno' => $alumno]);
     }
+    
 }

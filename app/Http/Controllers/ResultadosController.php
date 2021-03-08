@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
+
 use App\Http\Requests;
 
 use Storage;
@@ -23,17 +24,15 @@ use App\Models\tb_results;
 
 class ResultadosController extends Controller
 {
+    
     function resultados() {
         $alumno = Auth::guard('usuario')->user();       
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.resultados', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4, 'alumno' => $alumno]);
     }
 
     function resultados_estudio() {
-        
         $alumno = Auth::guard('usuario')->user();
-
         //$results = tb_results::where('id_user', Auth::guard('usuario')->id())->get();
-
         $questions_b1 = tb_question::where('type', 'closed')->where('id_state', 3)->where('id_block', 1)->get();
         $questions_b2 = tb_question::where('type', 'closed')->where('id_state', 3)->where('id_block', 2)->get();
         $questions_b3 = tb_question::where('type', 'closed')->where('id_state', 3)->where('id_block', 3)->get();
@@ -45,6 +44,7 @@ class ResultadosController extends Controller
         $test_array = [];
 
         foreach ($questions_b1 as $key => $question_b1) {
+
             $result = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $question_b1->id_question)->first();
             
             if($result) {
@@ -58,6 +58,7 @@ class ResultadosController extends Controller
                         array_push($check_questions_b1_points_literal, 0);
                     }
                 }
+
                 if($key == 2 || $key == 3) {
                     if($check->correct == "true"){
                         array_push($check_questions_b1_points_inferencial, 2);
@@ -73,19 +74,23 @@ class ResultadosController extends Controller
                         array_push($check_questions_b1_points_valorativo, 0);
                     }
                 }
-            }else{
+
+            } else {
+
                 if($key == 0 || $key == 1) {
                     array_push($check_questions_b1_points_literal, 0);
                 }
+                
                 if($key == 2 || $key == 3) {
                     array_push($check_questions_b1_points_inferencial, 0);
                 }
+
                 if($key == 4 || $key == 5) {
                     array_push($check_questions_b1_points_valorativo, 0);
                 }
+
             }
-            
-            
+
         }
 
         $check_questions_b2_points_literal = [];
@@ -94,6 +99,7 @@ class ResultadosController extends Controller
         $check_questions_b2_points_intertextual = [];
 
         foreach ($questions_b2 as $key => $question_b2) {
+            
             $result = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $question_b2->id_question)->first();
             
             if($result) {
@@ -131,7 +137,9 @@ class ResultadosController extends Controller
                         array_push($check_questions_b2_points_intertextual, 0);
                     }
                 }
+
             } else {
+
                 if($key == 0 || $key == 1 || $key == 2 ) {
                     array_push($check_questions_b1_points_literal, 0);
                 }
@@ -147,6 +155,7 @@ class ResultadosController extends Controller
                 if($key == 12 || $key == 13) {
                     array_push($check_questions_b2_points_intertextual, 0);
                 }
+
             }
             
         }
