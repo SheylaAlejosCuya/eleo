@@ -56,11 +56,16 @@
                     <form id="formRegister" method="POST" action="{{route('api_register')}}" style="background: white; width: 320px;">
                         {{ csrf_field() }}
                         <a href="/"><img src="images/logo.png" style="width: 262px; padding: 16px 0" alt=""></a> 
-                        <p style="color: black;  font-size: 28px; line-height: 0.5em; padding-top: 10%;">Registro de usuarios</p>
+                        <p style="color: black;  font-size: 28px; line-height: 0.5em; padding-top: 10%;">Registro de alumnos</p>
                         <br>
                         <input type="text" name='code' id='code' placeholder="Ingresar código de validación" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(4, 135, 58); width: 100%;" required>
                         <br>
                         <br>
+                        <select id="school" name='school' class="selectpicker" title="Seleccionar institución educativa" data-width="100%">
+                            @foreach($schools as $key => $school)
+                                <option value="{{$school->id_school}}">{{$school->name}}</option>
+                            @endforeach
+                        </select>
                         <hr>
                         <input type="email" name='email' id='email' placeholder="Ingresar correo electrónico" style="margin-top: 0%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                         <br>
@@ -70,11 +75,11 @@
                         <br>
                         <br>
                         <hr>
-                        <input type="text" name='names' id='names' placeholder="Ingresar nombres" style="margin-top: 0%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
+                        <input type="text" name='names' id='names' placeholder="Ingresar nombres del alumno" style="margin-top: 0%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                         <br>
-                        <input type="text" name='lastnames' id='lastnames' placeholder="Ingresar apellidos" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
+                        <input type="text" name='lastnames' id='lastnames' placeholder="Ingresar apellidos del alumno" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                         <br>
-                        <input type="text" name='dni' id='dni' placeholder="Ingresar nro. DNI" maxlength="8" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
+                        <input type="text" name='dni' id='dni' placeholder="Ingresar nro. DNI del alumno" maxlength="8" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                         <br>
                         <br>
                         <select id="gender" name='gender' class="selectpicker" title="Seleccionar género" data-width="100%">
@@ -84,14 +89,8 @@
                         </select>
                         <br>
                         <hr>
-                        <select id="school" name='school' class="selectpicker" title="Seleccionar institución educativa" data-width="100%">
-                            @foreach($schools as $key => $school)
-                                <option value="{{$school->id_school}}">{{$school->name}}</option>
-                            @endforeach
-                        </select>
-                        <br>
-                        <br>
-                        <br>
+                        
+                        
                         <input type="button" id="button_login" onclick="verificar()" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" value="Registrar"/>
                     </form>
                 </div>
