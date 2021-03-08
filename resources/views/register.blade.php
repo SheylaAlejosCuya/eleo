@@ -74,6 +74,8 @@
                         <br>
                         <input type="text" name='lastnames' id='lastnames' placeholder="Ingresar apellidos" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                         <br>
+                        <input type="text" name='dni' id='dni' placeholder="Ingresar nro. DNI" maxlength="8" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
+                        <br>
                         <br>
                         <select id="gender" name='gender' class="selectpicker" title="Seleccionar género" data-width="100%">
                             @foreach($genders as $key => $gender)
@@ -102,6 +104,29 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
         
         <script>
+            $(document).ready(function() {
+                $("#dni").inputFilter(function(value) {
+                    return /^\d*$/.test(value);    // Allow digits only, using a RegExp
+                });
+            });
+           
+            // Restricts input for the set of matched elements to the given inputFilter function.
+            (function($) {
+            $.fn.inputFilter = function(inputFilter) {
+                return this.on("input keydown keyup mousedown mouseup select contextmenu drop", function() {
+                if (inputFilter(this.value)) {
+                    this.oldValue = this.value;
+                    this.oldSelectionStart = this.selectionStart;
+                    this.oldSelectionEnd = this.selectionEnd;
+                } else if (this.hasOwnProperty("oldValue")) {
+                    this.value = this.oldValue;
+                    this.setSelectionRange(this.oldSelectionStart, this.oldSelectionEnd);
+                } else {
+                    this.value = "";
+                }
+                });
+            };
+            }(jQuery));
 
             function verificar() {
 
@@ -111,22 +136,27 @@
                 }
 
                 if($('#email').val() == null || $('#names').val() == "") {
-                    showMessage("warning", "Se debe ingresar un nombre");
+                    showMessage("warning", "Se debe ingresar su nombre");
                     return;
                 }
 
                 if($('#lastnames').val() == null || $('#lastnames').val() == "") {
-                    showMessage("warning", "Se debe ingresar un apellido");
+                    showMessage("warning", "Se debe ingresar su apellido");
+                    return;
+                }
+
+                if($('#dni').val() == null || $('#dni').val() == "") {
+                    showMessage("warning", "Se debe ingresar su DNI");
                     return;
                 }
 
                 if($('#gender').val() == null || $('#gender').val() == "") {
-                    showMessage("warning", "Se debe seleccionar un género");
+                    showMessage("warning", "Se debe seleccionar su género");
                     return;
                 }
 
                 if($('#school').val() == null || $('#school').val() == "") {
-                    showMessage("warning", "Se debe seleccionar una institución educativa");
+                    showMessage("warning", "Se debe seleccionar su institución educativa");
                     return;
                 }
 
