@@ -21,24 +21,41 @@ class AuthController extends Controller
     public function login(Request $request)
     {
         try {
-            if (Auth::guard('usuario')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1, 'id_rol' => 2])) {
 
-                return redirect()->intended('inicio');
+            if (Auth::guard('usuario')->attempt(['username'=> $request->email, 'password' => $request->password])) {
 
-            } else if (Auth::guard('profesor')->attempt(['email'=> $request->email, 'password' => $request->password, 'id_state' => 1, 'id_rol' => 1])) {
+                $alumno = Auth::guard('usuario')->user();
+                if( $alumno->id_state == 2 ){
+                    Auth::guard('usuario')->logout();
+                    return redirect()->back()->with('status_disable', 'error');
+                } else {
+                    return redirect()->intended('inicio');
+                }
+                
+            } else if (Auth::guard('profesor')->attempt(['username'=> $request->email, 'password' => $request->password, 'id_state' => 2, 'id_rol' => 1])) {
 
-                return redirect()->intended('profesor/inicio');
+                $profesor = Auth::guard('profesor')->user();
+                if( $alumno->id_state == 2 ){
+                    Auth::guard('profesor')->logout();
+                    return redirect()->back()->with('status_disable', 'error');
+                } else {
+                    return redirect()->intended('profesor/inicio');
+                }
+
             }
-
+            
             return redirect()->back()->with('status', 'error');
 
         } catch (Exception $error) {
+
             return response()->json([
                 'status_code' => 500,
                 'message' => 'Error',
                 'error' => $error,
             ], 500);
+
         }
+
     }
 
     public function logout()

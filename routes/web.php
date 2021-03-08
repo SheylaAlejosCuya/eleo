@@ -10,9 +10,16 @@ use App\Http\Controllers\ForoController;
 use App\Http\Controllers\DesafiosController;
 use App\Http\Controllers\TutorialesController;
 use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\RegisterController;
+
 
 /* Login */
 Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario')->middleware('guest:profesor');
+
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'create_new_user'])->name('api_register');
+Route::post('/register/check/code', [RegisterController::class, 'check_code'])->name('api_check_code');
+
 Route::post('/login', [AuthController::class, 'login'])->name('api_login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
@@ -30,7 +37,7 @@ Route::get('/tutoriales',      [TutorialesController::class, 'tutoriales'])->nam
 Route::get('/bar', function () { return view('includes/menubaralternate', ['optionIndex' => 0]); });
 
 /* Lecturas y recursos */
-/* Url - Imagen - Titulo */
+/* URL - Imagen - Titulo */
 Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')->middleware('auth:usuario');
 
 /* Preguntas de Video */

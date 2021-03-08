@@ -40,11 +40,11 @@ class LecturasController extends Controller
         if((int) $lectura->id_state == 4) {
             return redirect()->back()->with('status', 'La lectura seleccionada se encuentra deshabilitada');
         }
+
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'continue' => 'web_video_preguntas1', 'optionIndex' => 1, 'lectura' => $lectura, 'alumno' => $alumno]);
     }
 
     function video_preguntas1($id) {
-        
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
@@ -53,12 +53,10 @@ class LecturasController extends Controller
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
         }
-
-        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno, ]);
+        return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva1', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno ]);
     }
 
     function video_preguntas2($id) {
-
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
@@ -73,12 +71,10 @@ class LecturasController extends Controller
                 $pregunta->answer_completed = null;
             }
         }
-
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
     function video_preguntas3($id) {
-
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
@@ -98,7 +94,6 @@ class LecturasController extends Controller
     }
 
     function video_preguntas4($id) {
-        
         $alumno = tb_user::find(Auth::guard('usuario')->id());
 
         $lectura = tb_reading::find($id);
@@ -113,7 +108,6 @@ class LecturasController extends Controller
                 $pregunta->answer_completed = null;
             }
         }
-
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva4', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 

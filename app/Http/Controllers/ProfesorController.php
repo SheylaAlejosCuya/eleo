@@ -26,6 +26,7 @@ use App\Models\tb_section;
 
 class ProfesorController extends Controller
 {
+    
     function inicio() {
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0]);
     }
@@ -61,7 +62,7 @@ class ProfesorController extends Controller
     function asignacion_alumnos() {
 
         $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->get();
-
+        
         $niveles = tb_level::all();
         $grados = tb_grade::all();
         $secciones = tb_section::all();
@@ -71,9 +72,7 @@ class ProfesorController extends Controller
                 $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
             }
             $nivel->grados = $grados;
-            
         }
-
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.asignacionAlumnos', 'optionIndex' => 6, 'niveles' => $niveles, 'secciones' => $secciones ]);
     }
 
@@ -88,7 +87,5 @@ class ProfesorController extends Controller
         }
         
     }
-
-
 
 }

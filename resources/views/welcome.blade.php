@@ -53,12 +53,12 @@
                     {{ csrf_field() }}
                     <a href="/info"><img src="images/logo.png" style="width: 262px; padding: 16px 0" alt=""></a> 
                     <p style="color: black;  font-size: 22px; line-height: 0.5em; padding-top: 10%;">Iniciar sesión</p>
-                    <p style="font-size: 14px;">¿No cuentas con una cuenta? <font style="color:#8DC63F" >Registrate ahora</font></p>
-                    <input type="email" name='email' id='email' placeholder="correo electrónico" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
+                    <p style="font-size: 14px;">¿No cuentas con una cuenta? <a href="/register"><font style="color:#8DC63F" >Registrate ahora</font></a> </p>
+                    <input type="text" name='email' id='email' placeholder="usuario" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
                     <br>
                     <input type="password" name='password' id='password' placeholder="contraseña" style="margin-top: 8%; margin-bottom: 11%; padding-left: 15px; border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
     
-                    <input type="submit" id="button_login" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" value="Iniciar sesión"/>
+                    <input type="submit" id="button_login" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" value="Iniciar sesión" />
                     <p style="color:#8DC63F">Olvidé mi contraseña</p>
                 </form>
                 </div>
@@ -90,6 +90,56 @@
                     toastr[type](message);
                 }
             </script>
+        @endif
+
+        @if (session('success'))
+        <script>
+            showMessage("success", "Usuario creado correctamente");
+
+            function showMessage(type, message) {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "timeOut": "2000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr[type](message);
+            }
+        </script>
+        @endif
+
+        @if (session('status_disable'))
+        <script>
+            showMessage("warning", "Su usuario aún no se encuentra habilitado");
+
+            function showMessage(type, message) {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "timeOut": "2000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr[type](message);
+            }
+        </script>
         @endif
     </body>
 </html>
