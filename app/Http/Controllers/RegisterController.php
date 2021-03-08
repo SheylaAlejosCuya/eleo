@@ -57,6 +57,7 @@ class RegisterController extends Controller
             $user->first_name = trim($request->get('names'));
             $user->last_name = trim($request->get('lastnames'));
             $user->email = trim($request->get('email'));
+            $user->dni = trim($request->get('dni'));
             $user->id_avatar = (int) $request->get('gender');
             $user->id_gender = (int) $request->get('gender');
             if((int) $request->get('gender') == 1) {
@@ -67,7 +68,7 @@ class RegisterController extends Controller
             $user->id_rol = 2;
             $username = strtolower(substr(trim($request->get('names')),0,1).explode(' ', trim($request->get('lastnames')))[0].rand(100000, 999999));
             $user->username = $username;
-            $user->password = Hash::make($username);
+            $user->password = Hash::make(trim($request->get('password')));
             $user->id_school = $request->get('school');
             $user->id_state = 2;
             $user->save();
