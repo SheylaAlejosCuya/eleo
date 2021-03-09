@@ -26,13 +26,18 @@ use App\Models\tb_results;
 use App\Models\tb_school as schools;
 use App\Models\tb_gender as gender;
 
+use App\Models\tb_level as level;
+use App\Models\tb_grade as grade;
+
 class RegisterController extends Controller
 {
 
     public function register() {
         $schools = schools::where('id_state', 3)->get();
         $genders = gender::all();
-        return view('register', ['schools'=>$schools, 'genders'=>$genders]);
+        $levels = level::all();
+        $grades = grade::all();
+        return view('register', ['schools'=>$schools, 'genders'=>$genders, 'levels' => $levels, 'grades'=>$grades]);
     }
 
     public function check_code(Request $request){
@@ -50,8 +55,8 @@ class RegisterController extends Controller
 
     public function create_new_user(Request $request){
         try {
-            // $schools = schools::where('id_state', 3)->get();
-            // $genders = gender::all();
+
+            
 
             $user = new tb_user;
             $user->first_name = trim($request->get('names'));
@@ -70,6 +75,8 @@ class RegisterController extends Controller
             $user->username = $username;
             $user->password = Hash::make(trim($request->get('password')));
             $user->id_school = $request->get('school');
+            $user->id_grade = $request->get('grade');
+            $user->id_level = $request->get('level');
             $user->id_state = 2;
             $user->save();
 
