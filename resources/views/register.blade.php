@@ -43,6 +43,26 @@
 
                 color: rgba(0, 0, 0, 0.5);
             }
+            .input_custom_normal {
+                margin-top: 5%;
+                margin-bottom: 5%;
+                padding-left: 15px;  
+                border: none; 
+                border-bottom: 0.5px solid rgb(131, 123, 123); 
+                width: 100%;
+            }
+            .input_custom_normal_top {
+                margin-top: 2%;
+                margin-bottom: 5%;
+                padding-left: 15px;  
+                border: none; 
+                border-bottom: 0.5px solid rgb(131, 123, 123); 
+                width: 100%;
+            }
+            .input_select_custom_normal {
+                margin-top: 3%;
+                margin-bottom: 3%;
+            }
         </style>
     </head>
 
@@ -55,43 +75,58 @@
                 <div class="col-lg-4" style="background: white; height: 900px;  align-items: center;display: flex; justify-content: center;">
                     <form id="formRegister" method="POST" action="{{route('api_register')}}" style="background: white; width: 320px;">
                         {{ csrf_field() }}
-                        <a href="/"><img src="images/logo.png" style="width: 262px; padding: 16px 0" alt=""></a> 
+
+                        <a href="/"><img src="images/logo.png" style="width: 180px; padding: 8px 0; margin-top: 5%;"></a> 
                         <p style="color: black;  font-size: 28px; line-height: 0.5em; padding-top: 10%;">Registro de alumnos</p>
-                        <br>
-                        <input type="text" name='code' id='code' placeholder="Ingresar código de validación" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(4, 135, 58); width: 100%;" required>
-                        <br>
-                        <br>
-                        <select id="school" name='school' class="selectpicker" title="Seleccionar institución educativa" data-width="100%">
+
+                        <input class="input_custom_normal" type="text" name='code' id='code' placeholder="Ingresar código de registro" required>
+
+                        <select class="selectpicker input_select_custom_normal" id="school" name='school' title="Seleccionar institución educativa" data-width="100%">
                             @foreach($schools as $key => $school)
                                 <option value="{{$school->id_school}}">{{$school->name}}</option>
                             @endforeach
                         </select>
+
+                        <select class="selectpicker input_select_custom_normal" id="level" name='level' title="Seleccionar nivel académico" data-width="100%">
+                            @foreach($levels as $key => $level)
+                                <option value="{{$level->id_level}}">{{$level->level}}</option>
+                            @endforeach
+                        </select>
+
+
+                        <select class="selectpicker input_select_custom_normal" id="grade" name='grade' title="Seleccionar grádo académico" data-width="100%">
+                            @foreach($grades as $key => $grade)
+                                <option value="{{$grade->id_grade}}">{{$grade->grade}}</option>
+                            @endforeach
+                        </select>
+
                         <hr>
-                        <input type="email" name='email' id='email' placeholder="Ingresar correo electrónico" style="margin-top: 0%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <input type="password" name='password' id='password' placeholder="Ingresar contraseña" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <input type="password" name='confirm_password' id='confirm_password' placeholder="Confirmar contraseña" style="margin-top: 8%; padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <br>
+                       
+                        <input class="input_custom_normal_top" type="email" name='email' id='email' placeholder="Ingresar correo electrónico" required>
+                        
+                        <input class="input_custom_normal" type="password" name='password' id='password' placeholder="Ingresar contraseña" required>
+                        
+                        <input class="input_custom_normal" type="password" name='confirm_password' id='confirm_password' placeholder="Confirmar contraseña" required>
+
                         <hr>
-                        <input type="text" name='names' id='names' placeholder="Ingresar nombres del alumno" style="margin-top: 0%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <input type="text" name='lastnames' id='lastnames' placeholder="Ingresar apellidos del alumno" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <input type="text" name='dni' id='dni' placeholder="Ingresar nro. DNI del alumno" maxlength="8" style="margin-top: 8%;padding-left: 15px;  border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
-                        <br>
-                        <br>
-                        <select id="gender" name='gender' class="selectpicker" title="Seleccionar género" data-width="100%">
+                        
+                        <input class="input_custom_normal_top" type="text" name='names' id='names' placeholder="Ingresar nombres del alumno" required>
+                        
+                        <input class="input_custom_normal" type="text" name='lastnames' id='lastnames' placeholder="Ingresar apellidos del alumno" required>
+                        
+                        <input class="input_custom_normal" type="text" name='dni' id='dni' placeholder="Ingresar nro. DNI del alumno" maxlength="8" required>
+                        
+                        <select class="selectpicker input_select_custom_normal" id="gender" name='gender' title="Seleccionar género" data-width="100%">
                             @foreach($genders as $key => $gender)
                                 <option value="{{$gender->id_gender}}">{{$gender->gender}}</option>
                             @endforeach
                         </select>
-                        <br>
+
                         <hr>
                         
-                        
                         <input type="button" id="button_login" onclick="verificar()" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" value="Registrar"/>
+
+                        <br>
                     </form>
                 </div>
             </div>
@@ -131,6 +166,16 @@
 
                 if($('#code').val() == null || $('#code').val() == "") {
                     showMessage("warning", "Se debe ingresar un código");
+                    return;
+                }
+
+                if($('#level').val() == null || $('#level').val() == "") {
+                    showMessage("warning", "Se debe seleccionar el nivel académico");
+                    return;
+                }
+
+                if($('#grade').val() == null || $('#grade').val() == "") {
+                    showMessage("warning", "Se debe seleccionar el grado académico");
                     return;
                 }
 
