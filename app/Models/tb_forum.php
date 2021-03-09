@@ -13,12 +13,15 @@ class tb_forum extends Model
         'id_classroom',
         'title',
         'content',
-        'image',
+        'image', 
         'views',
-        'id_state'
+        'id_state' 
     ];
 
     protected $primaryKey = 'id_forum';
 
     public $timestamps = false;
+    public function tb_comment(){
+        return $this->hasMany('App\Models\tb_comment');
+    }
 }

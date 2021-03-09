@@ -377,8 +377,10 @@ Route::get('/profesor/foro/crear', [ForoController::class, 'foro_profesor_crear'
 
 Route::post('/profesor/foro/crear', [ForoController::class, 'crear_nuevo_foro'])->name('api_crear_nuevo_foro')->middleware('auth:profesor');
 
-Route::get('/profesor/foro/{id_forum}/detalle', [ForoController::class, 'foro_profesor_detalle'])->name('web_foro_profesor_detalle')->middleware('auth:profesor');
+Route::get('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_detalle'])->name('web_foro_profesor_detalle')->middleware('auth:profesor');
 
+Route::delete('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_eliminar'])->name('web_foro_profesor_eliminar')->middleware('auth:profesor');
+/* Fin Foro */
 Route::get('/profesor/recursos', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
 });

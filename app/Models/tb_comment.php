@@ -20,4 +20,7 @@ class tb_comment extends Model
     protected $primaryKey = 'id_comment';
 
     public $timestamps = false;
+    public function tb_forum(){
+        return $this->belongsTo('App\Models\tb_forum');
+    }
 }
