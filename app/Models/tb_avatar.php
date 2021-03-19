@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class tb_typography extends Model
+class tb_avatar extends Model
 {
     protected $table = '';
 

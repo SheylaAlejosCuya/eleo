@@ -10,9 +10,16 @@ use App\Http\Controllers\ForoController;
 use App\Http\Controllers\DesafiosController;
 use App\Http\Controllers\TutorialesController;
 use App\Http\Controllers\ProfesorController;
+use App\Http\Controllers\RegisterController;
+
 
 /* Login */
-Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario');
+Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario')->middleware('guest:profesor');
+
+Route::get('/register', [RegisterController::class, 'register'])->name('register');
+Route::post('/register', [RegisterController::class, 'create_new_user'])->name('api_register');
+Route::post('/register/check/code', [RegisterController::class, 'check_code'])->name('api_check_code');
+
 Route::post('/login', [AuthController::class, 'login'])->name('api_login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
@@ -30,7 +37,7 @@ Route::get('/tutoriales',      [TutorialesController::class, 'tutoriales'])->nam
 Route::get('/bar', function () { return view('includes/menubaralternate', ['optionIndex' => 0]); });
 
 /* Lecturas y recursos */
-/* Url - Imagen - Titulo */
+/* URL - Imagen - Titulo */
 Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')->middleware('auth:usuario');
 
 /* Preguntas de Video */
@@ -76,8 +83,6 @@ Route::post('/save/avatar/profesor', [ProfesorController::class, 'guardar_foto']
 Route::get('/profesor/tutoriales', function () {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0]);
 });
-
-
 
 Route::get('/profesor/tutoriales/{id}', function ($id) {
     return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
@@ -130,7 +135,6 @@ Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades/{actividad}/p
 });
 
 /* Lecturas de Estudio */
-
 Route::get('/profesor/lecturasEstudio', function() {
     $data = [
         [
@@ -368,14 +372,15 @@ Route::get('/profesor/lecturasAutogestion/{aula}/lecturas/{lectura}/alumnos/{alu
 });
 
 /* Foro */
-
 Route::get('/profesor/foro', [ForoController::class, 'foros_profesor'])->name('web_foros_profesor')->middleware('auth:profesor');
 Route::get('/profesor/foro/crear', [ForoController::class, 'foro_profesor_crear'])->name('web_foro_profesor_crear')->middleware('auth:profesor');
 
-Route::get('/profesor/foro/{id}', function($id) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 4]);
-});
+Route::post('/profesor/foro/crear', [ForoController::class, 'crear_nuevo_foro'])->name('api_crear_nuevo_foro')->middleware('auth:profesor');
 
+Route::get('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_detalle'])->name('web_foro_profesor_detalle')->middleware('auth:profesor');
+
+Route::delete('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_eliminar'])->name('web_foro_profesor_eliminar')->middleware('auth:profesor');
+/* Fin Foro */
 Route::get('/profesor/recursos', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
 });

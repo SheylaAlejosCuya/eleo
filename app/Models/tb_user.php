@@ -20,6 +20,7 @@ class tb_user extends Authenticatable
     protected $fillable = [
         'username',
         'password',
+        'dni',
         'email',
         'first_name',
         'last_name',
