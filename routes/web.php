@@ -439,6 +439,10 @@ Route::get('/eva1prueba', function () {
     return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva1prueba', 'title' => 'Mis Resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4]);
 });
 
+Route::get('/gamificacionPruebas', function () {
+    return view('includes/menubarProfesor', ['includeRoute' => 'alumno.gamificacion', 'title' => 'Gamificación', 'subtitle' => 'AOIDNAOSIDNAOIDNAOS', 'optionIndex' => 4]);
+});
+
 /* ============================================================================================= */
 // NOT VIEW RETURN - FUNCTIONS
 /* ============================================================================================= */

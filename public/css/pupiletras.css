@@ -1,4 +1,4 @@
-.check {
+.gcheck {
     content: url(../images/check.png);
     width: 15px;
     height: 15px;
@@ -47,7 +47,7 @@
     color: gray;
 }
 
-#Palabras .wordFound > .check {
+#Palabras .wordFound > .gcheck {
     opacity: 100%;
 }
 
@@ -91,58 +91,122 @@ button::-moz-focus-inner {
 /* indicates that the square is part of a word that has been found */
 
 #juego .found1 {
-    background-color: #277DA1;
+    background-color: red;
     color: white;
 }
 
 #juego .found2 {
-    background-color: #577590;
+    background-color: orangered;
     color: white;
 }
 
 #juego .found3 {
-    background-color: #4D908E;
+    background-color: orange;
     color: white;
 }
 
 #juego .found4 {
-    background-color: #43AA8B;
+    background-color: sandybrown;
     color: white;
 }
 
 #juego .found5 {
-    background-color: #90BE6D;
+    background-color: yellow;
     color: white;
 }
 
 #juego .found6 {
-    background-color: #F9C74F;
+    background-color: yellowgreen;
     color: white;
 }
 
 #juego .found7 {
-    background-color: #F9844A;
+    background-color: olive;
     color: white;
 }
 
 #juego .found8 {
-    background-color: #F8961E;
+    background-color: springgreen;
     color: white;
 }
 
 #juego .found9 {
-    background-color: #F3722C;
+    background-color: green;
     color: white;
 }
 
 #juego .found10 {
-    background-color: #f94144;
+    background-color: steelblue;
     color: white;
 }
 
+#juego .found11 {
+    background-color: teal;
+    color: white;
+}
+
+#juego .found12 {
+    background-color: skyblue;
+    color: white;
+}
+
+#juego .found13 {
+    background-color: blue;
+    color: white;
+}
+
+#juego .found14 {
+    background-color: royalblue;
+    color: white;
+}
+
+#juego .found15 {
+    background-color: violet;
+    color: white;
+}
+
+#juego .found16 {
+    background-color: magenta;
+    color: white;
+}
+
+#juego .found17 {
+    background-color: purple;
+    color: white;
+}
+
+#juego .found18 {
+    background-color: salmon;
+    color: white;
+}
+
+#juego .found19 {
+    background-color: pink;
+    color: white;
+}
+
+#juego .found20 {
+    background-color: deeppink;
+    color: white;
+}
+
+#juego .found21 {
+    background-color: brown;
+    color: white;
+}
+
+#juego .found22 {
+    background-color: grey;
+    color: white;
+}
+
+#juego .found23 {
+    background-color: black;
+    color: white;
+}
 
 #juego .solved {
-    background-color: purple;
+    background-color: lightcoral;
     color: white;
 }
 

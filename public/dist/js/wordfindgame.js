@@ -58,7 +58,7 @@
         var output = '<ul>';
         for (var i = 0, len = words.length; i < len; i++) {
           var word = words[i];
-          output += '<li class="word ' + word + '">' + '<img class="check" />' + word;
+          output += '<li class="word ' + word + '">' + '<img class="gcheck" />' + word;
         }
         output += '</ul>';
   
