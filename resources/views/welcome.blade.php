@@ -59,7 +59,7 @@
                     <input type="password" name='password' id='password' placeholder="contraseña" style="margin-top: 8%; margin-bottom: 11%; padding-left: 15px; border: none; border-bottom: 0.5px solid rgb(131, 123, 123); width: 100%;" required>
     
                     <input type="submit" id="button_login" style="background: #8DC63F; border-radius: 10px; padding: 2%; width: 300px; color: white;" value="Iniciar sesión" />
-                    <p style="color:#8DC63F">Olvidé mi contraseña</p>
+                    <p style="color:#8DC63F" hidden>Olvidé mi contraseña</p>
                 </form>
                 </div>
             </div>
