@@ -107,11 +107,11 @@
                         <a href="{{url('libros')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
-                <li>
+                <li hidden>
                     @if ($optionIndex == 2)
-                        <a href="#"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="#" onclick="messageCustom()"><img class="eoption eoptionSelected" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="#"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
+                        <a href="#" onclick="messageCustom()"><img class="eoption" src="{{asset('images/desafios.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
                 <li>
@@ -182,7 +182,7 @@
                     }
                 ?>
             </div>
-            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton">
+            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton" hidden>
         </div>
     </div>
   
@@ -198,6 +198,35 @@
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>  
 
     @stack('scripts')
+
+
+    <script>
+
+        function messageCustom() {
+            showMessageCustom("warning", "Aún no disponible");
+        }
+
+                
+
+                function showMessageCustom(type, message) {
+                    toastr.options = {
+                        "closeButton": false,
+                        "debug": false,
+                        "newestOnTop": false,
+                        "progressBar": false,
+                        "positionClass": "toast-top-right",
+                        "preventDuplicates": false,
+                        "onclick": null,
+                        "timeOut": "2000",
+                        "extendedTimeOut": "2000",
+                        "showEasing": "swing",
+                        "hideEasing": "linear",
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut"
+                    }
+                    toastr[type](message);
+                }
+    </script>
     
     </body>
 </html>

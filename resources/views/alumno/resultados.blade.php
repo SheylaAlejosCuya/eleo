@@ -6,7 +6,7 @@
             <img class="check" src="images/check.png" alt="">
             <img class="desafioImg" src="images/resultado1.png" alt="">
         </a>
-        <a href="#" class="edesafio-card">
+        <a href="#" class="edesafio-card" hidden>
             <img class="check" src="images/check.png" alt="">
             <img class="desafioImg" src="images/resultado2.png" alt="">
         </a>

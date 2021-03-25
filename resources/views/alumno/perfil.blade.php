@@ -9,9 +9,13 @@
                 <div class="profileTitle"><b>E-mail</b></div>
                 <div class="profileData">{{$alumno->email}}</div>
             </div>
-            <div class="profileInfoRow">
+            <div class="profileInfoRow" hidden>
                 <div class="profileTitle"><b>Cumpleaños</b></div>
                 <div class="profileData">{{$alumno->birthdate}}</div>
+            </div>
+            <div class="profileInfoRow">
+                <div class="profileTitle"><b>DNI</b></div>
+                <div class="profileData">{{$alumno->dni}}</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>Usuario</b></div>
