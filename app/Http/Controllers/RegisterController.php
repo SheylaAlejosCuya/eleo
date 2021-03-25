@@ -77,7 +77,7 @@ class RegisterController extends Controller
             $user->id_school = $request->get('school');
             $user->id_grade = $request->get('grade');
             $user->id_level = $request->get('level');
-            $user->id_state = 2;
+            $user->id_state = 1;
             $user->save();
 
             $code = tb_activation_code::where('code', $request->get('code'))->where('id_state', 5)->first();

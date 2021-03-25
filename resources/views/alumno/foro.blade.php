@@ -1,9 +1,15 @@
 <link rel="stylesheet" href="{{asset('css/foro.css')}}">
 <div class="infomacion">
 
-    <div class="foro">
+    <div class="foro" >
 
-        <h1 class="foroTitle"><strong>Foro N° 1</strong></h1>
+        <h1 class="foroTitle"><strong>Sin foros asignados.</strong></h1>
+        
+    </div>
+
+    <div class="foro" hidden>
+
+        <h1 class="foroTitle"><strong>Sin foros asignados./strong></h1>
         <div class="foroContent">
             <div class="foroPregunta"><b>¿Por qué crees que una civilización antigua, con menos tecnología que en la actualidad, pudo crear tantas maravillas?</b></div>
             <button class="foroButton"><a href="./foro/1">Participar</a></button>
