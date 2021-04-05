@@ -22,6 +22,7 @@ use App\Models\tb_lecturama;
 
 class AlumnoController extends Controller
 {
+    
     function perfil() {
         $alumno = Auth::guard('usuario')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'optionIndex' => 0, 'alumno' => $alumno]);

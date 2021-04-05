@@ -22,7 +22,7 @@ class AuthController extends Controller
     {
         try {
 
-            if (Auth::guard('usuario')->attempt(['dni'=> $request->email, 'password' => $request->password])) {
+            if (Auth::guard('usuario')->attempt(['dni'=> $request->email, 'password' => $request->password, 'id_rol' => '2'])) {
 
                 $alumno = Auth::guard('usuario')->user();
                 if( $alumno->id_state == 2 ){
@@ -32,10 +32,10 @@ class AuthController extends Controller
                     return redirect()->intended('inicio');
                 }
                 
-            } else if (Auth::guard('profesor')->attempt(['dni'=> $request->email, 'password' => $request->password])) {
+            } else if (Auth::guard('profesor')->attempt(['dni'=> $request->email, 'password' => $request->password, 'id_rol' => '1'])) {
 
                 $profesor = Auth::guard('profesor')->user();
-                if( $alumno->id_state == 2 ){
+                if( $profesor->id_state == 2 ){
                     Auth::guard('profesor')->logout();
                     return redirect()->back()->with('status_disable', 'error');
                 } else {
@@ -47,7 +47,7 @@ class AuthController extends Controller
             return redirect()->back()->with('status', 'error');
 
         } catch (Exception $error) {
-
+            dd($error);
             return response()->json([
                 'status_code' => 500,
                 'message' => 'Error',

@@ -1,13 +1,13 @@
 <div class="bibliotecaContainer">
     <h4>{{$subtitle}}</h4>
     <div class="bibliotecaOptions">
-        <a href="./biblioteca/maestroLecturama" class="bibliotecaOption">
+        <a href="{{route('web_lecturamas')}}" class="bibliotecaOption">
             <img class="check" src="{{asset('images/check.png')}}" alt="">    
-            <img src="{{asset('images/desafio1.png')}}" alt="">
+            <img src="{{asset('images/guia-del-maestro.png')}}" alt="">
         </a>
-        <a href="./biblioteca/eleoVirtual" class="bibliotecaOption">
+        <a href="{{route('web_eleo_virtual')}}" class="bibliotecaOption">
             <img class="check" src="{{asset('images/check.png')}}" alt="">    
-            <img src="{{asset('images/desafio2.png')}}" alt="">
+            <img src="{{asset('images/eleovirtual.png')}}" alt="">
         </a>
     </div>
 </div>

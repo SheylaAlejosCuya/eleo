@@ -4,7 +4,7 @@
             <div class="column">
                 <h2 class="ui center aligned icon header">
                     <img class="ui inline icon image" src="{{asset('images/a.png')}}" alt="" style="width: 200px">
-                    Gaby y sus gatitos
+                    {{$lectura->title}}
                 </h2>
             </div>
             <div class="column">
@@ -66,13 +66,7 @@
             </div>
         </div>
     </div>
-    <script>
-        function openModal(data) {
-            $('.ui.modal#' + data)
-               .modal('show')
-            ;
-        }
-    </script>
+    
     <div class="ui modal" id="asignar">
         <i class="close icon"></i>
         <div class="header">
@@ -151,7 +145,7 @@
 
     <div class="ui basic modal" id="video" tabindex="-1" aria-hidden="true">
         <div class="content">
-            <x-video continue="" lectura="" alumno=""/>
+            {{-- <x-video continue="" lectura="" alumno=""/> --}}
         </div>
         <div class="actions">
             <h4 class="cancel" style="cursor: pointer">
@@ -420,10 +414,21 @@
             </div>
         </div>
     </div>
+
 </div>
+
+@prepend('scripts')
 <script>
     $('.shape').shape();
     function next() {
         $('.shape').shape('flip over');
     }
 </script>
+<script>
+    function openModal(data) {
+        $('.ui.modal#' + data)
+           .modal('show')
+        ;
+    }
+</script>
+@endprepend

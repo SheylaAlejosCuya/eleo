@@ -8,8 +8,8 @@
                 <div class="profileData">{{$profesor->first_name}} {{$profesor->last_name}}</div>
             </div>
             <div class="profileInfoRow">
-                <div class="profileTitle"><b>Cumpleaños</b></div>
-                <div class="profileData">{{$profesor->birthdate}}</div>
+                <div class="profileTitle"><b>DNI</b></div>
+                <div class="profileData">{{$profesor->dni}}</div>
             </div>
             <div class="profileInfoRow">
                 <div class="profileTitle"><b>E-mail</b></div>
