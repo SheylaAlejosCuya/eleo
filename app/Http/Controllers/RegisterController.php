@@ -40,7 +40,7 @@ class RegisterController extends Controller
         return view('register', ['schools'=>$schools, 'genders'=>$genders, 'levels' => $levels, 'grades'=>$grades]);
     }
 
-    public function check_code(Request $request){
+    public function check_code(Request $request) {
         try {
             $code = tb_activation_code::where('code', $request->get('code'))->where('id_state', 5)->first();
             if($code) {
@@ -53,10 +53,8 @@ class RegisterController extends Controller
         }
     }
 
-    public function create_new_user(Request $request){
+    public function create_new_user(Request $request) {
         try {
-
-            
 
             $user = new tb_user;
             $user->first_name = trim($request->get('names'));

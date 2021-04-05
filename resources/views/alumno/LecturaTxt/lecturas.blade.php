@@ -2,11 +2,11 @@
 <div class="lecturaContainer">
     <div class="barraContainer">
         <div class="barra">
-            <img src="{{asset('images/config.png')}}" alt="" width="25px">
+            {{-- <img src="{{asset('images/config.png')}}" alt="" width="25px">
             <img src="{{asset('images/lapiz.png')}}" alt="" width="25px">
             <img src="{{asset('images/diccionario.png')}}" alt="" width="25px">
             <img src="{{asset('images/sonido.png')}}" alt="" width="25px">
-            <img src="{{asset('images/texto.png')}}" alt="" width="25px">
+            <img src="{{asset('images/texto.png')}}" alt="" width="25px"> --}}
         </div>
     </div>
     <div class="cuento">
@@ -45,7 +45,7 @@
         </div>
     </div>
     <a href="{{route('web_video_preguntas4', ['id'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
-    <button class="saveButton">Verifica</button>
+    <button class="saveButton" hidden>Verifica</button>
     <a href="{{route('web_texto_preguntas1', ['id_reading'=>$lectura->id_reading])}}"><button class="saveButton" style="float: right; margin-top: 16px">Avanza</button></a>
     </br>
     </br>

@@ -11,6 +11,7 @@ use App\Http\Controllers\DesafiosController;
 use App\Http\Controllers\TutorialesController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BibliotecaController;
 
 
 /* Login */
@@ -88,51 +89,17 @@ Route::get('/profesor/tutoriales/{id}', function ($id) {
     return view('includes/menubarProfesor', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0]);
 });
 
-Route::get('/profesor/biblioteca', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.biblioteca', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca', [BibliotecaController::class, 'lecturas_recursos'])->name('web_lecturas_recursos')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/maestroLecturama', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.maestroLecturama', 'title' => 'Guía del maestro lecturama', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca/lecturamas', [BibliotecaController::class, 'lecturamas'])->name('web_lecturamas')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleoVirtual', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E - Leo virtual', 'subtitle' => 'Escoge la lectura de tu preferencia', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca/eleo-virtual', [BibliotecaController::class, 'eleo_virtual'])->name('web_eleo_virtual')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades', function($lectura) {
-    $data = [
-        [
-            'url' => "./actividades/1",
-            'grado' => '1ro "A"' 
-        ],
-        [
-            'url' => "./actividades/2",
-            'grado' => '1ro "A"' 
-        ],
-        [
-            'url' => "./actividades/3",
-            'grado' => '1ro "A"' 
-        ],
-        [
-            'url' => "./actividades/4",
-            'grado' => '1ro "A"' 
-        ],
-        [
-            'url' => "./actividades/5",
-            'grado' => '1ro "A"' 
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'data' => $data, 'subtitle' => 'Actividades por lectura', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas', [BibliotecaController::class, 'lecturas_actividades'])->name('web_lecturas_actividades')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades/{actividad}', function($lectura, $actividad) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $actividad, 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas/{id_lectura}', [BibliotecaController::class, 'lecturas_detalles'])->name('web_lecturas_detalles')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleoVirtual/{lectura}/actividades/{actividad}/preview', function($lectura, $actividad) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° 1', 'optionIndex' => 1]);
-});
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas/{id_lectura}/previsualizacion', [BibliotecaController::class, 'lecturas_detalles_preview'])->name('web_lecturas_detalles_preview')->middleware('auth:profesor');
 
 /* Lecturas de Estudio */
 Route::get('/profesor/lecturasEstudio', function() {

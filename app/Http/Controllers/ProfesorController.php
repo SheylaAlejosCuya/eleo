@@ -28,7 +28,8 @@ class ProfesorController extends Controller
 {
     
     function inicio() {
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0]);
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0, 'profesor' => $profesor]);
     }
 
     function perfil() {

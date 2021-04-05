@@ -3,9 +3,9 @@
         <img class="star" src="{{asset('images/check.png')}}" alt="">
         <img src="{{asset('images/a.png')}}" alt="">
         <div class="actividadRight">
-            <h2>Gaby y sus gatitos</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-            <button class="saveButton"><a href="./{{$actividad}}/preview">Visualizar</a></button>
+            <h2>{{$lectura->title}}</h2>
+            <p>{{$lectura->content}}</p>
+            <button class="saveButton"><a href="{{route('web_lecturas_detalles_preview', ['id_lecturama'=>$lectura->id_lecturama, 'id_lectura'=>$lectura->id_reading])}}">Visualizar</a></button>
         </div>
     </div>
 </div>

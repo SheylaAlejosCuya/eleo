@@ -97,13 +97,13 @@
                         <a href="{{route('web_inicio_profesor')}}"><img class="eoption" src="{{asset('images/inicio.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
-                {{-- <li>
+                {{--<li>
                     @if ($optionIndex == 6) 
                         <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Asignación"></a>
                     @else
                         <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Asignación"></a>
                     @endif
-                </li> --}}
+                </li>--}}
                 <li>
                     @if ($optionIndex == 1) 
                         <a href="{{url('profesor/biblioteca')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
@@ -113,18 +113,18 @@
                 </li>
                 <li>
                     @if ($optionIndex == 2)
-                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas de estudio.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/lecturas de estudio.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
-                <li>
+                {{-- <li>
                     @if ($optionIndex == 3)
                         <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @else
                         <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
-                </li>
+                </li> --}}
                 <li>
                     @if ($optionIndex == 4)
                         <a href="{{url('profesor/foro')}}"><img class="eoption eoptionSelected" src="{{asset('images/foro.png')}}" alt="Inicio"></a>
@@ -185,11 +185,18 @@
                     }
                 ?>
             </div>
-            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton">
+            <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton" hidden>
         </div>
     </div>
     </body>
     <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
     <script src="{{asset('/plugins/toastr/toastr.min.js')}}"></script>
+    <script src="https://vjs.zencdn.net/7.10.2/video.min.js"></script>
+
+    <!-- JavaScript - ALERT -->
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>  
     @stack('scripts')
 </html>     
