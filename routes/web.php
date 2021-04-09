@@ -74,7 +74,7 @@ Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estu
 Route::get('/profesor/inicio', [ProfesorController::class, 'inicio'])->name('web_inicio_profesor')->middleware('auth:profesor');
 
 /* Asignación de Profesor */
-Route::get('/inicio/profesor/asignacion', [ProfesorController::class, 'asignacion_alumnos'])->name('web_asignacion_alumnos')->middleware('auth:profesor');
+Route::get('/profesor/asignacion', [ProfesorController::class, 'asignacion_alumnos'])->name('web_asignacion_alumnos')->middleware('auth:profesor');
 Route::post('/alumno/update/section', [ProfesorController::class, 'actualizar_seccion_alumno'])->name('api_actualizar_seccion_alumno')->middleware('auth:profesor');
 
 Route::get('/profesor/perfil', [ProfesorController::class, 'perfil'])->name('web_profesor_perfil')->middleware('auth:profesor');
@@ -95,11 +95,11 @@ Route::get('/profesor/biblioteca/lecturamas', [BibliotecaController::class, 'lec
 
 Route::get('/profesor/biblioteca/eleo-virtual', [BibliotecaController::class, 'eleo_virtual'])->name('web_eleo_virtual')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas', [BibliotecaController::class, 'lecturas_actividades'])->name('web_lecturas_actividades')->middleware('auth:profesor');
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas', [BibliotecaController::class, 'lecturas_disponibles'])->name('web_lecturas_disponibles')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas/{id_lectura}', [BibliotecaController::class, 'lecturas_detalles'])->name('web_lecturas_detalles')->middleware('auth:profesor');
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura}', [BibliotecaController::class, 'lectura_detalles'])->name('web_lectura_detalles')->middleware('auth:profesor');
 
-Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lecturas/{id_lectura}/previsualizacion', [BibliotecaController::class, 'lecturas_detalles_preview'])->name('web_lecturas_detalles_preview')->middleware('auth:profesor');
+Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura}/previsualizacion', [BibliotecaController::class, 'lectura_detalles_preview'])->name('web_lectura_detalles_preview')->middleware('auth:profesor');
 
 /* Lecturas de Estudio */
 Route::get('/profesor/lecturasEstudio', function() {
@@ -420,3 +420,6 @@ Route::post('/guardar/preguntas/bloque3', [LecturasController::class, 'guardar_p
 Route::post('/guardar/preguntas/bloque4', [LecturasController::class, 'guardar_preguntas_bloque4'])->name('api_preguntas_bloque4');
 
 Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_preguntas_bloque5'])->name('api_preguntas_bloque5');
+
+
+Route::post('/asignacion/aulas', [ProfesorController::class, 'asignacion_lecturas'])->name('api_asignacion_lecturas');

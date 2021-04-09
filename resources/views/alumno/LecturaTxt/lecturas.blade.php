@@ -13,7 +13,7 @@
         <h1><strong>Conociendo el antiguo Egipto</strong></h1>
         <div class="texto">
             <p class="letra">
-                <h2>Iniciando la travesía</h2>
+                {{-- <h2>Iniciando la travesía</h2>
                 <img src="{{asset('images/orus.png')}}" alt="">
                 Vamos a ver si logro que descubras algo nuevo y acabas fascinado como todo aquel que se acerca a la historia del antiguo Egipto, que como verás es mucho más que pirámides. Lo que quiero decir es que, a la sombra de las pirámides, además de templos para los dioses, se alzaron ciudades para los hombres y aun hoy, todo está allí para sorprendernos.
                 <br>
@@ -40,7 +40,7 @@
                 <br>
                 Aunque la palabra esfinge en griego significa estrangulador, su origen está en la frase egipcia shesep-ankh, que quiere decir imagen viviente. La cabeza está esculpida en piedra más dura que el cuerpo y el paso del tiempo la ha erosionado menos, pero está muy estropeada ya que fue blanco de guerra en el siglo XVIII. Justo enfrente fue construido un templo dedicado al sol en sus tres fases: el amanecer, el mediodía y cuando se oculta en el horizonte, que no ha tenido tanta suerte como la esfinge y las pirámides, y está en ruinas.
                 <br>
-                <img src="{{asset('images/esfinge.png')}}" alt="">
+                <img src="{{asset('images/esfinge.png')}}" alt=""> --}}
             </p>
         </div>
     </div>

@@ -23,6 +23,7 @@ use App\Models\tb_lecturama;
 use App\Models\tb_level;
 use App\Models\tb_grade;
 use App\Models\tb_section;
+use App\Models\tb_classroom;
 
 class BibliotecaController extends Controller
 {
@@ -37,26 +38,24 @@ class BibliotecaController extends Controller
 
     function eleo_virtual() {
         $lecturamas = tb_lecturama::where('id_state', 3)->get();
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E-Leo virtual', 'subtitle' => 'Escoge la lectura de tu preferencia', 'optionIndex' => 1, 'lecturamas' => $lecturamas]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E-Leo virtual', 'subtitle' => 'Lecturamas disponibles', 'optionIndex' => 1, 'lecturamas' => $lecturamas]);
     }
 
-    function lecturas_actividades($id_lecturama) {
-
+    function lecturas_disponibles($id_lecturama) {
         $lecturas = tb_reading::where('id_lecturama', $id_lecturama)->where('id_state', 3)->get();
-   
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'subtitle' => 'Lecturas', 'optionIndex' => 1, 'lecturas' => $lecturas]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadesLectura', 'subtitle' => 'Lecturas disponibles', 'optionIndex' => 1, 'lecturas' => $lecturas]);
     }
 
-    function lecturas_detalles($id_lecturama, $id_lectura) {
-        //$lecturamas = tb_lecturama::where('id_state', 3)->get();
-        $lectura = tb_reading::where('id_reading', $id_lectura)->where('id_state', 3)->first();
-
+    function lectura_detalles($id_lecturama, $id_lectura) {
+        $lectura = tb_reading::find($id_lectura);
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $id_lectura, 'title' => 'Nivel n° 1', 'optionIndex' => 1, 'lectura' => $lectura]);
     }
 
-    function lecturas_detalles_preview($id_lecturama, $id_lectura) {
-        $lectura = tb_reading::where('id_reading', $id_lectura)->where('id_state', 3)->first();
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° 1', 'optionIndex' => 1, 'lectura'=>$lectura]);
+    function lectura_detalles_preview($id_lecturama, $id_lectura) {
+        $lecturama = tb_lecturama::find($id_lecturama);
+        $lectura = tb_reading::find($id_lectura);
+        $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_teacher', '!=', null)->with('grade')->with('section')->with('level')->with('teacher')->get();
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n°'.$id_lecturama, 'optionIndex' => 1, 'lectura'=>$lectura, 'salones' => $salones]);
     }
 
 }
