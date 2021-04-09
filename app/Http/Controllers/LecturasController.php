@@ -20,6 +20,8 @@ use App\Models\tb_lecturama;
 use App\Models\tb_question;
 use App\Models\tb_answer;
 use App\Models\tb_results;
+use App\Models\tb_asigment;
+use App\Models\tb_assignment_reading;
 
 class LecturasController extends Controller
 {
@@ -27,7 +29,15 @@ class LecturasController extends Controller
 
         $alumno = Auth::guard('usuario')->user();
         $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
-        $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->where('id_state', 3)->get();
+
+        $lecturas_asignadas = tb_assignment_reading::where('id_classroom', $alumno->id_classroom)->get();
+
+        $lecturas = [];
+        foreach ($lecturas_asignadas as $key => $lectura_asignada) {
+            $lectura = tb_reading::where('id_reading', $lectura_asignada->id_reading)->where('id_state', 3)->first();
+            array_push($lecturas, $lectura);
+        }
+
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.libros', 'title' => 'Mis libros y lecturas', 'subtitle' => 'Selecciona el libro de tu preferencia', 'optionIndex' => 1, 'lecturas' => $lecturas, 'alumno' => $alumno, 'type' => 'libros']);
     }
@@ -36,6 +46,8 @@ class LecturasController extends Controller
 
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('usuario')->id());
+
+
 
         if((int) $lectura->id_state == 4) {
             return redirect()->back()->with('status', 'La lectura seleccionada se encuentra deshabilitada');

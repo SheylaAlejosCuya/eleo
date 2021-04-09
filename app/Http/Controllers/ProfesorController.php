@@ -23,6 +23,7 @@ use App\Models\tb_lecturama;
 use App\Models\tb_level;
 use App\Models\tb_grade;
 use App\Models\tb_section;
+use App\Models\tb_assignment_reading;
 
 class ProfesorController extends Controller
 {
@@ -88,5 +89,23 @@ class ProfesorController extends Controller
         }
         
     }
+
+
+    function asignacion_lecturas(Request $request) {
+        try {
+            $salones = explode(",", $request->classrooms);
+            foreach ($salones as $key => $salon) {
+                $asignacion= new tb_assignment_reading();
+                $asignacion->id_reading = $request->id_reading;
+                $asignacion->id_classroom = $salon;
+                $asignacion->id_state = 3;
+                $asignacion->save();
+            }
+            return response()->json(['type' => 'success', 'message' => 'Aulas correctamente asignadas'], 200);
+        } catch(\Excepcion $e) {
+            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
 
 }

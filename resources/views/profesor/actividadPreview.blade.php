@@ -1,9 +1,10 @@
 <div class="ui stackable centered grid">
+
     <div class="ten wide column">
         <div class="ui middle aligned equal width stackable grid">
             <div class="column">
                 <h2 class="ui center aligned icon header">
-                    <img class="ui inline icon image" src="{{asset('images/a.png')}}" alt="" style="width: 200px">
+                    <img class="ui inline icon image" src="{{asset($lectura->image_card)}}" alt="" style="width: 200px">
                     {{$lectura->title}}
                 </h2>
             </div>
@@ -74,70 +75,30 @@
         </div>
         <div class="content">
             <div class="ui centered stackable grid">
-                <div class="five wide column">
-                    <div class="ui middle aligned grid">
-                        <div class="two wide column">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
+                
+                @foreach($salones as $salon)
+
+                    <div class="five wide column">
+                        <div class="ui middle aligned grid">
+                            <div class="two wide column">
+                                <div class="ui checkbox">
+                                    <input type="checkbox" name="classroom_checkbox" id='{{'classroom_'.$salon->id_classroom}}' value={{$salon->id_classroom}}>
+                                    <label></label>
+                                </div>
                             </div>
-                        </div>
-                        <div class="center aligned fourteen wide column">
-                            <div class="ui segment">
-                                <div class="ui huge header">1ro "A"</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="five wide column">
-                    <div class="ui middle aligned grid">
-                        <div class="two wide column">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
-                            </div>
-                        </div>
-                        <div class="center aligned fourteen wide column">
-                            <div class="ui segment">
-                                <div class="ui huge header">1ro "B"</div>
+                            <div class="center aligned fourteen wide column">
+                                <div class="ui segment">
+                                    <div class="ui huge header">{{$salon->grade->grade.$salon->section->section}}</div>
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="five wide column">
-                    <div class="ui middle aligned grid">
-                        <div class="two wide column">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
-                            </div>
-                        </div>
-                        <div class="center aligned fourteen wide column">
-                            <div class="ui segment">
-                                <div class="ui huge header">1ro "C"</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="five wide column">
-                    <div class="ui middle aligned grid">
-                        <div class="two wide column">
-                            <div class="ui checkbox">
-                                <input type="checkbox" name="example">
-                                <label></label>
-                            </div>
-                        </div>
-                        <div class="center aligned fourteen wide column">
-                            <div class="ui segment">
-                                <div class="ui huge header">2do "B"</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
+
             </div>
         </div>
         <div class="actions">
-            <div class="ui positive button">
+            <div class="ui positive button" onclick="guardar()">
                 Guardar
             </div>
         </div>
@@ -419,16 +380,64 @@
 
 @prepend('scripts')
 <script>
-    $('.shape').shape();
-    function next() {
-        $('.shape').shape('flip over');
-    }
-</script>
-<script>
     function openModal(data) {
         $('.ui.modal#' + data)
            .modal('show')
         ;
     }
 </script>
+<script>
+    $('.shape').shape();
+    function next() {
+        $('.shape').shape('flip over');
+    }
+</script>
+<script>
+    function guardar(){
+        classrooms = [];
+        $("input:checkbox[name=classroom_checkbox]:checked").each(function() {
+            classrooms.push($(this).val());
+        });
+        //alert(classrooms);
+        $.ajax({
+            type: "POST",
+            url: "{{route('api_asignacion_lecturas')}}",
+            dataType: "json",
+            data: {
+                "_token": "{{csrf_token()}}",
+                "classrooms": classrooms.toString(),
+                "id_reading": "{{$lectura->id_reading}}"
+            },
+            success: function(response) { 
+                console.log(response); 
+                showMessage('success', 'Lectura asignada correctamente');
+            },
+            error: function(e) {
+                console.log(e); 
+            }
+        });
+    }
+
+
+    function showMessage(type, message) {
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "timeOut": "2000",
+            "extendedTimeOut": "2000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr[type](message);
+    }
+
+</script>
+
 @endprepend
