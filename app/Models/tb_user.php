@@ -41,7 +41,21 @@ class tb_user extends Authenticatable
 
     public function level()
     {
-        return $this->hasMany(tb_level::class, 'id_level', 'id_level');
+        return $this->hasOne(tb_level::class, 'id_level', 'id_level');
     }
+
+    public function grade()
+    {
+        return $this->hasOne(tb_grade::class, 'id_grade', 'id_grade');
+    }
+
+    public function school()
+    {
+        return $this->hasOne(tb_school::class, 'id_school', 'id_school');
+    }
+
+
+
+  
 
 }

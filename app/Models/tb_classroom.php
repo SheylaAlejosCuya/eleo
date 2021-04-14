@@ -41,4 +41,6 @@ class tb_classroom extends Model
         return $this->hasOne(tb_user::class, 'id_user', 'id_teacher');
     }
 
+    
+
 }

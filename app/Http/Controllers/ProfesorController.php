@@ -61,47 +61,22 @@ class ProfesorController extends Controller
         }
     }
 
-    function asignacion_alumnos() {
-
-        $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->get();
-        
-        $niveles = tb_level::all();
-        $grados = tb_grade::all();
-        $secciones = tb_section::all();
-
-        foreach ($niveles as $key => $nivel) {
-            foreach ($grados as $key => $grado) {
-                $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
-            }
-            $nivel->grados = $grados;
-        }
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.asignacionAlumnos', 'optionIndex' => 6, 'niveles' => $niveles, 'secciones' => $secciones ]);
-    }
-
-    function actualizar_seccion_alumno(Request $request) {
-        try {
-            $alumno = tb_user::find($request->id_alumno);
-            $alumno->id_section = $request->id_seccion;
-            $alumno->save();
-            return response()->json(['type' => 'success', 'message' => 'update successful'], 200);
-        } catch(\Excepcion $e) {
-            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
-        }
-        
-    }
-
-
     function asignacion_lecturas(Request $request) {
         try {
             $salones = explode(",", $request->classrooms);
             foreach ($salones as $key => $salon) {
-                $asignacion= new tb_assignment_reading();
-                $asignacion->id_reading = $request->id_reading;
-                $asignacion->id_classroom = $salon;
-                $asignacion->id_state = 3;
-                $asignacion->save();
+
+                $check_asignacion = tb_assignment_reading::where('id_reading', $request->id_reading)->where('id_classroom', $salon)->first();
+                
+                if($check_asignacion == null){
+                    $asignacion= new tb_assignment_reading();
+                    $asignacion->id_reading = $request->id_reading;
+                    $asignacion->id_classroom = $salon;
+                    $asignacion->id_state = 3;
+                    $asignacion->save();
+                }
             }
-            return response()->json(['type' => 'success', 'message' => 'Aulas correctamente asignadas'], 200);
+            return response()->json(['type' => 'success', 'message' => $check_asignacion], 200);
         } catch(\Excepcion $e) {
             return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
         }

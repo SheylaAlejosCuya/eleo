@@ -11,9 +11,9 @@
 <div class="infomacion">
     <h1>Asignación de alumnos</h1>
 
-    <h3>Nivel</h3>
+    {{-- <h3>Nivel</h3> --}}
 
-    @foreach($niveles as $key_n => $nivel)
+    {{-- @foreach($niveles as $key_n => $nivel)
         <h3>{{$nivel->id_level}}{{$nivel->level}}</h3>
         @foreach($nivel->grados as $key_g => $grado)
             <h4>{{$grado->grade}}</h4> 
@@ -45,7 +45,39 @@
 
             
         @endforeach
-    @endforeach
+    @endforeach --}}
+
+
+    
+        <table class="table table-bordered">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Alumno</th>
+                <th scope="col">Nivel</th>
+                <th scope="col">Grado</th>
+                <th scope="col">Sección</th>
+            </tr>
+            </thead>
+            <tbody>
+                @foreach ($alumnos as $key => $alumno)
+                <tr>
+                    <th scope="row">{{ (int) $key + 1 }}</th>
+                    <td>{{$alumno->last_name}} {{$alumno->first_name}}</td>
+                    <td>{{$alumno->level->level}}</td>
+                    <td>{{$alumno->grade->grade}}</td>
+                    <td>
+                        <select id={{"select_".$key}} class="selectpicker" title="Sin sección asignada" data-id-alumno='{{$alumno->id_user}}' data-original-value='{{$alumno->id_section}}'>
+                            @foreach($secciones as $key_s => $seccion)
+                                <option value="{{ $key_s + 1 }}" {{($key_s + 1) == $alumno->id_section ? 'selected' : ''}}>{{$seccion->section}}</option>
+                            @endforeach
+                        </select>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+    
 
     
 

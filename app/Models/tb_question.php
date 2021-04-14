@@ -27,6 +27,6 @@ class tb_question extends Model
 
     public function answers()
     {
-        return $this->hasMany('tb_answer', 'id_question', 'id_question');
+        return $this->hasMany(tb_answer::class, 'id_question', 'id_question');
     }
 }

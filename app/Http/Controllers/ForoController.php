@@ -26,18 +26,18 @@ class ForoController extends Controller
 {
     function foros() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.foro', 'title' => 'Foro', 'optionIndex' => 3, 'alumno' => $alumno]);
     }
 
     function foro($id) {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.foroPublicacion', 'optionIndex' => 3, 'alumno' => $alumno]);
     }
 
     function foros_profesor() {
-        $alumno = Auth::guard('profesor')->user();
+        $alumno = Auth::guard('alumno')->user();
         $foros = tb_forum::all();
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.foro', 'title' => 'Foro', 'optionIndex' => 4, 'foros' => $foros]);
     }

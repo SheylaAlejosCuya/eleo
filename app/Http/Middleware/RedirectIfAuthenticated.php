@@ -24,10 +24,12 @@ class RedirectIfAuthenticated
 
         foreach ($guards as $guard) {
             if (Auth::guard($guard)->check()) {
-                if($guard == 'usuario'){
+                if($guard == 'alumno'){
                     return redirect(RouteServiceProvider::HOME_ALUMNO);
                 } else if ($guard == 'profesor') { 
                     return redirect(RouteServiceProvider::HOME_PROFESOR);
+                } else if ($guard == 'profesor_admin') { 
+                    return redirect(RouteServiceProvider::HOME_PROFESOR_ADMIN);
                 }
             }
         }

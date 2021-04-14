@@ -47,9 +47,11 @@
             video.pause();
         }
     }
+    
     btn.onclick = function() {
         togglePlayPause();
     }
+
     video.addEventListener('timeupdate', function() {
         var pos = video.currentTime / video.duration;
         position.style.width = pos * 100 + '%';
@@ -65,6 +67,7 @@
             btn.className = 'far fa-play-circle';
         }
     })
+
     document.addEventListener('keydown', function(event) {
         if (event.keyCode == 32) {
             if (video.paused) {
@@ -87,8 +90,10 @@
             video.currentTime = ((event.keyCode - 96)/10) * video.duration;
         }
     }, true);
+    
     videobar.onclick = function(event) {
         var rect = videobar.getBoundingClientRect();
         video.currentTime = ((event.pageX - rect.x) / rect.width) * video.duration;
     }
+
 </script>
