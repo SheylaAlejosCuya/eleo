@@ -27,7 +27,7 @@ class LecturasController extends Controller
 {
     function libros() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
 
         $lecturas_asignadas = tb_assignment_reading::where('id_classroom', $alumno->id_classroom)->get();
@@ -45,7 +45,7 @@ class LecturasController extends Controller
     function libros_video($id) {
 
         $lectura = tb_reading::find($id);
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
 
 
@@ -58,7 +58,7 @@ class LecturasController extends Controller
 
     function video_preguntas1($id) {
         $lectura = tb_reading::find($id);
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', null)->get();
 
@@ -70,13 +70,13 @@ class LecturasController extends Controller
 
     function video_preguntas2($id) {
         $lectura = tb_reading::find($id);
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '1')->where('source', 'video')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -88,7 +88,7 @@ class LecturasController extends Controller
 
     function video_preguntas3($id) {
         $lectura = tb_reading::find($id);
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '2')->where('source', 'video')->get();
 
@@ -106,14 +106,14 @@ class LecturasController extends Controller
     }
 
     function video_preguntas4($id) {
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $lectura = tb_reading::find($id);
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '3')->where('source', 'video')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -127,21 +127,21 @@ class LecturasController extends Controller
     function lecturas($id_reading) {
 
         $lectura = tb_reading::find($id_reading);
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.lecturas', 'AlternativeBackground' => "1", 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno]);
     }
 
     function texto_preguntas1($id_reading) {
 
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $lectura = tb_reading::find($id_reading);
         $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '1')->where('source', 'texto')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -155,14 +155,14 @@ class LecturasController extends Controller
     }
     function texto_preguntas2($id_reading) {
 
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $lectura = tb_reading::find($id_reading);
         $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '2')->where('source', 'texto')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -174,14 +174,14 @@ class LecturasController extends Controller
     }
     function texto_preguntas3($id_reading) {
 
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $lectura = tb_reading::find($id_reading);
         $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '3')->where('source', 'texto')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -195,14 +195,14 @@ class LecturasController extends Controller
 
     function texto_preguntas4($id_reading) {
 
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $lectura = tb_reading::find($id_reading);
         $preguntas = tb_reading::find($id_reading)->questions()->where('id_question_level', '4')->where('source', 'texto')->get();
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
-            $answer_completed = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $pregunta->id_question)->first();
+            $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
             if($answer_completed){
                 $pregunta->answer_completed = $answer_completed->id_answer;
             }else{
@@ -215,7 +215,7 @@ class LecturasController extends Controller
     
     function texto_preguntas5($id_reading) {
 
-        $alumno = tb_user::find(Auth::guard('usuario')->id());
+        $alumno = tb_user::find(Auth::guard('alumno')->id());
         $lectura = tb_reading::find($id_reading);
 
         $pregunta_final = tb_reading::find($id_reading)->questions()->where('id_question_level', '5')->where('source', 'final')->first();
@@ -229,7 +229,7 @@ class LecturasController extends Controller
 
             foreach($respuestas as $respuesta) {
                 $results = new tb_results;
-                $results->id_user = Auth::guard('usuario')->id();
+                $results->id_user = Auth::guard('alumno')->id();
                 $results->free_answer = $respuesta;
                 $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
                 $results->save();
@@ -246,7 +246,7 @@ class LecturasController extends Controller
             $respuestas = explode(",", $request->answers);
             $preguntas = explode(",", $request->questions);
             foreach($respuestas as $index => $respuesta) {
-                $results_prev = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $preguntas[$index])->get();
+                $results_prev = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $preguntas[$index])->get();
                 if(count($results_prev) != 1) {
                     $results = new tb_results;
                     $results->id_user = Auth::guard('usuario')->id();
@@ -273,12 +273,12 @@ class LecturasController extends Controller
     function guardar_preguntas_bloque5(Request $request) {
         try {
 
-            $results_prev = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', (int) $request->file('id_question'))->get();
+            $results_prev = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', (int) $request->file('id_question'))->get();
             if(count($results_prev) != 1) {
                 $path = Storage::disk('archivos_alumnos_p_final')->putFile('pregunta_final', $request->file('custom_file'));
 
                 $results = new tb_results;
-                $results->id_user = Auth::guard('usuario')->id();
+                $results->id_user = Auth::guard('alumno')->id();
                 $results->file = $path;
                 $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
                 $results->id_question = (int) $request->get('id_question');

@@ -47,11 +47,11 @@ return [
             'hash' => false,
         ],
         // Custom
-        'usuario' => [
+        'profesor' => [
             'driver' => 'session',
             'provider' => 'usuarios',
         ],
-        'profesor' => [
+        'profesor_admin' => [
             'driver' => 'session',
             'provider' => 'usuarios',
         ],

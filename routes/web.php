@@ -12,10 +12,11 @@ use App\Http\Controllers\TutorialesController;
 use App\Http\Controllers\ProfesorController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\BibliotecaController;
+use App\Http\Controllers\ProfesorAdminController;
 
 
 /* Login */
-Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:usuario')->middleware('guest:profesor');
+Route::get('/', function () { return view('welcome'); })->name('login')->middleware('guest:alumno')->middleware('guest:profesor')->middleware('guest:profesor_admin');
 
 Route::get('/register', [RegisterController::class, 'register'])->name('register');
 Route::post('/register', [RegisterController::class, 'create_new_user'])->name('api_register');
@@ -25,57 +26,71 @@ Route::post('/login', [AuthController::class, 'login'])->name('api_login');
 Route::get('/logout', [AuthController::class, 'logout'])->name('api_logout');
 
 /* Menú Inicio */
-Route::get('/inicio', [AlumnoController::class, 'inicio'])->name('web_inicio')->middleware('auth:usuario');
+Route::get('/inicio', [AlumnoController::class, 'inicio'])->name('web_inicio')->middleware('auth:alumno');
 
 /* Perfil de Usuario */
-Route::get('/perfil', [AlumnoController::class, 'perfil'])->name('web_perfil')->middleware('auth:usuario');
-Route::post('/save/password/alumno', [AlumnoController::class, 'guardar_password'])->name('api_save_password')->middleware('auth:usuario');
+Route::get('/perfil', [AlumnoController::class, 'perfil'])->name('web_perfil')->middleware('auth:alumno');
+Route::post('/save/password/alumno', [AlumnoController::class, 'guardar_password'])->name('api_save_password')->middleware('auth:alumno');
 
 /* Tutoriales */
-Route::get('/tutoriales/{id}', [TutorialesController::class, 'tutoriales_video'])->name('web_tutoriales_video')->middleware('auth:usuario');
-Route::get('/tutoriales',      [TutorialesController::class, 'tutoriales'])->name('web_tutoriales')->middleware('auth:usuario');
+Route::get('/tutoriales/{id}', [TutorialesController::class, 'tutoriales_video'])->name('web_tutoriales_video')->middleware('auth:alumno');
+Route::get('/tutoriales',      [TutorialesController::class, 'tutoriales'])->name('web_tutoriales')->middleware('auth:alumno');
 
 Route::get('/bar', function () { return view('includes/menubaralternate', ['optionIndex' => 0]); });
 
 /* Lecturas y recursos */
 /* URL - Imagen - Titulo */
-Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')->middleware('auth:usuario');
+Route::get('/libros', [LecturasController::class, 'libros'])->name('web_libros')->middleware('auth:alumno');
 
 /* Preguntas de Video */
-Route::get('/libros/video/{id}', [LecturasController::class, 'libros_video'])->name('web_libros_video')->middleware('auth:usuario');
+Route::get('/libros/video/{id}', [LecturasController::class, 'libros_video'])->name('web_libros_video')->middleware('auth:alumno');
 
-Route::get('/preguntas/video/{id}/bloque-1', [LecturasController::class, 'video_preguntas1'])->name('web_video_preguntas1')->middleware('auth:usuario');
-Route::get('/preguntas/video/{id}/bloque-2', [LecturasController::class, 'video_preguntas2'])->name('web_video_preguntas2')->middleware('auth:usuario');
-Route::get('/preguntas/video/{id}/bloque-3', [LecturasController::class, 'video_preguntas3'])->name('web_video_preguntas3')->middleware('auth:usuario');
-Route::get('/preguntas/video/{id}/bloque-4', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:usuario');
+Route::get('/preguntas/video/{id}/bloque-1', [LecturasController::class, 'video_preguntas1'])->name('web_video_preguntas1')->middleware('auth:alumno');
+Route::get('/preguntas/video/{id}/bloque-2', [LecturasController::class, 'video_preguntas2'])->name('web_video_preguntas2')->middleware('auth:alumno');
+Route::get('/preguntas/video/{id}/bloque-3', [LecturasController::class, 'video_preguntas3'])->name('web_video_preguntas3')->middleware('auth:alumno');
+Route::get('/preguntas/video/{id}/bloque-4', [LecturasController::class, 'video_preguntas4'])->name('web_video_preguntas4')->middleware('auth:alumno');
 
 /* Lecturas */
-Route::get('/lecturas/{id_reading}', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:usuario');
+Route::get('/lecturas/{id_reading}', [LecturasController::class, 'lecturas'])->name('web_lecturas')->middleware('auth:alumno');
 
-Route::get('/preguntas/texto/{id_reading}/bloque-1', [LecturasController::class, 'texto_preguntas1'])->name('web_texto_preguntas1')->middleware('auth:usuario');
-Route::get('/preguntas/texto/{id_reading}/bloque-2', [LecturasController::class, 'texto_preguntas2'])->name('web_texto_preguntas2')->middleware('auth:usuario');
-Route::get('/preguntas/texto/{id_reading}/bloque-3', [LecturasController::class, 'texto_preguntas3'])->name('web_texto_preguntas3')->middleware('auth:usuario');
-Route::get('/preguntas/texto/{id_reading}/bloque-4', [LecturasController::class, 'texto_preguntas4'])->name('web_texto_preguntas4')->middleware('auth:usuario');
-Route::get('/preguntas/texto/{id_reading}/bloque-5', [LecturasController::class, 'texto_preguntas5'])->name('web_texto_preguntas5')->middleware('auth:usuario');
+Route::get('/preguntas/texto/{id_reading}/bloque-1', [LecturasController::class, 'texto_preguntas1'])->name('web_texto_preguntas1')->middleware('auth:alumno');
+Route::get('/preguntas/texto/{id_reading}/bloque-2', [LecturasController::class, 'texto_preguntas2'])->name('web_texto_preguntas2')->middleware('auth:alumno');
+Route::get('/preguntas/texto/{id_reading}/bloque-3', [LecturasController::class, 'texto_preguntas3'])->name('web_texto_preguntas3')->middleware('auth:alumno');
+Route::get('/preguntas/texto/{id_reading}/bloque-4', [LecturasController::class, 'texto_preguntas4'])->name('web_texto_preguntas4')->middleware('auth:alumno');
+Route::get('/preguntas/texto/{id_reading}/bloque-5', [LecturasController::class, 'texto_preguntas5'])->name('web_texto_preguntas5')->middleware('auth:alumno');
 
-Route::get('/desafios',                [DesafiosController::class, 'desafios'])->name('web_desafios')->middleware('auth:usuario');
-Route::get('/comprensionAuditiva',     [DesafiosController::class, 'comprension_auditiva'])->name('web_comprension_auditiva')->middleware('auth:usuario');
-Route::get('/gamificacion',            [DesafiosController::class, 'gamificacion'])->name('web_gamificacion')->middleware('auth:usuario');
-Route::get('/gamificacion/pupiletras', [DesafiosController::class, 'gamificacion_pupiletras'])->name('web_gamificacion_pupiletras')->middleware('auth:usuario');
-Route::get('/desafios/{id}',           [DesafiosController::class, 'desafios_audios'])->name('web_desafios_audios')->middleware('auth:usuario');
+Route::get('/desafios',                [DesafiosController::class, 'desafios'])->name('web_desafios')->middleware('auth:alumno');
+Route::get('/comprensionAuditiva',     [DesafiosController::class, 'comprension_auditiva'])->name('web_comprension_auditiva')->middleware('auth:alumno');
+Route::get('/gamificacion',            [DesafiosController::class, 'gamificacion'])->name('web_gamificacion')->middleware('auth:alumno');
+Route::get('/gamificacion/pupiletras', [DesafiosController::class, 'gamificacion_pupiletras'])->name('web_gamificacion_pupiletras')->middleware('auth:alumno');
+Route::get('/desafios/{id}',           [DesafiosController::class, 'desafios_audios'])->name('web_desafios_audios')->middleware('auth:alumno');
 
-Route::get('/foro',      [ForoController::class, 'foros'])->name('web_foros')->middleware('auth:usuario');
-Route::get('/foro/{id}', [ForoController::class, 'foro'])->name('web_foro')->middleware('auth:usuario');
+Route::get('/foro',      [ForoController::class, 'foros'])->name('web_foros')->middleware('auth:alumno');
+Route::get('/foro/{id}', [ForoController::class, 'foro'])->name('web_foro')->middleware('auth:alumno');
 
-Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('web_resultados')->middleware('auth:usuario');
-Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:usuario');
+Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('web_resultados')->middleware('auth:alumno');
+Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:alumno');
 
 /* Rutas de Profesor */
 Route::get('/profesor/inicio', [ProfesorController::class, 'inicio'])->name('web_inicio_profesor')->middleware('auth:profesor');
 
+/* Rutas de Profesor Administrativo*/
+Route::get('/profesor-administrativo/inicio', [ProfesorAdminController::class, 'inicio'])->name('web_inicio_profesor_admin')->middleware('auth:profesor_admin');
+Route::get('/profesor-administrativo/perfil', [ProfesorAdminController::class, 'perfil'])->name('web_profesor_admin_perfil')->middleware('auth:profesor_admin');
+Route::post('/save/password/profesor-administrativo', [ProfesorAdminController::class, 'guardar_password'])->name('api_save_password_profesor_admin')->middleware('auth:profesor_admin');
+
 /* Asignación de Profesor */
-Route::get('/profesor/asignacion', [ProfesorController::class, 'asignacion_alumnos'])->name('web_asignacion_alumnos')->middleware('auth:profesor');
-Route::post('/alumno/update/section', [ProfesorController::class, 'actualizar_seccion_alumno'])->name('api_actualizar_seccion_alumno')->middleware('auth:profesor');
+Route::get('/profesor-administrativo/asignacion/alumnos', [ProfesorAdminController::class, 'asignacion_alumnos'])->name('web_asignacion_alumnos')->middleware('auth:profesor_admin');
+Route::post('/alumno/update/section', [ProfesorAdminController::class, 'actualizar_seccion_alumno'])->name('api_actualizar_seccion_alumno')->middleware('auth:profesor_admin');
+
+Route::get('/profesor-administrativo/asignacion/profesores', [ProfesorAdminController::class, 'asignacion_profesores'])->name('web_asignacion_profesores')->middleware('auth:profesor_admin');
+Route::post('/profesor/update/section', [ProfesorAdminController::class, 'actualizar_seccion_profesor'])->name('api_actualizar_seccion_profesor')->middleware('auth:profesor_admin');
+
+Route::get('/profesor-administrativo/creacion/profesores', [ProfesorAdminController::class, 'creacion_profesores'])->name('web_creacion_profesores')->middleware('auth:profesor_admin');
+Route::post('/profesor/create', [ProfesorAdminController::class, 'crear_profesor'])->name('api_crear_profesor')->middleware('auth:profesor_admin');
+
+Route::get('/profesor-administrativo/creacion/aulas', [ProfesorAdminController::class, 'creacion_aulas'])->name('web_creacion_aulas')->middleware('auth:profesor_admin');
+Route::post('/aulas/create', [ProfesorAdminController::class, 'crear_aula'])->name('api_crear_aula')->middleware('auth:profesor_admin');
 
 Route::get('/profesor/perfil', [ProfesorController::class, 'perfil'])->name('web_profesor_perfil')->middleware('auth:profesor');
 Route::post('/save/password/profesor', [ProfesorController::class, 'guardar_password'])->name('api_save_password_profesor')->middleware('auth:profesor');
@@ -420,6 +435,5 @@ Route::post('/guardar/preguntas/bloque3', [LecturasController::class, 'guardar_p
 Route::post('/guardar/preguntas/bloque4', [LecturasController::class, 'guardar_preguntas_bloque4'])->name('api_preguntas_bloque4');
 
 Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_preguntas_bloque5'])->name('api_preguntas_bloque5');
-
 
 Route::post('/asignacion/aulas', [ProfesorController::class, 'asignacion_lecturas'])->name('api_asignacion_lecturas');

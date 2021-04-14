@@ -23,14 +23,14 @@ class TutorialesController extends Controller
     
     function tutoriales() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutoriales', 'title' => 'Tutoriales', 'optionIndex' => 0, 'alumno' => $alumno]);
     }
 
     function tutoriales_video($id) {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.tutorialesVideo', 'title' => 'Demo ' . $id, 'optionIndex' => 0, 'alumno' => $alumno]);
     }

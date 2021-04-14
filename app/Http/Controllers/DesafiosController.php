@@ -22,13 +22,13 @@ class DesafiosController extends Controller
 {
     function desafios() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios', 'd1url' => './comprensionAuditiva', 'd2url' => './gamificacion', 'title' => 'Mis desafíos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2, 'alumno' => $alumno]);
     }
 
     function comprension_auditiva() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
         $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->where('id_state', 3)->get();
 
@@ -55,7 +55,7 @@ class DesafiosController extends Controller
 
     function gamificacion() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         $lecturama = tb_lecturama::where('id_grade', $alumno->id_grade)->where('id_level', $alumno->id_level)->first();
         $lecturas = tb_reading::where('id_lecturama', $lecturama->id_lecturama)->where('id_state', 3)->get();
 
@@ -70,13 +70,13 @@ class DesafiosController extends Controller
 
     function gamificacion_pupiletras() {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.pupiletras', 'title' => 'Pupiletras', 'subtitle' => 'Encuentra las palabras', 'optionIndex' => 2, 'alumno' => $alumno]);
     }
 
     function desafios_audios($id) {
 
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         $lectura = tb_reading::find($id);
 
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.desafios.auditivo1', 'title' => 'La momificación en el antiguo Egipto', 'optionIndex' => 2, 'alumno' => $alumno, 'lectura'=>$lectura]);

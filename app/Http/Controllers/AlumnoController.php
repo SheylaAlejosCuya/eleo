@@ -24,7 +24,7 @@ class AlumnoController extends Controller
 {
     
     function perfil() {
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.perfil', 'optionIndex' => 0, 'alumno' => $alumno]);
     }
 
@@ -40,7 +40,7 @@ class AlumnoController extends Controller
     }
 
     function inicio() {
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.inicio', 'optionIndex' => 0, 'alumno' => $alumno]);
     }
     

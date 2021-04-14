@@ -26,12 +26,12 @@ class ResultadosController extends Controller
 {
     
     function resultados() {
-        $alumno = Auth::guard('usuario')->user();       
+        $alumno = Auth::guard('alumno')->user();       
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.resultados', 'title' => 'Mis resultados', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 4, 'alumno' => $alumno]);
     }
 
     function resultados_estudio() {
-        $alumno = Auth::guard('usuario')->user();
+        $alumno = Auth::guard('alumno')->user();
         //$results = tb_results::where('id_user', Auth::guard('usuario')->id())->get();
         $questions_b1 = tb_question::where('type', 'closed')->where('id_state', 3)->where('id_block', 1)->get();
         $questions_b2 = tb_question::where('type', 'closed')->where('id_state', 3)->where('id_block', 2)->get();
@@ -45,7 +45,7 @@ class ResultadosController extends Controller
 
         foreach ($questions_b1 as $key => $question_b1) {
 
-            $result = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $question_b1->id_question)->first();
+            $result = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $question_b1->id_question)->first();
             
             if($result) {
                 
@@ -100,7 +100,7 @@ class ResultadosController extends Controller
 
         foreach ($questions_b2 as $key => $question_b2) {
             
-            $result = tb_results::where('id_user', Auth::guard('usuario')->id())->where('id_question', $question_b2->id_question)->first();
+            $result = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $question_b2->id_question)->first();
             
             if($result) {
                 

@@ -71,7 +71,7 @@
     <div class="ui modal" id="asignar">
         <i class="close icon"></i>
         <div class="header">
-            Asignar a
+            Asignar a     
         </div>
         <div class="content">
             <div class="ui centered stackable grid">
@@ -106,7 +106,26 @@
 
     <div class="ui basic modal" id="video" tabindex="-1" aria-hidden="true">
         <div class="content">
-            {{-- <x-video continue="" lectura="" alumno=""/> --}}
+            <div class="c-video">
+                <video class="evideo" controlsList="nodownload" preload="auto">
+                    <source src="{{$lectura->video}}" type="video/mp4">
+                </video>
+                <div class="evideocontrols">
+                    <div class="evideocontrols__left">
+                        <div class="playButton">
+                            <i class="far fa-play-circle" id="play-pause"></i>
+                        </div>
+                    </div>
+                    <div class="evideocontrols__right">
+                        <div class="ebar">
+                            <div class="evideobar" id="ebar">
+                                <div class="evideobarposition"></div>
+                            </div>
+                        </div>
+                        <i class="fas fa-compress" id="fullscreenTrigger"></i>
+                    </div>
+                </div>
+            </div>
         </div>
         <div class="actions">
             <h4 class="cancel" style="cursor: pointer">
@@ -119,22 +138,7 @@
         <i class="close icon"></i>
         <div class="content">
             <div class="ui small form">
-                <div class="field">
-                    <label>¿Qué pensaban los egipcios sobre la muerte?</label>
-                    <textarea rows="2" readonly placeholder="Escribe tu respueta"></textarea>
-                </div>
-                <div class="field">
-                    <label>¿Qué relación tiene el corazón con el juicio de Osiris?</label>
-                    <textarea rows="2" readonly placeholder="Escribe tu respueta"></textarea>
-                </div>
-                <div class="field">
-                    <label>¿Para qué se hacían las momificaciones?</label>
-                    <textarea rows="2" readonly placeholder="Escribe tu respueta"></textarea>
-                </div>
-                <div class="field">
-                    <label>¿En qué se parecen o en qué se diferencian las creencias religiosas de los egipcios con las nuestras?</label>
-                    <textarea rows="2" readonly placeholder="Escribe tu respueta"></textarea>
-                </div>
+                
             </div>
         </div>
     </div>
@@ -149,20 +153,14 @@
                             Nivel Literal
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>Además de las pirámides de Egipto, ¿qué se construyó a la sombra de ellas?</h4></label>
-                                <input readonly value="a. Se construyeron acueductos." /><br><br>
-                                <input readonly value="b. Se edificaron coliseos de entretenimiento." /><br><br>
-                                <input readonly value="c. Se alzaron ciudades para los hombres." /><br><br>
-                                <input readonly value="d. Se construyeron almacenes para guardar las cosechas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Sobre los obreros que trabajaban en las piramides se puede afirmar que:</h4></label>
-                                <input readonly value="a. Eran esclavos." /><br><br>
-                                <input readonly value="b. Eran campesinos que contrataba el faraón en los meses en los que no habia labor en el campo." /><br><br>
-                                <input readonly value="c. Llegaban desde muy lejos y vivían en la calles." /><br><br>
-                                <input readonly value="d. No recibían ningún pago por el trabajo que realizaban." />
-                            </div>
+                            @foreach ($preguntas_bloque1_literal as $pregunta_bloque1_literal)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque1_literal->question}}</h4></label>
+                                    @foreach ($pregunta_bloque1_literal->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="side">
@@ -170,20 +168,14 @@
                             Nivel Inferencial
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>Además de las pirámides de Egipto, ¿qué se construyó a la sombra de ellas?</h4></label>
-                                <input readonly value="a. Se construyeron acueductos." /><br><br>
-                                <input readonly value="b. Se edificaron coliseos de entretenimiento." /><br><br>
-                                <input readonly value="c. Se alzaron ciudades para los hombres." /><br><br>
-                                <input readonly value="d. Se construyeron almacenes para guardar las cosechas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Sobre los obreros que trabajaban en las piramides se puede afirmar que:</h4></label>
-                                <input readonly value="a. Eran esclavos." /><br><br>
-                                <input readonly value="b. Eran campesinos que contrataba el faraón en los meses en los que no habia labor en el campo." /><br><br>
-                                <input readonly value="c. Llegaban desde muy lejos y vivían en la calles." /><br><br>
-                                <input readonly value="d. No recibían ningún pago por el trabajo que realizaban." />
-                            </div>
+                            @foreach ($preguntas_bloque1_inferencial as $pregunta_bloque1_inferencial)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque1_inferencial->question}}</h4></label>
+                                    @foreach ($pregunta_bloque1_inferencial->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
                         </div>
                     </div>
                     <div class="side">
@@ -191,20 +183,16 @@
                             Nivel Crítico Valorativo
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>¿Por qué crees que era importante para los egipcios que los obreros tuvieran un capataz?</h4></label>
-                                <input readonly value="a. Porque cuando no eres vigilado, no realizas bien el trabajo." /><br><br>
-                                <input readonly value="b. Porque es importante que alguien te guíe y oriente para realizar un buen trabajo." /><br><br>
-                                <input readonly value="c. Porque no se puede confiar en gente del pueblo." /><br><br>
-                                <input readonly value="d. Porque las construcciones eran lujosas y podían perderse cosas valiosas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Los egipcios se dedicaban mucho a perfeccionar su arquitectura, ¿cuál sería el objetivo principal de esta dedicación y esfuerzo?</h4></label>
-                                <input readonly value="a. Demostrar que eran superiores a las demás culturas." /><br><br>
-                                <input readonly value="b. Demostrar su valoración por sus dioses y cultura." /><br><br>
-                                <input readonly value="c. Demostrar sus riquezas a los demás pueblos." /><br><br>
-                                <input readonly value="d. Emplear a los abundantes esclavos que tenían." />
-                            </div>
+
+                            @foreach ($preguntas_bloque1_critico as $pregunta_bloque1_critico)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque1_critico->question}}</h4></label>
+                                    @foreach ($pregunta_bloque1_critico->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -221,7 +209,7 @@
     <div class="ui basic modal" id="audio" tabindex="-1" aria-hidden="true">
         <div class="content">
             <audio style="width: inherit" controls>
-                <source src="horse.ogg" type="audio/ogg">
+                <source src="{{$lectura->audio}}" type="audio/ogg">
             </audio>
         </div>
         <div class="actions">
@@ -232,10 +220,13 @@
     </div>
 
     <div class="ui modal" id="texto" tabindex="-1" aria-hidden="true">
-        <div class="header">Conociendo el Antiguo Egipto</div>
+        <div class="header">{{$lectura->title}}</div>
         <div class="scrolling content">
         <div class="ui segment">
-            <h2>Iniciando la travesía</h2>
+            <p>
+                {{$lectura->content}}
+            </p>
+            {{-- <h2>Iniciando la travesía</h2>
                 <img class="ui fluid image" src="{{asset('images/orus.png')}}" alt="">
                     <p>Vamos a ver si logro que descubras algo nuevo y acabas fascinado como todo aquel que se cerca a la historia del antiguo Egipto, que como verás es mucho más que pirámides. Lo que quiero decir es que, a la sombra de las pirámides, además de templos para los dioses, se alzaron ciudades para los hombres y aun hoy, todo está allí para sorprendernos.</p>
                     <p>Gracias a los arqueólogos y sus descubrimientos nos podemos hacer una idea de la forma de vida del pueblo egipcio. Los grandes faraones no fueron los únicos responsables de la civilización egipcia. De eso hay que echarle la culpa también a los navegantes, los constructores, los escritores, los músicos, los pintores, los guerreros, los sacerdotes, los campesinos, la gente sencilla que vivía en casas humildes construidas con ladrillos de barro y paja, que se alimentaban de las hortalizas que ellos mismos cultivaban aprovechando las crecidas del Nilo.</p>
@@ -250,7 +241,7 @@
                     <h2>La esfinge</h2>
                     <p>En la misma llanura de Gizeh, sobre una pequeña colina de roca, está esculpida la esfinge. Con 73 metros de largo y 20 metros de alto, tiene el cuerpo del león representando el poder y la fuerza física; y la cabeza del hombre para simbolizar la conciencia y la inteligencia.</p>
                     <p>Aunque la palabra esfinge en griego significa estrangulador, su origen está en la frase egipcia shesep-ankh, que quiere decir imagen viviente. La cabeza está esculpida en piedra más dura que el cuerpo y el paso del tiempo la ha erosionado menos, pero está muy estropeada ya que fue blanco de guerra en el siglo XVIII. Justo enfrente fue construido un templo dedicado al sol en sus tres fases: el amanecer, el mediodía y cuando se oculta en el horizonte, que no ha tenido tanta suerte como la esfinge y las pirámides, y está en ruinas.</p>
-                <img class="ui centered large image" src="{{asset('images/esfinge.png')}}" alt="">
+                <img class="ui centered large image" src="{{asset('images/esfinge.png')}}" alt=""> --}}
         </div>
     </div>
 
@@ -264,20 +255,16 @@
                             Nivel Literal
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>Además de las pirámides de Egipto, ¿qué se construyó a la sombra de ellas?</h4></label>
-                                <input readonly value="a. Se construyeron acueductos." /><br><br>
-                                <input readonly value="b. Se edificaron coliseos de entretenimiento." /><br><br>
-                                <input readonly value="c. Se alzaron ciudades para los hombres." /><br><br>
-                                <input readonly value="d. Se construyeron almacenes para guardar las cosechas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Sobre los obreros que trabajaban en las piramides se puede afirmar que:</h4></label>
-                                <input readonly value="a. Eran esclavos." /><br><br>
-                                <input readonly value="b. Eran campesinos que contrataba el faraón en los meses en los que no habia labor en el campo." /><br><br>
-                                <input readonly value="c. Llegaban desde muy lejos y vivían en la calles." /><br><br>
-                                <input readonly value="d. No recibían ningún pago por el trabajo que realizaban." />
-                            </div>
+
+                            @foreach ($preguntas_bloque2_literal as $pregunta_bloque2_literal)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque2_literal->question}}</h4></label>
+                                    @foreach ($pregunta_bloque2_literal->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="side">
@@ -285,20 +272,16 @@
                             Nivel Inferencial
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>Además de las pirámides de Egipto, ¿qué se construyó a la sombra de ellas?</h4></label>
-                                <input readonly value="a. Se construyeron acueductos." /><br><br>
-                                <input readonly value="b. Se edificaron coliseos de entretenimiento." /><br><br>
-                                <input readonly value="c. Se alzaron ciudades para los hombres." /><br><br>
-                                <input readonly value="d. Se construyeron almacenes para guardar las cosechas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Sobre los obreros que trabajaban en las piramides se puede afirmar que:</h4></label>
-                                <input readonly value="a. Eran esclavos." /><br><br>
-                                <input readonly value="b. Eran campesinos que contrataba el faraón en los meses en los que no habia labor en el campo." /><br><br>
-                                <input readonly value="c. Llegaban desde muy lejos y vivían en la calles." /><br><br>
-                                <input readonly value="d. No recibían ningún pago por el trabajo que realizaban." />
-                            </div>
+
+                            @foreach ($preguntas_bloque2_inferencial as $pregunta_bloque2_inferencial)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque2_inferencial->question}}</h4></label>
+                                    @foreach ($pregunta_bloque2_inferencial->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                     <div class="side">
@@ -306,20 +289,16 @@
                             Nivel Crítico Valorativo
                         </h1>
                         <div class="ui small form">
-                            <div class="field">
-                                <label><h4>¿Por qué crees que era importante para los egipcios que los obreros tuvieran un capataz?</h4></label>
-                                <input readonly value="a. Porque cuando no eres vigilado, no realizas bien el trabajo." /><br><br>
-                                <input readonly value="b. Porque es importante que alguien te guíe y oriente para realizar un buen trabajo." /><br><br>
-                                <input readonly value="c. Porque no se puede confiar en gente del pueblo." /><br><br>
-                                <input readonly value="d. Porque las construcciones eran lujosas y podían perderse cosas valiosas." />
-                            </div>
-                            <div class="field">
-                                <label><h4>Los egipcios se dedicaban mucho a perfeccionar su arquitectura, ¿cuál sería el objetivo principal de esta dedicación y esfuerzo?</h4></label>
-                                <input readonly value="a. Demostrar que eran superiores a las demás culturas." /><br><br>
-                                <input readonly value="b. Demostrar su valoración por sus dioses y cultura." /><br><br>
-                                <input readonly value="c. Demostrar sus riquezas a los demás pueblos." /><br><br>
-                                <input readonly value="d. Emplear a los abundantes esclavos que tenían." />
-                            </div>
+
+                            @foreach ($preguntas_bloque2_critico as $pregunta_bloque2_critico)
+                                <div class="field">
+                                    <label><h4>{{$pregunta_bloque2_critico->question}}</h4></label>
+                                    @foreach ($pregunta_bloque2_critico->answers as $answer)
+                                        <input readonly value="{{$answer->answer}}"/><br><br>
+                                    @endforeach
+                                </div>
+                            @endforeach
+
                         </div>
                     </div>
                 </div>
@@ -334,9 +313,10 @@
     </div>
 
     <div class="ui modal" id="produccion">
-        <div class="header">La Momificación en el Antiguo Egipto</div>
+        <div class="header">-</div>
         <div class="content">
-            <div class="description">
+
+            {{-- <div class="description">
                 <p>Una infografía es un texto de fácil comprensión que utiliza imágenes o gráficos junto con textos escritos para proporcionar información acerca de lo que se desea comunicar. Cabe resaltar que el texto escrito que emplea una infografía es resumido, porque se complementa con las imágenes para brindar un rápido entendimiento del tema al lector.</p>
                 <div class="ui equal width grid">
                     <div class="column">
@@ -372,7 +352,8 @@
                         <img class="ui fluid image" src="{{asset('images/info.jpeg')}}" alt="">
                     </div>
                 </div>
-            </div>
+            </div> --}}
+
         </div>
     </div>
 
@@ -436,6 +417,74 @@
             "hideMethod": "fadeOut"
         }
         toastr[type](message);
+    }
+
+</script>
+
+
+<script>
+    var video = document.querySelector('.evideo');
+    var videobar = document.getElementById('ebar');
+    var position = document.querySelector('.evideobarposition');
+    var btn = document.getElementById('play-pause');
+    var fullscreenTrigger = document.getElementById('fullscreenTrigger');
+
+    fullscreenTrigger.onclick = function() {
+        if (video.requestFullscreen) {
+            video.requestFullscreen();
+        } else if (video.webkitRequestFullscreen) { /* Safari */
+            video.webkitRequestFullscreen();
+        } else if (video.msRequestFullscreen) { /* IE11 */
+            video.msRequestFullscreen();
+        }
+    }
+
+    function togglePlayPause() {
+        if (video.paused) {
+            btn.className = 'far fa-pause-circle';
+            video.play();
+        } else {
+            btn.className = 'far fa-play-circle';
+            video.pause();
+        }
+    }
+    
+    btn.onclick = function() {
+        togglePlayPause();
+    }
+
+    video.addEventListener('timeupdate', function() {
+        var pos = video.currentTime / video.duration;
+        position.style.width = pos * 100 + '%';
+        
+    })
+
+    document.addEventListener('keydown', function(event) {
+        if (event.keyCode == 32) {
+            if (video.paused) {
+                console.log("play");
+                btn.className = 'far fa-pause-circle';
+                video.play();
+            } else {
+                console.log("pause");
+                btn.className = 'far fa-play-circle';
+                video.pause();
+            }
+        }
+        else if (event.keyCode == 37) {
+            video.currentTime = video.currentTime - 5;
+        }
+        else if (event.keyCode == 39) {
+            video.currentTime = video.currentTime + 5;
+        }
+        else if (event.keyCode >= 96 && event.keyCode <= 105) {
+            video.currentTime = ((event.keyCode - 96)/10) * video.duration;
+        }
+    }, true);
+    
+    videobar.onclick = function(event) {
+        var rect = videobar.getBoundingClientRect();
+        video.currentTime = ((event.pageX - rect.x) / rect.width) * video.duration;
     }
 
 </script>
