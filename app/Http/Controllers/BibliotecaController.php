@@ -65,6 +65,8 @@ class BibliotecaController extends Controller
         $lecturama = tb_lecturama::find($id_lecturama);
         $lectura = tb_reading::find($id_lectura);
 
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+
         $preguntas_bloque0_texto = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', null)->where('id_block', 0)->with('answers')->get();
 
         $preguntas_bloque1_literal = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 1)->where('id_block', 1)->with('answers')->get();
@@ -75,7 +77,7 @@ class BibliotecaController extends Controller
         $preguntas_bloque2_inferencial = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 2)->where('id_block', 2)->with('answers')->get();
         $preguntas_bloque2_critico = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 3)->where('id_block', 2)->with('answers')->get();
 
-        $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_teacher', '!=', null)->with('grade')->with('section')->with('level')->with('teacher')->get();
+        $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->get();
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n°'.$id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura, 'salones' => $salones, 'preguntas_bloque1_literal' => $preguntas_bloque1_literal, 'preguntas_bloque1_inferencial' => $preguntas_bloque1_inferencial, 'preguntas_bloque1_critico'=>$preguntas_bloque1_critico, 'preguntas_bloque2_literal' => $preguntas_bloque2_literal, 'preguntas_bloque2_inferencial' => $preguntas_bloque2_inferencial, 'preguntas_bloque2_critico'=>$preguntas_bloque2_critico, 'preguntas_bloque0_texto' => $preguntas_bloque0_texto]);
     }
