@@ -104,28 +104,34 @@
         </div>
     </div>
 
-    <div class="ui basic modal" id="video" tabindex="-1" aria-hidden="true">
+    <div class="ui modal" id="video" tabindex="-1" aria-hidden="true">
         <div class="content">
-            <div class="c-video">
-                <video class="evideo" controlsList="nodownload" preload="auto">
-                    <source src="{{$lectura->video}}" type="video/mp4">
-                </video>
-                <div class="evideocontrols">
-                    <div class="evideocontrols__left">
-                        <div class="playButton">
-                            <i class="far fa-play-circle" id="play-pause"></i>
-                        </div>
-                    </div>
-                    <div class="evideocontrols__right">
-                        <div class="ebar">
-                            <div class="evideobar" id="ebar">
-                                <div class="evideobarposition"></div>
+            @if (isset($lectura->video))
+                <div class="c-video">
+                    <video class="evideo" controlsList="nodownload" preload="auto">
+                        <source src="{{$lectura->video}}" type="video/mp4">
+                    </video>
+                    <div class="evideocontrols">
+                        <div class="evideocontrols__left">
+                            <div class="playButton">
+                                <i class="far fa-play-circle" id="play-pause"></i>
                             </div>
                         </div>
-                        <i class="fas fa-compress" id="fullscreenTrigger"></i>
+                        <div class="evideocontrols__right">
+                            <div class="ebar">
+                                <div class="evideobar" id="ebar">
+                                    <div class="evideobarposition"></div>
+                                </div>
+                            </div>
+                            <i class="fas fa-compress" id="fullscreenTrigger"></i>
+                        </div>
                     </div>
                 </div>
-            </div>
+            @else
+                <p>
+                    Sin video que reproducir.
+                </p>  
+            @endif
         </div>
         <div class="actions">
             <h4 class="cancel" style="cursor: pointer">
@@ -138,12 +144,26 @@
         <i class="close icon"></i>
         <div class="content">
             <div class="ui small form">
-                
+                @if (count($preguntas_bloque0_texto) != 0)
+                    @foreach ($preguntas_bloque0_texto as $pregunta_bloque0_texto)
+                        <div class="field">
+                            <label><h4>{{$pregunta_bloque0_texto->question}}</h4></label>
+                            <input readonly value=""/><br><br>
+                            {{-- @foreach ($pregunta_bloque0_texto->answers as $answer)
+                                <input readonly value="{{$answer->answer}}"/><br><br>
+                            @endforeach --}}
+                        </div>
+                    @endforeach
+                @else
+                    <p>
+                        Sin preguntas que mostrar.
+                    </p>  
+                @endif
             </div>
         </div>
     </div>
 
-    <div class="ui tiny modal" id="audioPreguntas">
+    <div class="ui modal" id="audioPreguntas">
         <i class="close icon"></i>
         <div class="content">
             <div class="ui shape">
@@ -153,14 +173,22 @@
                             Nivel Literal
                         </h1>
                         <div class="ui small form">
-                            @foreach ($preguntas_bloque1_literal as $pregunta_bloque1_literal)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque1_literal->question}}</h4></label>
-                                    @foreach ($pregunta_bloque1_literal->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
+                            @if (count($preguntas_bloque1_literal) != 0)
+                                @foreach ($preguntas_bloque1_literal as $pregunta_bloque1_literal)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque1_literal->question}}</h4></label>
+                                        @foreach ($pregunta_bloque1_literal->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
+            
+                            
                         </div>
                     </div>
                     <div class="side">
@@ -168,14 +196,20 @@
                             Nivel Inferencial
                         </h1>
                         <div class="ui small form">
-                            @foreach ($preguntas_bloque1_inferencial as $pregunta_bloque1_inferencial)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque1_inferencial->question}}</h4></label>
-                                    @foreach ($pregunta_bloque1_inferencial->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
+                            @if (count($preguntas_bloque1_inferencial) != 0)
+                                @foreach ($preguntas_bloque1_inferencial as $pregunta_bloque1_inferencial)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque1_inferencial->question}}</h4></label>
+                                        @foreach ($pregunta_bloque1_inferencial->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
                         </div>
                     </div>
                     <div class="side">
@@ -183,15 +217,20 @@
                             Nivel Crítico Valorativo
                         </h1>
                         <div class="ui small form">
-
-                            @foreach ($preguntas_bloque1_critico as $pregunta_bloque1_critico)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque1_critico->question}}</h4></label>
-                                    @foreach ($pregunta_bloque1_critico->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
+                            @if (count($preguntas_bloque1_critico) != 0)
+                                @foreach ($preguntas_bloque1_critico as $pregunta_bloque1_critico)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque1_critico->question}}</h4></label>
+                                        @foreach ($pregunta_bloque1_critico->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
 
                         </div>
                     </div>
@@ -206,11 +245,17 @@
         </div>
     </div>
 
-    <div class="ui basic modal" id="audio" tabindex="-1" aria-hidden="true">
+    <div class="ui modal" id="audio" tabindex="-1" aria-hidden="true">
         <div class="content">
-            <audio style="width: inherit" controls>
-                <source src="{{$lectura->audio}}" type="audio/ogg">
-            </audio>
+                @if (isset($lectura->audio))
+                    <audio style="width: inherit" controls controlsList="nodownload">   
+                        <source src="{{$lectura->audio}}" type="audio/ogg">
+                    </audio>
+                @else
+                    <p>
+                        Sin audio que reproducir.
+                    </p>  
+                @endif
         </div>
         <div class="actions">
             <h4 class="cancel" style="cursor: pointer">
@@ -223,9 +268,82 @@
         <div class="header">{{$lectura->title}}</div>
         <div class="scrolling content">
         <div class="ui segment">
-            <p>
-                {{$lectura->content}}
-            </p>
+            {{-- BLOQUE 1 LECTURA --}}
+
+            @if (isset($lectura->content))
+                <p>
+                    {{$lectura->content}}
+                </p>
+            @else
+                <p>
+                    Sin contenido de texto
+                </p>  
+            @endif
+
+            @isset($lectura->content_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_image)}}" alt="Image 1">
+            @endisset
+
+            {{-- BLOQUE 2 LECTURA --}}
+
+            @isset($lectura->content_2)
+                <p>
+                    {{$lectura->content_2}}
+                </p>
+            @endisset
+
+            @isset($lectura->content_2_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_2_image)}}" alt="Image 2">
+            @endisset
+
+            {{-- BLOQUE 3 LECTURA --}}
+
+            @isset($lectura->content_3)
+                <p>
+                    {{$lectura->content_3}}
+                </p>
+            @endisset
+
+            @isset($lectura->content_3_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_3_image)}}" alt="Image 3">
+            @endisset
+
+            {{-- BLOQUE 4 LECTURA --}}
+
+            @isset($lectura->content_4)
+                <p>
+                    {{$lectura->content_4}}
+                </p>
+            @endisset
+
+            @isset($lectura->content_4_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_4_image)}}" alt="Image 4">
+            @endisset
+
+            {{-- BLOQUE 5 LECTURA --}}
+
+            @isset($lectura->content_5)
+                <p>
+                    {{$lectura->content_5}}
+                </p>
+            @endisset
+
+            @isset($lectura->content_5_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_5_image)}}" alt="Image 5">
+            @endisset
+
+            {{-- BLOQUE 6 LECTURA --}}
+
+            @isset($lectura->content_6)
+                <p>
+                    {{$lectura->content_6}}
+                </p>
+            @endisset
+
+            @isset($lectura->content_6_image)
+                <img class="ui centered fluid large image" src="{{asset($lectura->content_6_image)}}" alt="Image 6">
+            @endisset
+
             {{-- <h2>Iniciando la travesía</h2>
                 <img class="ui fluid image" src="{{asset('images/orus.png')}}" alt="">
                     <p>Vamos a ver si logro que descubras algo nuevo y acabas fascinado como todo aquel que se cerca a la historia del antiguo Egipto, que como verás es mucho más que pirámides. Lo que quiero decir es que, a la sombra de las pirámides, además de templos para los dioses, se alzaron ciudades para los hombres y aun hoy, todo está allí para sorprendernos.</p>
@@ -255,15 +373,21 @@
                             Nivel Literal
                         </h1>
                         <div class="ui small form">
-
-                            @foreach ($preguntas_bloque2_literal as $pregunta_bloque2_literal)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque2_literal->question}}</h4></label>
-                                    @foreach ($pregunta_bloque2_literal->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
+                            @if (count($preguntas_bloque2_literal) != 0)
+                                @foreach ($preguntas_bloque2_literal as $pregunta_bloque2_literal)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque2_literal->question}}</h4></label>
+                                        @foreach ($pregunta_bloque2_literal->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
+                           
 
                         </div>
                     </div>
@@ -272,16 +396,20 @@
                             Nivel Inferencial
                         </h1>
                         <div class="ui small form">
-
-                            @foreach ($preguntas_bloque2_inferencial as $pregunta_bloque2_inferencial)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque2_inferencial->question}}</h4></label>
-                                    @foreach ($pregunta_bloque2_inferencial->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
-
+                            @if (count($preguntas_bloque2_inferencial) != 0)
+                                @foreach ($preguntas_bloque2_inferencial as $pregunta_bloque2_inferencial)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque2_inferencial->question}}</h4></label>
+                                        @foreach ($pregunta_bloque2_inferencial->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
                         </div>
                     </div>
                     <div class="side">
@@ -289,16 +417,20 @@
                             Nivel Crítico Valorativo
                         </h1>
                         <div class="ui small form">
-
-                            @foreach ($preguntas_bloque2_critico as $pregunta_bloque2_critico)
-                                <div class="field">
-                                    <label><h4>{{$pregunta_bloque2_critico->question}}</h4></label>
-                                    @foreach ($pregunta_bloque2_critico->answers as $answer)
-                                        <input readonly value="{{$answer->answer}}"/><br><br>
-                                    @endforeach
-                                </div>
-                            @endforeach
-
+                            @if (count($preguntas_bloque2_critico) != 0)
+                                @foreach ($preguntas_bloque2_critico as $pregunta_bloque2_critico)
+                                    <div class="field">
+                                        <label><h4>{{$pregunta_bloque2_critico->question}}</h4></label>
+                                        @foreach ($pregunta_bloque2_critico->answers as $answer)
+                                            <input readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -313,8 +445,11 @@
     </div>
 
     <div class="ui modal" id="produccion">
-        <div class="header">-</div>
+        <div class="header">Actividad de Producción</div>
         <div class="content">
+            <div class="four wide column">
+                <a href="{{route('api_descargar_doc', ['id_reading' => $lectura->id_reading])}}" class="ui blue inverted fluid button">Descargar documento</a>
+            </div>
 
             {{-- <div class="description">
                 <p>Una infografía es un texto de fácil comprensión que utiliza imágenes o gráficos junto con textos escritos para proporcionar información acerca de lo que se desea comunicar. Cabe resaltar que el texto escrito que emplea una infografía es resumido, porque se complementa con las imágenes para brindar un rápido entendimiento del tema al lector.</p>
@@ -398,6 +533,7 @@
             }
         });
     }
+
 
 
     function showMessage(type, message) {
@@ -488,5 +624,30 @@
     }
 
 </script>
+
+    @if (session('status_not_enable'))
+        <script>
+            showMessage("warning", "Sin actividad que descargar");
+
+            function showMessage(type, message) {
+                toastr.options = {
+                    "closeButton": false,
+                    "debug": false,
+                    "newestOnTop": false,
+                    "progressBar": false,
+                    "positionClass": "toast-top-right",
+                    "preventDuplicates": false,
+                    "onclick": null,
+                    "timeOut": "2000",
+                    "extendedTimeOut": "2000",
+                    "showEasing": "swing",
+                    "hideEasing": "linear",
+                    "showMethod": "fadeIn",
+                    "hideMethod": "fadeOut"
+                }
+                toastr[type](message);
+            }
+        </script>
+    @endif
 
 @endprepend

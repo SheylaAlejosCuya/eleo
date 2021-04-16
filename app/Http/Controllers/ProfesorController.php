@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Response;
+use Illuminate\Support\Facades\Response as Download;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
@@ -23,6 +23,7 @@ use App\Models\tb_lecturama;
 use App\Models\tb_level;
 use App\Models\tb_grade;
 use App\Models\tb_section;
+use App\Models\tb_question;
 use App\Models\tb_assignment_reading;
 
 class ProfesorController extends Controller
@@ -58,6 +59,33 @@ class ProfesorController extends Controller
             return response()->json(['status_code' => 200, 'message' => 'image saved', 'path'=>$path], 200);
         } catch (Exception $error) {
             return response()->json(['status_code' => 500, 'message' => 'Error', 'error' => $error], 500);
+        }
+    }
+
+    function descargar_doc($id_reading) {
+        try {
+
+            $lectura = tb_reading::find((int) $id_reading);
+            $lecturama = tb_lecturama::find((int) $lectura->id_lecturama);
+            $pregunta = tb_question::where('id_reading', $lectura->id_reading)->where('id_block', 3)->where('id_question_level', 5)->where('source', 'final')->first();
+
+            if($pregunta) {
+                $file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
+
+                $headers = [
+                    'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                    'Content-Description' => 'File Transfer',
+                    'Content-Disposition' => "attachment; filename=".$pregunta->final_resource,
+                    'filename'=> $pregunta->final_resource
+                ];
+
+                return response($file, 200, $headers);
+            }
+            return redirect()->back()->with('status_not_enable', 'error');;
+
+        } catch (Exception $error) {
+
+            return redirect()->back()->with('status_not_enable', 'error');;
         }
     }
 
