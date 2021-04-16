@@ -111,13 +111,13 @@
                         <a href="{{url('profesor/biblioteca')}}"><img class="eoption" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
-                <li>
+                {{-- <li>
                     @if ($optionIndex == 2)
                         <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas de estudio.png')}}" alt="Inicio"></a>
                     @else
                         <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/lecturas de estudio.png')}}" alt="Inicio"></a>
                     @endif
-                </li>
+                </li> --}}
                 {{-- <li>
                     @if ($optionIndex == 3)
                         <a href="{{url('profesor/lecturasAutogestion')}}"><img class="eoption eoptionSelected" src="{{asset('images/lecturas.png')}}" alt="Inicio"></a>
@@ -134,9 +134,9 @@
                 </li>
                 <li>
                     @if ($optionIndex == 5)
-                        <a href="{{url('profesor/recursos')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{url('profesor/recursos')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{url('profesor/lecturasEstudio')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
             </ul>

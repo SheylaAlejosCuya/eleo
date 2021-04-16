@@ -8,12 +8,12 @@
             <br>
             <br>
         </a>
-        <a href="./opciones/perfilAlumno" class="aulaOption">
+        {{-- <a href="./opciones/perfilAlumno" class="aulaOption">
             <img class="check" src="{{asset('images/check.png')}}" alt="">
             <img src="{{asset('images/perfil-de-clases.png')}}" alt="">
             <br>
             <br>
-        </a>
+        </a> --}}
         <a href="./opciones/perfilAlumno" class="aulaOption">
             <img class="check" src="{{asset('images/check.png')}}" alt="">
             <img src="{{asset('images/evaluacion.png')}}" alt="">

@@ -437,3 +437,5 @@ Route::post('/guardar/preguntas/bloque4', [LecturasController::class, 'guardar_p
 Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_preguntas_bloque5'])->name('api_preguntas_bloque5');
 
 Route::post('/asignacion/aulas', [ProfesorController::class, 'asignacion_lecturas'])->name('api_asignacion_lecturas');
+
+Route::get('/descargar/actividad/final/{id_reading}', [ProfesorController::class, 'descargar_doc'])->name('api_descargar_doc');
