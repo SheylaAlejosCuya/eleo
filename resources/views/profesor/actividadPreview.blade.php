@@ -267,7 +267,7 @@
     <div class="ui modal" id="texto" tabindex="-1" aria-hidden="true">
         <div class="header">{{$lectura->title}}</div>
         <div class="scrolling content">
-        <div class="ui segment">
+        <div class="ui segment" style="font-family: 'Merienda', cursive;   font-size: larger; ">
             {{-- BLOQUE 1 LECTURA --}}
 
             @if (isset($lectura->content))
