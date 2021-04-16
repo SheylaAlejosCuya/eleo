@@ -1,10 +1,11 @@
 <div class="bibliotecaOptions">
-    <div class="actividadOption">
+    <div class="actividadOption"> 
+       
         <img src="{{asset($lectura->image_card)}}" alt="">
         <div class="actividadRight">
             <h2>{{$lectura->title}}</h2>
             @if (isset($lectura->content))
-                <p>{{$lectura->content}}..</p>
+                <p >{{$lectura->content}}..</p>
             @else
                 <p>Sin contenido de texto</p>  
             @endif
