@@ -133,5 +133,30 @@
     </script>
     @endif
 
+    @if (session('status_warning'))
+    <script>
+        showMessage("warning", "El aula ya existe");
+
+        function showMessage(type, message) {
+            toastr.options = {
+                "closeButton": false,
+                "debug": false,
+                "newestOnTop": false,
+                "progressBar": false,
+                "positionClass": "toast-top-right",
+                "preventDuplicates": false,
+                "onclick": null,
+                "timeOut": "2000",
+                "extendedTimeOut": "2000",
+                "showEasing": "swing",
+                "hideEasing": "linear",
+                "showMethod": "fadeIn",
+                "hideMethod": "fadeOut"
+            }
+            toastr[type](message);
+        }
+    </script>
+    @endif
+
 
 @endprepend
