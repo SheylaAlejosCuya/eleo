@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Arr;
 
 use App\Http\Requests;
 
@@ -42,11 +43,16 @@ class BibliotecaController extends Controller
     function eleo_virtual() {
 
         $profesor = tb_user::find(Auth::guard('profesor')->id());
-
         $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+        $lecturamas_filtrados = [];
 
-        $lecturamas = tb_lecturama::where('id_state', 3)->get();
-        //dd($salones);
+        foreach($salones as $salon) {
+            array_push($lecturamas_filtrados, tb_lecturama::where('id_state', 3)->where('id_level', $salon->id_level)->where('id_grade', $salon->id_grade)->first());
+        }
+
+        $lecturamas = array_values(Arr::sort(array_unique($lecturamas_filtrados), function ($value) {
+            return $value['id_lecturama'];
+        }));
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleoVirtual', 'title' => 'E-Leo virtual', 'subtitle' => 'Lecturamas disponibles', 'optionIndex' => 1, 'lecturamas' => $lecturamas]);
     }

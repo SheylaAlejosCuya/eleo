@@ -68,8 +68,14 @@
                     <td>{{$alumno->grade->grade}}</td>
                     <td>
                         <select id={{"select_".$key}} class="selectpicker" title="Sin sección asignada" data-id-alumno='{{$alumno->id_user}}' data-original-value='{{$alumno->id_section}}'>
-                            @foreach($secciones as $key_s => $seccion)
+                    
+                            {{-- @foreach($aulas as $key_s => $aula)
                                 <option value="{{ $key_s + 1 }}" {{($key_s + 1) == $alumno->id_section ? 'selected' : ''}}>{{$seccion->section}}</option>
+                            @endforeach --}}
+                            @foreach($aulas as $key_s => $aula)
+                                @if( (int) $aula->id_grade == (int) $alumno->id_grade && (int) $aula->id_level == (int) $alumno->id_level)
+                                    <option value="{{$aula->id_classroom}}" {{$aula->id_classroom == $alumno->id_classroom ? 'selected' : ''}}>{{$aula->grade->grade.' '.$aula->section->section}}</option>
+                                @endif
                             @endforeach
                         </select>
                     </td>
@@ -104,7 +110,7 @@
                     data: {
                         "_token": "{{csrf_token()}}",
                         "id_alumno": current_select.data('id-alumno'),
-                        "id_seccion": current_select.val()
+                        "id_classroom": current_select.val()
                     },
                     success: function(response) { 
                         console.log(response);

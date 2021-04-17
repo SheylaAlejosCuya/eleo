@@ -33,6 +33,7 @@ class LecturasController extends Controller
         $lecturas_asignadas = tb_assignment_reading::where('id_classroom', $alumno->id_classroom)->get();
 
         $lecturas = [];
+
         foreach ($lecturas_asignadas as $key => $lectura_asignada) {
             $lectura = tb_reading::where('id_reading', $lectura_asignada->id_reading)->where('id_state', 3)->first();
             array_push($lecturas, $lectura);
@@ -46,8 +47,6 @@ class LecturasController extends Controller
 
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('alumno')->id());
-
-
 
         if((int) $lectura->id_state == 4) {
             return redirect()->back()->with('status', 'La lectura seleccionada se encuentra deshabilitada');
@@ -74,6 +73,10 @@ class LecturasController extends Controller
 
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '1')->where('source', 'video')->get();
 
+        if(count($preguntas)==0){
+            return redirect()->route('web_texto_preguntas3', ['id_reading'=>$lectura->id_reading]);
+        }
+
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
             $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta->id_question)->first();
@@ -83,6 +86,7 @@ class LecturasController extends Controller
                 $pregunta->answer_completed = null;
             }
         }
+        
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.VideoTxt.eva2', 'title' => $lectura->video_title, 'optionIndex' => 1,'lectura' => $lectura, 'preguntas' => $preguntas, 'alumno' => $alumno]);
     }
 
@@ -91,6 +95,10 @@ class LecturasController extends Controller
         $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '2')->where('source', 'video')->get();
+
+        if(count($preguntas)==0){
+            return redirect()->route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading]);
+        }
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();
@@ -110,6 +118,10 @@ class LecturasController extends Controller
 
         $lectura = tb_reading::find($id);
         $preguntas = tb_reading::find($id)->questions()->where('id_question_level', '3')->where('source', 'video')->get();
+
+        if(count($preguntas)==0){
+            return redirect()->route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading]);
+        }
 
         foreach($preguntas as $pregunta) {
             $pregunta->answers = tb_answer::where('id_question', $pregunta->id_question)->get();

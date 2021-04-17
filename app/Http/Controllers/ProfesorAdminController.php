@@ -59,13 +59,15 @@ class ProfesorAdminController extends Controller
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
+        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->get();
+
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
         //         $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
         //     }
         //     $nivel->grados = $grados;
         // }
-        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.asignacionAlumnos', 'optionIndex' => 1, 'niveles' => $niveles, 'secciones' => $secciones , 'alumnos' => $alumnos]);
+        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.asignacionAlumnos', 'optionIndex' => 1, 'niveles' => $niveles, 'secciones' => $secciones , 'alumnos' => $alumnos, 'aulas' => $aulas]);
     }
 
 
@@ -137,8 +139,10 @@ class ProfesorAdminController extends Controller
 
     function actualizar_seccion_alumno(Request $request) {
         try {
+            $aula = tb_classroom::find($request->id_classroom);
             $alumno = tb_user::find($request->id_alumno);
-            $alumno->id_section = $request->id_seccion;
+            $alumno->id_classroom = $request->id_classroom;
+            $alumno->id_section = $aula->id_section;
             $alumno->save();
             return response()->json(['type' => 'success', 'message' => 'update successful'], 200);
         } catch(\Excepcion $e) {
@@ -197,17 +201,22 @@ class ProfesorAdminController extends Controller
 
     function crear_aula(Request $request) {
         try {
+
             $admin = tb_user::find(Auth::guard('profesor_admin')->id());
+            $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->get();
 
-            $aula = new tb_classroom;
-            $aula->id_grade = (int) $request->get('grade');
-            $aula->id_level = (int) $request->get('level');
-            $aula->id_section = (int) $request->get('section');
-            $aula->id_school = (int) $admin->id_school;
-            $aula->id_state = (int) 3;
-            $aula->save();
-
-            return redirect()->back()->with('status_success', 'success');
+            if(count($aula) == 0) {
+                $aula = new tb_classroom;
+                $aula->id_grade = (int) $request->get('grade');
+                $aula->id_level = (int) $request->get('level');
+                $aula->id_section = (int) $request->get('section');
+                $aula->id_school = (int) $admin->id_school;
+                $aula->id_state = (int) 3;
+                $aula->save();
+                
+                return redirect()->back()->with('status_success', 'success');
+            }
+            return redirect()->back()->with('status_warning', 'warning');
             //return response()->json(['type' => 'success', 'message' => 'update successful'], 200);
         } catch(\Excepcion $e) {
             return redirect()->back()->with('status_error', 'error');
