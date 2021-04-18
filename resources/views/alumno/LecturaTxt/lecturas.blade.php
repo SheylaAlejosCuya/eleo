@@ -9,7 +9,7 @@
             <img src="{{asset('images/texto.png')}}" alt="" width="25px"> --}}
         </div>
     </div>
-    <div class="cuento">
+    <div class="cuento" style="font-family: 'Merienda', cursive;   font-size: larger; ">
         <h1><strong>{{$lectura->title}}</strong></h1>
         <div class="texto">
 
