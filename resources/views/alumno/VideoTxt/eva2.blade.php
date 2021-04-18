@@ -6,7 +6,7 @@
                 <p><b> Escoge la respuesta correcta</b></p> 
                 <div class="audioContainer">
                     <audio controls controlsList="nodownload">
-                        <source src="{{asset($lectura->audio)}}" type="audio/wav">
+                        <source src="{{$lectura->audio}}" type="audio/wav">
                     </audio>
                     <img class="actionButton" src="{{asset('images/escucho.png')}}" alt="">
                 </div>            

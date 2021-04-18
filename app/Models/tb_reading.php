@@ -37,4 +37,9 @@ class tb_reading extends Model
         return $this->hasManyThrough(tb_answer::class, tb_question::class, 'id_reading', 'id_question', 'id_reading', 'id_question');
     }
 
+    public function content_extra()
+    {
+        return $this->hasMany(tb_reading_content::class, 'id_reading', 'id_reading');
+    }
+
 }

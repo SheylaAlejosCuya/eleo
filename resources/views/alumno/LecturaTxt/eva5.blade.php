@@ -71,8 +71,10 @@
             </div>
         </div>
     </div>
+    
   </div>
 </div>
+
 <div class="infomacion">
   <h5 style="padding-top: 20px;">
     Una infografía es un texto de fácil comprensión que utiliza imágenes o gráficos junto con textos escritos para proporcionar información acerca de lo que se desea comunicar. Cabe resaltar que el texto escrito que emplea una infografía es resumido, porque se complementa con las imágenes para brindar un rápido entendimiento del tema al lector. </h5>
@@ -93,12 +95,14 @@
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
       <a href="{{route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
       
-      <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button>
+      {{-- <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button> --}}
+
       <div class="upload-btn-wrapper">
         <button class="btn">Subir archivo</button>
         <input type="file" name="custom_file" id="custom_file" />
       </div>
       
+
       <button class="saveButton" onclick="saveFile()">Enviar</button>
       <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
     </div>

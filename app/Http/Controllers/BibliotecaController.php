@@ -28,6 +28,7 @@ use App\Models\tb_classroom;
 
 use App\Models\tb_question;
 use App\Models\tb_answer;
+use App\Models\tb_reading_content;
 
 class BibliotecaController extends Controller
 {
@@ -69,7 +70,8 @@ class BibliotecaController extends Controller
 
     function lectura_detalles_preview($id_lecturama, $id_lectura) {
         $lecturama = tb_lecturama::find($id_lecturama);
-        $lectura = tb_reading::find($id_lectura);
+
+        $lectura = tb_reading::with('content_extra')->find($id_lectura);
 
         $profesor = tb_user::find(Auth::guard('profesor')->id());
 
