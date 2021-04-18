@@ -270,79 +270,27 @@
         <div class="ui segment" style="font-family: 'Merienda', cursive;   font-size: larger; ">
             {{-- BLOQUE 1 LECTURA --}}
 
-            @if (isset($lectura->content))
-                <p>
-                    {{$lectura->content}}
-                </p>
+            @if (count($lectura->content_extra) == 0)
+               <p>Sin texto que mostrar.</p>
             @else
-                <p>
-                    Sin contenido de texto
-                </p>  
+                @foreach ($lectura->content_extra as $content_extra)
+
+                    @isset($content_extra->content)
+                        <p>
+                            {!! $content_extra->content !!}
+                        </p>
+                    @endisset
+
+                    @isset($content_extra->image_content)
+                        <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
+                        </br>
+                    @endisset
+                    
+                @endforeach
             @endif
 
-            @isset($lectura->content_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_image)}}" alt="Image 1">
-            @endisset
+            
 
-            {{-- BLOQUE 2 LECTURA --}}
-
-            @isset($lectura->content_2)
-                <p>
-                    {{$lectura->content_2}}
-                </p>
-            @endisset
-
-            @isset($lectura->content_2_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_2_image)}}" alt="Image 2">
-            @endisset
-
-            {{-- BLOQUE 3 LECTURA --}}
-
-            @isset($lectura->content_3)
-                <p>
-                    {{$lectura->content_3}}
-                </p>
-            @endisset
-
-            @isset($lectura->content_3_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_3_image)}}" alt="Image 3">
-            @endisset
-
-            {{-- BLOQUE 4 LECTURA --}}
-
-            @isset($lectura->content_4)
-                <p>
-                    {{$lectura->content_4}}
-                </p>
-            @endisset
-
-            @isset($lectura->content_4_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_4_image)}}" alt="Image 4">
-            @endisset
-
-            {{-- BLOQUE 5 LECTURA --}}
-
-            @isset($lectura->content_5)
-                <p>
-                    {{$lectura->content_5}}
-                </p>
-            @endisset
-
-            @isset($lectura->content_5_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_5_image)}}" alt="Image 5">
-            @endisset
-
-            {{-- BLOQUE 6 LECTURA --}}
-
-            @isset($lectura->content_6)
-                <p>
-                    {{$lectura->content_6}}
-                </p>
-            @endisset
-
-            @isset($lectura->content_6_image)
-                <img class="ui centered fluid large image" src="{{asset($lectura->content_6_image)}}" alt="Image 6">
-            @endisset
 
             {{-- <h2>Iniciando la travesía</h2>
                 <img class="ui fluid image" src="{{asset('images/orus.png')}}" alt="">

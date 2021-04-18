@@ -10,8 +10,30 @@
         </div>
     </div>
     <div class="cuento">
-        <h1><strong>Conociendo el antiguo Egipto</strong></h1>
+        <h1><strong>{{$lectura->title}}</strong></h1>
         <div class="texto">
+
+
+            @if (count($lectura->content_extra) == 0)
+               <p class="letra">Sin texto que mostrar.</p>
+            @else
+                @foreach ($lectura->content_extra as $content_extra)
+
+                    @isset($content_extra->content)
+                        <p class="letra">
+                            {!! $content_extra->content !!}
+                        </p>
+                    @endisset
+
+                    @isset($content_extra->image_content)
+                        <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
+                        </br>
+                    @endisset
+                    
+                @endforeach
+            @endif
+
+
             <p class="letra">
                 {{-- <h2>Iniciando la travesía</h2>
                 <img src="{{asset('images/orus.png')}}" alt="">
