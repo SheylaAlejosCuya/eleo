@@ -5,28 +5,28 @@
         <div class="reporteSection">
             <h1>Promedio General</h1>
             <div class="aulaTable">
-                <a href="./{{$alumno}}/promedioGeneral" class="reporteOption">
+                <a href="{{route('web_resultados_alumno_detalle_promedios', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
-                    <p>Evaluación de comprensión</p>
+                    <p>Evaluación de promedio general</p>
                 </a>
-                <a href="./{{$alumno}}/actividades" class="reporteOption">
+                <a href="{{route('web_resultados_alumno_detalle_actividades', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption" hidden>
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
                     <p>Evaluación de comprensión</p>
                 </a>
             </div>
         </div>
-        <div class="reporteSection">
+        {{-- <div class="reporteSection">
             <h1>Actividades</h1>
             <div class="aulaTable">
-                <a href="./{{$alumno}}/evaluacionComprension" class="reporteOption">
+                <a href="{{route('web_resultados_alumno_detalle_evaluacion', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
                     <p>Evaluación de comprensión</p>
                 </a>
-                <a href="./{{$alumno}}/actividades" class="reporteOption">
+                <a href="{{route('web_resultados_alumno_detalle_evaluacion', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
                     <p>Evaluación de comprensión</p>
                 </a>
             </div>
-        </div>
+        </div> --}}
     </div>
 </div>
