@@ -17,4 +17,9 @@ class tb_assignment_reading extends Model
     protected $primaryKey = 'id_assignment_reading';
 
     public $timestamps = false;
+
+    public function reading()
+    {
+        return $this->hasOne(tb_reading::class, 'id_reading', 'id_reading');
+    }
 }

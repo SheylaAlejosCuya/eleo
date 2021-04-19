@@ -2,16 +2,19 @@
 <div class="infomacion">
     <h4>{{$subtitle}}</h4>
     <div class="aulaTable">
-        <?php
-            foreach ($data as $d) {
-                ?>
-                    <a href="<?php echo $d['url'] ?>" class="alumnoOption">
-                        <img class="check" src="{{asset('images/check.png')}}" alt="">
-                        <img src="{{asset('images/chico.png')}}" alt="">
-                        <p>{{$d['nombre']}}</p>
-                    </a>
-                <?php
-            }
-        ?>
+
+        @foreach ($alumnos as $alumno)
+            <a href="{{route('web_resultados_alumno_detalle', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="alumnoOption">
+                <img class="check" src="{{asset('images/check.png')}}" alt="">
+                @if($alumno->id_gender == '2')
+                    <img src="{{asset('images/chico.png')}}" alt="Perfil">
+                @else
+                    <img src="{{asset('images/chica.png')}}" alt="Perfil">
+                @endif
+                <p>{{$alumno->first_name.' '.$alumno->last_name}}</p>
+            </a>
+        @endforeach
+        
+        
     </div>
 </div>

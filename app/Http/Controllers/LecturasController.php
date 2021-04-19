@@ -48,6 +48,10 @@ class LecturasController extends Controller
         $lectura = tb_reading::find($id);
         $alumno = tb_user::find(Auth::guard('alumno')->id());
 
+        if($lectura->video == null){
+            return redirect()->route('web_video_preguntas2', ['id'=>$lectura->id_reading]);
+        }
+
         if((int) $lectura->id_state == 4) {
             return redirect()->back()->with('status', 'La lectura seleccionada se encuentra deshabilitada');
         }

@@ -117,127 +117,21 @@ Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura
 Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura}/previsualizacion', [BibliotecaController::class, 'lectura_detalles_preview'])->name('web_lectura_detalles_preview')->middleware('auth:profesor');
 
 /* Lecturas de Estudio */
-Route::get('/profesor/lecturasEstudio', [ProfesorController::class, 'resultados'])->name('web_resultados_profesor')->middleware('auth:profesor');
+Route::get('/profesor/lecturas/resultados/aulas', [ProfesorController::class, 'resultados'])->name('web_resultados_profesor')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.opciones', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}', [ProfesorController::class, 'resultados_aulas'])->name('web_resultados_aulas')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno', function() {
-    $data = [
-        [
-            'url' => "./perfilAlumno/1",
-            'nombre' => 'Jaimito' 
-        ],
-        [
-            'url' => "./perfilAlumno/2",
-            'nombre' => 'Jaimito' 
-        ],
-        [
-            'url' => "./perfilAlumno/3",
-            'nombre' => 'Jaimito' 
-        ],
-        [
-            'url' => "./perfilAlumno/1",
-            'nombre' => 'Jaimito' 
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'data' => $data,'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 2]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumnos', [ProfesorController::class, 'resultados_alumnos'])->name('web_resultados_alumnos')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}', function($id) {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.reporteAlumno', 'alumno' => $id, 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}', [ProfesorController::class, 'resultados_alumno_detalle'])->name('web_resultados_alumno_detalle')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/actividades', function($id) {
-    $alumnoResults = [
-        [
-            'title' => 'Expresión oral',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Expresión escrita',
-            'percent' => 40
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/actividades', [ProfesorController::class, 'resultados_alumno_detalle_actividades'])->name('web_resultados_alumno_detalle_actividades')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/promedioGeneral', function($id) {
-    $auditiva = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ]
-    ];
-    $textos = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ],
-        [
-            'title' => 'Nivel Intertextual',
-            'percent' => 100
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Reporte - Camila','subtitle' => 'Selecciona la categoría', 'optionIndex' => 2, 'textos' => $textos, 'auditiva' => $auditiva]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/promedio-general', [ProfesorController::class, 'resultados_alumno_detalle_promedios'])->name('web_resultados_alumno_detalle_promedios')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/evaluacionComprension', function() {
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/evaluacion-comprension', [ProfesorController::class, 'resultados_alumno_detalle_evaluacion'])->name('web_resultados_alumno_detalle_evaluacion')->middleware('auth:profesor');
 
-Route::get('/profesor/lecturasEstudio/opciones/perfilAlumno/{id}/evaluacionComprension/{libro}', function($id) {
-    $auditiva = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ]
-    ];
-    $textos = [
-        [
-            'title' => 'Nivel Literal',
-            'percent' => 50
-        ],
-        [
-            'title' => 'Nivel Inferencial',
-            'percent' => 40
-        ],
-        [
-            'title' => 'Nivel Crítico Valorativo',
-            'percent' => 60
-        ],
-        [
-            'title' => 'Nivel Intertextual',
-            'percent' => 100
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Evaluación de Comprensión','subtitle' => '', 'optionIndex' => 2, 'textos' => $textos, 'auditiva' => $auditiva]);
-});
+Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/evaluacion-comprension/{id}', [ProfesorController::class, 'resultados_alumno_detalle_evaluacion_lib'])->name('web_resultados_alumno_detalle_evaluacion_lib')->middleware('auth:profesor');
 
 Route::get('/profesor/lecturasAutogestion', function() {
     $data = [
