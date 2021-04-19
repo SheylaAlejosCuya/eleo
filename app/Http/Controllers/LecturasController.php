@@ -247,6 +247,10 @@ class LecturasController extends Controller
 
         $pregunta_final = tb_reading::find($id_reading)->questions()->where('id_question_level', '5')->where('source', 'final')->first();
 
+        if(!$pregunta_final) {
+            return redirect()->route('web_libros');
+        }
+
         $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta_final->id_question)->first();
 
         if($answer_completed) {
