@@ -117,15 +117,7 @@ Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura
 Route::get('/profesor/biblioteca/eleo-virtual/{id_lecturama}/lectura/{id_lectura}/previsualizacion', [BibliotecaController::class, 'lectura_detalles_preview'])->name('web_lectura_detalles_preview')->middleware('auth:profesor');
 
 /* Lecturas de Estudio */
-Route::get('/profesor/lecturasEstudio', function() {
-    $data = [
-        [
-            'url' => "./lecturasEstudio/opciones",
-            'grado' => '1ro "A"' 
-        ]
-    ];
-    return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'data' => $data, 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 2]);
-});
+Route::get('/profesor/lecturasEstudio', [ProfesorController::class, 'resultados'])->name('web_resultados_profesor')->middleware('auth:profesor');
 
 Route::get('/profesor/lecturasEstudio/opciones', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.opciones', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 2]);

@@ -90,7 +90,6 @@ class ResultadosController extends Controller
                 }
 
             }
-
         }
 
         $check_questions_b2_points_literal = [];
@@ -157,10 +156,7 @@ class ResultadosController extends Controller
                 }
 
             }
-            
         }
-
-        //dd($test_array);
 
         $aresults = [
             [
@@ -206,7 +202,10 @@ class ResultadosController extends Controller
                 'percent' => 0
             ]
         ];
+
+
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults, 'optionIndex' => 4, 'alumno' => $alumno]);
     }
+
 
 }

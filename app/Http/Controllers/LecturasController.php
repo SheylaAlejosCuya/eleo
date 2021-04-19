@@ -243,6 +243,14 @@ class LecturasController extends Controller
 
         $pregunta_final = tb_reading::find($id_reading)->questions()->where('id_question_level', '5')->where('source', 'final')->first();
 
+        $answer_completed = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', $pregunta_final->id_question)->first();
+
+        if($answer_completed) {
+            $pregunta_final->answer_completed = true;
+        } else {
+            $pregunta_final->answer_completed = false;
+        }
+
         return view('includes/menubaralternate', ['includeRoute' => 'alumno.LecturaTxt.eva5', 'title' => $lectura->title, 'optionIndex' => 1,'lectura' => $lectura, 'alumno' => $alumno, 'pregunta_final' => $pregunta_final]);
     }
 
@@ -296,9 +304,11 @@ class LecturasController extends Controller
     function guardar_preguntas_bloque5(Request $request) {
         try {
 
-            $results_prev = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', (int) $request->file('id_question'))->get();
-            if(count($results_prev) != 1) {
-                $path = Storage::disk('archivos_alumnos_p_final')->putFile('pregunta_final', $request->file('custom_file'));
+            $results_prev = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', (int) $request->get('id_question'))->get();
+
+            if(count($results_prev) == 0) {
+
+                $path = Storage::disk('s3')->putFile('/actividades_produccion/respuestas_alumnos/'.$request->file('custom_file')->getClientOriginalName(), $request->file('custom_file'));
 
                 $results = new tb_results;
                 $results->id_user = Auth::guard('alumno')->id();
@@ -306,9 +316,12 @@ class LecturasController extends Controller
                 $results->create_date = Carbon::now()->isoFormat('YYYY-MM-DD');
                 $results->id_question = (int) $request->get('id_question');
                 $results->save();
-            }
 
-            return response()->json(['status_code' => 200, 'message' => 'file saved'], 200);
+                return response()->json(['status_code' => 200, 'message' => 'file saved'], 200);
+            } else {
+                return response()->json(['status_code' => 200, 'message' => 'file already saved'], 200);
+            }
+            
         } catch (Exception $error) {
             return response()->json(['status_code' => 500, 'message' => 'Error', 'error' => $error], 500);
         }

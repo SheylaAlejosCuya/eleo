@@ -24,6 +24,7 @@ use App\Models\tb_level;
 use App\Models\tb_grade;
 use App\Models\tb_section;
 use App\Models\tb_question;
+use App\Models\tb_classroom;
 use App\Models\tb_assignment_reading;
 
 class ProfesorController extends Controller
@@ -110,5 +111,78 @@ class ProfesorController extends Controller
         }
     }
 
+    function resultados()
+    {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        $aulas = tb_classroom::where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->get();
 
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 5, 'aulas' => $aulas]);
+    }
+
+    function resultados_aulas($id_classroom)
+    {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+
+        $aula = tb_classroom::where('id_state', 3)->find($id_classroom);
+        //$salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.opciones', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5, 'aula' => $aula]);
+    }
+
+    function resultados_alumnos($id_classroom)
+    {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+
+        $aulas = tb_classroom::where('id_teacher', $profesor->id_user)->where('id_state', 3)->get();
+        $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+
+        $data = [
+            [
+                'url' => "./perfilAlumno/1",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/2",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/3",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/1",
+                'nombre' => 'Jaimito' 
+            ]
+        ];
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'data' => $data,'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 5]);
+    }
+
+    function resultados_alumnos_test($id_classroom)
+    {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+
+        $aulas = tb_classroom::where('id_teacher', $profesor->id_user)->where('id_state', 3)->get();
+        $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+
+        $data = [
+            [
+                'url' => "./perfilAlumno/1",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/2",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/3",
+                'nombre' => 'Jaimito' 
+            ],
+            [
+                'url' => "./perfilAlumno/1",
+                'nombre' => 'Jaimito' 
+            ]
+        ];
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'data' => $data,'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 5]);
+    }
+    
 }
