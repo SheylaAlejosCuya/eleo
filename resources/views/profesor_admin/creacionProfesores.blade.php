@@ -79,7 +79,6 @@
     <!-- JavaScript - ALERT -->
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>  
 
-
     @if (session('status_success'))
     <script>
         showMessage("success", "Profesor creado correctamente");

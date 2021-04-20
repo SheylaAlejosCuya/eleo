@@ -18,10 +18,10 @@
         <div class="reporteSection">
             <h1>Actividades</h1>
             <div class="aulaTable">
-                <a href="{{route('web_resultados_alumno_detalle_evaluacion', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
+                {{-- <a href="{{route('web_resultados_alumno_detalle_actividades', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
                     <p>Evaluación de compresión por Lectura</p>
-                </a>
+                </a> --}}
                 <a href="{{route('web_resultados_alumno_detalle_evaluacion', ['id_classroom'=> $alumno->id_classroom, 'id_user'=> $alumno->id_user])}}" class="reporteOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
                     <p>Evaluación de producción por Lectura</p>
