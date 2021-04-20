@@ -159,7 +159,7 @@
                 @if (count($preguntas_bloque0_texto) != 0)
                     @foreach ($preguntas_bloque0_texto as $pregunta_bloque0_texto)
                         <div class="field">
-                            <label><h4>{{$pregunta_bloque0_texto->question}}</h4></label>
+                            <label><h4>{!!$pregunta_bloque0_texto->question!!}</h4></label>
                             <input readonly value=""/><br><br>
                             {{-- @foreach ($pregunta_bloque0_texto->answers as $answer)
                                 <input readonly value="{{$answer->answer}}"/><br><br>
@@ -188,7 +188,7 @@
                             @if (count($preguntas_bloque1_literal) != 0)
                                 @foreach ($preguntas_bloque1_literal as $pregunta_bloque1_literal)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque1_literal->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque1_literal->question!!}</h4></label>
                                         @foreach ($pregunta_bloque1_literal->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
@@ -211,7 +211,7 @@
                             @if (count($preguntas_bloque1_inferencial) != 0)
                                 @foreach ($preguntas_bloque1_inferencial as $pregunta_bloque1_inferencial)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque1_inferencial->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque1_inferencial->question!!}</h4></label>
                                         @foreach ($pregunta_bloque1_inferencial->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
@@ -232,7 +232,7 @@
                             @if (count($preguntas_bloque1_critico) != 0)
                                 @foreach ($preguntas_bloque1_critico as $pregunta_bloque1_critico)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque1_critico->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque1_critico->question!!}</h4></label>
                                         @foreach ($pregunta_bloque1_critico->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
@@ -319,7 +319,7 @@
                             @if (count($preguntas_bloque2_literal) != 0)
                                 @foreach ($preguntas_bloque2_literal as $pregunta_bloque2_literal)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque2_literal->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque2_literal->question!!}</h4></label>
                                         @foreach ($pregunta_bloque2_literal->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
@@ -342,7 +342,7 @@
                             @if (count($preguntas_bloque2_inferencial) != 0)
                                 @foreach ($preguntas_bloque2_inferencial as $pregunta_bloque2_inferencial)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque2_inferencial->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque2_inferencial->question!!}</h4></label>
                                         @foreach ($pregunta_bloque2_inferencial->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
@@ -363,7 +363,7 @@
                             @if (count($preguntas_bloque2_critico) != 0)
                                 @foreach ($preguntas_bloque2_critico as $pregunta_bloque2_critico)
                                     <div class="field">
-                                        <label><h4>{{$pregunta_bloque2_critico->question}}</h4></label>
+                                        <label><h4>{!!$pregunta_bloque2_critico->question!!}</h4></label>
                                         @foreach ($pregunta_bloque2_critico->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
