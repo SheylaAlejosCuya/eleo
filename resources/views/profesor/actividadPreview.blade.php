@@ -294,8 +294,10 @@
                     @endisset
 
                     @isset($content_extra->image_content)
-                        <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
-                        </br>
+                        @if($content_extra->image_content != "")
+                            <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
+                            </br>
+                        @endif
                     @endisset
                     
                 @endforeach
