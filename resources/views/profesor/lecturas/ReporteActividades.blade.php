@@ -229,7 +229,7 @@
                 dataType: "json",
                 data: {
                     "_token": "{{csrf_token()}}",
-                    "id_user": "{{}}",
+                    "id_user": "{{$()}}",
                     "rubrica_6": $('#rubrica_6').val(),
 					"rubrica_7": $('#rubrica_7').val(),
 					"rubrica_8": $('#rubrica_8').val(),
