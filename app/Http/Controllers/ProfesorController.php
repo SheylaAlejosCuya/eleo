@@ -74,16 +74,19 @@ class ProfesorController extends Controller
 
             //dd($pregunta);
             if($pregunta) {
-                $file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
 
-                $headers = [
-                    'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
-                    'Content-Description' => 'File Transfer',
-                    'Content-Disposition' => "attachment; filename=".$pregunta->final_resource,
-                    'filename'=> $pregunta->final_resource
-                ];
+                if($pregunta->final_resource != null && $pregunta->final_resource != '') {
 
-                return response($file, 200, $headers);
+                    $file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
+                    $headers = [
+                        'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
+                        'Content-Description' => 'File Transfer',
+                        'Content-Disposition' => "attachment; filename=".$pregunta->final_resource,
+                        'filename'=> $pregunta->final_resource
+                    ];
+    
+                    return response($file, 200, $headers); 
+                }
             }
             return redirect()->back()->with('status_not_enable', 'error');;
 
