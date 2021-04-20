@@ -149,16 +149,17 @@ class ProfesorController extends Controller
     {
         $alumnoResults = [
             [
-                'title' => 'Expresión oral',
-                'percent' => 0
+                'title' => 'Producción Escrita',
+                'percent' => 50
             ],
             [
-                'title' => 'Expresión escrita',
-                'percent' => 0
+                'title' => 'Expresión Oral',
+                'percent' => 100
             ]
         ];
 
         $alumno = tb_user::find($id_user);
+
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Reporte - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => 'Selecciona la categoría', 'optionIndex' => 5, 'alumnoResults' => $alumnoResults]);
     }
@@ -470,7 +471,14 @@ class ProfesorController extends Controller
 
     function resultados_alumno_detalle_evaluacion($id_classroom, $id_user)
     {
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);
+        $alumno = tb_user::find($id_user);
+        //$aula = tb_classroom::find(tb_user::find($id_user)->id_classroom);
+
+        $lecturas_asignadas =tb_assignment_reading::where('id_classroom', $alumno->id_classroom)->with('reading')->get();
+
+        //$lecturas = tb_reading::where('id_lecturama', $id_lecturama)->where('id_state', 3)->get();
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la lectura a evaluar', 'optionIndex' => 5, 'lecturas_asignadas'=>$lecturas_asignadas, 'alumno'=>$alumno]);
     }
 
     function resultados_alumno_detalle_evaluacion_lib($id_classroom, $id_user, $id)
