@@ -118,7 +118,7 @@
 
     <div class="ui modal" id="video" tabindex="-1" aria-hidden="true">
         <div class="content">
-            @if (isset($lectura->video))
+            @if (isset($lectura->video) && $lectura->video != '')
                 <div class="c-video">
                     <video class="evideo" controlsList="nodownload" preload="auto">
                         <source src="{{$lectura->video}}" type="video/mp4">
@@ -259,7 +259,7 @@
 
     <div class="ui modal" id="audio" tabindex="-1" aria-hidden="true">
         <div class="content">
-                @if (isset($lectura->audio))
+                @if (isset($lectura->audio) && $lectura->audio != '')
                     <audio style="width: inherit" controls controlsList="nodownload">   
                         <source src="{{$lectura->audio}}" type="audio/ogg">
                     </audio>
