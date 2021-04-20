@@ -72,7 +72,7 @@ class ProfesorController extends Controller
             $lecturama = tb_lecturama::find((int) $lectura->id_lecturama);
             $pregunta = tb_question::where('id_reading', $lectura->id_reading)->where('id_block', 3)->where('id_question_level', 5)->where('source', 'FINAL')->first();
 
-            dd($pregunta);
+            //dd($pregunta);
             if($pregunta) {
                 $file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
 
