@@ -59,7 +59,7 @@ class ProfesorAdminController extends Controller
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
-        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->get();
+        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->where('id_state', 3)->get();
 
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
@@ -126,7 +126,7 @@ class ProfesorAdminController extends Controller
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
-        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->get();
+        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->where('id_state', 3)->get();
 
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
@@ -203,7 +203,7 @@ class ProfesorAdminController extends Controller
         try {
 
             $admin = tb_user::find(Auth::guard('profesor_admin')->id());
-            $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_school)->get();
+            $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_school)->where('id_state', 3)->get();
 
             if(count($aula) == 0) {
                 $aula = new tb_classroom;

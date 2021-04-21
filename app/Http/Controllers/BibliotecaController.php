@@ -87,7 +87,7 @@ class BibliotecaController extends Controller
         $preguntas_bloque2_critico = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 3)->where('id_block', 2)->with('answers')->get();
         $preguntas_bloque2_intertextual  = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 4)->where('id_block', 2)->with('answers')->get();
 
-        $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->get();
+        $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->where('id_state', 3)->get();
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n°'.$id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura, 'salones' => $salones, 'preguntas_bloque1_literal' => $preguntas_bloque1_literal, 'preguntas_bloque1_inferencial' => $preguntas_bloque1_inferencial, 'preguntas_bloque1_critico'=>$preguntas_bloque1_critico, 'preguntas_bloque2_literal' => $preguntas_bloque2_literal, 'preguntas_bloque2_inferencial' => $preguntas_bloque2_inferencial, 'preguntas_bloque2_critico'=>$preguntas_bloque2_critico, 'preguntas_bloque0_texto' => $preguntas_bloque0_texto, 'preguntas_bloque1_intertextual'=>$preguntas_bloque1_intertextual, 'preguntas_bloque2_intertextual'=>$preguntas_bloque2_intertextual]);
     }

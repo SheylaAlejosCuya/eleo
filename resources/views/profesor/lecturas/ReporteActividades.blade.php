@@ -19,26 +19,43 @@
                 <img class="ui xlarge centered rounded image" src="{{$rubricas[0]->rubric}}">
                 <h2>Calificación - Producción Escrita</h2>
                 <div class="ui segment">
+
+                    @foreach ($criterios_escritos as $key_c => $criterio_escrito)
+                        <div class="ui two column very relaxed grid">
+                            <div class="column">
+                                <h2>{{$criterio_escrito->criteria->criterion}}</h2>
+                            </div>
+                            <div class="column">
+                                <select class="selectpicker" id="{{'rubrica_'.$key_c}}" name='{{'rubrica_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
+                                    <option value="0" @if((int) $puntuaciones[$key_c]->score == 0 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>0</option>
+                                    <option value="1" @if((int) $puntuaciones[$key_c]->score == 1 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>1</option>
+                                    <option value="2" @if((int) $puntuaciones[$key_c]->score == 2 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                    @endforeach
+
                     <div class="ui two column very relaxed grid">
                         <div class="column">
                             <h2>Adecuación al tipo textual</h2>
                         </div>
                         <div class="column">
-                            <select class="selectpicker" id="rubrica_1" name='rubrica_1' title="Seleccionar valor" data-width="100%" disabled>
+                            <select class="selectpicker" id="rubrica_1" name='rubrica_1' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[0]->score != null) disabled @endif>
                                 <option value="0">0</option>
-                                <option value="1" actived>1</option>
+                                <option value="1">1</option>
                                 <option value="2">2</option>
                             </select>
                         </div>
-
                     </div>
                     <div class="ui divider"></div>
+
                     <div class="ui two column very relaxed grid">
                         <div class="column">
                             <h2>Adecuación al tema y registro</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_2" name='rubrica_2' title="Seleccionar valor" data-width="100%">
+                        <select class="selectpicker" id="rubrica_2" name='rubrica_2' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[1]->score != null) disabled @endif>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -52,7 +69,7 @@
                             <h2>Cohesión textual</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_3" name='rubrica_3' title="Seleccionar valor" data-width="100%">
+                        <select class="selectpicker" id="rubrica_3" name='rubrica_3' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[2]->score != null) disabled @endif>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -66,7 +83,7 @@
                             <h2>Puntuación y ortografía</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_4" name='rubrica_4' title="Seleccionar valor" data-width="100%">
+                        <select class="selectpicker" id="rubrica_4" name='rubrica_4' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[3]->score != null) disabled @endif>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -80,7 +97,7 @@
                             <h2>Adecuación al tipo textual</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_5" name='rubrica_5' title="Seleccionar valor" data-width="100%">
+                        <select class="selectpicker" id="rubrica_5" name='rubrica_5' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[4]->score != null) disabled @endif>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -96,29 +113,50 @@
                 <img class="ui xlarge centered rounded image" src="{{$rubricas[1]->rubric}}">
                 <h2>Calificación - Expresión Oral</h2>
                 <div class="ui segment">
+
+
+                    @foreach ($criterios_orales as $key_c => $criterio_oral)
+                        <div class="ui two column very relaxed grid">
+                            <div class="column">
+                                <h2>{{$criterio_oral->criteria->criterion}}</h2>
+                            </div>
+                            <div class="column">
+                                <p>{{$criterio_oral->criteria->id_criteria}}</p>
+                                <select class="selectpicker" id="{{'rubrica_'.$key_c}}" name='{{'rubrica_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
+                                    <option value="0" @if((int) $puntuaciones[$key_c]->score == 0 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>0</option>
+                                    <option value="1" @if((int) $puntuaciones[$key_c]->score == 1 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>1</option>
+                                    <option value="2" @if((int) $puntuaciones[$key_c]->score == 2 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>2</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="ui divider"></div>
+                    @endforeach
+
+
                     <div class="ui two column very relaxed grid">
                         <div class="column">
                             <h2>Adecuación a la situación comunicativa</h2>
                         </div>
                         <div class="column">
-                            <select class="selectpicker" id="rubrica_6" name='rubrica_6' title="Seleccionar valor" data-width="100%">
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
+                            <select class="selectpicker" id="rubrica_6" name='rubrica_6' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) disabled @endif>
+                                <option value="0" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 0) selected @endif @endif>0</option>
+                                <option value="1" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 1) selected @endif @endif>1</option>
+                                <option value="2" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 2) selected @endif @endif>2</option>
                             </select>
                         </div>
 
                     </div>
                     <div class="ui divider"></div>
+
                     <div class="ui two column very relaxed grid">
                         <div class="column">
                             <h2>Coherencia textual</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_7" name='rubrica_7' title="Seleccionar valor" data-width="100%">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select class="selectpicker" id="rubrica_7" name='rubrica_7' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
+                            <option value="0" @if(true) @if($puntuaciones[6]->score == 0) selected @endif @endif>0</option>
+                            <option value="1" @if(true) @if($puntuaciones[6]->score == 1) selected @endif @endif>1</option>
+                            <option value="2" @if(true) @if($puntuaciones[6]->score == 2) selected @endif @endif>2</option>
                         </select>
                         </div>
                         
@@ -129,10 +167,10 @@
                             <h2>Cohesión textual</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_8" name='rubrica_8' title="Seleccionar valor" data-width="100%">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select class="selectpicker" id="rubrica_8" name='rubrica_8' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) disabled @endif>
+                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 0) selected @endif @endif>0</option>
+                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 1) selected @endif @endif>1</option>
+                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 2) selected @endif @endif>2</option>
                         </select>
                         </div>
                         
@@ -143,10 +181,10 @@
                             <h2>Uso de vocabulario</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_9" name='rubrica_9' title="Seleccionar valor" data-width="100%">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select class="selectpicker" id="rubrica_9" name='rubrica_9' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) disabled @endif>
+                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 0) selected @endif @endif>0</option>
+                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 1) selected @endif @endif>1</option>
+                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 2) selected @endif @endif>2</option>
                         </select>
                         </div>
                         
@@ -157,10 +195,10 @@
                             <h2>Uso de recursos no verbales y paraverbales</h2>
                         </div>
                         <div class="column">
-                        <select class="selectpicker" id="rubrica_10" name='rubrica_10' title="Seleccionar valor" data-width="100%">
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                        <select class="selectpicker" id="rubrica_10" name='rubrica_10' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) disabled @endif>
+                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 0) selected @endif @endif>0</option>
+                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 1) selected @endif @endif>1</option>
+                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 2) selected @endif @endif>2</option>
                         </select>
                         </div>
                         

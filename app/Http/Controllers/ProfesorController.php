@@ -29,6 +29,8 @@ use App\Models\tb_assignment_reading;
 use App\Models\tb_results;
 use App\Models\tb_answer;
 use App\Models\tb_rubric;
+use App\Models\tb_rubric_type;
+use App\Models\tb_rubric_criteria;
 
 
 use App\Models\tb_scores_activities;
@@ -151,7 +153,12 @@ class ProfesorController extends Controller
 
         $rubricas = tb_rubric::where('id_level', $alumno->id_level)->where('id_grade', $alumno->id_grade)->get();
 
-        $puntuaciones = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->get();
+        $criterios_escritos = tb_rubric_criteria::where('id_rubric_type', 1)->with('criteria')->with('rubric_type')->get();
+        $criterios_orales = tb_rubric_criteria::where('id_rubric_type', 2)->with('criteria')->with('rubric_type')->get();
+
+        //dd($criteria_escrito[0]->criteria->criterion);
+
+        $puntuaciones = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->orderBy('id_scores_activities')->get();
 
         $alumnoResults = [
             [
@@ -164,7 +171,7 @@ class ProfesorController extends Controller
             ]
         ];
 
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Actividad de Producción - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => '', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults, 'id_reading'=> $id_reading, 'alumno' => $alumno, 'rubricas' => $rubricas, 'puntuaciones' => $puntuaciones]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Actividad de Producción - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => '', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults, 'id_reading'=> $id_reading, 'alumno' => $alumno, 'rubricas' => $rubricas, 'puntuaciones' => $puntuaciones, 'criterios_escritos'=>$criterios_escritos, 'criterios_orales'=>$criterios_orales]);
     }
 
     function resultados_alumno_detalle($id_classroom, $id_user)
@@ -593,6 +600,7 @@ class ProfesorController extends Controller
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria2_val;
             $scores->id_criteria = 2;
             $scores->id_rubric = (int) $request->get('id_rubric');
             $scores->save();
@@ -640,7 +648,40 @@ class ProfesorController extends Controller
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
-            $scores->score = $puntuacion_final;
+            $scores->score = $criteria1_val;
+            $scores->id_criteria = 6;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria2_val;
+            $scores->id_criteria = 3;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria3_val;
+            $scores->id_criteria = 4;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria4_val;
+            $scores->id_criteria = 7;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria5_val;
+            $scores->id_criteria = 8;
             $scores->id_rubric = (int) $request->get('id_rubric');
             $scores->save();
 
