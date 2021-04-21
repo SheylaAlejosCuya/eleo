@@ -203,7 +203,7 @@ class ProfesorAdminController extends Controller
         try {
 
             $admin = tb_user::find(Auth::guard('profesor_admin')->id());
-            $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_user)->get();
+            $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_school)->get();
 
             if(count($aula) == 0) {
                 $aula = new tb_classroom;
