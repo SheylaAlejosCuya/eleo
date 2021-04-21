@@ -6,7 +6,7 @@
         border-radius: 4px !important;
         
     }
-    input {
+    .input_success {
         pointer-events: none !important;
     }
 </style>
