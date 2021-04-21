@@ -246,6 +246,28 @@
 
                         </div>
                     </div>
+                    <div class="side">
+                        <h1 class="ui dividing header" style="color: #00a3fb; margin-top: 2rem; !important">
+                            Nivel Intertextual
+                        </h1>
+                        <div class="ui small form">
+                            @if (count($preguntas_bloque1_intertextual) != 0)
+                                @foreach ($preguntas_bloque1_intertextual as $pregunta_bloque1_intertextual)
+                                    <div class="field">
+                                        <label><h4>{!!$pregunta_bloque1_intertextual->question!!}</h4></label>
+                                        @foreach ($pregunta_bloque1_intertextual->answers as $answer)
+                                            <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -365,6 +387,27 @@
                                     <div class="field">
                                         <label><h4>{!!$pregunta_bloque2_critico->question!!}</h4></label>
                                         @foreach ($pregunta_bloque2_critico->answers as $answer)
+                                            <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
+                                        @endforeach
+                                    </div>
+                                @endforeach
+                            @else
+                                <p>
+                                    Sin preguntas que mostrar.
+                                </p>  
+                            @endif
+                        </div>
+                    </div>
+                    <div class="side">
+                        <h1 class="ui dividing header" style="color: #00a3fb; margin-top: 2rem; !important">
+                            Nivel Intertextual
+                        </h1>
+                        <div class="ui small form">
+                            @if (count($preguntas_bloque2_intertextual) != 0)
+                                @foreach ($preguntas_bloque2_intertextual as $pregunta_bloque2_intertextual)
+                                    <div class="field">
+                                        <label><h4>{!!$pregunta_bloque2_intertextual->question!!}</h4></label>
+                                        @foreach ($pregunta_bloque2_intertextual->answers as $answer)
                                             <input @if($answer->correct == 'true') class='input_success' @endif readonly value="{{$answer->answer}}"/><br><br>
                                         @endforeach
                                     </div>

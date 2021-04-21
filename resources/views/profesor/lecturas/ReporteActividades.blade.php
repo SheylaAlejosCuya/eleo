@@ -16,7 +16,7 @@
                 <a class="item" data-tab="second">Expresión Oral</a>
               </div>
               <div class="ui bottom attached tab segment active" data-tab="first">
-                <img class="ui xlarge centered rounded image" src="https://eleofiles.s3.us-east-2.amazonaws.com/rubricas/Rubrica_5_Secundaria_Escrito.png">
+                <img class="ui xlarge centered rounded image" src="{{$rubricas[0]->rubric}}">
                 <h2>Calificación - Producción Escrita</h2>
                 <div class="ui segment">
                     <div class="ui two column very relaxed grid">
@@ -24,9 +24,9 @@
                             <h2>Adecuación al tipo textual</h2>
                         </div>
                         <div class="column">
-                            <select class="selectpicker" id="rubrica_1" name='rubrica_1' title="Seleccionar valor" data-width="100%">
+                            <select class="selectpicker" id="rubrica_1" name='rubrica_1' title="Seleccionar valor" data-width="100%" disabled>
                                 <option value="0">0</option>
-                                <option value="1">1</option>
+                                <option value="1" actived>1</option>
                                 <option value="2">2</option>
                             </select>
                         </div>
@@ -89,11 +89,11 @@
                         
                     </div>
                     <div class="ui divider"></div>
-                    <button class="fluid ui button primary large">Guardar Calificación</button>
+                    <button class="fluid ui button primary large" onclick="calificar_prod_escrita()">Guardar Calificación</button>
                 </div>
               </div>
               <div class="ui bottom attached tab segment" data-tab="second">
-                <img class="ui xlarge centered rounded image" src="https://eleofiles.s3.us-east-2.amazonaws.com/rubricas/Rubrica_5_Secundaria_Oral.png">
+                <img class="ui xlarge centered rounded image" src="{{$rubricas[1]->rubric}}">
                 <h2>Calificación - Expresión Oral</h2>
                 <div class="ui segment">
                     <div class="ui two column very relaxed grid">
@@ -172,12 +172,12 @@
 
 
                 <br>
-                <button class="saveButton" style="width: auto">Descargar archivo</button>
+                <button class="saveButton" style="width: auto" onclick="descargar_archivo()">Descargar archivo</button>
         </div>
 
-        <div class="reporteSection">
+        {{-- <div class="reporteSection">
             <x-result-progress-bar title="Puntaje" :results="$alumnoResults" />
-        </div>
+        </div> --}}
     </div>
 </div>
 
@@ -190,13 +190,65 @@
 <script>
     $('.menu .item').tab();
 
+	function descargar_archivo() {
+	}
 
-	function calificar_prod_escrita(){
+	function calificar_prod_escrita() {
+		if($('#rubrica_1').val() == null || $('#rubrica_1').val() == "") {
+			showMessage("warning", "Puntaje sin completar");
+            return;
+        }
 
+		if($('#rubrica_2').val() == null || $('#rubrica_2').val() == "") {
+			showMessage("warning", "Puntaje sin completar");
+            return;
+        }
+
+		if($('#rubrica_3').val() == null || $('#rubrica_3').val() == "") {
+			showMessage("warning", "Puntaje sin completar");
+            return;
+        }
+
+		if($('#rubrica_4').val() == null || $('#rubrica_4').val() == "") {
+			showMessage("warning", "Puntaje sin completar");
+            return;
+        }
+
+		if($('#rubrica_5').val() == null || $('#rubrica_5').val() == "") {
+			showMessage("warning", "Puntaje sin completar");
+            return;
+        }
+	
+        alertify.confirm('Rubrica', '¿Calificar alumno?', function() { 
+            $.ajax({
+                type: "POST",
+                url: "{{route('api_calificar_prod_escrita')}}",
+                dataType: "json",
+                data: {
+                    "_token": "{{csrf_token()}}",
+                    "id_user": "{{$alumno->id_user}}",
+					"id_rubric": "{{$rubricas[0]->id_rubric}}",
+					"id_reading": "{{$id_reading}}",
+					"rubrica_1": $('#rubrica_1').val(),
+					"rubrica_2": $('#rubrica_2').val(),
+					"rubrica_3": $('#rubrica_3').val(),
+					"rubrica_4": $('#rubrica_4').val(),
+					"rubrica_5": $('#rubrica_5').val(),
+                },
+                success: function(response) { 
+                    console.log(response);
+                    alertify.success('Calificación realizada');
+                },
+                error: function(e) {
+                        console.log(e); 
+                }
+            });    
+        }, function() { 
+            //current_select.val(0).change();
+        }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
 	}
 
 	function calificar_expr_oral() {
-
 		if($('#rubrica_6').val() == null || $('#rubrica_6').val() == "") {
 			showMessage("warning", "Puntaje sin completar");
             return;
@@ -229,8 +281,10 @@
                 dataType: "json",
                 data: {
                     "_token": "{{csrf_token()}}",
-                    "id_user": "{{$()}}",
-                    "rubrica_6": $('#rubrica_6').val(),
+                    "id_user": "{{$alumno->id_user}}",
+					"id_rubric": "{{$rubricas[1]->id_rubric}}",
+					"id_reading": "{{$id_reading}}",
+					"rubrica_6": $('#rubrica_6').val(),
 					"rubrica_7": $('#rubrica_7').val(),
 					"rubrica_8": $('#rubrica_8').val(),
 					"rubrica_9": $('#rubrica_9').val(),
@@ -247,7 +301,6 @@
         }, function() { 
             //current_select.val(0).change();
         }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
-   
 	}
 
 	function showMessage(type, message) {

@@ -131,6 +131,14 @@ Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/p
 
 Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/evaluacion-comprension', [ProfesorController::class, 'resultados_alumno_detalle_evaluacion'])->name('web_resultados_alumno_detalle_evaluacion')->middleware('auth:profesor');
 
+Route::get('/profesor/produccion/aulas', [ProfesorController::class, 'actividades_produccion_profesor'])->name('web_actividades_produccion_profesor')->middleware('auth:profesor');
+
+Route::get('/profesor/produccion/aula/{id_classroom}/alumnos', [ProfesorController::class, 'actividades_produccion_aula_profesor'])->name('web_actividades_produccion_aula_profesor')->middleware('auth:profesor');
+
+Route::get('/profesor/produccion/aula/{id_classroom}/alumno/{id_user}/lecturas', [ProfesorController::class, 'actividades_produccion_lecturas_profesor'])->name('web_actividades_produccion_lecturas_profesor')->middleware('auth:profesor');
+
+Route::get('/profesor/produccion/aula/{id_classroom}/alumno/{id_user}/lectura/{id_reading}', [ProfesorController::class, 'actividades_produccion_alumno_profesor'])->name('web_actividades_produccion_alumno_profesor')->middleware('auth:profesor');
+
 Route::get('/profesor/lecturas/resultados/aula/{id_classroom}/alumno/{id_user}/evaluacion-comprension/{id}', [ProfesorController::class, 'resultados_alumno_detalle_evaluacion_lib'])->name('web_resultados_alumno_detalle_evaluacion_lib')->middleware('auth:profesor');
 
 Route::get('/profesor/lecturasAutogestion', function() {
@@ -325,3 +333,6 @@ Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_p
 Route::post('/asignacion/aulas', [ProfesorController::class, 'asignacion_lecturas'])->name('api_asignacion_lecturas');
 
 Route::get('/descargar/actividad/final/{id_reading}', [ProfesorController::class, 'descargar_doc'])->name('api_descargar_doc');
+
+Route::post('/calificacion/expresion/oral', [ProfesorController::class, 'calificar_exp_oral'])->name('api_calificar_exp_oral');
+Route::post('/calificacion/produccion/escrita', [ProfesorController::class, 'calificar_prod_escrita'])->name('api_calificar_prod_escrita');

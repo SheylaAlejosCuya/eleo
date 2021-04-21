@@ -28,6 +28,10 @@ use App\Models\tb_classroom;
 use App\Models\tb_assignment_reading;
 use App\Models\tb_results;
 use App\Models\tb_answer;
+use App\Models\tb_rubric;
+
+
+use App\Models\tb_scores_activities;
 
 class ProfesorController extends Controller
 {
@@ -138,6 +142,30 @@ class ProfesorController extends Controller
 
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 5, 'alumnos'=>$alumnos]);
     }
+    
+
+    function actividades_produccion_alumno_profesor($id_classroom, $id_user, $id_reading) 
+    {
+        
+        $alumno = tb_user::find($id_user);
+
+        $rubricas = tb_rubric::where('id_level', $alumno->id_level)->where('id_grade', $alumno->id_grade)->get();
+
+        $puntuaciones = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->get();
+
+        $alumnoResults = [
+            [
+                'title' => 'Producción Escrita',
+                'percent' => 50
+            ],
+            [
+                'title' => 'Expresión Oral',
+                'percent' => 100
+            ]
+        ];
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Actividad de Producción - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => '', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults, 'id_reading'=> $id_reading, 'alumno' => $alumno, 'rubricas' => $rubricas, 'puntuaciones' => $puntuaciones]);
+    }
 
     function resultados_alumno_detalle($id_classroom, $id_user)
     {
@@ -163,8 +191,15 @@ class ProfesorController extends Controller
 
         $alumno = tb_user::find($id_user);
 
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Reporte - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => 'Selecciona la categoría', 'optionIndex' => 5, 'alumnoResults' => $alumnoResults, 'alumno' => $alumno ]);
+    }
 
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Reporte - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => 'Selecciona la categoría', 'optionIndex' => 5, 'alumnoResults' => $alumnoResults]);
+    function actividades_produccion_lecturas_profesor($id_classroom, $id_user) 
+    {
+        $alumno = tb_user::find($id_user);
+        $lecturas_asignadas =tb_assignment_reading::where('id_classroom', $alumno->id_classroom)->with('reading')->get();
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la lectura a evaluar', 'optionIndex' => 2, 'lecturas_asignadas'=>$lecturas_asignadas, 'alumno'=>$alumno]);
     }
 
     function resultados_alumno_detalle_promedios($id_classroom, $id_user)
@@ -484,6 +519,22 @@ class ProfesorController extends Controller
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.eleccionLibro', 'subtitle' => 'Selecciona la lectura a evaluar', 'optionIndex' => 5, 'lecturas_asignadas'=>$lecturas_asignadas, 'alumno'=>$alumno]);
     }
 
+    function actividades_produccion_profesor()
+    {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        $aulas = tb_classroom::where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->get();
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.aulas', 'subtitle' => 'Selecciona el aula de tu preferencia', 'optionIndex' => 2, 'aulas' => $aulas]);
+    }
+
+    function actividades_produccion_aula_profesor($id_classroom) 
+    {
+        $alumnos = tb_user::where('id_classroom', $id_classroom)->where('id_state', 1)->get();
+
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.alumnos', 'title' => 'Perfil del alumno','subtitle' => 'Selecciona el perfil que deseas consultar', 'optionIndex' => 2, 'alumnos'=>$alumnos]);
+    }
+
+
     function resultados_alumno_detalle_evaluacion_lib($id_classroom, $id_user, $id)
     {
         $auditiva = [
@@ -521,6 +572,85 @@ class ProfesorController extends Controller
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Evaluación de Comprensión','subtitle' => '', 'optionIndex' => 5, 'textos' => $textos, 'auditiva' => $auditiva]);
     }
 
+    function calificar_prod_escrita(Request $request) {
+        try {
+            $criteria1_val = (int) $request->get('rubrica_1');
+            $criteria2_val = (int) $request->get('rubrica_2');
+            $criteria3_val = (int) $request->get('rubrica_3');
+            $criteria4_val = (int) $request->get('rubrica_4');
+            $criteria5_val = (int) $request->get('rubrica_5');
+
+            //$puntuacion_final = $criteria1_val + $criteria2_val + $criteria3_val + $criteria4_val + $criteria5_val;
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria1_val;
+            $scores->id_criteria = 1;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->id_criteria = 2;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria3_val;
+            $scores->id_criteria = 3;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria4_val;
+            $scores->id_criteria = 4;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria5_val;
+            $scores->id_criteria = 5;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            return response()->json(['type' => 'success', 'message' => 'update successful score'], 200);
+        } catch(\Excepcion $e) {
+            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    function calificar_exp_oral(Request $request) {
+        try {
+            $criteria1_val = (int) $request->get('rubrica_6');
+            $criteria2_val = (int) $request->get('rubrica_7');
+            $criteria3_val = (int) $request->get('rubrica_8');
+            $criteria4_val = (int) $request->get('rubrica_9');
+            $criteria5_val = (int) $request->get('rubrica_10');
+
+            $puntuacion_final = $criteria1_val + $criteria2_val + $criteria3_val + $criteria4_val + $criteria5_val;
+
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $puntuacion_final;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->save();
+
+            return response()->json(['type' => 'success', 'message' => 'update successful score'], 200);
+        } catch(\Excepcion $e) {
+            return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    
 
     
 }
