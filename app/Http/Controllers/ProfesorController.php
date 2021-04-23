@@ -31,9 +31,9 @@ use App\Models\tb_answer;
 use App\Models\tb_rubric;
 use App\Models\tb_rubric_type;
 use App\Models\tb_rubric_criteria;
-
-
 use App\Models\tb_scores_activities;
+
+
 
 class ProfesorController extends Controller
 {
@@ -150,28 +150,50 @@ class ProfesorController extends Controller
     {
         
         $alumno = tb_user::find($id_user);
-
         $rubricas = tb_rubric::where('id_level', $alumno->id_level)->where('id_grade', $alumno->id_grade)->get();
 
         $criterios_escritos = tb_rubric_criteria::where('id_rubric_type', 1)->with('criteria')->with('rubric_type')->get();
         $criterios_orales = tb_rubric_criteria::where('id_rubric_type', 2)->with('criteria')->with('rubric_type')->get();
 
-        //dd($criteria_escrito[0]->criteria->criterion);
+        $puntuaciones_escritos = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->where('id_rubric_type', 1)->orderBy('id_scores_activities')->get();
+        $puntuaciones_orales = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->where('id_rubric_type', 2)->orderBy('id_scores_activities')->get();
 
-        $puntuaciones = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $id_reading)->orderBy('id_scores_activities')->get();
+        $puntuacion_e = 0;
+        $puntuacion_o = 0;
+
+        if(count($puntuaciones_escritos) == 0) {
+            $puntuaciones_escritos = null;
+        }else{
+            foreach ($puntuaciones_escritos as $key => $puntuacion_escrita) {
+                $puntuacion_e = $puntuacion_e + $puntuacion_escrita->score;
+            }
+        }
+
+        if(count($puntuaciones_orales) == 0) {
+            $puntuaciones_orales = null;
+        }else{
+            foreach ($puntuaciones_orales as $key => $puntuacion_oral) {
+                $puntuacion_o = $puntuacion_o + $puntuacion_oral->score;
+            }
+        }
+
+        $lectura = tb_reading::find($id_reading);
+        $pregunta_final = tb_question::where('id_reading', $id_reading)->where('id_question_level', '5')->where('source', 'final')->first();
+        $respuesta_final = tb_results::where('id_question', $pregunta_final->id_question)->where('id_user', $id_user)->where('id_answer', 0)->first();
 
         $alumnoResults = [
             [
                 'title' => 'Producción Escrita',
-                'percent' => 50
+                'percent' => $puntuacion_e
             ],
             [
                 'title' => 'Expresión Oral',
-                'percent' => 100
+                'percent' => $puntuacion_o
             ]
         ];
+        
 
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Actividad de Producción - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => '', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults, 'id_reading'=> $id_reading, 'alumno' => $alumno, 'rubricas' => $rubricas, 'puntuaciones' => $puntuaciones, 'criterios_escritos'=>$criterios_escritos, 'criterios_orales'=>$criterios_orales]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.ReporteActividades', 'title' => 'Actividad de Producción - '.$alumno->first_name.' '.$alumno->last_name, 'subtitle' => '', 'optionIndex' => 2, 'alumnoResults' => $alumnoResults, 'id_reading'=> $id_reading, 'alumno' => $alumno, 'rubricas' => $rubricas, 'puntuaciones_escritos' => $puntuaciones_escritos, 'puntuaciones_orales' => $puntuaciones_orales, 'criterios_escritos'=>$criterios_escritos, 'criterios_orales'=>$criterios_orales, 'respuesta_final'=>$respuesta_final]);
     }
 
     function resultados_alumno_detalle($id_classroom, $id_user)
@@ -224,6 +246,9 @@ class ProfesorController extends Controller
         $check_questions_b2_points_inferencial_general = [];
         $check_questions_b2_points_valorativo_general = [];
         $check_questions_b2_points_intertextual_general = [];
+
+        $check_questions_b3_points_produccion_escrita_general = [];
+        $check_questions_b3_points_expresion_oral_general = [];
 
         $nro = count($lecturas_asignadas);
 
@@ -415,103 +440,83 @@ class ProfesorController extends Controller
                     array_push($check_questions_b2_points_intertextual, 0);
                 }
             }
-            
-            array_push($check_questions_b1_points_literal_general, ((round(array_sum($check_questions_b1_points_literal),0) * 100) / 2));
-            array_push($check_questions_b1_points_inferencial_general, ((round(array_sum($check_questions_b1_points_inferencial),0) * 100) / 4));
-            //dd($num_q_v2);
-            array_push($check_questions_b1_points_valorativo_general, ((round(array_sum($check_questions_b1_points_valorativo),0) * 100) / 4));
 
-            array_push($check_questions_b2_points_literal_general, ((round(array_sum($check_questions_b2_points_literal), 0) * 100) / 2 ));
-            array_push($check_questions_b2_points_inferencial_general, ((round(array_sum($check_questions_b2_points_inferencial),0) * 100) / $suma_total_q_v5));
-            array_push($check_questions_b2_points_valorativo_general, ((round(array_sum($check_questions_b2_points_valorativo),0) * 100) / $suma_total_q_v6));
-            array_push($check_questions_b2_points_intertextual_general, ((round(array_sum($check_questions_b2_points_intertextual),0) * 100) / 2));
+            $puntuaciones_escritos = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $lecturas_asignada->reading->id_reading)->where('id_rubric_type', 1)->orderBy('id_scores_activities')->get();
+            $puntuaciones_orales = tb_scores_activities::where('id_user', $id_user)->where('id_reading', $lecturas_asignada->reading->id_reading)->where('id_rubric_type', 2)->orderBy('id_scores_activities')->get();
+            
+            $check_questions_b3_points_produccion_escrita = [];
+            $check_questions_b3_points_expresion_oral = [];
+
+            foreach ($puntuaciones_escritos as $key => $puntuacion_escrita) {
+                array_push($check_questions_b3_points_produccion_escrita, (int) $puntuacion_escrita->score);
+            }
+
+            foreach ($puntuaciones_orales as $key => $puntuacion_oral) {
+                array_push($check_questions_b3_points_expresion_oral, (int) $puntuacion_oral->score);
+            }
+            
+            array_push($check_questions_b1_points_literal_general,      ((array_sum($check_questions_b1_points_literal)       * 100) / 2) );
+            array_push($check_questions_b1_points_inferencial_general,  ((array_sum($check_questions_b1_points_inferencial)   * 100) / 4) );
+            array_push($check_questions_b1_points_valorativo_general,   ((array_sum($check_questions_b1_points_valorativo)    * 100) / 4) );
+
+            array_push($check_questions_b2_points_literal_general,      ((array_sum($check_questions_b2_points_literal)       * 100) / 2 ) );
+            array_push($check_questions_b2_points_inferencial_general,  ((array_sum($check_questions_b2_points_inferencial)   * 100) / $suma_total_q_v5) );
+            array_push($check_questions_b2_points_valorativo_general,   ((array_sum($check_questions_b2_points_valorativo)    * 100) / $suma_total_q_v6) );
+            array_push($check_questions_b2_points_intertextual_general, ((array_sum($check_questions_b2_points_intertextual)  * 100) / 2) );
+
+            array_push($check_questions_b3_points_produccion_escrita_general, round(((array_sum($check_questions_b3_points_produccion_escrita)  * 100) / 10), 0) );
+            array_push($check_questions_b3_points_expresion_oral_general,     round(((array_sum($check_questions_b3_points_expresion_oral)      * 100) / 10), 0) );
         
         }
 
         $auditiva = [
             [
                 'title' => 'Nivel Literal',
-                'percent' => (array_sum($check_questions_b1_points_literal_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_literal_general))/ $nro, 0)
             ],
             [
                 'title' => 'Nivel Inferencial',
-                'percent' => (array_sum($check_questions_b1_points_inferencial_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_inferencial_general))/ $nro, 0)
             ],
             [
                 'title' => 'Nivel Crítico Valorativo',
-                'percent' => (array_sum($check_questions_b1_points_valorativo_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_valorativo_general))/ $nro, 0)
             ]
         ];
 
         $textos = [
             [
                 'title' => 'Nivel Literal',
-                'percent' => (round(array_sum($check_questions_b2_points_literal_general), 0)) / $nro 
+                'percent' => round((array_sum($check_questions_b2_points_literal_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Inferencial',
-                'percent' => (array_sum($check_questions_b2_points_inferencial_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_inferencial_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Crítico Valorativo',
-                'percent' => (array_sum($check_questions_b2_points_valorativo_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_valorativo_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Intertextual',
-                'percent' => (array_sum($check_questions_b2_points_intertextual_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_intertextual_general)) / $nro, 0)
             ]
         ];
 
-        // $tresults = [
-        //     [
-        //         'title' => 'Producción Escrita (Rúbrica de Producción escrita)',
-        //         'percent' => 0
-        //     ],
-        //     [
-        //         'title' => 'Producción Oral (Rúbrica de Producción oral)',
-        //         'percent' => 0
-        //     ]
-        // ];
-        
-
-        //return view('includes/menubaralternate', ['includeRoute' => 'alumno.lecturaEstudio', 'title' => 'Lecturas de estudio', 'aresults' => $aresults, 'lresults' => $lresults, 'tresults' => $tresults, 'optionIndex' => 4, 'alumno' => $alumno]);
-
+        $alumnoResults = [
+            [
+                'title' => 'Producción Escrita',
+                'percent' => round((array_sum($check_questions_b3_points_produccion_escrita_general)) / $nro, 0)
+            ],
+            [
+                'title' => 'Expresión Oral',
+                'percent' => round((array_sum($check_questions_b3_points_expresion_oral_general)) / $nro, 0)
+            ]
+        ];
 
         $alumno = tb_user::find($id_user);
 
-        // $auditiva = [
-        //     [
-        //         'title' => 'Nivel Literal',
-        //         'percent' => 50
-        //     ],
-        //     [
-        //         'title' => 'Nivel Inferencial',
-        //         'percent' => 40
-        //     ],
-        //     [
-        //         'title' => 'Nivel Crítico Valorativo',
-        //         'percent' => 60
-        //     ]
-        // ];
-        // $textos = [
-        //     [
-        //         'title' => 'Nivel Literal',
-        //         'percent' => 50
-        //     ],
-        //     [
-        //         'title' => 'Nivel Inferencial',
-        //         'percent' => 40
-        //     ],
-        //     [
-        //         'title' => 'Nivel Crítico Valorativo',
-        //         'percent' => 60
-        //     ],
-        //     [
-        //         'title' => 'Nivel Intertextual',
-        //         'percent' => 100
-        //     ]
-        // ];
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Reporte - '.$alumno->first_name.' '.$alumno->last_name,'subtitle' => 'Selecciona la categoría', 'optionIndex' => 5, 'textos' => $textos, 'auditiva' => $auditiva]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.lecturas.promedioGeneral', 'title' => 'Reporte - '.$alumno->first_name.' '.$alumno->last_name,'subtitle' => 'Selecciona la categoría', 'optionIndex' => 5, 'textos' => $textos, 'auditiva' => $auditiva, 'alumnoResults'=>$alumnoResults]);
     }
 
     function resultados_alumno_detalle_evaluacion($id_classroom, $id_user)
@@ -581,52 +586,55 @@ class ProfesorController extends Controller
 
     function calificar_prod_escrita(Request $request) {
         try {
-            $criteria1_val = (int) $request->get('rubrica_1');
-            $criteria2_val = (int) $request->get('rubrica_2');
-            $criteria3_val = (int) $request->get('rubrica_3');
-            $criteria4_val = (int) $request->get('rubrica_4');
-            $criteria5_val = (int) $request->get('rubrica_5');
+            $criteria0_val = (int) $request->get('rubrica_e_0');
+            $criteria1_val = (int) $request->get('rubrica_e_1');
+            $criteria2_val = (int) $request->get('rubrica_e_2');
+            $criteria3_val = (int) $request->get('rubrica_e_3');
+            $criteria4_val = (int) $request->get('rubrica_e_4');
 
-            //$puntuacion_final = $criteria1_val + $criteria2_val + $criteria3_val + $criteria4_val + $criteria5_val;
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria0_val;
+            $scores->id_criteria = 1;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 1;
+            $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria1_val;
-            $scores->id_criteria = 1;
+            $scores->id_criteria = 2;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 1;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria2_val;
-            $scores->id_criteria = 2;
+            $scores->id_criteria = 3;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 1;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria3_val;
-            $scores->id_criteria = 3;
+            $scores->id_criteria = 4;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 1;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria4_val;
-            $scores->id_criteria = 4;
-            $scores->id_rubric = (int) $request->get('id_rubric');
-            $scores->save();
-
-            $scores = new tb_scores_activities;
-            $scores->id_user = (int) $request->get('id_user');
-            $scores->id_reading = (int) $request->get('id_reading');
-            $scores->score = $criteria5_val;
             $scores->id_criteria = 5;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 1;
             $scores->save();
 
             return response()->json(['type' => 'success', 'message' => 'update successful score'], 200);
@@ -637,57 +645,78 @@ class ProfesorController extends Controller
 
     function calificar_exp_oral(Request $request) {
         try {
-            $criteria1_val = (int) $request->get('rubrica_6');
-            $criteria2_val = (int) $request->get('rubrica_7');
-            $criteria3_val = (int) $request->get('rubrica_8');
-            $criteria4_val = (int) $request->get('rubrica_9');
-            $criteria5_val = (int) $request->get('rubrica_10');
+            $criteria0_val = (int) $request->get('rubrica_o_0');
+            $criteria1_val = (int) $request->get('rubrica_o_1');
+            $criteria2_val = (int) $request->get('rubrica_o_2');
+            $criteria3_val = (int) $request->get('rubrica_o_3');
+            $criteria4_val = (int) $request->get('rubrica_o_4');
 
-            $puntuacion_final = $criteria1_val + $criteria2_val + $criteria3_val + $criteria4_val + $criteria5_val;
+            $scores = new tb_scores_activities;
+            $scores->id_user = (int) $request->get('id_user');
+            $scores->id_reading = (int) $request->get('id_reading');
+            $scores->score = $criteria0_val;
+            $scores->id_criteria = 6;
+            $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 2;
+            $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria1_val;
-            $scores->id_criteria = 6;
+            $scores->id_criteria = 3;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 2;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria2_val;
-            $scores->id_criteria = 3;
+            $scores->id_criteria = 4;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 2;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria3_val;
-            $scores->id_criteria = 4;
+            $scores->id_criteria = 7;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 2;
             $scores->save();
 
             $scores = new tb_scores_activities;
             $scores->id_user = (int) $request->get('id_user');
             $scores->id_reading = (int) $request->get('id_reading');
             $scores->score = $criteria4_val;
-            $scores->id_criteria = 7;
-            $scores->id_rubric = (int) $request->get('id_rubric');
-            $scores->save();
-
-            $scores = new tb_scores_activities;
-            $scores->id_user = (int) $request->get('id_user');
-            $scores->id_reading = (int) $request->get('id_reading');
-            $scores->score = $criteria5_val;
             $scores->id_criteria = 8;
             $scores->id_rubric = (int) $request->get('id_rubric');
+            $scores->id_rubric_type = 2;
             $scores->save();
 
             return response()->json(['type' => 'success', 'message' => 'update successful score'], 200);
         } catch(\Excepcion $e) {
             return response()->json(['type' => 'error', 'message' => $e->getMessage()], 500);
+        }
+    }
+
+    function descargar_archivo_alumno($id_respuesta_final) {
+        try {
+            $respuesta_final = tb_results::find($id_respuesta_final);
+
+            if($respuesta_final) {
+                if($respuesta_final->file != null && $respuesta_final->file != '') {
+                    $file = Storage::disk('s3')->get($respuesta_final->file);
+                    return Storage::disk('s3')->download($respuesta_final->file);
+                }
+            }
+            return redirect()->back()->with('status_not_enable', 'error');;
+
+        } catch (Exception $error) {
+
+            return redirect()->back()->with('status_not_enable', 'error');;
         }
     }
 

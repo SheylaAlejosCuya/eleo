@@ -7,18 +7,10 @@
             <x-result-progress-bar title="COMPRENSIÓN LECTORA" :results="$lresults" />
             <x-result-progress-bar title="PRODUCCIÓN DE TEXTOS" :results="$tresults" />
         </div>
-        {{-- comment 
-        
-        <div class="eresultados__right">
-            <div class="enotas">
-                <x-linear-graph title="NOTAS" />
-            </div>
---}}
             <div class="eresultadosCards col-lg">
                 <div class="eresultadosCard">
                     <div class="eresultadosCard__left">
                         <img src="{{asset('images/gorro.png')}}" alt="">
-                        100%
                     </div>
                     <div class="eresultadosCard__right">
                         <div class="ecardText">
@@ -30,7 +22,6 @@
                 <div class="eresultadosCard">
                     <div class="eresultadosCard__left">
                         <img src="{{asset('images/gorro.png')}}" alt="">
-                        100%
                     </div>
                     <div class="eresultadosCard__right">
                         <div class="ecardText">
@@ -42,7 +33,6 @@
                 <div class="eresultadosCard">
                     <div class="eresultadosCard__left">
                         <img src="{{asset('images/gorro.png')}}" alt="">
-                        100%
                     </div>
                     <div class="eresultadosCard__right">
                         <div class="ecardText">

@@ -311,12 +311,13 @@ class LecturasController extends Controller
 
     function guardar_preguntas_bloque5(Request $request) {
         try {
-
+            $alumno = tb_user::find(Auth::guard('alumno')->id());
+            
             $results_prev = tb_results::where('id_user', Auth::guard('alumno')->id())->where('id_question', (int) $request->get('id_question'))->get();
 
             if(count($results_prev) == 0) {
-
-                $path = Storage::disk('s3')->putFile('/actividades_produccion/respuestas_alumnos/'.$request->file('custom_file')->getClientOriginalName(), $request->file('custom_file'));
+                
+                $path = Storage::disk('s3')->putFileAs('/actividades_produccion/respuestas_alumnos/institucion_id_'.$alumno->id_school.'/lectura_id_'.$request->get('id_lectura'), $request->file('custom_file'), 'actividad_produccion_alumno_id_'.$alumno->id_user.'_date_'.Carbon::now()->isoFormat('YYYY_MM_DD').'.'.$request->file('custom_file')->extension());
 
                 $results = new tb_results;
                 $results->id_user = Auth::guard('alumno')->id();
