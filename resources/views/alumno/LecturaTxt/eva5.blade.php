@@ -110,17 +110,16 @@
   </div>
   <div class="ebuttons" style="font-family:'Nunito', sans-serif;"> 
 
-      <a href="{{route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading])}}"><button class="cancelButton">Regresar</button></a>
+      <a href="{{route('web_texto_preguntas4', ['id_reading'=>$lectura->id_reading])}}"><button class="big ui blue basic button">Regresar</button></a>
       
       {{-- <button class="verActivity" data-toggle="modal" data-target="#exampleModal">Planificación</button> --}}
 
-      <div class="upload-btn-wrapper">
-        <button class="btn" >Subir archivo</button>
-        <input type="file" name="custom_file" id="custom_file" @if($pregunta_final->answer_completed) disabled @else @endif/>
+      <div class="ui input">
+        <input type="file" name="custom_file" id="custom_file" @if($pregunta_final->answer_completed) disabled @else @endif accept="audio/*,video/*,image/*,application/msword,application/vnd.ms-excel,application/vnd.ms-powerpoint,text/plain,application/pdf">
       </div>
-      <button id="button_send" class="saveButton" onclick="saveFile()" @if($pregunta_final->answer_completed) disabled @else @endif>Enviar</button>
+      <button id="button_send" class="big ui green button" onclick="saveFile()" @if($pregunta_final->answer_completed) disabled @else @endif>Enviar</button>
 
-      <a href="{{route('web_libros')}}"><button class="cancelButton">Finalizar</button></a>
+      <a href="{{route('web_libros')}}"><button class="big ui green basic button">Finalizar</button></a>
 
     </div>
 </div>
@@ -132,8 +131,13 @@
 
         var custom_file = document.querySelector('#custom_file').files[0];
 
+        $('#button_send').addClass("loading");
+        $('#button_send').prop('disabled', true);
+
         if(custom_file == null){
             showMessage("warning", "Sin archivo que actualizar");
+            $('#button_send').prop('disabled', false);
+            $('#button_send').removeClass("loading");
             return;
         }
 
@@ -141,6 +145,7 @@
         data.append('custom_file', custom_file);
         data.append('id_user', "{{$alumno->id_user}}");
         data.append('id_question', "{{$pregunta_final->id_question}}");
+        data.append('id_lectura', "{{$lectura->id_reading}}");
         
             $.ajax({
                 type: "POST",
@@ -154,10 +159,15 @@
                     console.log(response);
                     showMessage("success", "Archivo enviado correctamente");
                     $('#button_send').prop('disabled', true);
+                    $('#custom_file').prop('disabled', true);
+                    $('#custom_file').val() == "";
+                    $('#button_send').removeClass("loading");
                 },
                 error: function(e) {
                     console.log(e); 
                     showMessage("warning", "Error al subir el archivo");
+                    $('#button_send').prop('disabled', false);
+                    $('#button_send').removeClass("loading");
                 }
             });
     }

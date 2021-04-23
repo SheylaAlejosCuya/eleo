@@ -14,203 +14,59 @@
             <div class="ui top attached tabular menu">
                 <a class="item active" data-tab="first">Producción Escrita</a>
                 <a class="item" data-tab="second">Expresión Oral</a>
-              </div>
-              <div class="ui bottom attached tab segment active" data-tab="first">
+            </div>
+            <div class="ui bottom attached tab segment active" data-tab="first">
                 <img class="ui xlarge centered rounded image" src="{{$rubricas[0]->rubric}}">
                 <h2>Calificación - Producción Escrita</h2>
                 <div class="ui segment">
-
                     @foreach ($criterios_escritos as $key_c => $criterio_escrito)
                         <div class="ui two column very relaxed grid">
                             <div class="column">
                                 <h2>{{$criterio_escrito->criteria->criterion}}</h2>
                             </div>
                             <div class="column">
-                                <select class="selectpicker" id="{{'rubrica_'.$key_c}}" name='{{'rubrica_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
-                                    <option value="0" @if((int) $puntuaciones[$key_c]->score == 0 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>0</option>
-                                    <option value="1" @if((int) $puntuaciones[$key_c]->score == 1 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>1</option>
-                                    <option value="2" @if((int) $puntuaciones[$key_c]->score == 2 && $puntuaciones[$key_c]->id_criteria == $criterio_escrito->criteria->id_criteria) selected @endif>2</option>
+                                <select class="selectpicker" id="{{'rubrica_e_'.$key_c}}" name='{{'rubrica_e_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones_escritos)) disabled @endif>
+                                    <option value="0" @if(isset($puntuaciones_escritos)) @if((int) $puntuaciones_escritos[$key_c]->score == 0) selected @endif @endif>0</option>
+                                    <option value="1" @if(isset($puntuaciones_escritos)) @if((int) $puntuaciones_escritos[$key_c]->score == 1) selected @endif @endif>1</option>
+                                    <option value="2" @if(isset($puntuaciones_escritos)) @if((int) $puntuaciones_escritos[$key_c]->score == 2) selected @endif @endif>2</option>
                                 </select>
                             </div>
                         </div>
                         <div class="ui divider"></div>
                     @endforeach
-
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Adecuación al tipo textual</h2>
-                        </div>
-                        <div class="column">
-                            <select class="selectpicker" id="rubrica_1" name='rubrica_1' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[0]->score != null) disabled @endif>
-                                <option value="0">0</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                            </select>
-                        </div>
-                    </div>
-                    <div class="ui divider"></div>
-
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Adecuación al tema y registro</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_2" name='rubrica_2' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[1]->score != null) disabled @endif>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Cohesión textual</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_3" name='rubrica_3' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[2]->score != null) disabled @endif>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Puntuación y ortografía</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_4" name='rubrica_4' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[3]->score != null) disabled @endif>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Adecuación al tipo textual</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_5" name='rubrica_5' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[4]->score != null) disabled @endif>
-                            <option value="0">0</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <button class="fluid ui button primary large" onclick="calificar_prod_escrita()">Guardar Calificación</button>
+                    <button class="fluid ui button primary large" onclick="calificar_prod_escrita()" id="button_guardar_p_escrita" @if(isset($puntuaciones_escritos)) disabled @endif>Guardar Calificación</button>
                 </div>
               </div>
-              <div class="ui bottom attached tab segment" data-tab="second">
+            <div class="ui bottom attached tab segment" data-tab="second">
                 <img class="ui xlarge centered rounded image" src="{{$rubricas[1]->rubric}}">
                 <h2>Calificación - Expresión Oral</h2>
                 <div class="ui segment">
-
-
                     @foreach ($criterios_orales as $key_c => $criterio_oral)
                         <div class="ui two column very relaxed grid">
                             <div class="column">
                                 <h2>{{$criterio_oral->criteria->criterion}}</h2>
                             </div>
                             <div class="column">
-                                <p>{{$criterio_oral->criteria->id_criteria}}</p>
-                                <select class="selectpicker" id="{{'rubrica_'.$key_c}}" name='{{'rubrica_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
-                                    <option value="0" @if((int) $puntuaciones[$key_c]->score == 0 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>0</option>
-                                    <option value="1" @if((int) $puntuaciones[$key_c]->score == 1 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>1</option>
-                                    <option value="2" @if((int) $puntuaciones[$key_c]->score == 2 && $puntuaciones[$key_c]->id_criteria == $criterio_oral->criteria->id_criteria) selected @endif>2</option>
+                                <select class="selectpicker" id="{{'rubrica_o_'.$key_c}}" name='{{'rubrica_o_'.$key_c}}' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones_orales)) disabled @endif>
+                                    <option value="0" @if(isset($puntuaciones_orales)) @if((int) $puntuaciones_orales[$key_c]->score == 0) selected @endif @endif>0</option>
+                                    <option value="1" @if(isset($puntuaciones_orales)) @if((int) $puntuaciones_orales[$key_c]->score == 1) selected @endif @endif>1</option>
+                                    <option value="2" @if(isset($puntuaciones_orales)) @if((int) $puntuaciones_orales[$key_c]->score == 2) selected @endif @endif>2</option>
                                 </select>
                             </div>
                         </div>
                         <div class="ui divider"></div>
                     @endforeach
-
-
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Adecuación a la situación comunicativa</h2>
-                        </div>
-                        <div class="column">
-                            <select class="selectpicker" id="rubrica_6" name='rubrica_6' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) disabled @endif>
-                                <option value="0" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 0) selected @endif @endif>0</option>
-                                <option value="1" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 1) selected @endif @endif>1</option>
-                                <option value="2" @if(isset($puntuaciones) && $puntuaciones[5]->score != null) @if($puntuaciones[5]->score == 2) selected @endif @endif>2</option>
-                            </select>
-                        </div>
-
-                    </div>
-                    <div class="ui divider"></div>
-
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Coherencia textual</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_7" name='rubrica_7' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones)) disabled @endif>
-                            <option value="0" @if(true) @if($puntuaciones[6]->score == 0) selected @endif @endif>0</option>
-                            <option value="1" @if(true) @if($puntuaciones[6]->score == 1) selected @endif @endif>1</option>
-                            <option value="2" @if(true) @if($puntuaciones[6]->score == 2) selected @endif @endif>2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Cohesión textual</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_8" name='rubrica_8' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) disabled @endif>
-                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 0) selected @endif @endif>0</option>
-                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 1) selected @endif @endif>1</option>
-                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[7]->score != null) @if($puntuaciones[7]->score == 2) selected @endif @endif>2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Uso de vocabulario</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_9" name='rubrica_9' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) disabled @endif>
-                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 0) selected @endif @endif>0</option>
-                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 1) selected @endif @endif>1</option>
-                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[8]->score != null) @if($puntuaciones[8]->score == 2) selected @endif @endif>2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="ui two column very relaxed grid">
-                        <div class="column">
-                            <h2>Uso de recursos no verbales y paraverbales</h2>
-                        </div>
-                        <div class="column">
-                        <select class="selectpicker" id="rubrica_10" name='rubrica_10' title="Seleccionar valor" data-width="100%" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) disabled @endif>
-                            <option value="0" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 0) selected @endif @endif>0</option>
-                            <option value="1" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 1) selected @endif @endif>1</option>
-                            <option value="2" @if(isset($puntuaciones) && $puntuaciones[9]->score != null) @if($puntuaciones[9]->score == 2) selected @endif @endif>2</option>
-                        </select>
-                        </div>
-                        
-                    </div>
-                    <div class="ui divider"></div>
-                    <button class="fluid ui button primary large" onclick="calificar_expr_oral()">Guardar Calificación</button>
+                    <button class="fluid ui button primary large" onclick="calificar_expr_oral()" id="button_guardar_e_oral" @if(isset($puntuaciones_orales)) disabled @endif>Guardar Calificación</button>
                 </div>
-              </div>
+            </div>
+            </br>
 
+            @if(isset($respuesta_final))
+                <a class="big ui button green large" style="width: auto" href="{{route('api_descargar_archivo_alumno', ['id_respuesta_final' => $respuesta_final->id_results])}}">Descargar archivo</a>
+            @else
+                <button class="big ui button green large" disabled>Sin archivo que descargar</a>
+            @endif
 
-                <br>
-                <button class="saveButton" style="width: auto" onclick="descargar_archivo()">Descargar archivo</button>
         </div>
 
         {{-- <div class="reporteSection">
@@ -229,34 +85,19 @@
     $('.menu .item').tab();
 
 	function descargar_archivo() {
-	}
+    }
 
 	function calificar_prod_escrita() {
-		if($('#rubrica_1').val() == null || $('#rubrica_1').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
 
-		if($('#rubrica_2').val() == null || $('#rubrica_2').val() == "") {
+        if( $('#rubrica_e_0').val() == null || $('#rubrica_e_0').val() == "" || 
+            $('#rubrica_e_1').val() == null || $('#rubrica_e_1').val() == "" || 
+            $('#rubrica_e_2').val() == null || $('#rubrica_e_2').val() == "" || 
+            $('#rubrica_e_3').val() == null || $('#rubrica_e_3').val() == "" || 
+            $('#rubrica_e_4').val() == null || $('#rubrica_e_4').val() == "") {
 			showMessage("warning", "Puntaje sin completar");
             return;
         }
-
-		if($('#rubrica_3').val() == null || $('#rubrica_3').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-
-		if($('#rubrica_4').val() == null || $('#rubrica_4').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-
-		if($('#rubrica_5').val() == null || $('#rubrica_5').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-	
+        
         alertify.confirm('Rubrica', '¿Calificar alumno?', function() { 
             $.ajax({
                 type: "POST",
@@ -267,51 +108,47 @@
                     "id_user": "{{$alumno->id_user}}",
 					"id_rubric": "{{$rubricas[0]->id_rubric}}",
 					"id_reading": "{{$id_reading}}",
-					"rubrica_1": $('#rubrica_1').val(),
-					"rubrica_2": $('#rubrica_2').val(),
-					"rubrica_3": $('#rubrica_3').val(),
-					"rubrica_4": $('#rubrica_4').val(),
-					"rubrica_5": $('#rubrica_5').val(),
+                    "rubrica_e_0": $('#rubrica_e_0').val(),
+					"rubrica_e_1": $('#rubrica_e_1').val(),
+					"rubrica_e_2": $('#rubrica_e_2').val(),
+					"rubrica_e_3": $('#rubrica_e_3').val(),
+					"rubrica_e_4": $('#rubrica_e_4').val()
                 },
                 success: function(response) { 
                     console.log(response);
                     alertify.success('Calificación realizada');
+                    $('#rubrica_e_0').prop('disabled', true);
+                    $('#rubrica_e_0').selectpicker('refresh');
+                    $('#rubrica_e_1').prop('disabled', true);
+                    $('#rubrica_e_1').selectpicker('refresh');
+                    $('#rubrica_e_2').prop('disabled', true);
+                    $('#rubrica_e_2').selectpicker('refresh');
+                    $('#rubrica_e_3').prop('disabled', true);
+                    $('#rubrica_e_3').selectpicker('refresh');
+                    $('#rubrica_e_4').prop('disabled', true);
+                    $('#rubrica_e_4').selectpicker('refresh');
+                    $('#button_guardar_p_escrita').prop('disabled', true);
                 },
                 error: function(e) {
                         console.log(e); 
                 }
             });    
         }, function() { 
-            //current_select.val(0).change();
         }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+
 	}
 
 	function calificar_expr_oral() {
-		if($('#rubrica_6').val() == null || $('#rubrica_6').val() == "") {
+
+		if( $('#rubrica_o_0').val() == null || $('#rubrica_o_0').val() == "" ||
+            $('#rubrica_o_1').val() == null || $('#rubrica_o_1').val() == "" ||
+            $('#rubrica_o_2').val() == null || $('#rubrica_o_2').val() == "" ||
+            $('#rubrica_o_3').val() == null || $('#rubrica_o_3').val() == "" ||
+            $('#rubrica_o_4').val() == null || $('#rubrica_o_4').val() == "" ) {
 			showMessage("warning", "Puntaje sin completar");
             return;
         }
 
-		if($('#rubrica_7').val() == null || $('#rubrica_7').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-
-		if($('#rubrica_8').val() == null || $('#rubrica_8').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-
-		if($('#rubrica_9').val() == null || $('#rubrica_9').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-
-		if($('#rubrica_10').val() == null || $('#rubrica_10').val() == "") {
-			showMessage("warning", "Puntaje sin completar");
-            return;
-        }
-	
         alertify.confirm('Rubrica', '¿Calificar alumno?', function() { 
             $.ajax({
                 type: "POST",
@@ -322,44 +159,54 @@
                     "id_user": "{{$alumno->id_user}}",
 					"id_rubric": "{{$rubricas[1]->id_rubric}}",
 					"id_reading": "{{$id_reading}}",
-					"rubrica_6": $('#rubrica_6').val(),
-					"rubrica_7": $('#rubrica_7').val(),
-					"rubrica_8": $('#rubrica_8').val(),
-					"rubrica_9": $('#rubrica_9').val(),
-					"rubrica_10": $('#rubrica_10').val(),
+					"rubrica_o_0": $('#rubrica_o_0').val(),
+					"rubrica_o_1": $('#rubrica_o_1').val(),
+					"rubrica_o_2": $('#rubrica_o_2').val(),
+					"rubrica_o_3": $('#rubrica_o_3').val(),
+					"rubrica_o_4": $('#rubrica_o_4').val(),
                 },
                 success: function(response) { 
                     console.log(response);
                     alertify.success('Calificación realizada');
+                    $('#rubrica_o_0').prop('disabled', true);
+                    $('#rubrica_o_0').selectpicker('refresh');
+                    $('#rubrica_o_1').prop('disabled', true);
+                    $('#rubrica_o_1').selectpicker('refresh');
+                    $('#rubrica_o_2').prop('disabled', true);
+                    $('#rubrica_o_2').selectpicker('refresh');
+                    $('#rubrica_o_3').prop('disabled', true);
+                    $('#rubrica_o_3').selectpicker('refresh');
+                    $('#rubrica_o_4').prop('disabled', true);
+                    $('#rubrica_o_4').selectpicker('refresh');
+                    $('#button_guardar_e_oral').prop('disabled', true);
                 },
                 error: function(e) {
                         console.log(e); 
                 }
             });    
         }, function() { 
-            //current_select.val(0).change();
         }).set('closable', false).set('labels', {ok:'Aceptar', cancel:'Cancelar'});
+
 	}
 
 	function showMessage(type, message) {
-                toastr.options = {
-                    "closeButton": false,
-                    "debug": false,
-                    "newestOnTop": false,
-                    "progressBar": false,
-                    "positionClass": "toast-top-right",
-                    "preventDuplicates": false,
-                    "onclick": null,
-                    "timeOut": "2000",
-                    "extendedTimeOut": "2000",
-                    "showEasing": "swing",
-                    "hideEasing": "linear",
-                    "showMethod": "fadeIn",
-                    "hideMethod": "fadeOut"
-                }
-                toastr[type](message);
-            }
-
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "newestOnTop": false,
+            "progressBar": false,
+            "positionClass": "toast-top-right",
+            "preventDuplicates": false,
+            "onclick": null,
+            "timeOut": "2000",
+            "extendedTimeOut": "2000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        }
+        toastr[type](message);
+    }
 
 </script>
 @endprepend

@@ -23,6 +23,7 @@ use App\Models\tb_answer;
 use App\Models\tb_results;
 use App\Models\tb_classroom;
 use App\Models\tb_assignment_reading;
+use App\Models\tb_scores_activities;
 
 class ResultadosController extends Controller
 {
@@ -45,6 +46,9 @@ class ResultadosController extends Controller
         $check_questions_b2_points_inferencial_general = [];
         $check_questions_b2_points_valorativo_general = [];
         $check_questions_b2_points_intertextual_general = [];
+
+        $check_questions_b3_points_produccion_escrita_general = [];
+        $check_questions_b3_points_expresion_oral_general = [];
 
         $nro = count($lecturas_asignadas);
 
@@ -236,61 +240,77 @@ class ResultadosController extends Controller
                     array_push($check_questions_b2_points_intertextual, 0);
                 }
             }
-            
-            array_push($check_questions_b1_points_literal_general, ((round(array_sum($check_questions_b1_points_literal),0) * 100) / 2));
-            array_push($check_questions_b1_points_inferencial_general, ((round(array_sum($check_questions_b1_points_inferencial),0) * 100) / 4));
-            //dd($num_q_v2);
-            array_push($check_questions_b1_points_valorativo_general, ((round(array_sum($check_questions_b1_points_valorativo),0) * 100) / 4));
 
-            array_push($check_questions_b2_points_literal_general, ((round(array_sum($check_questions_b2_points_literal), 0) * 100) / 2 ));
-            array_push($check_questions_b2_points_inferencial_general, ((round(array_sum($check_questions_b2_points_inferencial),0) * 100) / $suma_total_q_v5));
-            array_push($check_questions_b2_points_valorativo_general, ((round(array_sum($check_questions_b2_points_valorativo),0) * 100) / $suma_total_q_v6));
-            array_push($check_questions_b2_points_intertextual_general, ((round(array_sum($check_questions_b2_points_intertextual),0) * 100) / 2));
+            $puntuaciones_escritos = tb_scores_activities::where('id_user', Auth::guard('alumno')->id())->where('id_reading', $lecturas_asignada->reading->id_reading)->where('id_rubric_type', 1)->orderBy('id_scores_activities')->get();
+            $puntuaciones_orales = tb_scores_activities::where('id_user', Auth::guard('alumno')->id())->where('id_reading', $lecturas_asignada->reading->id_reading)->where('id_rubric_type', 2)->orderBy('id_scores_activities')->get();
+            
+            $check_questions_b3_points_produccion_escrita = [];
+            $check_questions_b3_points_expresion_oral = [];
+
+            foreach ($puntuaciones_escritos as $key => $puntuacion_escrita) {
+                array_push($check_questions_b3_points_produccion_escrita, (int) $puntuacion_escrita->score);
+            }
+
+            foreach ($puntuaciones_orales as $key => $puntuacion_oral) {
+                array_push($check_questions_b3_points_expresion_oral, (int) $puntuacion_oral->score);
+            }
+            
+            array_push($check_questions_b1_points_literal_general,      ((array_sum($check_questions_b1_points_literal)       * 100) / 2) );
+            array_push($check_questions_b1_points_inferencial_general,  ((array_sum($check_questions_b1_points_inferencial)   * 100) / 4) );
+            array_push($check_questions_b1_points_valorativo_general,   ((array_sum($check_questions_b1_points_valorativo)    * 100) / 4) );
+
+            array_push($check_questions_b2_points_literal_general,      ((array_sum($check_questions_b2_points_literal)       * 100) / 2 ) );
+            array_push($check_questions_b2_points_inferencial_general,  ((array_sum($check_questions_b2_points_inferencial)   * 100) / $suma_total_q_v5) );
+            array_push($check_questions_b2_points_valorativo_general,   ((array_sum($check_questions_b2_points_valorativo)    * 100) / $suma_total_q_v6) );
+            array_push($check_questions_b2_points_intertextual_general, ((array_sum($check_questions_b2_points_intertextual)  * 100) / 2) );
+
+            array_push($check_questions_b3_points_produccion_escrita_general, round(((array_sum($check_questions_b3_points_produccion_escrita)  * 100) / 10), 0) );
+            array_push($check_questions_b3_points_expresion_oral_general,     round(((array_sum($check_questions_b3_points_expresion_oral)      * 100) / 10), 0) );
         
         }
 
         $aresults = [
             [
                 'title' => 'Nivel Literal',
-                'percent' => (array_sum($check_questions_b1_points_literal_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_literal_general))/ $nro, 0)
             ],
             [
                 'title' => 'Nivel Inferencial',
-                'percent' => (array_sum($check_questions_b1_points_inferencial_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_inferencial_general))/ $nro, 0)
             ],
             [
                 'title' => 'Nivel Crítico Valorativo',
-                'percent' => (array_sum($check_questions_b1_points_valorativo_general))/ $nro
+                'percent' => round((array_sum($check_questions_b1_points_valorativo_general))/ $nro, 0)
             ]
         ];
 
         $lresults = [
             [
                 'title' => 'Nivel Literal',
-                'percent' => (round(array_sum($check_questions_b2_points_literal_general), 0)) / $nro 
+                'percent' => round((array_sum($check_questions_b2_points_literal_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Inferencial',
-                'percent' => (array_sum($check_questions_b2_points_inferencial_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_inferencial_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Crítico Valorativo',
-                'percent' => (array_sum($check_questions_b2_points_valorativo_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_valorativo_general)) / $nro, 0)
             ],
             [
                 'title' => 'Nivel Intertextual',
-                'percent' => (array_sum($check_questions_b2_points_intertextual_general)) / $nro
+                'percent' => round((array_sum($check_questions_b2_points_intertextual_general)) / $nro, 0)
             ]
         ];
 
         $tresults = [
             [
-                'title' => 'Producción Escrita (Rúbrica de Producción escrita)',
-                'percent' => 0
+                'title' => 'Producción Escrita',
+                'percent' => round((array_sum($check_questions_b3_points_produccion_escrita_general)) / $nro, 0)
             ],
             [
-                'title' => 'Producción Oral (Rúbrica de Producción oral)',
-                'percent' => 0
+                'title' => 'Expresión Oral',
+                'percent' => round((array_sum($check_questions_b3_points_expresion_oral_general)) / $nro, 0)
             ]
         ];
         
