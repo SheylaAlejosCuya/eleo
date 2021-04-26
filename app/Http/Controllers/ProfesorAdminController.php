@@ -224,7 +224,5 @@ class ProfesorAdminController extends Controller
         }
         
     }
-
-
-
+    
 }

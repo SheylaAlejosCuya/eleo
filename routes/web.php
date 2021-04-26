@@ -338,4 +338,6 @@ Route::get('/descargar/actividad/alumno/{id_respuesta_final}', [ProfesorControll
 Route::post('/calificacion/expresion/oral', [ProfesorController::class, 'calificar_exp_oral'])->name('api_calificar_exp_oral');
 Route::post('/calificacion/produccion/escrita', [ProfesorController::class, 'calificar_prod_escrita'])->name('api_calificar_prod_escrita');
 
+Route::get('/descargar/lecturama/{id_lecturama}', [BibliotecaController::class, 'descargar_pdf_lecturama'])->name('api_descargar_pdf_lecturama');
+
 

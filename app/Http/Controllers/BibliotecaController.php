@@ -33,7 +33,30 @@ use App\Models\tb_reading_content;
 class BibliotecaController extends Controller
 {
     function lecturas_recursos() {
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+        $lecturamas_filtrados = [];
+
+        foreach($salones as $salon) {
+            array_push($lecturamas_filtrados, tb_lecturama::where('id_state', 3)->where('id_level', $salon->id_level)->where('id_grade', $salon->id_grade)->first());
+        }
+
+        $lecturamas = array_values(Arr::sort(array_unique($lecturamas_filtrados), function ($value) {
+            return $value['id_lecturama'];
+        }));
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.biblioteca', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 1]);
+    }
+
+    function descargar_pdf_lecturama($id_lecturama) {
+        try {
+            $lecturama = tb_lecturama::find($id_lecturama);
+    
+            return Storage::disk('s3')->download($lecturama->pdf);
+
+        } catch (Exception $error) {
+
+            return redirect()->back()->with('status_not_enable', 'error');
+        }
     }
 
     function lecturamas() {
