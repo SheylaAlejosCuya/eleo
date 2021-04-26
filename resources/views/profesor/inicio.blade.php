@@ -1,13 +1,15 @@
                   
 <div class="econtainer">
   <div class="ewelcome">
-    <p>
+    <p style="color: black !important;">
       @if($profesor->id_gender == '2')
         ¡Bienvenido, {{$profesor->first_name}}
       @else
         ¡Bienvenida, {{$profesor->first_name}}
       @endif
     </p>
+    <h1>Institución Educativa: <strong style="color: rgb(99, 98, 98) !important;">{{$profesor->school->name}}</strong></h1>
+    <img src="{{asset('/images/no_icon.png')}}" alt="Logo">
     <div id="botones">
       <button class="guiaButtonP" hidden>Guia de Usuario</button>
       <button class="saveButton" hidden><a href="profesor/tutoriales">Tutoriales</a></button>

@@ -33,18 +33,16 @@ use App\Models\tb_rubric_type;
 use App\Models\tb_rubric_criteria;
 use App\Models\tb_scores_activities;
 
-
-
 class ProfesorController extends Controller
 {
     
     function inicio() {
-        $profesor = tb_user::find(Auth::guard('profesor')->id());
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0, 'profesor' => $profesor]);
+        $profesor = tb_user::with('school')->find(Auth::guard('profesor')->id());
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.inicio', 'AlternativeBackground' => "0", 'optionIndex' => 0, 'profesor' => $profesor]);
     }
 
     function perfil() {
-        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        $profesor = tb_user::with('school')->find(Auth::guard('profesor')->id());
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.perfil', 'title' => 'Información Básica', 'optionIndex' => 0, 'profesor' => $profesor]);
     }
 
@@ -61,10 +59,13 @@ class ProfesorController extends Controller
 
     function guardar_foto(Request $request) {
         try {
-            $path = Storage::disk('perfil_fotos')->putFile('perfil_profesor', $request->file('foto'));
-            $usuario = tb_user::find($request->id_usuario);
-            $usuario->photo = $path;
-            $usuario->save();
+            $profesor = tb_user::find(Auth::guard('profesor')->id());
+
+            $path = Storage::disk('s3')->putFileAs('/avatars_profesores/institucion_id_'.$profesor->id_school.'/profesor_id_'.$profesor->id_user, $request->file('foto'), 'avatar_date_'.Carbon::now()->isoFormat('YYYY_MM_DD_H_i_s').'.'.$request->file('foto')->extension());
+
+            $profesor->photo = $path;
+            $profesor->save();
+
             return response()->json(['status_code' => 200, 'message' => 'image saved', 'path'=>$path], 200);
         } catch (Exception $error) {
             return response()->json(['status_code' => 500, 'message' => 'Error', 'error' => $error], 500);

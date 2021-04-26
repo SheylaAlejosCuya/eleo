@@ -16,8 +16,16 @@
                 <div class="profileData">{{$profesor->email}}</div>
             </div>
             <div class="profileInfoRow">
-                <div class="profileTitle"><b>Contraseña </b></div>
-                <input class="profileData" type="password" id="password_new" name="password_new" placeholder="*******"/>
+                <div class="profileTitle"><b>Institución Educativa</b></div>
+                <div class="profileData">{{$profesor->school->name}}</div>
+            </div>
+            <div class="profileInfoRow">
+                <div class="profileTitle"><b>Contraseña</b></div>
+                <input class="profileData" type="password" id="password_new" name="password_new" placeholder="Ingresar nueva contraseña"/>
+            </div>
+            <div class="profileInfoRow">
+                <div class="profileTitle"><b>Confirmar Contraseña</b></div>
+                <input class="profileData" type="password" id="password_confirm_new" name="password_confirm_new" placeholder="Volver a ingresar nueva contraseña"/>
             </div>
         </div>
         <div class="profileImg">
@@ -25,22 +33,21 @@
             <div class="profilePhoto">
                 <label for="profilePhoto">
                     @if($profesor->photo != 'Sin foto')
-                        <img src="{{asset('/storage/perfil/'.$profesor->photo)}}" alt="" id='perfil_photo'>
+                        <img src="{{env('AWS_S3_BASE').$profesor->photo}}" alt="" id='perfil_photo'>
                     @else
-                        <img src="{{asset('/images/no_photo.png')}}" alt="" id='perfil_photo'>
+                        <img src="{{$profesor->photo}}" alt="" id='perfil_photo'>
                     @endif
-                    
                     <p>Cargar Foto</p>
                 </label>
-                <input type="file" name="profilePhoto" id="profilePhoto">
+                <input type="file" name="profilePhoto" id="profilePhoto" accept="image/x-png,image/jpeg" >
             </div>
         </div>
     </div>
 
     <div class="ebuttons">
-        <button class="saveButton" onclick="savePassword()">Guardar contraseña</button>
-        <button class="saveButton" onclick="saveAvatar()">Guardar Imagen</button>
-        <button class="cancelButton" hidden>Cancelar</button>
+        <button id="button_save_password" class="big ui green button" onclick="savePassword()">Guardar contraseña</button>
+        <button id="button_save_image" class="big ui green button" onclick="saveAvatar()">Guardar Imagen</button>
+
     </div>
 
 @include('includes.footer')
@@ -48,10 +55,18 @@
 @prepend('scripts')
 <script>
     function savePassword() {
+    
 
         var password_new = $("#password_new").val();
+        var password_confirm_new = $("#password_confirm_new").val();
 
-        if(password_new != "") {
+        if(password_new != "" || password_confirm_new != "") {
+
+            if(password_new != password_confirm_new) {
+                showMessage("warning", "Las contraseñas no coinciden");  
+                return;
+            }
+            
             $.ajax({
                 type: "POST",
                 url: "{{route('api_save_password_profesor')}}",
@@ -64,11 +79,15 @@
                 success: function(response) { 
                     console.log(response);
                     $("#password_new").val("");
+                    $("#password_confirm_new").val("");
+                    
                     showMessage("success", "Contraseña modificada correctamente");
                 },
                 error: function(e) {
                     console.log(e); 
                     $("#password_new").val("");
+                    $("#password_confirm_new").val("");
+                    
                     showMessage("warning", "Error al modificar la contraseña");
                 }
             });
@@ -79,10 +98,15 @@
 
     function saveAvatar() {
 
+        $('#button_save_image').addClass("loading");
+        $('#button_save_image').prop('disabled', true);
+
         var img = document.querySelector('#profilePhoto').files[0];
 
         if(img == null){
             showMessage("warning", "Sin imagen que actualizar");
+            $('#button_save_image').prop('disabled', false);
+            $('#button_save_image').removeClass("loading");
             return;
         }
 
@@ -102,6 +126,8 @@
                 success: function(response) { 
                     console.log(response);
                     //document.querySelector('#profilePhoto').value = "";
+                    $('#button_save_image').prop('disabled', false);
+                    $('#button_save_image').removeClass("loading");
                     location.reload();
                     //showMessage("success", "Foto actualizada correctamente");
                 },
@@ -109,6 +135,8 @@
                     console.log(e); 
                     //$("#password_new").val("");
                     showMessage("warning", "Error al modificar la foto");
+                    $('#button_save_image').prop('disabled', false);
+                    $('#button_save_image').removeClass("loading");
                 }
             });
         } else {
@@ -134,5 +162,19 @@
         }
         toastr[type](message);
     }
+
+    $('input[type="file"]').change(function(e) {
+        var fileName = e.target.files[0].name;
+        //$("#file").val(fileName);
+        
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            // get loaded data and render thumbnail.
+            document.getElementById("perfil_photo").src = e.target.result;
+        };
+        // read the image file as a data URL.
+        reader.readAsDataURL(this.files[0]);
+    });
+
 </script>
 @endprepend
