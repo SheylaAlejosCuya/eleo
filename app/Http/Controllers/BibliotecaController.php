@@ -50,11 +50,8 @@ class BibliotecaController extends Controller
     function descargar_pdf_lecturama($id_lecturama) {
         try {
             $lecturama = tb_lecturama::find($id_lecturama);
-    
             return Storage::disk('s3')->download($lecturama->pdf);
-
         } catch (Exception $error) {
-
             return redirect()->back()->with('status_not_enable', 'error');
         }
     }
