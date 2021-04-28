@@ -46,10 +46,12 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
 
 </head>
+<style>
+    body {
+        background-image: url("{{asset('/images/tapiz.png')}}") !important;
+    }
+</style>
 <body>
-    
-    
-
     <script>
         function toggleMenu() {
             var chk = document.getElementById("chk");
