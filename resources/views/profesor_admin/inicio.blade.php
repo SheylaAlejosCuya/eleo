@@ -10,7 +10,7 @@
     </p>
     <h1>Institución Educativa: <strong style="color: rgb(99, 98, 98) !important;">{{$profesor->school->name}}</strong></h1>
     <div class="ui segment">
-      <img class="ui centered medium image" src="{{asset($profesor->school->badge)}}">
+      <img class="ui centered medium image" style="width: 500px;" src="{{asset($profesor->school->badge)}}">
     </div>
     <div id="botones">
       <button class="guiaButtonP" hidden>Guia de Usuario</button>
