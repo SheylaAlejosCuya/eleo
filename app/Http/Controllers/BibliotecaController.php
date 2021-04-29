@@ -33,17 +33,6 @@ use App\Models\tb_reading_content;
 class BibliotecaController extends Controller
 {
     function lecturas_recursos() {
-        $profesor = tb_user::find(Auth::guard('profesor')->id());
-        $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
-        $lecturamas_filtrados = [];
-
-        foreach($salones as $salon) {
-            array_push($lecturamas_filtrados, tb_lecturama::where('id_state', 3)->where('id_level', $salon->id_level)->where('id_grade', $salon->id_grade)->first());
-        }
-
-        $lecturamas = array_values(Arr::sort(array_unique($lecturamas_filtrados), function ($value) {
-            return $value['id_lecturama'];
-        }));
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.biblioteca', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 1]);
     }
 
@@ -57,7 +46,17 @@ class BibliotecaController extends Controller
     }
 
     function lecturamas() {
-        $lecturamas = tb_lecturama::where('id_state', 3)->get();
+        $profesor = tb_user::find(Auth::guard('profesor')->id());
+        $salones = tb_classroom::where('id_teacher', $profesor->id_user)->get();
+        $lecturamas_filtrados = [];
+
+        foreach($salones as $salon) {
+            array_push($lecturamas_filtrados, tb_lecturama::where('id_state', 3)->where('id_level', $salon->id_level)->where('id_grade', $salon->id_grade)->first());
+        }
+
+        $lecturamas = array_values(Arr::sort(array_unique($lecturamas_filtrados), function ($value) {
+            return $value['id_lecturama'];
+        }));
         return view('includes/menubarProfesor', ['includeRoute' => 'profesor.maestroLecturama', 'title' => 'Guía del maestro lecturama', 'optionIndex' => 1, 'lecturamas' => $lecturamas]);
     }
 
@@ -84,7 +83,7 @@ class BibliotecaController extends Controller
 
     function lectura_detalles($id_lecturama, $id_lectura) {
         $lectura = tb_reading::with('content_extra')->find($id_lectura);
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $id_lectura, 'title' => 'Nivel n° 1', 'optionIndex' => 1, 'lectura' => $lectura]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $id_lectura, 'title' => 'Nivel n° '.$id_lectura->id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura]);
     }
 
     function lectura_detalles_preview($id_lecturama, $id_lectura) {

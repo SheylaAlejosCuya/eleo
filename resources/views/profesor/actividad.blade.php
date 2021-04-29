@@ -4,7 +4,7 @@
         <div class="actividadRight">
             <h2>{{$lectura->title}}</h2>
             @if (isset($lectura->content))
-                <p>{{$lectura->content_extra[0]->content}}..</p>
+                <p>{{$lectura->content_extra[0]->content}}...</p>
             @else
                 <p>Sin contenido de texto</p>
             @endif

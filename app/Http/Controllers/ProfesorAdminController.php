@@ -83,6 +83,7 @@ class ProfesorAdminController extends Controller
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
+        //dd($aulas);
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
         //         $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
