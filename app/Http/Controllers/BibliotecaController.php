@@ -83,7 +83,7 @@ class BibliotecaController extends Controller
 
     function lectura_detalles($id_lecturama, $id_lectura) {
         $lectura = tb_reading::with('content_extra')->find($id_lectura);
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $id_lectura, 'title' => 'Nivel n° '.$id_lectura->id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividad', 'actividad' => $lectura->$id_lectura, 'title' => 'Nivel n° '.$lectura->id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura]);
     }
 
     function lectura_detalles_preview($id_lecturama, $id_lectura) {
