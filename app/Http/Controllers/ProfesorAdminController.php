@@ -207,6 +207,9 @@ class ProfesorAdminController extends Controller
             $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_school)->where('id_state', 3)->get();
 
             if(count($aula) == 0) {
+                if((int) $request->get('grade') == 6 && (int) $request->get('level') == 2) {
+                    return redirect()->back()->with('status_alert', 'alert');
+                }
                 $aula = new tb_classroom;
                 $aula->id_grade = (int) $request->get('grade');
                 $aula->id_level = (int) $request->get('level');

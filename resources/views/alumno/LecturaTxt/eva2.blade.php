@@ -10,13 +10,13 @@
             <div class="epreguntas">
                 @foreach($preguntas as $indice_1 => $pregunta)
                     <div class="rpt">
-                        <h5><b>{{$pregunta->question}}</b></h5>
+                        <h5><b>{!! $pregunta->question !!}</b></h5>
                         @if($pregunta->answer_completed)
                             @foreach($pregunta->answers as $indice_2 => $answer)
                                 <div class="form-check  @if($answer->correct == 'true' && $pregunta->answer_completed == $answer->id_answer) form-check-positive @elseif($answer->correct == 'true') form-check-info @else @if($pregunta->answer_completed == $answer->id_answer) form-check-negative @else @endif @endif ">
                                     <input class="form-check-input alternativa_{{$indice_1}}" type="radio" name="response_{{$indice_1}}" value="{{$answer->id_answer}}" id="answer_{{$indice_1}}_{{$indice_2}}" disabled>
                                     <label class="form-check-label " for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}'>
-                                        {{$answer->answer}}
+                                        {!!$answer->answer!!}
                                     </label>
                                 </div>
                             @endforeach
@@ -25,7 +25,7 @@
                                 <div class="form-check">
                                     <input class="form-check-input alternativa_{{$indice_1}}" type="radio" name="response_{{$indice_1}}" value="{{$answer->id_answer}}" id="answer_{{$indice_1}}_{{$indice_2}}">
                                     <label class="form-check-label " for="answer_{{$indice_1}}_{{$indice_2}}" id='response_{{$indice_2}}' data-id='{{$answer->id_answer}}'>
-                                        {{$answer->answer}}
+                                        {!!$answer->answer!!}
                                     </label>
                                 </div>
                             @endforeach
