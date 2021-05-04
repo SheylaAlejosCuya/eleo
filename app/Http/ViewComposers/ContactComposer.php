@@ -40,18 +40,23 @@ class ContactComposer
 
 			} else {
 
-				$teacher = tb_user::whereHas('classroomProfessor', function ($q) use ($user) {
-					$q->where('id_classroom', $user->id_classroom);
-				})
-				->with('imageProfile')
-				->first();
+				if(isset($user->id_classroom)){
+					$teacher = tb_user::whereHas('classroomProfessor', function ($q) use ($user) {
+						$q->where('id_classroom', $user->id_classroom);
+					})
+					->with('imageProfile')
+					->first();
+	
+					$contacts = collect([ $teacher ]);
+				}
 
-				$contacts = collect([ $teacher ]);
+				
 
 			}
 
 			if ( count($contacts) > 0 ) {
 
+				
 				$contacts = $contacts->map(function($contact) use ($unread_ids) {
 	
 					$contact_unread = $unread_ids->where('from_user', $contact->id_user)->first();
