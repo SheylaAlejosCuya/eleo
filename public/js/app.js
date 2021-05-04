@@ -2142,7 +2142,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   props: {
@@ -2331,8 +2330,6 @@ __webpack_require__.r(__webpack_exports__);
       activeChats: this.active
     });
     Echo["private"]("chat.".concat(this.user.id_user)).listen("PrivateChatEvent", function (e) {
-      console.log("new message");
-
       _this.handleIncoming(e.message);
     });
   },
@@ -2366,8 +2363,8 @@ __webpack_require__.r(__webpack_exports__);
         from: contactId
       }).then(function () {
         return console.log("update");
-      })["catch"](function (error) {
-        return console.log("error", error);
+      })["catch"](function () {
+        return console.log("error");
       });
     }
   }
@@ -2758,6 +2755,9 @@ var mutations = {
   REMOVE_USER_FROM_CHAT_LIST: function REMOVE_USER_FROM_CHAT_LIST(state, userId) {
     state.openChats = state.openChats.filter(function (userToChatWith) {
       return userToChatWith.id_user !== userId;
+    });
+    state.chatMessages = state.chatMessages.filter(function (messages) {
+      return messages.chatWith !== userId;
     });
     var removeItems = ["".concat(_variables__WEBPACK_IMPORTED_MODULE_0__.default.REF_BUBBLE_CHAT, "-").concat(userId), "".concat(_variables__WEBPACK_IMPORTED_MODULE_0__.default.REF_CONTACT, "-").concat(userId)];
     state.excludeRefs.splice(state.excludeRefs.indexOf(removeItems[0]), 1);
@@ -45364,9 +45364,7 @@ var render = function() {
             _vm._v(
               _vm._s(_vm.onlineUser.first_name + " " + _vm.onlineUser.last_name)
             )
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Active now")])
+          ])
         ])
       ]
     ),

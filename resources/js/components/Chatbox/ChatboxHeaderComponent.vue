@@ -6,7 +6,6 @@
 			</div>
 			<div class="user-status-info">
 				<a>{{ `${onlineUser.first_name} ${onlineUser.last_name}` }}</a>
-				<p>Active now</p>
 			</div>
 		</div>
 
