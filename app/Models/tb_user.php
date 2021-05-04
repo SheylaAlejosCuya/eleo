@@ -54,8 +54,44 @@ class tb_user extends Authenticatable
         return $this->hasOne(tb_school::class, 'id_school', 'id_school');
     }
 
+    public function imageProfile()
+    {
+        return $this->belongsTo(tb_avatar::class, 'id_avatar', 'id_avatar');
+    }
 
+    public function isStudent()
+    {
+        return $this->id_rol === 2;
+    }
 
-  
+    public function isProfessor()
+    {
+        return $this->id_rol === 1;
+    }
+
+    public function isProfessorAdmin()
+    {
+        return $this->id_rol === 3;
+    }
+
+    public function classroomProfessor()
+    {
+        return $this->hasMany(tb_classroom::class, 'id_teacher', 'id_user');
+    }
+
+    public function classroomStudent()
+    {
+        return $this->belongsTo(tb_classroom::class, 'id_classroom', 'id_classroom');
+    }
+
+    public function messagesFrom()
+    {
+        return $this->hasMany(tb_message::class, 'from_user_id', 'id_user');
+    }
+
+    public function messagesTo()
+    {
+        return $this->hasMany(tb_message::class, 'to_user_id', 'id_user');
+    }
 
 }

@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class tb_avatar extends Model
 {
-    protected $table = '';
+    protected $table = 'tb_avatar';
 
     protected $fillable = [
-        '',
+        'avatar',
     ];
 
-    protected $primaryKey = '';
+    protected $primaryKey = 'id_avatar';
 
     public $timestamps = false;
 }
