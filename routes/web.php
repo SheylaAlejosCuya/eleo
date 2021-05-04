@@ -334,10 +334,11 @@ Route::post('/guardar/preguntas/bloque5', [LecturasController::class, 'guardar_p
 Route::post('/asignacion/aulas', [ProfesorController::class, 'asignacion_lecturas'])->name('api_asignacion_lecturas');
 
 Route::get('/descargar/actividad/final/{id_reading}', [ProfesorController::class, 'descargar_doc'])->name('api_descargar_doc');
+Route::get('/descargar/actividad/alumno/{id_respuesta_final}', [ProfesorController::class, 'descargar_archivo_alumno'])->name('api_descargar_archivo_alumno');
 
 Route::post('/calificacion/expresion/oral', [ProfesorController::class, 'calificar_exp_oral'])->name('api_calificar_exp_oral');
 Route::post('/calificacion/produccion/escrita', [ProfesorController::class, 'calificar_prod_escrita'])->name('api_calificar_prod_escrita');
-
+Route::get('/descargar/lecturama/{id_lecturama}', [BibliotecaController::class, 'descargar_pdf_lecturama'])->name('api_descargar_pdf_lecturama');
 
 /* ============================================================================================= */
 // CHAT
@@ -348,3 +349,5 @@ Route::group(['middleware' => ['auth:profesor,alumno']], function() {
     Route::post('/messagesTo', [ChatController::class, 'saveMessage']);
     Route::post('/updateUnread', [ChatController::class, 'updateUnreadMessages']);
 });
+
+

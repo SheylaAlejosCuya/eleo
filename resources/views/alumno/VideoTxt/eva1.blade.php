@@ -15,7 +15,7 @@
         @foreach($preguntas as $indice => $pregunta)
             <div class="epreguntas">
                 <div class="rpt">
-                    <h5>{{$pregunta->question}}</h5>
+                    <h5>{!! $pregunta->question !!}</h5>
                     <textarea id='response_{{$indice}}' class="rspInput" rows="4" cols="50" placeholder="Escribe tu respuesta"></textarea>
                 </div>
             </div>

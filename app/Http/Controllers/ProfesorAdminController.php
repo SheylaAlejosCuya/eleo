@@ -31,7 +31,7 @@ class ProfesorAdminController extends Controller
 {
     function inicio() {
         $profesor = tb_user::find(Auth::guard('profesor_admin')->id());
-        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.inicio', 'AlternativeBackground' => "1", 'optionIndex' => 0, 'profesor' => $profesor]);
+        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.inicio', 'AlternativeBackground' => "0", 'optionIndex' => 0, 'profesor' => $profesor]);
     }
 
     function perfil() {
@@ -83,6 +83,7 @@ class ProfesorAdminController extends Controller
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
+        //dd($aulas);
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
         //         $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
@@ -206,6 +207,9 @@ class ProfesorAdminController extends Controller
             $aula = tb_classroom::where('id_section', (int) $request->get('section'))->where('id_grade', (int) $request->get('grade'))->where('id_level', (int) $request->get('level'))->where('id_school', (int) $admin->id_school)->where('id_state', 3)->get();
 
             if(count($aula) == 0) {
+                if((int) $request->get('grade') == 6 && (int) $request->get('level') == 2) {
+                    return redirect()->back()->with('status_alert', 'alert');
+                }
                 $aula = new tb_classroom;
                 $aula->id_grade = (int) $request->get('grade');
                 $aula->id_level = (int) $request->get('level');
@@ -224,7 +228,5 @@ class ProfesorAdminController extends Controller
         }
         
     }
-
-
-
+    
 }

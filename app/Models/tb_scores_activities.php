@@ -12,4 +12,9 @@ class tb_scores_activities extends Model
     protected $primaryKey = 'id_scores_activities';
 
     public $timestamps = false;
+
+    public function rubric()
+    {
+        return $this->hasOne(tb_rubric::class, 'id_rubric', 'id_rubric');
+    }
 }

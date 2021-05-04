@@ -58,7 +58,12 @@
     <script src="{{ mix('js/app.js') }}" defer></script>
 
 </head>
-<body>
+<style>
+    body{
+        background-image: url("{{asset('/images/tapiz.png')}}") !important;
+    }
+</style>
+<body >
     
     
 
