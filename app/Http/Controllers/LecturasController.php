@@ -49,7 +49,9 @@ class LecturasController extends Controller
         $alumno = tb_user::find(Auth::guard('alumno')->id());
 
         if($lectura->video == null){
-            return redirect()->route('web_video_preguntas2', ['id'=>$lectura->id_reading]);
+            if($lectura->image == null){
+                return redirect()->route('web_video_preguntas2', ['id'=>$lectura->id_reading]);
+            }
         }
 
         if((int) $lectura->id_state == 4) {
