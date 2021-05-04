@@ -38,7 +38,12 @@ class tb_classroom extends Model
 
     public function teacher()
     {
-        return $this->hasOne(tb_user::class, 'id_user', 'id_teacher');
+        return $this->belongsTo(tb_user::class, 'id_teacher', 'id_user');
+    }
+
+    public function students()
+    {
+        return $this->hasMany(tb_user::class, 'id_classroom', 'id_classroom');
     }
 
     
