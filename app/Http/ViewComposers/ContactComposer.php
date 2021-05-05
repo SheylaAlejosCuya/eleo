@@ -12,8 +12,8 @@ class ContactComposer
 	public function compose(View $view) {
 
 		$user = Auth::user();
-		$contacts = array();
-		$unread_ids = array();
+		$contacts = collect();
+		$unread_ids = collect();
 
 		
 		if( isset( $user ) ) {
@@ -24,8 +24,6 @@ class ContactComposer
 							->groupBy('from_user_id')
 							->get();
 			
-			// dd($unread_ids);
-			
 			if ( $user->isProfessor() ) {
 
 				$contacts = tb_user::whereHas('classroomStudent', function ($q) use ($user) {
@@ -34,27 +32,21 @@ class ContactComposer
 				->with('imageProfile')
 				->get();
 				
-			} else if ( $user->isProfessorAdmin() ) {
-				
-				$contacts = [];
+			} 
+			
+			if ( $user->isStudent() && isset( $user->id_classroom ) ) {
 
-			} else {
+				$teacher = tb_user::whereHas('classroomProfessor', function ($q) use ($user) {
+					$q->where('id_classroom', $user->id_classroom);
+				})
+				->with('imageProfile')
+				->first();
 
-				if(isset($user->id_classroom)){
-					$teacher = tb_user::whereHas('classroomProfessor', function ($q) use ($user) {
-						$q->where('id_classroom', $user->id_classroom);
-					})
-					->with('imageProfile')
-					->first();
-	
-					$contacts = collect([ $teacher ]);
-				}
-
-				
+				$contacts->push($teacher);
 
 			}
 
-			if ( count($contacts) > 0 ) {
+			if ( count( $contacts ) > 0 ) {
 
 				
 				$contacts = $contacts->map(function($contact) use ($unread_ids) {
@@ -68,8 +60,6 @@ class ContactComposer
 			}
 
 		}
-
-		// dd($unread_ids, $contacts);
 
 		$view->with('contacts', [ 'unread_chats' => $unread_ids, 'contacts' => $contacts ]);
 	}
