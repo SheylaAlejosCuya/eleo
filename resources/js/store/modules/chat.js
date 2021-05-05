@@ -156,6 +156,10 @@ const mutations = {
 			userToChatWith => userToChatWith.id_user !== userId
 		)
 
+		state.chatMessages = state.chatMessages.filter(
+			messages => messages.chatWith !== userId
+		)
+
 		let removeItems = [`${variables.REF_BUBBLE_CHAT}-${userId}`, `${variables.REF_CONTACT}-${userId}`]
 
 		state.excludeRefs.splice(state.excludeRefs.indexOf(removeItems[0]), 1);

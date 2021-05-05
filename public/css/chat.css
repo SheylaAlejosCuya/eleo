@@ -225,7 +225,7 @@ span.unread {
     position: relative;
 }
 
-.chatbox__contacts .user-avatar .user__link .img-container::after {
+/* .chatbox__contacts .user-avatar .user__link .img-container::after {
     content: '';
     width: 10px;
     height: 10px;
@@ -235,7 +235,7 @@ span.unread {
     bottom: 4px;
     border-radius: 50%;
     border: 2px solid #fff;
-}
+} */
 
 .chatbox__contacts .user-avatar .user__link .user-status-info span {
     font-size: 14px;

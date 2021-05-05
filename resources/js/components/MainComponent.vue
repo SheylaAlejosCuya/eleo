@@ -39,7 +39,6 @@ export default {
 		});
 
 		Echo.private(`chat.${this.user.id_user}`).listen("PrivateChatEvent", (e) => {
-			console.log("new message");
 			this.handleIncoming(e.message);
 		});
 	},
@@ -76,7 +75,7 @@ export default {
 			axios
 				.post("/updateUnread", { from: contactId })
 				.then(() => console.log("update"))
-				.catch((error) => console.log("error", error));
+				.catch(() => console.log("error"));
 		},
 	},
 };

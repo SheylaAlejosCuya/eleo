@@ -66,7 +66,7 @@
     width: 35px;
 }
 
-.user-avatar .img-container::after {
+/* .user-avatar .img-container::after {
     content: "";
     width: 10px;
     height: 10px;
@@ -76,6 +76,11 @@
     bottom: 4px;
     border-radius: 50%;
     border: 2px solid #fff;
+} */
+
+.user-avatar .user-status-info {
+    display: flex;
+    align-items: center;
 }
 
 .user-avatar .user-status-info a {
