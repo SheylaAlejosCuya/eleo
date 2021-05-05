@@ -190,11 +190,11 @@
                     }
                 ?>
             </div>
-            @isset($alumno->classroom)
+            {{-- @isset($alumno->classroom) --}}
             <div id="chat-vue">
                 @include('components.chat')
             </div>
-            @endisset
+            {{-- @endisset --}}
             <img src="{{asset('images/mensaje.png')}}" alt="" class="chatFloatingButton" hidden>
         </div>
     </div>
