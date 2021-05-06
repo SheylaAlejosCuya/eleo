@@ -53,8 +53,7 @@ class ProfesorAdminController extends Controller
     function asignacion_alumnos() {
 
         $admin = tb_user::find(Auth::guard('profesor_admin')->id());
-        $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_school', $admin->id_school)->with('level')->limit(2)->get();
-        //return $alumnos;
+        $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_school', $admin->id_school)->with('level')->orderBy('id_level', 'asc')->orderBy('id_grade', 'asc')->get();
         
         $niveles = tb_level::all();
         $grados = tb_grade::all();
