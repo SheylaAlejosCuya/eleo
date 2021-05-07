@@ -2543,13 +2543,12 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 
 window.Pusher = __webpack_require__(/*! pusher-js */ "./node_modules/pusher-js/dist/web/pusher.js");
-console.log(window.location.hostname);
 window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   broadcaster: 'pusher',
   key: "LcBJUbTJMSTlroBNjZtF",
   // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   forceTLS: false,
-  wsHost: window.location.hostname,
+  wsHost: "socket.e-leo.com.pe",
   wsPort: 6001,
   wssPort: 6001,
   disableStats: true,
