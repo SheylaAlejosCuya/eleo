@@ -39,9 +39,5 @@ window.Echo = new Echo({
     // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
     forceTLS: false,
 	wsHost: process.env.MIX_PUSHER_HOST,
-    wsPort: 6001,
-    wssPort: 6001,
-    disableStats: true,
-    enabledTransports: ['ws', 'wss'],
-    disabledTransports: ['sockjs', 'xhr_polling', 'xhr_streaming']
+    disableStats: true
 });
