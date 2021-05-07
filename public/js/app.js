@@ -2550,6 +2550,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   forceTLS: true,
   wsHost: window.location.hostname,
   wsPort: 6001,
+  wssPort: 6001,
   disableStats: true,
   enabledTransports: ['ws', 'wss'],
   disabledTransports: ['sockjs', 'xhr_polling', 'xhr_streaming']
