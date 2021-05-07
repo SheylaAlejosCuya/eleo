@@ -14,10 +14,10 @@ const mix = require('laravel-mix');
 mix.js('resources/js/app.js', 'public/js')
     .vue()
     // .sass('resources/sass/app.scss', 'public/css')
-    .combine([
-        'resources/js/custom/chat.js',
-        'resources/js/custom/chat-init.js',
-    ], 'public/js/custom.js')
+    // .combine([
+    //     'resources/js/custom/chat.js',
+    //     'resources/js/custom/chat-init.js',
+    // ], 'public/js/custom.js')
 
 if (mix.inProduction()) {
     mix.version();
