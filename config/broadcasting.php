@@ -37,10 +37,10 @@ return [
             'app_id' => env('PUSHER_APP_ID'),
             'options' => [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
-                'useTLS' => true,
+                'useTLS' => false,
                 'host' => 'e-leo.com.pe',
                 'port' => 6001,
-                'scheme' => 'https',
+                'scheme' => 'http',
             ],
         ],
 
