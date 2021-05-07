@@ -2548,7 +2548,7 @@ window.Echo = new laravel_echo__WEBPACK_IMPORTED_MODULE_0__.default({
   key: "LcBJUbTJMSTlroBNjZtF",
   // cluster: process.env.MIX_PUSHER_APP_CLUSTER,
   forceTLS: false,
-  wsHost: "socket.e-leo.com.pe",
+  wsHost: "e-leo.com.pe",
   disableStats: true
 });
 
