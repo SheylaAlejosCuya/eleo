@@ -39,7 +39,7 @@ return [
                 'cluster' => env('PUSHER_APP_CLUSTER'),
                 'useTLS' => false,
                 'host' => 'e-leo.com.pe',
-                'port' => 6001,
+                'port' => 6000,
                 'scheme' => 'http',
             ],
         ],
