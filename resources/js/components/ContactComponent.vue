@@ -17,7 +17,8 @@
 							<a
 								href="#"
 								class="user__link"
-								role="link"
+								role="button"
+								tabindex="0"
 								@click="addToChatUserList(user)"
 							>
 								<div class="img-container">
