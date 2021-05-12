@@ -18,7 +18,7 @@
 				:ref="$const.REF_INPUT"
 				@keyup.enter="sendMessage"
 				@keyup.esc="removeUserChatlist(onlineUser.id_user)"
-				placeholder="Type a message..."
+				placeholder="Escriba un mensaje..."
 			/>
 		</div>
 	</div>

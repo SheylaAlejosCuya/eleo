@@ -45203,7 +45203,7 @@ var render = function() {
             }
           ],
           ref: _vm.$const.REF_INPUT,
-          attrs: { type: "textarea", placeholder: "Type a message..." },
+          attrs: { type: "textarea", placeholder: "Escriba un mensaje..." },
           domProps: { value: _vm.messageInput },
           on: {
             click: _vm.selectChatWith,
