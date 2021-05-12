@@ -313,7 +313,11 @@ span.messages__dot {
     opacity: 0.4;
     animation: 1s blink infinite;
 }
-  
+
+.chat-icon {
+    font-size: 30px;
+}
+
 @keyframes blink {
     50% {
         opacity: 1;
