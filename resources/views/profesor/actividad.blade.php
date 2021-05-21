@@ -6,9 +6,9 @@
             @if (isset($lectura->content))
                 <p>{{$lectura->content_extra[0]->content}}...</p>
             @else
-                <p>Sin contenido de texto</p>
+                {{-- <p>Sin contenido de texto</p> --}}
             @endif
-            <button class="saveButton"><a href="{{route('web_lectura_detalles_preview', ['id_lecturama'=>$lectura->id_lecturama, 'id_lectura'=>$lectura->id_reading])}}">Visualizar lectura</a></button>
+            <a class="ui big green inverted fluid button" href="{{route('web_lectura_detalles_preview', ['id_lecturama'=>$lectura->id_lecturama, 'id_lectura'=>$lectura->id_reading])}}">Visualizar lectura</a>
         </div>
     </div>
 </div>

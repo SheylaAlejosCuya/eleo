@@ -53,7 +53,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    
 
 </head>
 <style>
@@ -199,6 +199,8 @@
         </div>
     </div>
   
+    <script src="{{ mix('js/app.js') }}"></script>
+
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
     <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
     

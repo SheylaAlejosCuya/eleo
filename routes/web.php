@@ -67,7 +67,8 @@ Route::get('/gamificacion/pupiletras', [DesafiosController::class, 'gamificacion
 Route::get('/desafios/{id}',           [DesafiosController::class, 'desafios_audios'])->name('web_desafios_audios')->middleware('auth:alumno');
 
 Route::get('/foro',      [ForoController::class, 'foros'])->name('web_foros')->middleware('auth:alumno');
-Route::get('/foro/{id}', [ForoController::class, 'foro'])->name('web_foro')->middleware('auth:alumno');
+Route::get('/foro/{id_forum}', [ForoController::class, 'foro'])->name('web_foro')->middleware('auth:alumno');
+Route::post('/foro/alumno/comentario/publicar/{id_forum}', [ForoController::class, 'publicar_comentario_alumno'])->name('api_publicar_comentario_alumno')->middleware('auth:alumno');
 
 Route::get('/resultados', [ResultadosController::class, 'resultados'])->name('web_resultados')->middleware('auth:alumno');
 Route::get('/resultados/estudio', [ResultadosController::class, 'resultados_estudio'])->name('web_resultados_estudio')->middleware('auth:alumno');
@@ -254,9 +255,16 @@ Route::get('/profesor/foro/crear', [ForoController::class, 'foro_profesor_crear'
 
 Route::post('/profesor/foro/crear', [ForoController::class, 'crear_nuevo_foro'])->name('api_crear_nuevo_foro')->middleware('auth:profesor');
 
-Route::get('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_detalle'])->name('web_foro_profesor_detalle')->middleware('auth:profesor');
+Route::get('/profesor/foro/detalle/{id_forum}', [ForoController::class, 'foro_profesor_detalle'])->name('web_foro_profesor_detalle')->middleware('auth:profesor');
 
-Route::delete('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_eliminar'])->name('web_foro_profesor_eliminar')->middleware('auth:profesor');
+//Route::delete('/profesor/foro/{id_forum}', [ForoController::class, 'foro_profesor_eliminar'])->name('web_foro_profesor_eliminar')->middleware('auth:profesor');
+Route::get('/profesor/foro/eliminar/{id_forum}', [ForoController::class, 'foro_profesor_eliminar'])->name('web_foro_profesor_eliminar')->middleware('auth:profesor');
+
+Route::get('/profesor/foro/comentario/publicar/{id_comment}', [ForoController::class, 'foro_profesor_publicar_comentario'])->name('web_foro_profesor_publicar_comentario')->middleware('auth:profesor');
+Route::get('/profesor/foro/comentario/cancelar/{id_comment}', [ForoController::class, 'foro_profesor_cancelar_comentario'])->name('web_foro_profesor_cancelar_comentario')->middleware('auth:profesor');
+
+Route::post('/profesor/foro/responder/comentario', [ForoController::class, 'foro_profesor_responder_comentario'])->name('api_foro_profesor_responder_comentario')->middleware('auth:profesor');
+
 /* Fin Foro */
 Route::get('/profesor/recursos', function() {
     return view('includes/menubarProfesor', ['includeRoute' => 'profesor.recursos', 'subtitle' => 'Selecciona la categoría de tu preferencia', 'optionIndex' => 5]);

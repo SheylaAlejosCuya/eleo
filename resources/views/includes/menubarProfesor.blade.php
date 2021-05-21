@@ -55,7 +55,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}" />
 
-    <script src="{{ mix('js/app.js') }}" defer></script>
+    
+
 
 </head>
 <style>
@@ -214,6 +215,7 @@
 
     
     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> --}}
+    <script src="{{ mix('js/app.js') }}"></script>
     <script src="{{asset('/plugins/jquery/jquery.min.js')}}"></script>
     
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
@@ -226,6 +228,8 @@
     @stack('scripts')
 
     <script src="{{ mix('js/custom.js') }}" defer></script>
+
+    
 
     </body>
 
