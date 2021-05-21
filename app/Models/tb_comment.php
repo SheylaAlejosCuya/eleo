@@ -20,7 +20,18 @@ class tb_comment extends Model
     protected $primaryKey = 'id_comment';
 
     public $timestamps = false;
-    public function tb_forum(){
-        return $this->belongsTo('App\Models\tb_forum');
+
+    // public function classroomStudent()
+    // {
+    //     return $this->belongsTo(tb_forum::class, 'id_forum', 'id_forum');
+    // }
+    
+    // public function tb_forum(){
+    //     return $this->belongsTo('App\Models\tb_forum');
+    // }
+
+    public function answers()
+    {
+        return $this->hasMany(tb_comment::class, 'id_response_comment', 'id_comment');
     }
 }
