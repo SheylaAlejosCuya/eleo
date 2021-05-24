@@ -7,7 +7,7 @@
             @foreach ($aulas as $aula)
                 <a href="{{route('web_actividades_produccion_aula_profesor',['id_classroom'=>$aula->id_classroom])}}" class="aulaOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
-                    <img src="{{asset('images/pizarar.png')}}" alt="">
+                    <img src="{{asset('images/pizarra_new.png')}}" alt="">
                     <p>{{$aula->level->level}} - {{$aula->grade->grade}} {{$aula->section->section}}</p>
                 </a>
             @endforeach
@@ -15,7 +15,7 @@
             @foreach ($aulas as $aula)
                 <a href="{{route('web_resultados_aulas',['id_classroom'=>$aula->id_classroom])}}" class="aulaOption">
                     <img class="check" src="{{asset('images/check.png')}}" alt="">
-                    <img src="{{asset('images/pizarar.png')}}" alt="">
+                    <img src="{{asset('images/pizarra_new.png')}}" alt="">
                     <p>{{$aula->level->level}} - {{$aula->grade->grade}} {{$aula->section->section}}</p>
                 </a>
             @endforeach

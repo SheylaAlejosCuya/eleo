@@ -95,41 +95,41 @@
 
                 <li>
                     @if ($optionIndex == 0) 
-                        <a href="{{route('web_inicio_profesor_admin')}}"><img class="eoption eoptionSelected" src="{{asset('images/inicio.png')}}"></a>
+                        <a href="{{route('web_inicio_profesor_admin')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/inicio_new.png')}}"></a>
                     @else
-                        <a href="{{route('web_inicio_profesor_admin')}}"><img class="eoption" src="{{asset('images/inicio.png')}}"></a>
+                        <a href="{{route('web_inicio_profesor_admin')}}"><img class="eoption" src="{{asset('images/iconos/inicio_new.png')}}"></a>
                     @endif
                 </li>
 
                 <li>
                     @if ($optionIndex == 1) 
-                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/ASIGNACION_DE_ALUMNOS.png')}}"></a>
+                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/asignacion_de_alumnos_new.png')}}"></a>
                     @else
-                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption" src="{{asset('images/iconos/ASIGNACION_DE_ALUMNOS.png')}}"></a>
+                        <a href="{{route('web_asignacion_alumnos')}}"><img class="eoption" src="{{asset('images/iconos/asignacion_de_alumnos_new.png')}}"></a>
                     @endif
                 </li>
 
                 <li>
                     @if ($optionIndex == 2) 
-                        <a href="{{route('web_asignacion_profesores')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/ASIGNACION_DE_PROFESORES.png')}}"></a>
+                        <a href="{{route('web_asignacion_profesores')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/asignacion_de_profesores_new.png')}}"></a>
                     @else
-                        <a href="{{route('web_asignacion_profesores')}}"><img class="eoption" src="{{asset('images/iconos/ASIGNACION_DE_PROFESORES.png')}}"></a>
+                        <a href="{{route('web_asignacion_profesores')}}"><img class="eoption" src="{{asset('images/iconos/asignacion_de_profesores_new.png')}}"></a>
                     @endif
                 </li>
 
                 <li>
                     @if ($optionIndex == 3) 
-                        <a href="{{route('web_creacion_profesores')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/CREACION_DE_PROFESOR_2.png')}}"></a>
+                        <a href="{{route('web_creacion_profesores')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/creacion_de_profesores_new.png')}}"></a>
                     @else
-                        <a href="{{route('web_creacion_profesores')}}"><img class="eoption" src="{{asset('images/iconos/CREACION_DE_PROFESOR_2.png')}}"></a>
+                        <a href="{{route('web_creacion_profesores')}}"><img class="eoption" src="{{asset('images/iconos/creacion_de_profesores_new.png')}}"></a>
                     @endif
                 </li>
 
                 <li>
                     @if ($optionIndex == 4) 
-                        <a href="{{route('web_creacion_aulas')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/CREACION_DE_AULAS.png')}}"></a>
+                        <a href="{{route('web_creacion_aulas')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/creacion_de_aulas_new.png')}}"></a>
                     @else
-                        <a href="{{route('web_creacion_aulas')}}"><img class="eoption" src="{{asset('images/iconos/CREACION_DE_AULAS.png')}}"></a>
+                        <a href="{{route('web_creacion_aulas')}}"><img class="eoption" src="{{asset('images/iconos/creacion_de_aulas_new.png')}}"></a>
                     @endif
                 </li>
                 

@@ -153,9 +153,9 @@
                 </li>
                 <li>
                     @if ($optionIndex == 5)
-                        <a href="{{route('web_resultados_profesor')}}"><img class="eoption eoptionSelected" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{route('web_resultados_profesor')}}"><img class="eoption eoptionSelected" src="{{asset('images/iconos/resultados_new.png')}}" alt="Inicio"></a>
                     @else
-                        <a href="{{route('web_resultados_profesor')}}"><img class="eoption" src="{{asset('images/resultados.png')}}" alt="Inicio"></a>
+                        <a href="{{route('web_resultados_profesor')}}"><img class="eoption" src="{{asset('images/iconos/resultados_new.png')}}" alt="Inicio"></a>
                     @endif
                 </li>
             </ul>
