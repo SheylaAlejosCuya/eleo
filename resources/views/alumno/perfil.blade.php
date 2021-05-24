@@ -25,6 +25,10 @@
                 <div class="profileTitle"><b>Contraseña</b></div>
                 <input class="profileData" type="password" id="password_new" name="password_new" placeholder="*******"/>
             </div>
+            <div class="profileInfoRow">
+                <div class="profileTitle"><b>Confirmar Contraseña</b></div>
+                <input class="profileData" type="password" id="password_confirm_new" name="password_confirm_new" placeholder="Volver a ingresar nueva contraseña"/>
+            </div>
         </div>
         <div class="profileImg">
             <div class="profileTitle"><b>Foto</b></div>
@@ -52,9 +56,43 @@
 <script>
     function savePassword() {
 
-        var password_new = $("#password_new").val();
+        // var password_new = $("#password_new").val();
 
-        if(password_new != "") {
+        // if(password_new != "") {
+        //     $.ajax({
+        //         type: "POST",
+        //         url: "{{route('api_save_password')}}",
+        //         dataType: "json",
+        //         data: {
+        //             "_token": "{{csrf_token()}}",
+        //             "id_usuario": "{{$alumno->id_user}}",
+        //             "password_new": password_new
+        //         },
+        //         success: function(response) { 
+        //             console.log(response);
+        //             $("#password_new").val("");
+        //             showMessage("success", "Contraseña modificada correctamente");
+        //         },
+        //         error: function(e) {
+        //             console.log(e); 
+        //             $("#password_new").val("");
+        //             showMessage("warning", "Error al modificar la contraseña");
+        //         }
+        //     });
+        // } else {
+        //     showMessage("warning", "Sin contraseña que modificar");
+        // }
+
+        var password_new = $("#password_new").val();
+        var password_confirm_new = $("#password_confirm_new").val();
+
+        if(password_new != "" || password_confirm_new != "") {
+
+            if(password_new != password_confirm_new) {
+                showMessage("warning", "Las contraseñas no coinciden");  
+                return;
+            }
+            
             $.ajax({
                 type: "POST",
                 url: "{{route('api_save_password')}}",
@@ -67,11 +105,15 @@
                 success: function(response) { 
                     console.log(response);
                     $("#password_new").val("");
+                    $("#password_confirm_new").val("");
+                    
                     showMessage("success", "Contraseña modificada correctamente");
                 },
                 error: function(e) {
                     console.log(e); 
                     $("#password_new").val("");
+                    $("#password_confirm_new").val("");
+                    
                     showMessage("warning", "Error al modificar la contraseña");
                 }
             });
