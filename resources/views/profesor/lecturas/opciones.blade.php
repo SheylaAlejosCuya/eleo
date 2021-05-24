@@ -14,11 +14,11 @@
             <br>
             <br>
         </a> --}}
-        <a href="#" class="aulaOption">
+        {{-- <a href="#" class="aulaOption">
             <img class="check" src="{{asset('images/check.png')}}" alt="">
             <img src="{{asset('images/evaluacion.png')}}" alt="">
             <br>
             <br>
-        </a>
+        </a> --}}
     </div>
 </div>
