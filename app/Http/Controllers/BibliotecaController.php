@@ -105,9 +105,20 @@ class BibliotecaController extends Controller
         $preguntas_bloque2_critico = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 3)->where('id_block', 2)->with('answers')->get();
         $preguntas_bloque2_intertextual  = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 4)->where('id_block', 2)->with('answers')->get();
 
+        $url_actividad = null;
+
+        $actividad_produccion  = tb_question::where('id_reading', $lectura->id_reading)->where('id_question_level', 5)->where('id_block', 3)->first();
+        
+        if($actividad_produccion){
+            if($actividad_produccion){
+                $url_actividad = $actividad_produccion->final_resource;
+            }
+        }
+        //dd($url_actividad);
+
         $salones = tb_classroom::where('id_grade', $lecturama->id_grade)->where('id_level', $lecturama->id_level)->where('id_teacher', $profesor->id_user)->with('grade')->with('section')->with('level')->with('teacher')->where('id_state', 3)->get();
         
-        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° '.$id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura, 'salones' => $salones, 'preguntas_bloque1_literal' => $preguntas_bloque1_literal, 'preguntas_bloque1_inferencial' => $preguntas_bloque1_inferencial, 'preguntas_bloque1_critico'=>$preguntas_bloque1_critico, 'preguntas_bloque2_literal' => $preguntas_bloque2_literal, 'preguntas_bloque2_inferencial' => $preguntas_bloque2_inferencial, 'preguntas_bloque2_critico'=>$preguntas_bloque2_critico, 'preguntas_bloque0_texto' => $preguntas_bloque0_texto, 'preguntas_bloque1_intertextual'=>$preguntas_bloque1_intertextual, 'preguntas_bloque2_intertextual'=>$preguntas_bloque2_intertextual]);
+        return view('includes/menubarProfesor', ['includeRoute' => 'profesor.actividadPreview', 'title' => 'Nivel n° '.$id_lecturama, 'optionIndex' => 1, 'lectura' => $lectura, 'salones' => $salones, 'preguntas_bloque1_literal' => $preguntas_bloque1_literal, 'preguntas_bloque1_inferencial' => $preguntas_bloque1_inferencial, 'preguntas_bloque1_critico'=>$preguntas_bloque1_critico, 'preguntas_bloque2_literal' => $preguntas_bloque2_literal, 'preguntas_bloque2_inferencial' => $preguntas_bloque2_inferencial, 'preguntas_bloque2_critico'=>$preguntas_bloque2_critico, 'preguntas_bloque0_texto' => $preguntas_bloque0_texto, 'preguntas_bloque1_intertextual'=>$preguntas_bloque1_intertextual, 'preguntas_bloque2_intertextual'=>$preguntas_bloque2_intertextual, 'url_actividad' =>$url_actividad]);
     }
 
 }
