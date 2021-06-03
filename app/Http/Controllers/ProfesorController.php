@@ -84,7 +84,8 @@ class ProfesorController extends Controller
 
                 if($pregunta->final_resource != null && $pregunta->final_resource != '') {
 
-                    $file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
+                    //$file = Storage::disk('s3')->get('/actividades_produccion/'.$lecturama->s_name.'/'.$pregunta->final_resource);
+                    file_put_contents($file, file_get_contents($pregunta->final_resource)))
                     $headers = [
                         'Content-Type' => 'application/vnd.openxmlformats-officedocument.wordprocessingml.document', 
                         'Content-Description' => 'File Transfer',
