@@ -140,9 +140,14 @@
                     </div>
                 </div>
             @else
-                <p>
-                    Sin video que reproducir.
-                </p>  
+
+                @if (isset($lectura->image) && $lectura->image != '')
+                    <img class="ui centered fluid image" src="{{asset($lectura->image)}}" alt="">
+                @else
+                    <p style="font-size: 1.5rem;">
+                        Sin recurso que mostrar.
+                    </p> 
+                @endif
             @endif
         </div>
         <div class="actions">
@@ -434,7 +439,12 @@
         <div class="header">Actividad de Producción</div>
         <div class="content">
             <div class="four wide column">
-                <a href="{{route('api_descargar_doc', ['id_reading' => $lectura->id_reading])}}" class="ui blue inverted fluid button">Descargar documento</a>
+                @if($url_actividad != null && $url_actividad != "") 
+                    <a href="{{$url_actividad}}" target="_blank" class="ui blue inverted fluid button">Descargar documento</a>
+                @else
+                    <p style="color: orange; font-size: 1.5rem;">Sin actividad disponible</p>
+                @endif
+                
             </div>
 
             {{-- <div class="description">
