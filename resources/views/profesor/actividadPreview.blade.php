@@ -32,10 +32,10 @@
         <div class="ui vertical segment">
             <div class="ui stackable grid">
                 <div class="eight wide column">
-                    <h2 class="ui header">Video</h2>
+                    <h2 class="ui header">Introducción</h2>
                 </div>
                 <div class="four wide column">
-                    <button class="ui green inverted fluid button" onclick="openModal('video')">Ver video</button>
+                    <button class="ui green inverted fluid button" onclick="openModal('video')">Ver introducción</button>
                 </div>
                 <div class="four wide column">
                     <button class="ui green inverted fluid button" onclick="openModal('videoPreguntas')">Ver preguntas</button>
