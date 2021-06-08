@@ -35,7 +35,7 @@
                     <h2 class="ui header">Video</h2>
                 </div>
                 <div class="four wide column">
-                    <button class="ui green inverted fluid button" onclick="openModal('video')">Ver video</button>
+                    <button class="ui green inverted fluid button" onclick="openModal('video')">Ver Introducción</button>
                 </div>
                 <div class="four wide column">
                     <button class="ui green inverted fluid button" onclick="openModal('videoPreguntas')">Ver preguntas</button>
