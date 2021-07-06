@@ -20,14 +20,18 @@
                 @foreach ($lectura->content_extra as $content_extra)
 
                     @isset($content_extra->content)
-                        <p class="letra">
-                            {!! $content_extra->content !!}
-                        </p>
+                        @if($content_extra->content != "")
+                            <p class="letra">
+                                {!! $content_extra->content !!}
+                            </p>
+                        @endif
                     @endisset
 
                     @isset($content_extra->image_content)
-                        <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
-                        </br>
+                        @if($content_extra->image_content != "")
+                            <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
+                            </br>
+                        @endif
                     @endisset
                     
                 @endforeach

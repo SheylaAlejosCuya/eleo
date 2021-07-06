@@ -53,21 +53,22 @@ class ProfesorAdminController extends Controller
     function asignacion_alumnos() {
 
         $admin = tb_user::find(Auth::guard('profesor_admin')->id());
-        $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_school', $admin->id_school)->with('level')->orderBy('id_level', 'asc')->orderBy('id_grade', 'asc')->get();
+        $alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_school', $admin->id_school)->with('level')->with('section')->orderBy('id_level', 'asc')->orderBy('id_grade', 'asc')->get();
         
         $niveles = tb_level::all();
         $grados = tb_grade::all();
         $secciones = tb_section::all();
 
-        $aulas = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->where('id_state', 3)->get();
-
+        $aulas_primaria = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->where('id_state', 3)->where('id_level', 1)->get();
+        $aulas_secundaria = tb_classroom::where('id_school', $admin->id_school)->with('level')->with('grade')->with('section')->with('teacher')->where('id_state', 3)->where('id_level', 2)->get();
+      
         // foreach ($niveles as $key => $nivel) {
         //     foreach ($grados as $key => $grado) {
         //         $grado->alumnos = tb_user::where('id_state', 1)->where('id_rol', 2)->where('id_level', $nivel->id_level)->where('id_grade', $grado->id_grade)->get();
         //     }
         //     $nivel->grados = $grados;
         // }
-        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.asignacionAlumnos', 'optionIndex' => 1, 'niveles' => $niveles, 'secciones' => $secciones , 'alumnos' => $alumnos, 'aulas' => $aulas]);
+        return view('includes/menubarProfesorAdmin', ['includeRoute' => 'profesor_admin.asignacionAlumnos', 'optionIndex' => 1, 'niveles' => $niveles, 'secciones' => $secciones , 'alumnos' => $alumnos, 'aulas_primaria' => $aulas_primaria, 'aulas_secundaria'=> $aulas_secundaria]);
     }
 
 
@@ -144,6 +145,7 @@ class ProfesorAdminController extends Controller
             $alumno = tb_user::find($request->id_alumno);
             $alumno->id_classroom = $request->id_classroom;
             $alumno->id_section = $aula->id_section;
+            $alumno->id_grade = $aula->id_grade;
             $alumno->save();
             return response()->json(['type' => 'success', 'message' => 'update successful'], 200);
         } catch(\Excepcion $e) {
