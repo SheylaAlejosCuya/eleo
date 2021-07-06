@@ -49,6 +49,11 @@ class tb_user extends Authenticatable
         return $this->hasOne(tb_grade::class, 'id_grade', 'id_grade');
     }
 
+    public function section()
+    {
+        return $this->hasOne(tb_section::class, 'id_section', 'id_section');
+    }
+
     public function school()
     {
         return $this->hasOne(tb_school::class, 'id_school', 'id_school');

@@ -305,31 +305,33 @@
 
     <div class="ui modal" id="texto" tabindex="-1" aria-hidden="true">
         <div class="header">{{$lectura->title}}</div>
-        <div class="scrolling content">
-        <div class="ui segment" style="font-family: 'Merienda', cursive;   font-size: larger; ">
-            {{-- BLOQUE 1 LECTURA --}}
+        <div class="scrolling image content">
+            <div class="ui segment" style="font-family: 'Merienda', cursive; font-size: larger;">
+                {{-- BLOQUE 1 LECTURA --}}
+                @if (count($lectura->content_extra) == 0)
+                <p>Sin texto que mostrar.</p>
+                @else
+                    @foreach ($lectura->content_extra as $content_extra)
 
-            @if (count($lectura->content_extra) == 0)
-               <p>Sin texto que mostrar.</p>
-            @else
-                @foreach ($lectura->content_extra as $content_extra)
+                        @isset($content_extra->content)
+                            @if($content_extra->content != "")
+                                <p>
+                                    {!! $content_extra->content !!}
+                                </p>
+                            @endif
+                        @endisset
 
-                    @isset($content_extra->content)
-                        <p>
-                            {!! $content_extra->content !!}
-                        </p>
-                    @endisset
+                        @isset($content_extra->image_content)
+                            @if($content_extra->image_content != "")
+                                <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
+                                </br>
+                            @endif
+                        @endisset
+                        
+                    @endforeach
+                @endif
 
-                    @isset($content_extra->image_content)
-                        @if($content_extra->image_content != "")
-                            <img class="ui centered fluid large image" src="{{$content_extra->image_content}}" alt="Image">
-                            </br>
-                        @endif
-                    @endisset
-                    
-                @endforeach
-            @endif
-
+            </div>
         </div>
     </div>
 
